@@ -1,78 +1,68 @@
-import "server-only"
+import { promises as fs } from "node:fs"
+import path from "node:path"
 
-import { promises as fs } from "fs"
-import path from "path"
+/**
+ * Root directory for public images.
+ * Example folder structure:
+ *   public/images/<artist-slug>/<file>.{jpg,jpeg,png,webp,gif,svg}
+ */
+const IMAGES_ROOT = path.join(process.cwd(), "public", "images")
 
-const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"])
-
+const allowedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"])
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" })
 
 /**
- * Sanitize a slug to avoid path traversal and invalid characters.
- * Allows a–z, 0–9, -, _
+ * Normalize a slug to a safe, filesystem-friendly and route-safe string.
+ * This prevents path traversal and odd unicode forms.
  */
-function sanitizeSlug(input: string) {
-  const s = (input || "").toString()
-  const cleaned = s.replace(/[^a-zA-Z0-9-_]/g, "")
-  // Prevent sneaky path traversal
-  if (cleaned.includes("..")) return ""
-  return cleaned
+function sanitizeSlug(input: string): string {
+  return input
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]/g, "-")
+    .replace(/-+/g, "-")
+  // Intentionally do not trim leading/trailing dashes to keep deterministic mapping
 }
 
 /**
- * Prettify a slug by replacing hyphens with spaces and capitalizing each word.
- */
-function prettifySlug(slug: string) {
-  return slug
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ")
-}
-
-/**
- * Returns subfolder names under /public/images in natural-sorted order.
+ * Returns subfolder names of /public/images (sorted with natural order).
  */
 export async function getGalleryFolders(): Promise<string[]> {
-  const imagesDir = path.join(process.cwd(), "public", "images")
-
   try {
-    const entries = await fs.readdir(imagesDir, { withFileTypes: true })
-    const dirs = entries.filter((e) => e.isDirectory()).map((e) => e.name)
-    dirs.sort(collator.compare)
-    return dirs
+    const entries = await fs.readdir(IMAGES_ROOT, { withFileTypes: true })
+    const folders = entries
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name)
+      .sort((a, b) => collator.compare(a, b))
+
+    return folders
   } catch {
-    // If the folder doesn't exist yet, return empty.
+    // Folder may not exist yet.
     return []
   }
 }
 
 /**
- * Returns public URLs for all image files inside /public/images/<slug>
- * Extensions: .jpg .jpeg .png .webp .gif .svg
- * Sorted in natural order.
+ * Returns public URLs for all files inside /public/images/<slug>
+ * with extensions: .jpg .jpeg .png .webp .gif .svg
+ * Sorted with natural order.
  */
 export async function getGalleryImages(slug: string): Promise<string[]> {
   const safe = sanitizeSlug(slug)
-  if (!safe) return []
+  const dir = path.join(IMAGES_ROOT, safe)
 
-  const dir = path.join(process.cwd(), "public", "images", safe)
   try {
-    const stats = await fs.stat(dir)
-    if (!stats.isDirectory()) return []
+    const entries = await fs.readdir(dir, { withFileTypes: true })
+    const files = entries
+      .filter((e) => e.isFile())
+      .map((e) => e.name)
+      .filter((name) => allowedExtensions.has(path.extname(name).toLowerCase()))
+      .sort((a, b) => collator.compare(a, b))
+
+    // Return public URLs (served by Next.js from /public)
+    return files.map((name) => `/images/${safe}/${encodeURIComponent(name)}`)
   } catch {
+    // Folder missing or unreadable
     return []
   }
-
-  const entries = await fs.readdir(dir, { withFileTypes: true })
-  const files = entries
-    .filter((e) => e.isFile())
-    .map((e) => e.name)
-    .filter((name) => IMAGE_EXTENSIONS.has(path.extname(name).toLowerCase()))
-
-  files.sort(collator.compare)
-
-  // Return public URLs
-  return files.map((name) => `/images/${safe}/${name}`)
 }
-
-export { prettifySlug }

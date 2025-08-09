@@ -13,24 +13,24 @@ export const dancehallSquareTracks: Track[] = [
     title: "Baby Come Back Home",
     artist: "AI Selector",
     duration: "3:22",
-    audioUrl: "/audio/baby-come-back-home.mp3",
-    downloadUrl: "/audio/baby-come-back-home.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Baby%20Come%20Back%20Home-8sxljqEQY8VWhFHcwwbdqzBw21Lubv.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Baby%20Come%20Back%20Home-8sxljqEQY8VWhFHcwwbdqzBw21Lubv.mp3"
   },
   {
     id: "dancehall-2",
     title: "Baby Yuh Perfect",
     artist: "Digital Yardie",
     duration: "3:35",
-    audioUrl: "/audio/baby-yuh-perfect.mp3",
-    downloadUrl: "/audio/baby-yuh-perfect.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Baby%20Yuh%20Perfect-1EFYheOeHbroatlKcb9Kx2U1Cxqxx5.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Baby%20Yuh%20Perfect-1EFYheOeHbroatlKcb9Kx2U1Cxqxx5.mp3"
   },
   {
     id: "dancehall-3",
     title: "Bubble and Wine",
     artist: "Cyber Dancehall",
     duration: "3:18",
-    audioUrl: "/audio/bubble-and-wine.mp3",
-    downloadUrl: "/audio/bubble-and-wine.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bubble%20and%20Wine-eHwkYrYUiCNJfFBQSx7Rv4ujS99hcm.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bubble%20and%20Wine-eHwkYrYUiCNJfFBQSx7Rv4ujS99hcm.mp3"
   },
   {
     id: "dancehall-4",
@@ -45,16 +45,16 @@ export const dancehallSquareTracks: Track[] = [
     title: "Empress Rise Up",
     artist: "AI Soundsystem",
     duration: "3:29",
-    audioUrl: "/audio/empress-rise-up.mp3",
-    downloadUrl: "/audio/empress-rise-up.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Empress%20Rise%20Up-rqBQmAnOqomzIYcR7Pst13y86pdvj1.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Empress%20Rise%20Up-rqBQmAnOqomzIYcR7Pst13y86pdvj1.mp3"
   },
   {
     id: "dancehall-6",
     title: "Bad Gyal Anthem",
     artist: "Digital Queen",
     duration: "3:14",
-    audioUrl: "/audio/bad-gyal-anthem.mp3",
-    downloadUrl: "/audio/bad-gyal-anthem.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bad%20Gyal%20Anthem-tH6KjoJ9ShmLlql53rH73udlZyI6M2.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bad%20Gyal%20Anthem-tH6KjoJ9ShmLlql53rH73udlZyI6M2.mp3"
   },
   {
     id: "dancehall-7",
@@ -93,48 +93,48 @@ export const dancehallSquareTracks: Track[] = [
     title: "Gyal Power",
     artist: "Empress Digital",
     duration: "3:27",
-    audioUrl: "/audio/gyal-power.mp3",
-    downloadUrl: "/audio/gyal-power.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyal%20Power-xJBJf0b3acsEtdEv8Tc40vMhOUSLcs.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyal%20Power-xJBJf0b3acsEtdEv8Tc40vMhOUSLcs.mp3"
   },
   {
     id: "dancehall-12",
     title: "Gyalis But Yuh Win",
     artist: "Heartbreak Selector",
     duration: "3:33",
-    audioUrl: "/audio/gyalis-but-yuh-win.mp3",
-    downloadUrl: "/audio/gyalis-but-yuh-win.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyalis%20But%20Yuh%20Win-DMpkiWCDKLe5eW03sXWe3lJmosCYJH.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyalis%20But%20Yuh%20Win-DMpkiWCDKLe5eW03sXWe3lJmosCYJH.mp3"
   },
   {
     id: "dancehall-13",
     title: "Island Gyal",
     artist: "Caribbean AI",
     duration: "3:19",
-    audioUrl: "/audio/island-gyal.mp3",
-    downloadUrl: "/audio/island-gyal.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Island%20Gyal-AE89VDiMO8WqeIgnOWAdTEfw0z4T5l.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Island%20Gyal-AE89VDiMO8WqeIgnOWAdTEfw0z4T5l.mp3"
   },
   {
     id: "dancehall-14",
     title: "Ganja Farmer's Anthem",
     artist: "Rasta Digital",
     duration: "3:45",
-    audioUrl: "/audio/ganja-farmers-anthem.mp3",
-    downloadUrl: "/audio/ganja-farmers-anthem.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ganja%20Farmer%27s%20Anthem-B0qyaVLo8X2LTq7cJ2k1xvEVhdDl3x.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ganja%20Farmer%27s%20Anthem-B0qyaVLo8X2LTq7cJ2k1xvEVhdDl3x.mp3"
   },
   {
     id: "dancehall-15",
     title: "Gyal Yuh Have Mi Crazy",
     artist: "Love Struck AI",
     duration: "3:31",
-    audioUrl: "/audio/gyal-yuh-have-mi-crazy.mp3",
-    downloadUrl: "/audio/gyal-yuh-have-mi-crazy.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyal%20Yuh%20Have%20Mi%20Crazy-qB6sAtiW8BTe1stPghep7xSCjQnCom.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyal%20Yuh%20Have%20Mi%20Crazy-qB6sAtiW8BTe1stPghep7xSCjQnCom.mp3"
   },
   {
     id: "dancehall-16",
     title: "Gyal Yuh Bad Sample",
     artist: "Bad Gyal Producer",
     duration: "3:24",
-    audioUrl: "/audio/gyal-yuh-bad-sample.mp3",
-    downloadUrl: "/audio/gyal-yuh-bad-sample.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyal%20Yuh%20Bad%20Sample-TMnHx4AzkB0BPuYwiZ544hDp6iv0xQ.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gyal%20Yuh%20Bad%20Sample-TMnHx4AzkB0BPuYwiZ544hDp6iv0xQ.mp3"
   },
   {
     id: "dancehall-17",
@@ -149,8 +149,8 @@ export const dancehallSquareTracks: Track[] = [
     title: "Graduation Love",
     artist: "Young Love AI",
     duration: "3:28",
-    audioUrl: "/audio/graduation-love.mp3",
-    downloadUrl: "/audio/graduation-love.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Graduation%20Love-Kpj911GnCQnm9Vzcq4xhnkDkbUY1S9.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Graduation%20Love-Kpj911GnCQnm9Vzcq4xhnkDkbUY1S9.mp3"
   },
   {
     id: "dancehall-19",
@@ -173,16 +173,16 @@ export const dancehallSquareTracks: Track[] = [
     title: "Mi Cyaa Sleep Widout Yuh Snore",
     artist: "Bedroom Riddim AI",
     duration: "3:34",
-    audioUrl: "/audio/mi-cyaa-sleep-widout-yuh-snore.mp3",
-    downloadUrl: "/audio/mi-cyaa-sleep-widout-yuh-snore.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mi%20Cyaa%20Sleep%20Widout%20Yuh%20Snore-TLDkygLvpxzHmhUsFoonYi8XPmtjb8.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mi%20Cyaa%20Sleep%20Widout%20Yuh%20Snore-TLDkygLvpxzHmhUsFoonYi8XPmtjb8.mp3"
   },
   {
     id: "dancehall-22",
     title: "Market Day",
     artist: "Street Life Digital",
     duration: "3:26",
-    audioUrl: "/audio/market-day.mp3",
-    downloadUrl: "/audio/market-day.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Market%20Day-ZsF2wqCLOd6PqqdzVXmHg0gHMM5mvR.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Market%20Day-ZsF2wqCLOd6PqqdzVXmHg0gHMM5mvR.mp3"
   },
   {
     id: "dancehall-23",
@@ -205,16 +205,16 @@ export const dancehallSquareTracks: Track[] = [
     title: "Mi Heart Have Yuh GPS",
     artist: "Modern Love Digital",
     duration: "3:28",
-    audioUrl: "/audio/mi-heart-have-yuh-gps.mp3",
-    downloadUrl: "/audio/mi-heart-have-yuh-gps.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mi%20Heart%20Have%20Yuh%20GPS-P6B4hv8uhR7kJnTU9io5HZ3VMA3df6.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mi%20Heart%20Have%20Yuh%20GPS-P6B4hv8uhR7kJnTU9io5HZ3VMA3df6.mp3"
   },
   {
     id: "dancehall-26",
     title: "Mi Heart Deh Pan You",
     artist: "Heartstring AI",
     duration: "3:41",
-    audioUrl: "/audio/mi-heart-deh-pan-you.mp3",
-    downloadUrl: "/audio/mi-heart-deh-pan-you.mp3"
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mi%20Heart%20Deh%20Pan%20You-GLz6V1aYeyNfyhyTUnwcCmW77qaNG6.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mi%20Heart%20Deh%20Pan%20You-GLz6V1aYeyNfyhyTUnwcCmW77qaNG6.mp3"
   },
   {
     id: "dancehall-27",

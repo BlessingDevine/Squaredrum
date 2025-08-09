@@ -1,29 +1,39 @@
-import 'server-only'
+import "server-only"
 
-import { promises as fs } from 'fs'
-import path from 'path'
+import { promises as fs } from "fs"
+import path from "path"
 
-const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'])
+const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"])
 
-const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' })
+const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" })
 
 /**
  * Sanitize a slug to avoid path traversal and invalid characters.
  * Allows a–z, 0–9, -, _
  */
 function sanitizeSlug(input: string) {
-  const s = (input || '').toString()
-  const cleaned = s.replace(/[^a-zA-Z0-9-_]/g, '')
+  const s = (input || "").toString()
+  const cleaned = s.replace(/[^a-zA-Z0-9-_]/g, "")
   // Prevent sneaky path traversal
-  if (cleaned.includes('..')) return ''
+  if (cleaned.includes("..")) return ""
   return cleaned
+}
+
+/**
+ * Prettify a slug by replacing hyphens with spaces and capitalizing each word.
+ */
+function prettifySlug(slug: string) {
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
 }
 
 /**
  * Returns subfolder names under /public/images in natural-sorted order.
  */
 export async function getGalleryFolders(): Promise<string[]> {
-  const imagesDir = path.join(process.cwd(), 'public', 'images')
+  const imagesDir = path.join(process.cwd(), "public", "images")
 
   try {
     const entries = await fs.readdir(imagesDir, { withFileTypes: true })
@@ -45,7 +55,7 @@ export async function getGalleryImages(slug: string): Promise<string[]> {
   const safe = sanitizeSlug(slug)
   if (!safe) return []
 
-  const dir = path.join(process.cwd(), 'public', 'images', safe)
+  const dir = path.join(process.cwd(), "public", "images", safe)
   try {
     const stats = await fs.stat(dir)
     if (!stats.isDirectory()) return []
@@ -64,3 +74,5 @@ export async function getGalleryImages(slug: string): Promise<string[]> {
   // Return public URLs
   return files.map((name) => `/images/${safe}/${name}`)
 }
+
+export { prettifySlug }

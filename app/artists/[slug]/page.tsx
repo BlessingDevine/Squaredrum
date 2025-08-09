@@ -1,39 +1,47 @@
+import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
-import GalleryGrid from "@/components/GalleryGrid"
-import { getGalleryFolders, getGalleryImages } from "@/lib/getGalleryImages"
+import ArtistPageClient from "./ArtistPageClient"
+import { artists } from "@/lib/artists-data"
 
-export const dynamic = "force-static"
-export const revalidate = false
+interface ArtistPageProps {
+  params: {
+    slug: string
+  }
+}
 
 export async function generateStaticParams() {
-  const slugs = await getGalleryFolders()
-  return slugs.map((slug) => ({ slug }))
+  return artists.map((artist) => ({
+    slug: artist.slug,
+  }))
 }
 
-function prettifySlug(slug: string) {
-  return slug.replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+export async function generateMetadata({ params }: ArtistPageProps): Promise<Metadata> {
+  const artist = artists.find((a) => a.slug === params.slug)
+
+  if (!artist) {
+    return {
+      title: "Artist Not Found | SQUAREDRUM Records",
+    }
+  }
+
+  return {
+    title: `${artist.name} | SQUAREDRUM Records`,
+    description: artist.bio,
+  }
 }
 
-export default async function ArtistGalleryPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug
-  const images = await getGalleryImages(slug)
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#000000",
+}
 
-  if (!images || images.length === 0) {
+export default function ArtistPage({ params }: ArtistPageProps) {
+  const artist = artists.find((a) => a.slug === params.slug)
+
+  if (!artist) {
     notFound()
   }
 
-  return (
-    <main className="container mx-auto px-4 py-10">
-      <header className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">{prettifySlug(slug)}</h1>
-        <p className="text-neutral-600 mt-2">
-          {"Images are read from "}
-          <span className="font-mono">{`/public/images/${slug}`}</span>
-          {"."}
-        </p>
-      </header>
-
-      <GalleryGrid images={images} />
-    </main>
-  )
+  return <ArtistPageClient artist={artist} />
 }

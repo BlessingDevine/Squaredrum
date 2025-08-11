@@ -125,7 +125,7 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/lunah.jpg",
+    path: "/images/lunah/lunah.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
@@ -180,7 +180,7 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/artists/lunah.jpg",
+    path: "/images/artists/lunah/lunah.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },

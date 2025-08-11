@@ -2175,7 +2175,7 @@ export const artists: Artist[] = [
     id: "12",
     name: "Lunah",
     slug: "lunah",
-    image: "/images/lunah.jpg",
+    image: "/images/lunah/lunah.jpg",
     bio: "Lunah is an AI R&B duo that creates heartfelt harmonies and contemporary R&B music through sophisticated emotional modeling and vocal synthesis algorithms. This artificial duo brings the spirit of modern R&B into the digital age, with AI-generated vocal arrangements that capture the essence of duo dynamics and emotional depth. Their synthetic vocals carry the warmth and soul that R&B fans love, proving that artificial intelligence can master the art of R&B collaboration and harmony.",
     location: "Austin, TX",
     genre: "R&B Duo",

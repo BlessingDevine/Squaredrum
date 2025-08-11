@@ -1,8 +1,23 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Play, Pause, Download, ArrowLeft, Music, MapPin, Camera, X, ChevronLeft, ChevronRight, ExternalLink, Calendar, User, Disc3, Loader2, Eye } from 'lucide-react'
+import { motion } from "framer-motion"
+import {
+  Play,
+  Pause,
+  Download,
+  ArrowLeft,
+  Music,
+  MapPin,
+  Camera,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Calendar,
+  User,
+  Eye,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -12,6 +27,7 @@ import type { Artist } from "@/lib/artists-data"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import PageBlurOverlay from "@/components/page-blur-overlay"
+import GalleryClient from "./GalleryClient"
 
 interface ArtistPageClientProps {
   artist: Artist
@@ -28,13 +44,22 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<"music" | "gallery" | "video">("gallery")
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0)
-  
+
   // Gallery pagination states
   const [visibleImageCount, setVisibleImageCount] = useState(16)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const [showAllImages, setShowAllImages] = useState(false)
-  
+  const [dynamicGalleryFiles, setDynamicGalleryFiles] = useState<string[]>([])
+
   const IMAGES_PER_LOAD = 12 // Number of images to load each time
+
+  // Fetch dynamic gallery files
+  useEffect(() => {
+    fetch(`/api/gallery/${artist.slug}`, { cache: "no-store" })
+      .then((r) => r.json())
+      .then((arr) => setDynamicGalleryFiles(Array.isArray(arr) ? arr : []))
+      .catch(() => setDynamicGalleryFiles([]))
+  }, [artist.slug])
 
   const handlePlayPause = () => {
     if (!artist.featuredTrack) return
@@ -142,34 +167,34 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
   }
 
   const nextGalleryImage = () => {
-    if (artist.photoGallery && artist.photoGallery.length > 0) {
-      setCurrentGalleryIndex((prev) => (prev + 1) % artist.photoGallery!.length)
+    if (dynamicGalleryFiles.length > 0) {
+      setCurrentGalleryIndex((prev) => (prev + 1) % dynamicGalleryFiles.length)
     }
   }
 
   const prevGalleryImage = () => {
-    if (artist.photoGallery && artist.photoGallery.length > 0) {
-      setCurrentGalleryIndex((prev) => (prev - 1 + artist.photoGallery!.length) % artist.photoGallery!.length)
+    if (dynamicGalleryFiles.length > 0) {
+      setCurrentGalleryIndex((prev) => (prev - 1 + dynamicGalleryFiles.length) % dynamicGalleryFiles.length)
     }
   }
 
   // Handle "See More" functionality
   const handleSeeMore = async () => {
-    if (!artist.photoGallery || isLoadingMore) return
-    
+    if (!dynamicGalleryFiles.length || isLoadingMore) return
+
     setIsLoadingMore(true)
-    
+
     // Simulate loading delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 800))
-    
-    const newCount = Math.min(visibleImageCount + IMAGES_PER_LOAD, artist.photoGallery.length)
+    await new Promise((resolve) => setTimeout(resolve, 800))
+
+    const newCount = Math.min(visibleImageCount + IMAGES_PER_LOAD, dynamicGalleryFiles.length)
     setVisibleImageCount(newCount)
-    
+
     // If we've loaded all images, set showAllImages to true
-    if (newCount >= artist.photoGallery.length) {
+    if (newCount >= dynamicGalleryFiles.length) {
       setShowAllImages(true)
     }
-    
+
     setIsLoadingMore(false)
   }
 
@@ -178,15 +203,15 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
     setVisibleImageCount(16)
     setShowAllImages(false)
     // Scroll back to gallery section smoothly
-    const gallerySection = document.getElementById('gallery-section')
+    const gallerySection = document.getElementById("gallery-section")
     if (gallerySection) {
-      gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      gallerySection.scrollIntoView({ behavior: "smooth", block: "start" })
     }
   }
 
   // Reset gallery state when switching tabs
   useEffect(() => {
-    if (activeTab !== 'gallery') {
+    if (activeTab !== "gallery") {
       setVisibleImageCount(16)
       setShowAllImages(false)
       setIsLoadingMore(false)
@@ -306,17 +331,15 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                       <span className="text-sm">Joined {artist.debutYear || "2024"}</span>
                     </div>
                     <div className="flex items-center gap-3 text-amber-500">
-                      <Disc3 className="h-4 w-4" />
-                      <span className="text-sm">{(artist.tracks?.length || 0) + (artist.featuredTrack ? 1 : 0)} Tracks</span>
+                      <Camera className="h-4 w-4" />
+                      <span className="text-sm">{dynamicGalleryFiles.length} Photos</span>
                     </div>
                   </div>
 
                   {/* About Section */}
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold mb-3">About</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-6">
-                      {artist.bio}
-                    </p>
+                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-6">{artist.bio}</p>
                   </div>
 
                   {/* Connect Section */}
@@ -328,7 +351,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                           asChild
                           variant="outline"
                           size="sm"
-                          className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 text-xs"
+                          className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 text-xs bg-transparent"
                         >
                           <a href={artist.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
                             Instagram
@@ -341,7 +364,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                           asChild
                           variant="outline"
                           size="sm"
-                          className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 text-xs"
+                          className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 text-xs bg-transparent"
                         >
                           <a href={artist.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
                             Twitter
@@ -354,7 +377,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                           asChild
                           variant="outline"
                           size="sm"
-                          className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 text-xs"
+                          className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 text-xs bg-transparent"
                         >
                           <a href={artist.socialMedia.youtube} target="_blank" rel="noopener noreferrer">
                             YouTube
@@ -413,7 +436,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                       transition={{ duration: 0.3 }}
                     >
                       <h2 className="font-cinzel text-2xl font-bold tracking-wider mb-6">MUSIC</h2>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Featured Track */}
                         {artist.featuredTrack && (
@@ -433,15 +456,23 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                                   <div className="text-amber-500 text-xs font-semibold uppercase tracking-wider mb-1">
                                     Featured Track
                                   </div>
-                                  <h3 className="text-white text-lg font-semibold mb-1">{artist.featuredTrack.title}</h3>
-                                  <p className="text-gray-400 text-sm">{artist.name} • {artist.featuredTrack.duration}</p>
+                                  <h3 className="text-white text-lg font-semibold mb-1">
+                                    {artist.featuredTrack.title}
+                                  </h3>
+                                  <p className="text-gray-400 text-sm">
+                                    {artist.name} • {artist.featuredTrack.duration}
+                                  </p>
                                 </div>
                               </div>
                               <Button
                                 onClick={handlePlayPause}
                                 className="w-12 h-12 p-0 bg-gradient-to-br from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black rounded-xl shadow-lg hover:shadow-xl border-0 transition-all duration-200"
                               >
-                                {isPlayingFeatured ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
+                                {isPlayingFeatured ? (
+                                  <Pause className="h-5 w-5" />
+                                ) : (
+                                  <Play className="h-5 w-5 ml-0.5" />
+                                )}
                               </Button>
                             </div>
                           </div>
@@ -469,7 +500,9 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                                     <h3 className="text-white font-semibold group-hover:text-amber-500 transition-colors">
                                       {track.title}
                                     </h3>
-                                    <p className="text-gray-400 text-sm">{artist.name} • {track.duration}</p>
+                                    <p className="text-gray-400 text-sm">
+                                      {artist.name} • {track.duration}
+                                    </p>
                                   </div>
                                 </div>
                                 <Button
@@ -499,30 +532,31 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                     >
                       <div className="flex items-center justify-between mb-6">
                         <h2 className="font-cinzel text-2xl font-bold tracking-wider">GALLERY</h2>
-                        {artist.photoGallery && artist.photoGallery.length > 0 && (
+                        {dynamicGalleryFiles.length > 0 && (
                           <div className="flex items-center gap-2 text-sm text-gray-400">
                             <Eye className="h-4 w-4" />
                             <span>
-                              Showing {Math.min(visibleImageCount, artist.photoGallery.length)} of {artist.photoGallery.length} photos
+                              Showing {Math.min(visibleImageCount, dynamicGalleryFiles.length)} of{" "}
+                              {dynamicGalleryFiles.length} photos
                             </span>
                           </div>
                         )}
                       </div>
-                      
-                      {artist.photoGallery && artist.photoGallery.length > 0 ? (
+
+                      {dynamicGalleryFiles.length > 0 ? (
                         <div className="space-y-6">
                           {/* Featured Image */}
                           <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-zinc-900/50 border border-zinc-800">
                             <Image
-                              src={artist.photoGallery[currentGalleryIndex]?.src || "/placeholder.svg"}
-                              alt={artist.photoGallery[currentGalleryIndex]?.alt || "Gallery image"}
+                              src={`/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`}
+                              alt={`${artist.name} gallery image`}
                               fill
                               className="object-cover"
                               sizes="(max-width: 768px) 100vw, 66vw"
                             />
-                            
+
                             {/* Navigation Arrows */}
-                            {artist.photoGallery.length > 1 && (
+                            {dynamicGalleryFiles.length > 1 && (
                               <>
                                 <button
                                   onClick={prevGalleryImage}
@@ -541,121 +575,22 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
 
                             {/* Image Counter */}
                             <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 text-white text-sm">
-                              {currentGalleryIndex + 1} / {artist.photoGallery.length}
+                              {currentGalleryIndex + 1} / {dynamicGalleryFiles.length}
                             </div>
-
-                            {/* Image Caption */}
-                            {artist.photoGallery[currentGalleryIndex]?.caption && (
-                              <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm max-w-xs">
-                                {artist.photoGallery[currentGalleryIndex].caption}
-                              </div>
-                            )}
                           </div>
 
                           {/* Thumbnail Grid */}
-                          <div className="space-y-4">
-                            <AnimatePresence mode="wait">
-                              <motion.div 
-                                key={visibleImageCount}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2"
-                              >
-                                {artist.photoGallery.slice(0, visibleImageCount).map((photo, index) => (
-                                  <motion.button
-                                    key={photo.id}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ 
-                                      duration: 0.3, 
-                                      delay: index >= 16 ? (index - 16) * 0.05 : 0 
-                                    }}
-                                    onClick={() => setCurrentGalleryIndex(index)}
-                                    className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-200 group ${
-                                      index === currentGalleryIndex
-                                        ? "ring-2 ring-amber-500 scale-105"
-                                        : "hover:scale-105 opacity-70 hover:opacity-100"
-                                    }`}
-                                  >
-                                    <Image
-                                      src={photo.src || "/placeholder.svg"}
-                                      alt={photo.alt}
-                                      fill
-                                      className="object-cover"
-                                      sizes="100px"
-                                    />
-                                    {/* Hover overlay */}
-                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                                      <Eye className="h-4 w-4 text-white" />
-                                    </div>
-                                  </motion.button>
-                                ))}
-                              </motion.div>
-                            </AnimatePresence>
-
-                            {/* Loading Animation */}
-                            <AnimatePresence>
-                              {isLoadingMore && (
-                                <motion.div
-                                  initial={{ opacity: 0, y: 20 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -20 }}
-                                  className="flex items-center justify-center py-8"
-                                >
-                                  <div className="flex items-center gap-3 text-amber-500">
-                                    <Loader2 className="h-5 w-5 animate-spin" />
-                                    <span className="text-sm font-medium">Loading more photos...</span>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-
-                            {/* Action Buttons */}
-                            <div className="flex justify-between items-center pt-4">
-                              <div className="text-sm text-gray-500">
-                                {showAllImages ? "All photos loaded" : `${artist.photoGallery.length - visibleImageCount} more photos available`}
-                              </div>
-                              
-                              <div className="flex gap-3">
-                                {/* Show Less Button */}
-                                {visibleImageCount > 16 && (
-                                  <Button
-                                    onClick={handleShowLess}
-                                    variant="outline"
-                                    size="sm"
-                                    className="border-zinc-700 text-gray-400 hover:text-white hover:border-amber-500 transition-all duration-200"
-                                  >
-                                    Show Less
-                                  </Button>
-                                )}
-                                
-                                {/* See More Button */}
-                                {!showAllImages && visibleImageCount < artist.photoGallery.length && (
-                                  <Button
-                                    onClick={handleSeeMore}
-                                    disabled={isLoadingMore}
-                                    className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-medium px-6 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                                  >
-                                    {isLoadingMore ? (
-                                      <>
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        Loading...
-                                      </>
-                                    ) : (
-                                      <>
-                                        See More
-                                        <span className="ml-2 text-xs bg-black/20 px-2 py-0.5 rounded-full">
-                                          +{Math.min(IMAGES_PER_LOAD, artist.photoGallery.length - visibleImageCount)}
-                                        </span>
-                                      </>
-                                    )}
-                                  </Button>
-                                )}
-                              </div>
-                            </div>
-                          </div>
+                          <GalleryClient
+                            slug={artist.slug}
+                            currentGalleryIndex={currentGalleryIndex}
+                            visibleImageCount={visibleImageCount}
+                            isLoadingMore={isLoadingMore}
+                            showAllImages={showAllImages}
+                            onImageClick={setCurrentGalleryIndex}
+                            onSeeMore={handleSeeMore}
+                            onShowLess={handleShowLess}
+                            IMAGES_PER_LOAD={IMAGES_PER_LOAD}
+                          />
                         </div>
                       ) : (
                         <div className="text-center py-12">
@@ -677,7 +612,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                       transition={{ duration: 0.3 }}
                     >
                       <h2 className="font-cinzel text-2xl font-bold tracking-wider mb-6">VIDEO</h2>
-                      
+
                       <div className="text-center py-12">
                         <div className="relative inline-block">
                           <Play className="h-16 w-16 mx-auto mb-4 text-gray-600" />
@@ -692,7 +627,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                         <div className="mt-6">
                           <Button
                             variant="outline"
-                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black"
+                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent"
                           >
                             Get Notified
                           </Button>

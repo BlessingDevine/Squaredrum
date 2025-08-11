@@ -10,9 +10,7 @@ export async function GET(_: Request, { params }: { params: { slug: string } }) 
     const slug = params.slug.toLowerCase()
     const dir = path.join(process.cwd(), "public", "images", slug)
 
-    if (!fs.existsSync(dir)) {
-      return NextResponse.json([])
-    }
+    if (!fs.existsSync(dir)) return NextResponse.json([])
 
     const files = fs
       .readdirSync(dir)

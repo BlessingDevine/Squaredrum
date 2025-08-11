@@ -5,6 +5,7 @@ export interface Track {
   duration: string
   audioUrl: string
   downloadUrl: string
+  coverArt?: string
 }
 
 export const dancehallSquareTracks: Track[] = [
@@ -14,7 +15,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "AI Selector",
     duration: "3:22",
     audioUrl: "/audio/baby-come-back-home.mp3",
-    downloadUrl: "/audio/baby-come-back-home.mp3"
+    downloadUrl: "/audio/baby-come-back-home.mp3",
   },
   {
     id: "dancehall-2",
@@ -22,7 +23,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Digital Yardie",
     duration: "3:35",
     audioUrl: "/audio/baby-yuh-perfect.mp3",
-    downloadUrl: "/audio/baby-yuh-perfect.mp3"
+    downloadUrl: "/audio/baby-yuh-perfect.mp3",
   },
   {
     id: "dancehall-3",
@@ -30,7 +31,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Cyber Dancehall",
     duration: "3:18",
     audioUrl: "/audio/bubble-and-wine.mp3",
-    downloadUrl: "/audio/bubble-and-wine.mp3"
+    downloadUrl: "/audio/bubble-and-wine.mp3",
   },
   {
     id: "dancehall-4",
@@ -38,7 +39,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Virtual Deejay",
     duration: "3:41",
     audioUrl: "/audio/drivers-seat.mp3",
-    downloadUrl: "/audio/drivers-seat.mp3"
+    downloadUrl: "/audio/drivers-seat.mp3",
   },
   {
     id: "dancehall-5",
@@ -46,7 +47,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "AI Soundsystem",
     duration: "3:29",
     audioUrl: "/audio/empress-rise-up.mp3",
-    downloadUrl: "/audio/empress-rise-up.mp3"
+    downloadUrl: "/audio/empress-rise-up.mp3",
   },
   {
     id: "dancehall-6",
@@ -54,7 +55,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Digital Queen",
     duration: "3:14",
     audioUrl: "/audio/bad-gyal-anthem.mp3",
-    downloadUrl: "/audio/bad-gyal-anthem.mp3"
+    downloadUrl: "/audio/bad-gyal-anthem.mp3",
   },
   {
     id: "dancehall-7",
@@ -62,7 +63,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Cyber Selector",
     duration: "3:38",
     audioUrl: "/audio/bubble-fi-di-real-don.mp3",
-    downloadUrl: "/audio/bubble-fi-di-real-don.mp3"
+    downloadUrl: "/audio/bubble-fi-di-real-don.mp3",
   },
   {
     id: "dancehall-8",
@@ -70,7 +71,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "AI Bashment",
     duration: "3:25",
     audioUrl: "/audio/carnival-queen.mp3",
-    downloadUrl: "/audio/carnival-queen.mp3"
+    downloadUrl: "/audio/carnival-queen.mp3",
   },
   {
     id: "dancehall-9",
@@ -78,7 +79,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Virtual Empress",
     duration: "3:31",
     audioUrl: "/audio/black-queen-anthem.mp3",
-    downloadUrl: "/audio/black-queen-anthem.mp3"
+    downloadUrl: "/audio/black-queen-anthem.mp3",
   },
   {
     id: "dancehall-10",
@@ -86,7 +87,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Digital Lover",
     duration: "3:16",
     audioUrl: "/audio/baby-yuh-so-fine.mp3",
-    downloadUrl: "/audio/baby-yuh-so-fine.mp3"
+    downloadUrl: "/audio/baby-yuh-so-fine.mp3",
   },
   {
     id: "dancehall-11",
@@ -94,7 +95,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Empress Digital",
     duration: "3:27",
     audioUrl: "/audio/gyal-power.mp3",
-    downloadUrl: "/audio/gyal-power.mp3"
+    downloadUrl: "/audio/gyal-power.mp3",
   },
   {
     id: "dancehall-12",
@@ -102,7 +103,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Heartbreak Selector",
     duration: "3:33",
     audioUrl: "/audio/gyalis-but-yuh-win.mp3",
-    downloadUrl: "/audio/gyalis-but-yuh-win.mp3"
+    downloadUrl: "/audio/gyalis-but-yuh-win.mp3",
   },
   {
     id: "dancehall-13",
@@ -110,7 +111,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Caribbean AI",
     duration: "3:19",
     audioUrl: "/audio/island-gyal.mp3",
-    downloadUrl: "/audio/island-gyal.mp3"
+    downloadUrl: "/audio/island-gyal.mp3",
   },
   {
     id: "dancehall-14",
@@ -118,7 +119,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Rasta Digital",
     duration: "3:45",
     audioUrl: "/audio/ganja-farmers-anthem.mp3",
-    downloadUrl: "/audio/ganja-farmers-anthem.mp3"
+    downloadUrl: "/audio/ganja-farmers-anthem.mp3",
   },
   {
     id: "dancehall-15",
@@ -126,7 +127,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Love Struck AI",
     duration: "3:31",
     audioUrl: "/audio/gyal-yuh-have-mi-crazy.mp3",
-    downloadUrl: "/audio/gyal-yuh-have-mi-crazy.mp3"
+    downloadUrl: "/audio/gyal-yuh-have-mi-crazy.mp3",
   },
   {
     id: "dancehall-16",
@@ -134,7 +135,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Bad Gyal Producer",
     duration: "3:24",
     audioUrl: "/audio/gyal-yuh-bad-sample.mp3",
-    downloadUrl: "/audio/gyal-yuh-bad-sample.mp3"
+    downloadUrl: "/audio/gyal-yuh-bad-sample.mp3",
   },
   {
     id: "dancehall-17",
@@ -142,7 +143,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Fire Selector",
     duration: "3:36",
     audioUrl: "/audio/gyal-yuh-body-hot.mp3",
-    downloadUrl: "/audio/gyal-yuh-body-hot.mp3"
+    downloadUrl: "/audio/gyal-yuh-body-hot.mp3",
   },
   {
     id: "dancehall-18",
@@ -150,7 +151,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Young Love AI",
     duration: "3:28",
     audioUrl: "/audio/graduation-love.mp3",
-    downloadUrl: "/audio/graduation-love.mp3"
+    downloadUrl: "/audio/graduation-love.mp3",
   },
   {
     id: "dancehall-19",
@@ -158,7 +159,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Romance Riddim",
     duration: "3:42",
     audioUrl: "/audio/give-mi-yuh-heart.mp3",
-    downloadUrl: "/audio/give-mi-yuh-heart.mp3"
+    downloadUrl: "/audio/give-mi-yuh-heart.mp3",
   },
   {
     id: "dancehall-20",
@@ -166,7 +167,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Sweet Vibes AI",
     duration: "3:29",
     audioUrl: "/audio/gyal-yuh-sweet-so.mp3",
-    downloadUrl: "/audio/gyal-yuh-sweet-so.mp3"
+    downloadUrl: "/audio/gyal-yuh-sweet-so.mp3",
   },
   {
     id: "dancehall-21",
@@ -174,7 +175,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Bedroom Riddim AI",
     duration: "3:34",
     audioUrl: "/audio/mi-cyaa-sleep-widout-yuh-snore.mp3",
-    downloadUrl: "/audio/mi-cyaa-sleep-widout-yuh-snore.mp3"
+    downloadUrl: "/audio/mi-cyaa-sleep-widout-yuh-snore.mp3",
   },
   {
     id: "dancehall-22",
@@ -182,7 +183,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Street Life Digital",
     duration: "3:26",
     audioUrl: "/audio/market-day.mp3",
-    downloadUrl: "/audio/market-day.mp3"
+    downloadUrl: "/audio/market-day.mp3",
   },
   {
     id: "dancehall-23",
@@ -190,7 +191,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Pure Love AI",
     duration: "3:39",
     audioUrl: "/audio/mi-adore-yuh.mp3",
-    downloadUrl: "/audio/mi-adore-yuh.mp3"
+    downloadUrl: "/audio/mi-adore-yuh.mp3",
   },
   {
     id: "dancehall-24",
@@ -198,7 +199,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Home Sweet Home AI",
     duration: "3:32",
     audioUrl: "/audio/kitchen-serenade.mp3",
-    downloadUrl: "/audio/kitchen-serenade.mp3"
+    downloadUrl: "/audio/kitchen-serenade.mp3",
   },
   {
     id: "dancehall-25",
@@ -206,7 +207,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Modern Love Digital",
     duration: "3:28",
     audioUrl: "/audio/mi-heart-have-yuh-gps.mp3",
-    downloadUrl: "/audio/mi-heart-have-yuh-gps.mp3"
+    downloadUrl: "/audio/mi-heart-have-yuh-gps.mp3",
   },
   {
     id: "dancehall-26",
@@ -214,7 +215,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Heartstring AI",
     duration: "3:41",
     audioUrl: "/audio/mi-heart-deh-pan-you.mp3",
-    downloadUrl: "/audio/mi-heart-deh-pan-you.mp3"
+    downloadUrl: "/audio/mi-heart-deh-pan-you.mp3",
   },
   {
     id: "dancehall-27",
@@ -222,7 +223,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Heartstring AI ft. Digital Selector",
     duration: "3:47",
     audioUrl: "/audio/mi-heart-deh-pan-you-remix.mp3",
-    downloadUrl: "/audio/mi-heart-deh-pan-you-remix.mp3"
+    downloadUrl: "/audio/mi-heart-deh-pan-you-remix.mp3",
   },
   {
     id: "dancehall-28",
@@ -230,7 +231,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Pulse Riddim AI",
     duration: "3:35",
     audioUrl: "/audio/mi-heart-beat-fi-you.mp3",
-    downloadUrl: "/audio/mi-heart-beat-fi-you.mp3"
+    downloadUrl: "/audio/mi-heart-beat-fi-you.mp3",
   },
   {
     id: "dancehall-29",
@@ -238,7 +239,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Sunday Vibes Digital",
     duration: "3:43",
     audioUrl: "/audio/love-mi-like-sunday-morning.mp3",
-    downloadUrl: "/audio/love-mi-like-sunday-morning.mp3"
+    downloadUrl: "/audio/love-mi-like-sunday-morning.mp3",
   },
   {
     id: "dancehall-30",
@@ -246,7 +247,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Green Eye AI",
     duration: "3:30",
     audioUrl: "/audio/jealous-gyal.mp3",
-    downloadUrl: "/audio/jealous-gyal.mp3"
+    downloadUrl: "/audio/jealous-gyal.mp3",
   },
   {
     id: "dancehall-31",
@@ -254,7 +255,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Tender Touch AI",
     duration: "3:37",
     audioUrl: "/audio/mi-waan-fi-hold-yuh.mp3",
-    downloadUrl: "/audio/mi-waan-fi-hold-yuh.mp3"
+    downloadUrl: "/audio/mi-waan-fi-hold-yuh.mp3",
   },
   {
     id: "dancehall-32",
@@ -262,7 +263,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Kitchen Love AI ft. Spice Digital",
     duration: "3:44",
     audioUrl: "/audio/mi-love-yuh-like-cook-food-remix.mp3",
-    downloadUrl: "/audio/mi-love-yuh-like-cook-food-remix.mp3"
+    downloadUrl: "/audio/mi-love-yuh-like-cook-food-remix.mp3",
   },
   {
     id: "dancehall-33",
@@ -270,7 +271,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Loyal Heart AI",
     duration: "3:33",
     audioUrl: "/audio/mi-nuh-want-nobody-else.mp3",
-    downloadUrl: "/audio/mi-nuh-want-nobody-else.mp3"
+    downloadUrl: "/audio/mi-nuh-want-nobody-else.mp3",
   },
   {
     id: "dancehall-34",
@@ -278,7 +279,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Trust Issues Digital",
     duration: "3:40",
     audioUrl: "/audio/mi-nuh-trust-dem-but-yuh.mp3",
-    downloadUrl: "/audio/mi-nuh-trust-dem-but-yuh.mp3"
+    downloadUrl: "/audio/mi-nuh-trust-dem-but-yuh.mp3",
   },
   {
     id: "dancehall-35",
@@ -286,7 +287,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Possessive Love AI",
     duration: "3:29",
     audioUrl: "/audio/mi-nah-share-yuh.mp3",
-    downloadUrl: "/audio/mi-nah-share-yuh.mp3"
+    downloadUrl: "/audio/mi-nah-share-yuh.mp3",
   },
   {
     id: "dancehall-36",
@@ -294,7 +295,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Digital Age Romance",
     duration: "3:31",
     audioUrl: "/audio/mi-phone-fulla-yuh.mp3",
-    downloadUrl: "/audio/mi-phone-fulla-yuh.mp3"
+    downloadUrl: "/audio/mi-phone-fulla-yuh.mp3",
   },
   {
     id: "dancehall-37",
@@ -302,7 +303,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Kitchen Love AI",
     duration: "3:38",
     audioUrl: "/audio/mi-love-yuh-like-cook-food.mp3",
-    downloadUrl: "/audio/mi-love-yuh-like-cook-food.mp3"
+    downloadUrl: "/audio/mi-love-yuh-like-cook-food.mp3",
   },
   {
     id: "dancehall-38",
@@ -310,7 +311,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Secret Husband AI",
     duration: "3:42",
     audioUrl: "/audio/mi-wife-but-she-nuh-know.mp3",
-    downloadUrl: "/audio/mi-wife-but-she-nuh-know.mp3"
+    downloadUrl: "/audio/mi-wife-but-she-nuh-know.mp3",
   },
   {
     id: "dancehall-39",
@@ -318,7 +319,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Late Night Truth AI",
     duration: "3:35",
     audioUrl: "/audio/midnight-confession.mp3",
-    downloadUrl: "/audio/midnight-confession.mp3"
+    downloadUrl: "/audio/midnight-confession.mp3",
   },
   {
     id: "dancehall-40",
@@ -326,7 +327,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Endless Love Digital",
     duration: "3:46",
     audioUrl: "/audio/mi-love-yuh-more.mp3",
-    downloadUrl: "/audio/mi-love-yuh-more.mp3"
+    downloadUrl: "/audio/mi-love-yuh-more.mp3",
   },
   {
     id: "dancehall-41",
@@ -334,7 +335,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Heartbreak Warrior AI",
     duration: "3:52",
     audioUrl: "/audio/tek-back-mi-chain-but-nuh-tek-back-mi-love.mp3",
-    downloadUrl: "/audio/tek-back-mi-chain-but-nuh-tek-back-mi-love.mp3"
+    downloadUrl: "/audio/tek-back-mi-chain-but-nuh-tek-back-mi-love.mp3",
   },
   {
     id: "dancehall-42",
@@ -342,7 +343,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Bad Boy Romance AI",
     duration: "3:33",
     audioUrl: "/audio/rude-boy-loving.mp3",
-    downloadUrl: "/audio/rude-boy-loving.mp3"
+    downloadUrl: "/audio/rude-boy-loving.mp3",
   },
   {
     id: "dancehall-43",
@@ -350,7 +351,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Boundary Setting Digital",
     duration: "3:27",
     audioUrl: "/audio/nuh-text-mi-ex.mp3",
-    downloadUrl: "/audio/nuh-text-mi-ex.mp3"
+    downloadUrl: "/audio/nuh-text-mi-ex.mp3",
   },
   {
     id: "dancehall-44",
@@ -358,7 +359,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Women Power AI",
     duration: "3:41",
     audioUrl: "/audio/sistah-unity.mp3",
-    downloadUrl: "/audio/sistah-unity.mp3"
+    downloadUrl: "/audio/sistah-unity.mp3",
   },
   {
     id: "dancehall-45",
@@ -366,7 +367,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Weather Mood Digital",
     duration: "3:38",
     audioUrl: "/audio/rainy-day-love.mp3",
-    downloadUrl: "/audio/rainy-day-love.mp3"
+    downloadUrl: "/audio/rainy-day-love.mp3",
   },
   {
     id: "dancehall-46",
@@ -374,7 +375,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Journey's End AI",
     duration: "3:34",
     audioUrl: "/audio/tek-mi-home.mp3",
-    downloadUrl: "/audio/tek-mi-home.mp3"
+    downloadUrl: "/audio/tek-mi-home.mp3",
   },
   {
     id: "dancehall-47",
@@ -382,7 +383,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Adventure Love Digital",
     duration: "3:29",
     audioUrl: "/audio/ride-wid-mi.mp3",
-    downloadUrl: "/audio/ride-wid-mi.mp3"
+    downloadUrl: "/audio/ride-wid-mi.mp3",
   },
   {
     id: "dancehall-48",
@@ -390,7 +391,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Freedom Fighter AI",
     duration: "3:45",
     audioUrl: "/audio/nuh-badda-try-hold-mi-down.mp3",
-    downloadUrl: "/audio/nuh-badda-try-hold-mi-down.mp3"
+    downloadUrl: "/audio/nuh-badda-try-hold-mi-down.mp3",
   },
   {
     id: "dancehall-49",
@@ -398,7 +399,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Sweet Complexion Digital",
     duration: "3:31",
     audioUrl: "/audio/skin-like-milo-tea.mp3",
-    downloadUrl: "/audio/skin-like-milo-tea.mp3"
+    downloadUrl: "/audio/skin-like-milo-tea.mp3",
   },
   {
     id: "dancehall-50",
@@ -406,7 +407,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Relationship Drama AI",
     duration: "3:39",
     audioUrl: "/audio/she-say-mi-toxic.mp3",
-    downloadUrl: "/audio/she-say-mi-toxic.mp3"
+    downloadUrl: "/audio/she-say-mi-toxic.mp3",
   },
   {
     id: "dancehall-51",
@@ -414,7 +415,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Grateful Heart AI",
     duration: "3:43",
     audioUrl: "/audio/yuh-a-mi-blessing.mp3",
-    downloadUrl: "/audio/yuh-a-mi-blessing.mp3"
+    downloadUrl: "/audio/yuh-a-mi-blessing.mp3",
   },
   {
     id: "dancehall-52",
@@ -422,7 +423,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Dance Floor Romance",
     duration: "3:36",
     audioUrl: "/audio/wine-fi-mi-baby.mp3",
-    downloadUrl: "/audio/wine-fi-mi-baby.mp3"
+    downloadUrl: "/audio/wine-fi-mi-baby.mp3",
   },
   {
     id: "dancehall-53",
@@ -430,7 +431,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Mad Love Digital",
     duration: "3:41",
     audioUrl: "/audio/yuh-make-mi-crazy-inna-love.mp3",
-    downloadUrl: "/audio/yuh-make-mi-crazy-inna-love.mp3"
+    downloadUrl: "/audio/yuh-make-mi-crazy-inna-love.mp3",
   },
   {
     id: "dancehall-54",
@@ -438,7 +439,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Silent Communication AI",
     duration: "3:34",
     audioUrl: "/audio/yuh-body-talk-to-mi.mp3",
-    downloadUrl: "/audio/yuh-body-talk-to-mi.mp3"
+    downloadUrl: "/audio/yuh-body-talk-to-mi.mp3",
   },
   {
     id: "dancehall-55",
@@ -446,7 +447,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Humble Vibes Digital",
     duration: "3:38",
     audioUrl: "/audio/wine-slow-pon-mi-ego.mp3",
-    downloadUrl: "/audio/wine-slow-pon-mi-ego.mp3"
+    downloadUrl: "/audio/wine-slow-pon-mi-ego.mp3",
   },
   {
     id: "dancehall-56",
@@ -454,7 +455,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Unity Power AI",
     duration: "3:47",
     audioUrl: "/audio/wi-stronger-than-dem-think.mp3",
-    downloadUrl: "/audio/wi-stronger-than-dem-think.mp3"
+    downloadUrl: "/audio/wi-stronger-than-dem-think.mp3",
   },
   {
     id: "dancehall-57",
@@ -462,7 +463,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Solid Foundation Digital",
     duration: "3:32",
     audioUrl: "/audio/yuh-love-strong.mp3",
-    downloadUrl: "/audio/yuh-love-strong.mp3"
+    downloadUrl: "/audio/yuh-love-strong.mp3",
   },
   {
     id: "dancehall-58",
@@ -470,7 +471,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Immigration Blues AI",
     duration: "3:29",
     audioUrl: "/audio/visa-run.mp3",
-    downloadUrl: "/audio/visa-run.mp3"
+    downloadUrl: "/audio/visa-run.mp3",
   },
   {
     id: "dancehall-59",
@@ -478,7 +479,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Digital Romance AI",
     duration: "3:45",
     audioUrl: "/audio/whatsapp-love-ii.mp3",
-    downloadUrl: "/audio/whatsapp-love-ii.mp3"
+    downloadUrl: "/audio/whatsapp-love-ii.mp3",
   },
   {
     id: "dancehall-60",
@@ -486,7 +487,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Digital Romance AI",
     duration: "3:40",
     audioUrl: "/audio/whatsapp-love.mp3",
-    downloadUrl: "/audio/whatsapp-love.mp3"
+    downloadUrl: "/audio/whatsapp-love.mp3",
   },
   {
     id: "dancehall-61",
@@ -494,7 +495,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Bedroom Bandit AI",
     duration: "3:44",
     audioUrl: "/audio/yuh-tek-all-di-sheet-ii.mp3",
-    downloadUrl: "/audio/yuh-tek-all-di-sheet-ii.mp3"
+    downloadUrl: "/audio/yuh-tek-all-di-sheet-ii.mp3",
   },
   {
     id: "dancehall-62",
@@ -502,7 +503,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Royal Treatment Digital",
     duration: "3:37",
     audioUrl: "/audio/yuh-mek-mi-feel-like-king.mp3",
-    downloadUrl: "/audio/yuh-mek-mi-feel-like-king.mp3"
+    downloadUrl: "/audio/yuh-mek-mi-feel-like-king.mp3",
   },
   {
     id: "dancehall-63",
@@ -510,7 +511,7 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Broke But Happy AI",
     duration: "3:33",
     audioUrl: "/audio/yuh-smile-tek-mi-credit.mp3",
-    downloadUrl: "/audio/yuh-smile-tek-mi-credit.mp3"
+    downloadUrl: "/audio/yuh-smile-tek-mi-credit.mp3",
   },
   {
     id: "dancehall-64",
@@ -518,6 +519,6 @@ export const dancehallSquareTracks: Track[] = [
     artist: "Bedroom Bandit AI",
     duration: "3:41",
     audioUrl: "/audio/yuh-tek-all-di-sheet.mp3",
-    downloadUrl: "/audio/yuh-tek-all-di-sheet.mp3"
-  }
+    downloadUrl: "/audio/yuh-tek-all-di-sheet.mp3",
+  },
 ]

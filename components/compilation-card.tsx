@@ -45,8 +45,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
   const [isExpanded, setIsExpanded] = useState(false)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const [isCardPlaying, setIsCardPlaying] = useState(false) // Added independent play state
-  const { playTrack, state, pauseTrack } = useGlobalMusic()
+  const [isCardPlaying, setIsCardPlaying] = useState(false) // Independent play state for this card
+  const { playTrack, state, togglePlay } = useGlobalMusic()
 
   // Safely handle tracks array
   const tracks = compilation.tracks || []
@@ -82,6 +82,20 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
         button: "bg-purple-600 hover:bg-purple-700",
         gradient: "from-purple-400 to-indigo-500",
       },
+      red: {
+        primary: "text-red-400",
+        bg: "bg-red-500/10",
+        border: "border-red-500/20",
+        button: "bg-red-600 hover:bg-red-700",
+        gradient: "from-red-400 to-pink-500",
+      },
+      cyan: {
+        primary: "text-cyan-400",
+        bg: "bg-cyan-500/10",
+        border: "border-cyan-500/20",
+        button: "bg-cyan-600 hover:bg-cyan-700",
+        gradient: "from-cyan-400 to-blue-500",
+      },
     }
     return colorMap[color as keyof typeof colorMap] || colorMap.orange
   }
@@ -90,13 +104,14 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
   const handlePlayTrack = (track: Track, index: number) => {
     setCurrentTrackIndex(index)
-    setIsCardPlaying(true) // Set card as playing
+    setIsCardPlaying(true)
 
     // Add compilation info to track
     const trackWithCompilation = {
       ...track,
       compilationId: compilation.id,
       compilationTitle: compilation.title,
+      coverArt: track.coverArt || compilation.coverArt, // Use track cover art or fallback to compilation cover
     }
 
     // Create playlist with compilation info
@@ -104,22 +119,32 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
       ...t,
       compilationId: compilation.id,
       compilationTitle: compilation.title,
+      coverArt: t.coverArt || compilation.coverArt, // Ensure all tracks have cover art
     }))
 
     playTrack(trackWithCompilation, playlistWithCompilation)
   }
 
-  const handlePauseTrack = () => {
-    setIsCardPlaying(false)
-    pauseTrack()
+  const handleTogglePlay = () => {
+    if (isThisCardCurrentlyPlaying()) {
+      // If this card's track is playing, toggle play/pause
+      togglePlay()
+    } else if (currentTrack) {
+      // If this card's track is not playing, start playing it
+      handlePlayTrack(currentTrack, currentTrackIndex)
+    }
   }
 
   const handleDownloadTrack = (track: Track) => {
     onDownloadClick(track)
   }
 
+  const isThisCardCurrentlyPlaying = () => {
+    return state.currentTrack?.compilationId === compilation.id && state.isPlaying
+  }
+
   const isCurrentlyPlaying = (track: Track) => {
-    return state.currentTrack?.id === track.id && state.isPlaying && isCardPlaying
+    return state.currentTrack?.id === track.id && state.isPlaying
   }
 
   const isCurrentTrack = (track: Track) => {
@@ -127,10 +152,12 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
   }
 
   useEffect(() => {
-    if (!state.isPlaying) {
+    if (state.currentTrack?.compilationId === compilation.id) {
+      setIsCardPlaying(state.isPlaying)
+    } else {
       setIsCardPlaying(false)
     }
-  }, [state.isPlaying])
+  }, [state.isPlaying, state.currentTrack, compilation.id])
 
   // Calculate total duration safely
   const totalDuration = tracks.reduce((total, track) => {
@@ -177,6 +204,12 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 priority
                 onLoad={() => setImageLoaded(true)}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  if (target.src !== "/placeholder.svg") {
+                    target.src = "/placeholder.svg"
+                  }
+                }}
               />
 
               {/* Enhanced gradient overlay for mobile readability */}
@@ -204,17 +237,11 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
               {currentTrack && (
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <Button
-                    onClick={() => {
-                      if (isCurrentlyPlaying(currentTrack)) {
-                        handlePauseTrack()
-                      } else {
-                        handlePlayTrack(currentTrack, 0)
-                      }
-                    }}
+                    onClick={handleTogglePlay}
                     size="lg"
                     className={`${colors.button} text-white rounded-full p-0 shadow-2xl hover:scale-110 transition-all duration-200 h-16 w-16 sm:h-20 sm:w-20 backdrop-blur-sm`}
                   >
-                    {isCurrentlyPlaying(currentTrack) ? (
+                    {isThisCardCurrentlyPlaying() ? (
                       <Pause className="h-7 w-7 sm:h-9 sm:w-9" />
                     ) : (
                       <Play className="h-7 w-7 sm:h-9 sm:w-9 ml-0.5" />
@@ -258,16 +285,10 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               {currentTrack && (
                 <Button
-                  onClick={() => {
-                    if (isCurrentlyPlaying(currentTrack)) {
-                      handlePauseTrack()
-                    } else {
-                      handlePlayTrack(currentTrack, 0)
-                    }
-                  }}
+                  onClick={handleTogglePlay}
                   className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg`}
                 >
-                  {isCurrentlyPlaying(currentTrack) ? (
+                  {isThisCardCurrentlyPlaying() ? (
                     <>
                       <Pause className="h-4 w-4 mr-2" />
                       Pause

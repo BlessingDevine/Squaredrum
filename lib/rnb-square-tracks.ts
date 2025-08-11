@@ -12,7 +12,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 1,
     title: "Can't Hide",
-    artist: "R&B Square Artist",
+    artist: "Soulful Harmony", // replaced placeholder artist with realistic R&B artist name
     duration: "3:42",
     audioUrl: "/audio/placeholder.mp3",
     downloadUrl: "/audio/rnb-square/cant-hide.mp3",
@@ -21,7 +21,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 2,
     title: "Breakfast In Bed",
-    artist: "R&B Square Artist",
+    artist: "Midnight Groove", // replaced placeholder artist with realistic R&B artist name
     duration: "4:15",
     audioUrl: "/audio/placeholder.mp3",
     downloadUrl: "/audio/rnb-square/breakfast-in-bed.mp3",
@@ -30,7 +30,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 3,
     title: "A Night To Remember",
-    artist: "R&B Square Artist",
+    artist: "Velvet Soul", // replaced placeholder artist with realistic R&B artist name
     duration: "3:58",
     audioUrl: "/audio/rnb-square/a-night-to-remember.mp3",
     downloadUrl: "/audio/rnb-square/a-night-to-remember.mp3",
@@ -39,7 +39,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 4,
     title: "Around You",
-    artist: "R&B Square Artist",
+    artist: "Smooth Operator", // replaced placeholder artist with realistic R&B artist name
     duration: "4:03",
     audioUrl: "/audio/rnb-square/around-you.mp3",
     downloadUrl: "/audio/rnb-square/around-you.mp3",
@@ -48,7 +48,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 5,
     title: "Care For You",
-    artist: "R&B Square Artist",
+    artist: "Tender Touch", // replaced placeholder artist with realistic R&B artist name
     duration: "3:47",
     audioUrl: "/audio/rnb-square/care-for-you.mp3",
     downloadUrl: "/audio/rnb-square/care-for-you.mp3",
@@ -57,7 +57,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 6,
     title: "Beautiful Things",
-    artist: "R&B Square Artist",
+    artist: "Golden Voice", // replaced placeholder artist with realistic R&B artist name
     duration: "4:21",
     audioUrl: "/audio/rnb-square/beautiful-things.mp3",
     downloadUrl: "/audio/rnb-square/beautiful-things.mp3",
@@ -66,7 +66,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 7,
     title: "Care For You II",
-    artist: "R&B Square Artist",
+    artist: "Tender Touch", // replaced placeholder artist with realistic R&B artist name
     duration: "3:54",
     audioUrl: "/audio/rnb-square/care-for-you-ii.mp3",
     downloadUrl: "/audio/rnb-square/care-for-you-ii.mp3",
@@ -75,7 +75,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 8,
     title: "Believer",
-    artist: "R&B Square Artist",
+    artist: "Faith & Soul", // replaced placeholder artist with realistic R&B artist name
     duration: "4:08",
     audioUrl: "/audio/rnb-square/believer.mp3",
     downloadUrl: "/audio/rnb-square/believer.mp3",
@@ -84,7 +84,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 9,
     title: "Broken Things",
-    artist: "R&B Square Artist",
+    artist: "Healing Hearts", // replaced placeholder artist with realistic R&B artist name
     duration: "3:36",
     audioUrl: "/audio/rnb-square/broken-things.mp3",
     downloadUrl: "/audio/rnb-square/broken-things.mp3",
@@ -93,7 +93,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 10,
     title: "Bedtime Stories",
-    artist: "R&B Square Artist",
+    artist: "Intimate Whispers", // replaced placeholder artist with realistic R&B artist name
     duration: "4:12",
     audioUrl: "/audio/rnb-square/bedtime-stories.mp3",
     downloadUrl: "/audio/rnb-square/bedtime-stories.mp3",

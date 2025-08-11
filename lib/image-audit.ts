@@ -80,17 +80,72 @@ export const imageAudit: ImageReference[] = [
 
   // Artist profile images - USED
   {
-    path: "/images/artists/j-cruz.jpg",
+    path: "/images/j-cruz.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/artists/lucas-meno.jpg",
+    path: "/images/lucas-meno.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/neilly-storm.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/danni-blaze.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/virgo-dunst.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/saka.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/tonez.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/neka.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/echo-bloom.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/sadie-rose/01.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/lunah.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/cedar-line.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
     path: "/images/artists/neilly-storm.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/artists/lucas-meno.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },

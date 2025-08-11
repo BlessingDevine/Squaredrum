@@ -1707,8 +1707,8 @@ export const artists: Artist[] = [
       },
       {
         id: "lucas-photo-18",
-        src: "/images/lucas-meno/15.jpg",
         alt: "Lucas Meno with reddish hair in golden suit with chain necklace leaning against vintage car in retro neon setting",
+        src: "/images/lucas-meno/15.jpg",
         caption: "Retro Gold",
       },
       {
@@ -2006,7 +2006,7 @@ export const artists: Artist[] = [
     id: "11",
     name: "Sadie Rose",
     slug: "sadie-rose",
-    image: "/images/artists/sadie-rose.jpg",
+    image: "/images/sadie-rose/01.jpg",
     bio: "Sadie Rose is an AI country artist that brings authentic storytelling and heartfelt melodies to the modern country scene through advanced narrative generation and vocal synthesis. This artificial artist from Nashville combines traditional country elements with contemporary production, creating songs that resonate with both classic country fans and new audiences. Her AI-generated lyrics capture the essence of country music's storytelling tradition while her synthetic vocals deliver emotional performances that feel genuinely human.",
     location: "Nashville, TN",
     genre: "Country",
@@ -2175,7 +2175,7 @@ export const artists: Artist[] = [
     id: "12",
     name: "Lunah",
     slug: "lunah",
-    image: "/images/artists/lunah.jpg",
+    image: "/images/lunah.jpg",
     bio: "Lunah is an AI R&B duo that creates heartfelt harmonies and contemporary R&B music through sophisticated emotional modeling and vocal synthesis algorithms. This artificial duo brings the spirit of modern R&B into the digital age, with AI-generated vocal arrangements that capture the essence of duo dynamics and emotional depth. Their synthetic vocals carry the warmth and soul that R&B fans love, proving that artificial intelligence can master the art of R&B collaboration and harmony.",
     location: "Austin, TX",
     genre: "R&B Duo",

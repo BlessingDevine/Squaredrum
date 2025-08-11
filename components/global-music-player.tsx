@@ -612,17 +612,42 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
         currentTrack: state.currentTrack?.title,
       })
 
+      let errorMessage = "Unknown error"
+      if (error) {
+        switch (error.code) {
+          case MediaError.MEDIA_ERR_ABORTED:
+            errorMessage = "Audio playback was aborted"
+            break
+          case MediaError.MEDIA_ERR_NETWORK:
+            errorMessage = "Network error occurred"
+            break
+          case MediaError.MEDIA_ERR_DECODE:
+            errorMessage = "Audio file could not be decoded"
+            break
+          case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+            errorMessage = "Audio format not supported"
+            break
+          default:
+            errorMessage = error.message || "Unknown audio error"
+        }
+      }
+
       // Reset audio state and try to recover
       setState((prev) => ({
         ...prev,
         isLoading: false,
         isPlaying: false,
-        error: `Failed to load audio: ${error?.message || "Unknown error"}`,
+        error: `Failed to load audio: ${errorMessage}`,
       }))
 
-      // Clear the audio source to prevent further errors
       if (audioElement) {
         audioElement.src = ""
+        // Try to load a placeholder audio file if available
+        const placeholderAudio = "/audio/placeholder.mp3"
+        if (state.currentTrack && audioElement.src !== placeholderAudio) {
+          console.log("Attempting to load placeholder audio")
+          audioElement.src = placeholderAudio
+        }
       }
     }
 

@@ -20,5 +20,6 @@ export default function GalleryClient({
   }, [slug])
 
   if (!files.length) return null
+
   return <>{files.map(renderItem)}</>
 }

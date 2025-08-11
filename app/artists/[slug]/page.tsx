@@ -1,17 +1,17 @@
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import ArtistPageClient from "./ArtistPageClient"
-import { artists } from "@/lib/artists-data"
 import GalleryClient from "./GalleryClient"
-
-export const dynamic = "force-dynamic"
-export const revalidate = 0
+import { artists } from "@/lib/artists-data"
 
 interface ArtistPageProps {
   params: {
     slug: string
   }
 }
+
+export const dynamic = "force-dynamic"
+export const revalidate = 0
 
 export async function generateStaticParams() {
   return artists.map((artist) => ({
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ArtistPageProps): Promise<Metadata> {
-  const artist = artists.find((a) => a.slug === params.slug.toLowerCase())
+  const artist = artists.find((a) => a.slug === params.slug)
 
   if (!artist) {
     return {
@@ -41,8 +41,7 @@ export const viewport: Viewport = {
 }
 
 export default function ArtistPage({ params }: ArtistPageProps) {
-  const slug = params.slug.toLowerCase()
-  const artist = artists.find((a) => a.slug === slug)
+  const artist = artists.find((a) => a.slug === params.slug)
 
   if (!artist) {
     notFound()
@@ -50,19 +49,17 @@ export default function ArtistPage({ params }: ArtistPageProps) {
 
   return (
     <>
-      {/* Keep existing page design */}
       <ArtistPageClient artist={artist} />
-
-      {/* Only switch the image data source; keep structure/classes minimal and non-disruptive */}
+      {/* BEGIN dynamic gallery data source (non-breaking) */}
       <section className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           <GalleryClient
-            slug={slug}
+            slug={params.slug.toLowerCase()}
             renderItem={(file) => (
               <img
                 key={file}
-                src={`/images/${slug}/${file}`}
-                alt={`${artist?.name ?? slug} ${file}`}
+                src={`/images/${params.slug.toLowerCase()}/${file}`}
+                alt={`${params.slug.toLowerCase()} ${file}`}
                 className="h-48 w-full object-cover rounded-md"
                 loading="eager"
               />
@@ -70,6 +67,7 @@ export default function ArtistPage({ params }: ArtistPageProps) {
           />
         </div>
       </section>
+      {/* END dynamic gallery data source */}
     </>
   )
 }

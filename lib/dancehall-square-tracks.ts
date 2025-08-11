@@ -1,5 +1,5 @@
 export interface DancehallSquareTrack {
-  id: string
+  id: number
   title: string
   artist: string
   duration: string
@@ -10,7 +10,7 @@ export interface DancehallSquareTrack {
 
 export const dancehallSquareTracks: DancehallSquareTrack[] = [
   {
-    id: "1",
+    id: 1,
     title: "Island Vibes",
     artist: "Dancehall Square Artist",
     duration: "3:28",
@@ -19,7 +19,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "2",
+    id: 2,
     title: "Bashment Flow",
     artist: "Dancehall Square Artist",
     duration: "3:45",
@@ -28,7 +28,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "3",
+    id: 3,
     title: "Riddim Master",
     artist: "Dancehall Square Artist",
     duration: "4:02",
@@ -37,7 +37,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "4",
+    id: 4,
     title: "Caribbean Dreams",
     artist: "Dancehall Square Artist",
     duration: "3:33",
@@ -46,7 +46,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "5",
+    id: 5,
     title: "Digital Dancehall",
     artist: "Dancehall Square Artist",
     duration: "3:51",
@@ -55,7 +55,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "6",
+    id: 6,
     title: "Tropical Thunder",
     artist: "Dancehall Square Artist",
     duration: "3:42",
@@ -64,7 +64,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "7",
+    id: 7,
     title: "Sunset Riddim",
     artist: "Dancehall Square Artist",
     duration: "4:15",
@@ -73,7 +73,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "8",
+    id: 8,
     title: "Fire Pon Babylon",
     artist: "Dancehall Square Artist",
     duration: "3:38",
@@ -82,7 +82,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "9",
+    id: 9,
     title: "Gyal Dem Sugar",
     artist: "Dancehall Square Artist",
     duration: "3:55",
@@ -91,7 +91,7 @@ export const dancehallSquareTracks: DancehallSquareTrack[] = [
     coverArt: "/images/dancehall-square.jpg",
   },
   {
-    id: "10",
+    id: 10,
     title: "Badman Ting",
     artist: "Dancehall Square Artist",
     duration: "4:08",
@@ -105,6 +105,6 @@ export function getAllDancehallSquareTracks(): DancehallSquareTrack[] {
   return dancehallSquareTracks
 }
 
-export function getDancehallSquareTrackById(id: string): DancehallSquareTrack | undefined {
+export function getDancehallSquareTrackById(id: number): DancehallSquareTrack | undefined {
   return dancehallSquareTracks.find((track) => track.id === id)
 }

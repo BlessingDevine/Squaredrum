@@ -762,6 +762,35 @@ function GlobalMusicPlayer() {
     setShowPlaylist(false)
   }
 
+  const getTrackArtwork = (track: Track) => {
+    // Priority: compilation cover art > track cover art > placeholder
+    if (track.compilationId) {
+      // Map compilation IDs to their cover art URLs
+      const compilationArtwork = {
+        "afro-square":
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Afrobeat.jpg-RGjSYRGm2Ax7GzCvIgl6TGBzrSUz8B.jpeg",
+        "country-square":
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Country.jpg-Y74tKbTs09Vvd2ZtQc4a5GePRNODgD.jpeg",
+        "pop-square":
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pop.jpg-DJQTTu2qb1hvXy3n0J7Ixw53nrO8gt.jpeg",
+        "rnb-square":
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/R%26B.jpg-465Ppu2BX5kxmQZ2uQgapX0gQjg5si.jpeg",
+        "reggaeton-square":
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Reggaton%20I.jpg-UkdxvBplWuxUExqZUOa6a0crPOtuYi.jpeg",
+        "dancehall-square":
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DancehallI.jpg-SIzFBVr2tMJK5jrNkblAtrOEqRq7Hq.jpeg",
+      }
+
+      return (
+        compilationArtwork[track.compilationId as keyof typeof compilationArtwork] ||
+        track.coverArt ||
+        "/placeholder.svg"
+      )
+    }
+
+    return track.coverArt || "/placeholder.svg"
+  }
+
   if (!state.isVisible || !state.currentTrack) {
     return null
   }
@@ -777,7 +806,7 @@ function GlobalMusicPlayer() {
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
-                    src={state.currentTrack.coverArt || "/placeholder.svg"}
+                    src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
                     alt={state.currentTrack.title}
                     fill
                     className="object-cover"
@@ -843,7 +872,7 @@ function GlobalMusicPlayer() {
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
-                    src={state.currentTrack.coverArt || "/placeholder.svg"}
+                    src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
                     alt={state.currentTrack.title}
                     fill
                     className="object-cover"
@@ -999,7 +1028,7 @@ function GlobalMusicPlayer() {
             <div className="flex-1 flex flex-col items-center justify-center p-8">
               <div className="relative w-64 h-64 rounded-2xl overflow-hidden mb-8">
                 <Image
-                  src={state.currentTrack.coverArt || "/placeholder.svg"}
+                  src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
                   alt={state.currentTrack.title}
                   fill
                   className="object-cover"
@@ -1134,7 +1163,7 @@ function GlobalMusicPlayer() {
                   >
                     <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
                       <Image
-                        src={track.coverArt || "/placeholder.svg"}
+                        src={getTrackArtwork(track) || "/placeholder.svg"}
                         alt={track.title}
                         fill
                         className="object-cover"
@@ -1177,7 +1206,7 @@ function GlobalMusicPlayer() {
           <div className="flex items-center gap-4 min-w-0 flex-1">
             <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
               <Image
-                src={state.currentTrack.coverArt || "/placeholder.svg"}
+                src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
                 alt={state.currentTrack.title}
                 fill
                 className="object-cover"

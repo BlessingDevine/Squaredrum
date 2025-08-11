@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Eye, Loader2 } from "lucide-react"
 import Image from "next/image"
@@ -31,18 +31,26 @@ export default function GalleryClient({
   const [files, setFiles] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetch(`/api/gallery/${slug}`, { cache: "no-store" })
-      .then((r) => r.json())
-      .then((arr) => {
-        setFiles(Array.isArray(arr) ? arr : [])
-        setLoading(false)
-      })
-      .catch(() => {
-        setFiles([])
-        setLoading(false)
-      })
+  const fetchGallery = useCallback(async () => {
+    setLoading(true)
+    try {
+      const response = await fetch(`/api/gallery/${slug}`, { cache: "no-store" })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const arr = await response.json()
+      setFiles(Array.isArray(arr) ? arr : [])
+    } catch (error) {
+      console.error("Failed to fetch gallery:", error)
+      setFiles([])
+    } finally {
+      setLoading(false)
+    }
   }, [slug])
+
+  useEffect(() => {
+    fetchGallery()
+  }, [fetchGallery])
 
   if (loading) {
     return (

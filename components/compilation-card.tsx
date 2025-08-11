@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Play, Pause, Download, Clock, Calendar, Music, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -45,7 +45,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
   const [isExpanded, setIsExpanded] = useState(false)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const { playTrack, state } = useGlobalMusic()
+  const [isCardPlaying, setIsCardPlaying] = useState(false) // Added independent play state
+  const { playTrack, state, pauseTrack } = useGlobalMusic()
 
   // Safely handle tracks array
   const tracks = compilation.tracks || []
@@ -89,6 +90,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
   const handlePlayTrack = (track: Track, index: number) => {
     setCurrentTrackIndex(index)
+    setIsCardPlaying(true) // Set card as playing
 
     // Add compilation info to track
     const trackWithCompilation = {
@@ -107,23 +109,28 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     playTrack(trackWithCompilation, playlistWithCompilation)
   }
 
+  const handlePauseTrack = () => {
+    setIsCardPlaying(false)
+    pauseTrack()
+  }
+
   const handleDownloadTrack = (track: Track) => {
-    onDownloadClick({
-      title: track.title,
-      artist: track.artist,
-      downloadUrl: track.downloadUrl,
-      audioUrl: track.audioUrl,
-      coverArt: track.coverArt || compilation.coverArt,
-    })
+    onDownloadClick(track)
   }
 
   const isCurrentlyPlaying = (track: Track) => {
-    return state.currentTrack?.id === track.id && state.isPlaying
+    return state.currentTrack?.id === track.id && state.isPlaying && isCardPlaying
   }
 
   const isCurrentTrack = (track: Track) => {
     return state.currentTrack?.id === track.id
   }
+
+  useEffect(() => {
+    if (!state.isPlaying) {
+      setIsCardPlaying(false)
+    }
+  }, [state.isPlaying])
 
   // Calculate total duration safely
   const totalDuration = tracks.reduce((total, track) => {
@@ -197,7 +204,13 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
               {currentTrack && (
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <Button
-                    onClick={() => handlePlayTrack(currentTrack, 0)}
+                    onClick={() => {
+                      if (isCurrentlyPlaying(currentTrack)) {
+                        handlePauseTrack()
+                      } else {
+                        handlePlayTrack(currentTrack, 0)
+                      }
+                    }}
                     size="lg"
                     className={`${colors.button} text-white rounded-full p-0 shadow-2xl hover:scale-110 transition-all duration-200 h-16 w-16 sm:h-20 sm:w-20 backdrop-blur-sm`}
                   >
@@ -245,7 +258,13 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               {currentTrack && (
                 <Button
-                  onClick={() => handlePlayTrack(currentTrack, 0)}
+                  onClick={() => {
+                    if (isCurrentlyPlaying(currentTrack)) {
+                      handlePauseTrack()
+                    } else {
+                      handlePlayTrack(currentTrack, 0)
+                    }
+                  }}
                   className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg`}
                 >
                   {isCurrentlyPlaying(currentTrack) ? (

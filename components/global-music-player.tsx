@@ -777,15 +777,15 @@ function GlobalMusicPlayer() {
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
-                    src={state.currentTrack.coverArt || "/placeholder.png"}
+                    src={state.currentTrack.coverArt || "/placeholder.svg"}
                     alt={state.currentTrack.title}
                     fill
                     className="object-cover"
                     sizes="48px"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
-                      if (target.src !== "/placeholder.png") {
-                        target.src = "/placeholder.png"
+                      if (target.src !== "/placeholder.svg") {
+                        target.src = "/placeholder.svg"
                       }
                     }}
                   />
@@ -843,15 +843,15 @@ function GlobalMusicPlayer() {
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
-                    src={state.currentTrack.coverArt || "/placeholder.png"}
+                    src={state.currentTrack.coverArt || "/placeholder.svg"}
                     alt={state.currentTrack.title}
                     fill
                     className="object-cover"
                     sizes="48px"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
-                      if (target.src !== "/placeholder.png") {
-                        target.src = "/placeholder.png"
+                      if (target.src !== "/placeholder.svg") {
+                        target.src = "/placeholder.svg"
                       }
                     }}
                   />
@@ -999,15 +999,15 @@ function GlobalMusicPlayer() {
             <div className="flex-1 flex flex-col items-center justify-center p-8">
               <div className="relative w-64 h-64 rounded-2xl overflow-hidden mb-8">
                 <Image
-                  src={state.currentTrack.coverArt || "/placeholder.png"}
+                  src={state.currentTrack.coverArt || "/placeholder.svg"}
                   alt={state.currentTrack.title}
                   fill
                   className="object-cover"
                   sizes="256px"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
-                    if (target.src !== "/placeholder.png") {
-                      target.src = "/placeholder.png"
+                    if (target.src !== "/placeholder.svg") {
+                      target.src = "/placeholder.svg"
                     }
                   }}
                 />
@@ -1134,15 +1134,15 @@ function GlobalMusicPlayer() {
                   >
                     <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
                       <Image
-                        src={track.coverArt || "/placeholder.png"}
+                        src={track.coverArt || "/placeholder.svg"}
                         alt={track.title}
                         fill
                         className="object-cover"
                         sizes="40px"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
-                          if (target.src !== "/placeholder.png") {
-                            target.src = "/placeholder.png"
+                          if (target.src !== "/placeholder.svg") {
+                            target.src = "/placeholder.svg"
                           }
                         }}
                       />
@@ -1177,15 +1177,15 @@ function GlobalMusicPlayer() {
           <div className="flex items-center gap-4 min-w-0 flex-1">
             <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
               <Image
-                src={state.currentTrack.coverArt || "/placeholder.png"}
+                src={state.currentTrack.coverArt || "/placeholder.svg"}
                 alt={state.currentTrack.title}
                 fill
                 className="object-cover"
                 sizes="56px"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
-                  if (target.src !== "/placeholder.png") {
-                    target.src = "/placeholder.png"
+                  if (target.src !== "/placeholder.svg") {
+                    target.src = "/placeholder.svg"
                   }
                 }}
               />

@@ -33,6 +33,7 @@ interface PlayerState {
   isShuffled: boolean
   repeatMode: "none" | "all" | "one"
   originalPlaylist: Track[]
+  error?: string
 }
 
 interface GlobalMusicContextType {
@@ -262,6 +263,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
           isVisible: true,
           isMinimized: false,
           isCrossfading: false,
+          error: undefined, // Clear any previous error
         }))
 
         // Load and play track
@@ -505,6 +507,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
                   currentIndex: nextIndex,
                   isCrossfading: false,
                   currentTime: currentTime,
+                  error: undefined, // Clear any previous error
                 }))
 
                 isCrossfadingRef.current = false
@@ -599,8 +602,28 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
     }
 
     const handleError = (e: Event) => {
-      console.error("Audio error:", e)
-      setState((prev) => ({ ...prev, isLoading: false, isPlaying: false }))
+      const audioElement = e.target as HTMLAudioElement
+      const error = audioElement?.error
+
+      console.error("Audio error details:", {
+        code: error?.code,
+        message: error?.message,
+        src: audioElement?.src,
+        currentTrack: state.currentTrack?.title,
+      })
+
+      // Reset audio state and try to recover
+      setState((prev) => ({
+        ...prev,
+        isLoading: false,
+        isPlaying: false,
+        error: `Failed to load audio: ${error?.message || "Unknown error"}`,
+      }))
+
+      // Clear the audio source to prevent further errors
+      if (audioElement) {
+        audioElement.src = ""
+      }
     }
 
     primaryAudio.addEventListener("timeupdate", handleTimeUpdate)
@@ -839,6 +862,7 @@ function GlobalMusicPlayer() {
                   <p className="text-gray-400 text-xs truncate">
                     {state.currentTrack.compilationTitle || state.currentTrack.artist}
                   </p>
+                  {state.error && <p className="text-red-400 text-xs mt-1">{state.error}</p>}
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -855,18 +879,18 @@ function GlobalMusicPlayer() {
                   <Button
                     onClick={togglePlay}
                     size="sm"
-                    className="bg-white text-black rounded-full p-0 h-10 w-10"
+                    className="bg-white text-black rounded-full p-0 h-12 w-12"
                     disabled={state.isLoading}
                     aria-label={
                       state.isPlaying ? `Pause ${state.currentTrack.title}` : `Play ${state.currentTrack.title}`
                     }
                   >
                     {state.isLoading ? (
-                      <div className="border-2 border-black border-t-transparent rounded-full animate-spin w-4 h-4" />
+                      <div className="border-2 border-black border-t-transparent rounded-full animate-spin w-5 h-5" />
                     ) : state.isPlaying ? (
-                      <Pause className="h-5 w-5" />
+                      <Pause className="h-6 w-6" />
                     ) : (
-                      <Play className="h-5 w-5 ml-0.5" />
+                      <Play className="h-6 w-6 ml-0.5" />
                     )}
                   </Button>
 
@@ -881,13 +905,23 @@ function GlobalMusicPlayer() {
                   </Button>
 
                   <Button
-                    onClick={() => setIsExpanded(true)}
+                    onClick={toggleShuffle}
                     size="sm"
                     variant="ghost"
-                    className="text-white p-0 h-8 w-8"
-                    aria-label="Expand player"
+                    className={`p-0 h-10 w-10 ${state.isShuffled ? "text-blue-400" : "text-white"}`}
+                    aria-label={state.isShuffled ? "Disable shuffle" : "Enable shuffle"}
                   >
-                    <ChevronUp className="h-4 w-4" />
+                    <Shuffle className="h-4 w-4" />
+                  </Button>
+
+                  <Button
+                    onClick={toggleRepeat}
+                    size="sm"
+                    variant="ghost"
+                    className={`p-0 h-10 w-10 ${state.repeatMode !== "none" ? "text-blue-400" : "text-white"}`}
+                    aria-label={`Repeat: ${state.repeatMode}`}
+                  >
+                    {state.repeatMode === "one" ? <Repeat1 className="h-4 w-4" /> : <Repeat className="h-4 w-4" />}
                   </Button>
                 </div>
               </div>
@@ -983,6 +1017,7 @@ function GlobalMusicPlayer() {
                 <h2 className="font-bold text-white text-xl mb-2">{state.currentTrack.title}</h2>
                 <p className="text-gray-400">{state.currentTrack.compilationTitle || state.currentTrack.artist}</p>
                 {state.isCrossfading && <p className="text-blue-400 text-sm mt-1">Crossfading to next track...</p>}
+                {state.error && <p className="text-red-400 text-sm mt-1">{state.error}</p>}
               </div>
 
               <div className="w-full mb-6">
@@ -1161,6 +1196,7 @@ function GlobalMusicPlayer() {
                 {state.currentTrack.compilationTitle || state.currentTrack.artist}
               </p>
               {state.isCrossfading && <p className="text-blue-400 text-xs">Crossfading...</p>}
+              {state.error && <p className="text-red-400 text-xs mt-1">{state.error}</p>}
             </div>
           </div>
 

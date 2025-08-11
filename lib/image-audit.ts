@@ -80,17 +80,12 @@ export const imageAudit: ImageReference[] = [
 
   // Artist profile images - USED
   {
-    path: "/images/j-cruz.jpg",
+    path: "/images/neilly-storm.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
     path: "/images/lucas-meno.jpg",
-    usedIn: ["lib/artists-data.ts"],
-    status: "used",
-  },
-  {
-    path: "/images/neilly-storm.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
@@ -125,7 +120,7 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/sadie-rose/01.jpg",
+    path: "/images/sadie-rose/sadie-rose.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },

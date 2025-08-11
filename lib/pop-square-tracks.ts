@@ -12,7 +12,7 @@ export const popSquareTracks: PopSquareTrack[] = [
   {
     id: 1,
     title: "Back It Up",
-    artist: "Pop Square Artist",
+    artist: "Neilly Storm", // replaced placeholder with actual SquareDrum roster artist
     duration: "3:42",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Back%20It%20Up-jdTBUAxVvre65c2tnDpl6iCQlwDA6g.mp3",
@@ -23,7 +23,7 @@ export const popSquareTracks: PopSquareTrack[] = [
   {
     id: 2,
     title: "Back It Up (Pop Cover)",
-    artist: "Pop Square Artist",
+    artist: "Echo Bloom", // replaced placeholder with actual SquareDrum roster artist
     duration: "3:38",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Back%20it%20Up%28Pop%20Cover%29-5Gycdvgc5DjNgkhYUoUjoQ0RYtZUez.mp3",

@@ -12,7 +12,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 1,
     title: "Can't Hide",
-    artist: "Soulful Harmony", // replaced placeholder artist with realistic R&B artist name
+    artist: "Virgo Dunst", // replaced fictional name with actual SquareDrum roster artist
     duration: "3:42",
     audioUrl: "/audio/placeholder.mp3",
     downloadUrl: "/audio/rnb-square/cant-hide.mp3",
@@ -21,7 +21,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 2,
     title: "Breakfast In Bed",
-    artist: "Midnight Groove", // replaced placeholder artist with realistic R&B artist name
+    artist: "Lunah", // replaced fictional name with actual SquareDrum roster artist
     duration: "4:15",
     audioUrl: "/audio/placeholder.mp3",
     downloadUrl: "/audio/rnb-square/breakfast-in-bed.mp3",
@@ -29,11 +29,11 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   },
   {
     id: 3,
-    title: "A Night To Remember",
-    artist: "Velvet Soul", // replaced placeholder artist with realistic R&B artist name
+    title: "Love You Like I Do",
+    artist: "Lucas Meno", // replaced fictional name with actual SquareDrum roster artist
     duration: "3:58",
-    audioUrl: "/audio/rnb-square/a-night-to-remember.mp3",
-    downloadUrl: "/audio/rnb-square/a-night-to-remember.mp3",
+    audioUrl: "/audio/placeholder.mp3",
+    downloadUrl: "/audio/rnb-square/love-you-like-i-do.mp3",
     coverArt: "/images/rnb-square.jpg",
   },
   {
@@ -192,7 +192,7 @@ export const rnbSquareTracks: RnBSquareTrack[] = [
   {
     id: 21,
     title: "Love You Like I Do",
-    artist: "R&B Square Artist",
+    artist: "Lucas Meno", // replaced fictional name with actual SquareDrum roster artist
     duration: "4:05",
     audioUrl: "/audio/rnb-square/love-you-like-i-do-rnb.mp3",
     downloadUrl: "/audio/rnb-square/love-you-like-i-do-rnb.mp3",

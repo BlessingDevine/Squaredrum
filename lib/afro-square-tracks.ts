@@ -12,7 +12,7 @@ export const afroSquareTracks: AfroSquareTrack[] = [
   {
     id: 1,
     title: "Bottle Poppin",
-    artist: "Afro Square Artist",
+    artist: "Neka", // replaced placeholder with actual SquareDrum roster artist
     duration: "3:45",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bottle%20Poppin-FROv7IP2rMTXSzTmq8SFhGK1kWh7KV.mp3",
@@ -23,7 +23,7 @@ export const afroSquareTracks: AfroSquareTrack[] = [
   {
     id: 2,
     title: "Biva",
-    artist: "Afro Square Artist",
+    artist: "Danni Blaze", // replaced placeholder with actual SquareDrum roster artist
     duration: "3:42",
     audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Biva-lFKk0tLMkHIcUd5hAn4MEdQWMg3y1B.mp3",
     downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Biva-lFKk0tLMkHIcUd5hAn4MEdQWMg3y1B.mp3",
@@ -32,7 +32,7 @@ export const afroSquareTracks: AfroSquareTrack[] = [
   {
     id: 3,
     title: "Body Dey Go Round",
-    artist: "Afro Square Artist",
+    artist: "Neka", // replaced placeholder with actual SquareDrum roster artist
     duration: "4:12",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Body%20Dey%20Go%20Round-8gX4KUzGGS8WztaOT9FKeBdcxGmXpm.mp3",
@@ -43,7 +43,7 @@ export const afroSquareTracks: AfroSquareTrack[] = [
   {
     id: 4,
     title: "Can I Live",
-    artist: "Afro Square Artist",
+    artist: "Danni Blaze", // replaced placeholder with actual SquareDrum roster artist
     duration: "3:58",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Can%20I%20live-zOZUTtCsYmsvNZZ5XeXR7ZHAK75Y3j.mp3",

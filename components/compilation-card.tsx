@@ -102,41 +102,61 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
   const colors = getAccentColors(compilation.accentColor)
 
+  useEffect(() => {
+    console.log(`${compilation.title} - Track count: ${tracks.length}`, tracks)
+  }, [compilation.title, tracks])
+
   const handlePlayTrack = (track: Track, index: number) => {
     setCurrentTrackIndex(index)
     setIsCardPlaying(true)
 
-    // Add compilation info to track
+    console.log(`Playing track: ${track.title} from ${compilation.title}`)
+    console.log(`Audio URL: ${track.audioUrl}`)
+
     const trackWithCompilation = {
       ...track,
       compilationId: compilation.id,
       compilationTitle: compilation.title,
-      coverArt: track.coverArt || compilation.coverArt, // Use track cover art or fallback to compilation cover
+      coverArt: track.coverArt || compilation.coverArt,
     }
 
-    // Create playlist with compilation info
     const playlistWithCompilation = tracks.map((t) => ({
       ...t,
       compilationId: compilation.id,
       compilationTitle: compilation.title,
-      coverArt: t.coverArt || compilation.coverArt, // Ensure all tracks have cover art
+      coverArt: t.coverArt || compilation.coverArt,
     }))
 
-    playTrack(trackWithCompilation, playlistWithCompilation)
+    try {
+      playTrack(trackWithCompilation, playlistWithCompilation)
+    } catch (error) {
+      console.error(`Failed to play track ${track.title}:`, error)
+    }
   }
 
   const handleTogglePlay = () => {
-    if (isThisCardCurrentlyPlaying()) {
-      // If this card's track is playing, toggle play/pause
-      togglePlay()
-    } else if (currentTrack) {
-      // If this card's track is not playing, start playing it
-      handlePlayTrack(currentTrack, currentTrackIndex)
+    try {
+      if (state.currentTrack?.compilationId === compilation.id && state.isPlaying) {
+        togglePlay()
+      } else if (currentTrack) {
+        console.log(`Starting playback for ${compilation.title}`)
+        handlePlayTrack(currentTrack, currentTrackIndex)
+      } else {
+        console.warn(`No tracks available for ${compilation.title}`)
+      }
+    } catch (error) {
+      console.error(`Failed to toggle play for ${compilation.title}:`, error)
     }
   }
 
   const handleDownloadTrack = (track: Track) => {
-    onDownloadClick(track)
+    onDownloadClick({
+      title: track.title,
+      artist: track.artist,
+      downloadUrl: track.downloadUrl,
+      audioUrl: track.audioUrl,
+      coverArt: track.coverArt,
+    })
   }
 
   const isThisCardCurrentlyPlaying = () => {
@@ -159,7 +179,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     }
   }, [state.isPlaying, state.currentTrack, compilation.id])
 
-  // Calculate total duration safely
   const totalDuration = tracks.reduce((total, track) => {
     const [minutes, seconds] = track.duration.split(":").map(Number)
     return total + minutes * 60 + seconds
@@ -175,25 +194,22 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     return `${minutes}m`
   }
 
+  const displayTrackCount = tracks.length > 0 ? tracks.length : 0
+
   return (
     <Card
       className={`bg-zinc-900/50 backdrop-blur-sm border ${colors.border} hover:border-opacity-40 transition-all duration-300 overflow-hidden group`}
     >
       <CardContent className="p-0">
-        {/* Mobile-First Layout */}
         <div className="flex flex-col">
-          {/* Full-Width Cover Art Section - Mobile Optimized */}
           <div className="relative w-full">
-            {/* Mobile: Full square aspect ratio for maximum artwork display */}
             <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square overflow-hidden">
-              {/* Loading placeholder with brand colors */}
               {!imageLoaded && (
                 <div className={`absolute inset-0 ${colors.bg} animate-pulse flex items-center justify-center`}>
                   <Music className={`h-16 w-16 sm:h-20 sm:w-20 ${colors.primary} opacity-50`} />
                 </div>
               )}
 
-              {/* Full artwork display */}
               <Image
                 src={compilation.coverArt || "/placeholder.svg"}
                 alt={compilation.title}
@@ -212,10 +228,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 }}
               />
 
-              {/* Enhanced gradient overlay for mobile readability */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 sm:via-black/20 to-transparent" />
 
-              {/* Genre badge - Mobile positioned */}
               <div className="absolute top-4 left-4 z-10">
                 <Badge
                   variant="secondary"
@@ -225,7 +239,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </Badge>
               </div>
 
-              {/* Release date - Mobile positioned */}
               <div className="absolute top-4 right-4 z-10">
                 <div className="flex items-center text-white/90 text-xs sm:text-sm bg-black/40 backdrop-blur-md rounded-full px-3 py-1">
                   <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
@@ -233,7 +246,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </div>
               </div>
 
-              {/* Play Button Overlay - Enhanced for mobile */}
               {currentTrack && (
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <Button
@@ -250,7 +262,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </div>
               )}
 
-              {/* Title overlay on mobile - Bottom positioned for full artwork visibility */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
                 <h2
                   className={`font-cinzel text-xl sm:text-2xl lg:text-3xl font-bold ${colors.primary} mb-1 sm:mb-2 line-clamp-2`}
@@ -259,11 +270,10 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </h2>
                 <p className="text-gray-200 text-sm sm:text-base lg:text-lg line-clamp-1 mb-2">{compilation.artist}</p>
 
-                {/* Quick stats on mobile */}
                 <div className="flex items-center gap-4 text-xs sm:text-sm text-gray-300">
                   <div className="flex items-center">
                     <Music className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                    {tracks.length} tracks
+                    {displayTrackCount} tracks
                   </div>
                   <div className="flex items-center">
                     <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
@@ -274,16 +284,13 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             </div>
           </div>
 
-          {/* Info Section - Compact for mobile */}
           <div className="p-4 sm:p-5 lg:p-6">
-            {/* Description - Mobile optimized */}
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-3 lg:line-clamp-none">
               {compilation.description}
             </p>
 
-            {/* Action Buttons - Mobile-first design */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-              {currentTrack && (
+              {currentTrack && displayTrackCount > 0 && (
                 <Button
                   onClick={handleTogglePlay}
                   className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg`}
@@ -302,29 +309,30 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </Button>
               )}
 
-              <Button
-                onClick={() => setIsExpanded(!isExpanded)}
-                variant="outline"
-                className="border-zinc-600 text-gray-300 hover:bg-zinc-800 bg-transparent flex-1 sm:flex-initial h-11 sm:h-12 text-sm sm:text-base"
-              >
-                {isExpanded ? (
-                  <>
-                    <ChevronUp className="h-4 w-4 mr-2" />
-                    <span className="hidden sm:inline">Hide Tracks</span>
-                    <span className="sm:hidden">Hide</span>
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="h-4 w-4 mr-2" />
-                    <span className="hidden sm:inline">View Tracks</span>
-                    <span className="sm:hidden">Tracks</span>
-                  </>
-                )}
-              </Button>
+              {displayTrackCount > 0 && (
+                <Button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  variant="outline"
+                  className="border-zinc-600 text-gray-300 hover:bg-zinc-800 bg-transparent flex-1 sm:flex-initial h-11 sm:h-12 text-sm sm:text-base"
+                >
+                  {isExpanded ? (
+                    <>
+                      <ChevronUp className="h-4 w-4 mr-2" />
+                      <span className="hidden sm:inline">Hide Tracks</span>
+                      <span className="sm:hidden">Hide</span>
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="h-4 w-4 mr-2" />
+                      <span className="hidden sm:inline">View Tracks ({displayTrackCount})</span>
+                      <span className="sm:hidden">Tracks ({displayTrackCount})</span>
+                    </>
+                  )}
+                </Button>
+              )}
             </div>
           </div>
 
-          {/* Expanded Track List - Mobile optimized */}
           {isExpanded && tracks.length > 0 && (
             <div className="border-t border-zinc-800">
               <div className="p-4 sm:p-5 lg:p-6">
@@ -341,7 +349,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         isCurrentTrack(track) ? `${colors.bg} border ${colors.border}` : "hover:bg-zinc-800/50"
                       }`}
                     >
-                      {/* Track Number / Play Button */}
                       <div className="w-6 sm:w-8 flex items-center justify-center flex-shrink-0">
                         {isCurrentlyPlaying(track) ? (
                           <div className="flex items-center space-x-0.5">
@@ -367,7 +374,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         )}
                       </div>
 
-                      {/* Track Info */}
                       <div className="flex-1 min-w-0">
                         <h4
                           className={`font-medium truncate text-sm sm:text-base ${isCurrentTrack(track) ? colors.primary : "text-white"}`}
@@ -377,10 +383,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         <p className="text-gray-400 text-xs sm:text-sm truncate">{track.artist}</p>
                       </div>
 
-                      {/* Duration */}
                       <div className="text-gray-400 text-xs sm:text-sm whitespace-nowrap">{track.duration}</div>
 
-                      {/* Download Button */}
                       <Button
                         onClick={() => handleDownloadTrack(track)}
                         size="sm"
@@ -397,11 +401,11 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             </div>
           )}
 
-          {/* Empty State */}
-          {tracks.length === 0 && (
+          {displayTrackCount === 0 && (
             <div className="p-6 text-center text-gray-400">
               <Music className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p className="text-sm sm:text-base">No tracks available for this compilation.</p>
+              <p className="text-xs text-gray-500 mt-2">Debug: Expected tracks for {compilation.title}</p>
             </div>
           )}
         </div>

@@ -45,7 +45,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
   const [isExpanded, setIsExpanded] = useState(false)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const { playTrack, state } = useGlobalMusic()
+  const [isLocallyPlaying, setIsLocallyPlaying] = useState(false)
+  const { playTrack, pauseTrack, state } = useGlobalMusic()
 
   // Safely handle tracks array
   const tracks = compilation.tracks || []
@@ -81,11 +82,53 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
         button: "bg-purple-600 hover:bg-purple-700",
         gradient: "from-purple-400 to-indigo-500",
       },
+      red: {
+        primary: "text-red-400",
+        bg: "bg-red-500/10",
+        border: "border-red-500/20",
+        button: "bg-red-600 hover:bg-red-700",
+        gradient: "from-red-400 to-pink-500",
+      },
+      cyan: {
+        primary: "text-cyan-400",
+        bg: "bg-cyan-500/10",
+        border: "border-cyan-500/20",
+        button: "bg-cyan-600 hover:bg-cyan-700",
+        gradient: "from-cyan-400 to-blue-500",
+      },
     }
     return colorMap[color as keyof typeof colorMap] || colorMap.orange
   }
 
   const colors = getAccentColors(compilation.accentColor)
+
+  const handlePlayPause = () => {
+    if (!currentTrack) return
+
+    const isThisCompilationPlaying = state.currentTrack?.compilationId === compilation.id && state.isPlaying
+
+    if (isThisCompilationPlaying) {
+      // If this compilation is currently playing, pause it
+      pauseTrack()
+      setIsLocallyPlaying(false)
+    } else {
+      // If this compilation is not playing, start playing it
+      const trackWithCompilation = {
+        ...currentTrack,
+        compilationId: compilation.id,
+        compilationTitle: compilation.title,
+      }
+
+      const playlistWithCompilation = tracks.map((t) => ({
+        ...t,
+        compilationId: compilation.id,
+        compilationTitle: compilation.title,
+      }))
+
+      playTrack(trackWithCompilation, playlistWithCompilation)
+      setIsLocallyPlaying(true)
+    }
+  }
 
   const handlePlayTrack = (track: Track, index: number) => {
     setCurrentTrackIndex(index)
@@ -105,6 +148,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     }))
 
     playTrack(trackWithCompilation, playlistWithCompilation)
+    setIsLocallyPlaying(true)
   }
 
   const handleDownloadTrack = (track: Track) => {
@@ -115,6 +159,10 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
       audioUrl: track.audioUrl,
       coverArt: track.coverArt || compilation.coverArt,
     })
+  }
+
+  const isThisCompilationPlaying = () => {
+    return state.currentTrack?.compilationId === compilation.id && state.isPlaying
   }
 
   const isCurrentlyPlaying = (track: Track) => {
@@ -197,11 +245,11 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
               {currentTrack && (
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <Button
-                    onClick={() => handlePlayTrack(currentTrack, 0)}
+                    onClick={handlePlayPause}
                     size="lg"
                     className={`${colors.button} text-white rounded-full p-0 shadow-2xl hover:scale-110 transition-all duration-200 h-16 w-16 sm:h-20 sm:w-20 backdrop-blur-sm`}
                   >
-                    {isCurrentlyPlaying(currentTrack) ? (
+                    {isThisCompilationPlaying() ? (
                       <Pause className="h-7 w-7 sm:h-9 sm:w-9" />
                     ) : (
                       <Play className="h-7 w-7 sm:h-9 sm:w-9 ml-0.5" />
@@ -245,10 +293,10 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               {currentTrack && (
                 <Button
-                  onClick={() => handlePlayTrack(currentTrack, 0)}
+                  onClick={handlePlayPause}
                   className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg`}
                 >
-                  {isCurrentlyPlaying(currentTrack) ? (
+                  {isThisCompilationPlaying() ? (
                     <>
                       <Pause className="h-4 w-4 mr-2" />
                       Pause

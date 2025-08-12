@@ -12,7 +12,7 @@ export const countrySquareTracks: CountrySquareTrack[] = [
   {
     id: 1,
     title: "At The Old Town Diner",
-    artist: "Sadie Rose", // replaced placeholder with actual SquareDrum roster artist
+    artist: "Country Square Artist",
     duration: "3:47",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/At%20The%20Old%20Town%20Diner-e4NMGM11XM1g8p7Sk17Be8H7VhUC5v.mp3",
@@ -23,7 +23,7 @@ export const countrySquareTracks: CountrySquareTrack[] = [
   {
     id: 2,
     title: "Already Winning",
-    artist: "Cedar Line", // replaced placeholder with actual SquareDrum roster artist
+    artist: "Country Square Artist",
     duration: "4:03",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Already%20Winning-skMhAPXUEhJS1cl9dfStusPh1ngIbo.mp3",
@@ -34,7 +34,7 @@ export const countrySquareTracks: CountrySquareTrack[] = [
   {
     id: 3,
     title: "A Drive Out Of Town",
-    artist: "Sadie Rose", // replaced placeholder with actual SquareDrum roster artist
+    artist: "Country Square Artist",
     duration: "3:55",
     audioUrl:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/A%20Drive%20Out%20Of%20Town-NBhRrdgR6Yeh0QQlUU9PRgLWffRxRV.mp3",

@@ -33,7 +33,6 @@ interface PlayerState {
   isShuffled: boolean
   repeatMode: "none" | "all" | "one"
   originalPlaylist: Track[]
-  error?: string
 }
 
 interface GlobalMusicContextType {
@@ -263,7 +262,6 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
           isVisible: true,
           isMinimized: false,
           isCrossfading: false,
-          error: undefined, // Clear any previous error
         }))
 
         // Load and play track
@@ -507,7 +505,6 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
                   currentIndex: nextIndex,
                   isCrossfading: false,
                   currentTime: currentTime,
-                  error: undefined, // Clear any previous error
                 }))
 
                 isCrossfadingRef.current = false
@@ -602,53 +599,8 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
     }
 
     const handleError = (e: Event) => {
-      const audioElement = e.target as HTMLAudioElement
-      const error = audioElement?.error
-
-      console.error("Audio error details:", {
-        code: error?.code,
-        message: error?.message,
-        src: audioElement?.src,
-        currentTrack: state.currentTrack?.title,
-      })
-
-      let errorMessage = "Unknown error"
-      if (error) {
-        switch (error.code) {
-          case MediaError.MEDIA_ERR_ABORTED:
-            errorMessage = "Audio playback was aborted"
-            break
-          case MediaError.MEDIA_ERR_NETWORK:
-            errorMessage = "Network error occurred"
-            break
-          case MediaError.MEDIA_ERR_DECODE:
-            errorMessage = "Audio file could not be decoded"
-            break
-          case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
-            errorMessage = "Audio format not supported"
-            break
-          default:
-            errorMessage = error.message || "Unknown audio error"
-        }
-      }
-
-      // Reset audio state and try to recover
-      setState((prev) => ({
-        ...prev,
-        isLoading: false,
-        isPlaying: false,
-        error: `Failed to load audio: ${errorMessage}`,
-      }))
-
-      if (audioElement) {
-        audioElement.src = ""
-        // Try to load a placeholder audio file if available
-        const placeholderAudio = "/audio/placeholder.mp3"
-        if (state.currentTrack && audioElement.src !== placeholderAudio) {
-          console.log("Attempting to load placeholder audio")
-          audioElement.src = placeholderAudio
-        }
-      }
+      console.error("Audio error:", e)
+      setState((prev) => ({ ...prev, isLoading: false, isPlaying: false }))
     }
 
     primaryAudio.addEventListener("timeupdate", handleTimeUpdate)
@@ -787,33 +739,25 @@ function GlobalMusicPlayer() {
     setShowPlaylist(false)
   }
 
-  const getTrackArtwork = (track: Track) => {
-    // Priority: compilation cover art > track cover art > placeholder
-    if (track.compilationId) {
-      // Map compilation IDs to their cover art URLs
-      const compilationArtwork = {
-        "afro-square":
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Afrobeat.jpg-RGjSYRGm2Ax7GzCvIgl6TGBzrSUz8B.jpeg",
-        "country-square":
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Country.jpg-Y74tKbTs09Vvd2ZtQc4a5GePRNODgD.jpeg",
-        "pop-square":
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pop.jpg-DJQTTu2qb1hvXy3n0J7Ixw53nrO8gt.jpeg",
-        "rnb-square":
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/R%26B.jpg-465Ppu2BX5kxmQZ2uQgapX0gQjg5si.jpeg",
-        "reggaeton-square":
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Reggaton%20I.jpg-UkdxvBplWuxUExqZUOa6a0crPOtuYi.jpeg",
-        "dancehall-square":
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DancehallI.jpg-SIzFBVr2tMJK5jrNkblAtrOEqRq7Hq.jpeg",
-      }
-
-      return (
-        compilationArtwork[track.compilationId as keyof typeof compilationArtwork] ||
-        track.coverArt ||
-        "/placeholder.svg"
-      )
+  const getCompilationArtwork = (compilationId?: string): string => {
+    const compilationArtwork = {
+      "afro-square":
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Afrobeat.jpg-RGjSYRGm2Ax7GzCvIgl6TGBzrSUz8B.jpeg",
+      "country-square":
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Country.jpg-Y74tKbTs09Vvd2ZtQc4a5GePRNODgD.jpeg",
+      "pop-square":
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pop.jpg-DJQTTu2qb1hvXy3n0J7Ixw53nrO8gt.jpeg",
+      "rnb-square":
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/R%26B.jpg-465Ppu2BX5kxmQZ2uQgapX0gQjg5si.jpeg",
+      "reggaeton-square":
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Reggaton%20I.jpg-UkdxvBplWuxUExqZUOa6a0crPOtuYi.jpeg",
+      "dancehall-square":
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DancehallI.jpg-SIzFBVr2tMJK5jrNkblAtrOEqRq7Hq.jpeg",
     }
 
-    return track.coverArt || "/placeholder.svg"
+    return compilationId
+      ? compilationArtwork[compilationId as keyof typeof compilationArtwork] || "/placeholder.svg"
+      : "/placeholder.svg"
   }
 
   if (!state.isVisible || !state.currentTrack) {
@@ -831,16 +775,18 @@ function GlobalMusicPlayer() {
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
-                    src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
+                    src={
+                      getCompilationArtwork(state.currentTrack.compilationId) ||
+                      state.currentTrack.coverArt ||
+                      "/placeholder.svg"
+                    }
                     alt={state.currentTrack.title}
                     fill
                     className="object-cover"
                     sizes="48px"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
-                      if (target.src !== "/placeholder.svg") {
-                        target.src = "/placeholder.svg"
-                      }
+                      target.src = "/placeholder.svg"
                     }}
                   />
                 </div>
@@ -897,16 +843,18 @@ function GlobalMusicPlayer() {
               <div className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
-                    src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
+                    src={
+                      getCompilationArtwork(state.currentTrack.compilationId) ||
+                      state.currentTrack.coverArt ||
+                      "/placeholder.svg"
+                    }
                     alt={state.currentTrack.title}
                     fill
                     className="object-cover"
                     sizes="48px"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
-                      if (target.src !== "/placeholder.svg") {
-                        target.src = "/placeholder.svg"
-                      }
+                      target.src = "/placeholder.svg"
                     }}
                   />
                 </div>
@@ -916,7 +864,6 @@ function GlobalMusicPlayer() {
                   <p className="text-gray-400 text-xs truncate">
                     {state.currentTrack.compilationTitle || state.currentTrack.artist}
                   </p>
-                  {state.error && <p className="text-red-400 text-xs mt-1">{state.error}</p>}
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -933,18 +880,18 @@ function GlobalMusicPlayer() {
                   <Button
                     onClick={togglePlay}
                     size="sm"
-                    className="bg-white text-black rounded-full p-0 h-12 w-12"
+                    className="bg-white text-black rounded-full p-0 h-10 w-10"
                     disabled={state.isLoading}
                     aria-label={
                       state.isPlaying ? `Pause ${state.currentTrack.title}` : `Play ${state.currentTrack.title}`
                     }
                   >
                     {state.isLoading ? (
-                      <div className="border-2 border-black border-t-transparent rounded-full animate-spin w-5 h-5" />
+                      <div className="border-2 border-black border-t-transparent rounded-full animate-spin w-4 h-4" />
                     ) : state.isPlaying ? (
-                      <Pause className="h-6 w-6" />
+                      <Pause className="h-5 w-5" />
                     ) : (
-                      <Play className="h-6 w-6 ml-0.5" />
+                      <Play className="h-5 w-5 ml-0.5" />
                     )}
                   </Button>
 
@@ -959,23 +906,13 @@ function GlobalMusicPlayer() {
                   </Button>
 
                   <Button
-                    onClick={toggleShuffle}
+                    onClick={() => setIsExpanded(true)}
                     size="sm"
                     variant="ghost"
-                    className={`p-0 h-10 w-10 ${state.isShuffled ? "text-blue-400" : "text-white"}`}
-                    aria-label={state.isShuffled ? "Disable shuffle" : "Enable shuffle"}
+                    className="text-white p-0 h-8 w-8"
+                    aria-label="Expand player"
                   >
-                    <Shuffle className="h-4 w-4" />
-                  </Button>
-
-                  <Button
-                    onClick={toggleRepeat}
-                    size="sm"
-                    variant="ghost"
-                    className={`p-0 h-10 w-10 ${state.repeatMode !== "none" ? "text-blue-400" : "text-white"}`}
-                    aria-label={`Repeat: ${state.repeatMode}`}
-                  >
-                    {state.repeatMode === "one" ? <Repeat1 className="h-4 w-4" /> : <Repeat className="h-4 w-4" />}
+                    <ChevronUp className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
@@ -1053,16 +990,18 @@ function GlobalMusicPlayer() {
             <div className="flex-1 flex flex-col items-center justify-center p-8">
               <div className="relative w-64 h-64 rounded-2xl overflow-hidden mb-8">
                 <Image
-                  src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
+                  src={
+                    getCompilationArtwork(state.currentTrack.compilationId) ||
+                    state.currentTrack.coverArt ||
+                    "/placeholder.svg"
+                  }
                   alt={state.currentTrack.title}
                   fill
                   className="object-cover"
                   sizes="256px"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
-                    if (target.src !== "/placeholder.svg") {
-                      target.src = "/placeholder.svg"
-                    }
+                    target.src = "/placeholder.svg"
                   }}
                 />
               </div>
@@ -1071,7 +1010,6 @@ function GlobalMusicPlayer() {
                 <h2 className="font-bold text-white text-xl mb-2">{state.currentTrack.title}</h2>
                 <p className="text-gray-400">{state.currentTrack.compilationTitle || state.currentTrack.artist}</p>
                 {state.isCrossfading && <p className="text-blue-400 text-sm mt-1">Crossfading to next track...</p>}
-                {state.error && <p className="text-red-400 text-sm mt-1">{state.error}</p>}
               </div>
 
               <div className="w-full mb-6">
@@ -1188,16 +1126,14 @@ function GlobalMusicPlayer() {
                   >
                     <div className="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
                       <Image
-                        src={getTrackArtwork(track) || "/placeholder.svg"}
+                        src={getCompilationArtwork(track.compilationId) || track.coverArt || "/placeholder.svg"}
                         alt={track.title}
                         fill
                         className="object-cover"
                         sizes="40px"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
-                          if (target.src !== "/placeholder.svg") {
-                            target.src = "/placeholder.svg"
-                          }
+                          target.src = "/placeholder.svg"
                         }}
                       />
                     </div>
@@ -1231,16 +1167,18 @@ function GlobalMusicPlayer() {
           <div className="flex items-center gap-4 min-w-0 flex-1">
             <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
               <Image
-                src={getTrackArtwork(state.currentTrack) || "/placeholder.svg"}
+                src={
+                  getCompilationArtwork(state.currentTrack.compilationId) ||
+                  state.currentTrack.coverArt ||
+                  "/placeholder.svg"
+                }
                 alt={state.currentTrack.title}
                 fill
                 className="object-cover"
                 sizes="56px"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
-                  if (target.src !== "/placeholder.svg") {
-                    target.src = "/placeholder.svg"
-                  }
+                  target.src = "/placeholder.svg"
                 }}
               />
             </div>
@@ -1250,7 +1188,6 @@ function GlobalMusicPlayer() {
                 {state.currentTrack.compilationTitle || state.currentTrack.artist}
               </p>
               {state.isCrossfading && <p className="text-blue-400 text-xs">Crossfading...</p>}
-              {state.error && <p className="text-red-400 text-xs mt-1">{state.error}</p>}
             </div>
           </div>
 

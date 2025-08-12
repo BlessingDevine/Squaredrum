@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Play, Pause, Download, Clock, Calendar, Music, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -45,8 +45,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
   const [isExpanded, setIsExpanded] = useState(false)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const [isCardPlaying, setIsCardPlaying] = useState(false) // Independent play state for this card
-  const { playTrack, state, togglePlay } = useGlobalMusic()
+  const { playTrack, state } = useGlobalMusic()
 
   // Safely handle tracks array
   const tracks = compilation.tracks || []
@@ -82,71 +81,30 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
         button: "bg-purple-600 hover:bg-purple-700",
         gradient: "from-purple-400 to-indigo-500",
       },
-      red: {
-        primary: "text-red-400",
-        bg: "bg-red-500/10",
-        border: "border-red-500/20",
-        button: "bg-red-600 hover:bg-red-700",
-        gradient: "from-red-400 to-pink-500",
-      },
-      cyan: {
-        primary: "text-cyan-400",
-        bg: "bg-cyan-500/10",
-        border: "border-cyan-500/20",
-        button: "bg-cyan-600 hover:bg-cyan-700",
-        gradient: "from-cyan-400 to-blue-500",
-      },
     }
     return colorMap[color as keyof typeof colorMap] || colorMap.orange
   }
 
   const colors = getAccentColors(compilation.accentColor)
 
-  useEffect(() => {
-    console.log(`${compilation.title} - Track count: ${tracks.length}`, tracks)
-  }, [compilation.title, tracks])
-
   const handlePlayTrack = (track: Track, index: number) => {
     setCurrentTrackIndex(index)
-    setIsCardPlaying(true)
 
-    console.log(`Playing track: ${track.title} from ${compilation.title}`)
-    console.log(`Audio URL: ${track.audioUrl}`)
-
+    // Add compilation info to track
     const trackWithCompilation = {
       ...track,
       compilationId: compilation.id,
       compilationTitle: compilation.title,
-      coverArt: track.coverArt || compilation.coverArt,
     }
 
+    // Create playlist with compilation info
     const playlistWithCompilation = tracks.map((t) => ({
       ...t,
       compilationId: compilation.id,
       compilationTitle: compilation.title,
-      coverArt: t.coverArt || compilation.coverArt,
     }))
 
-    try {
-      playTrack(trackWithCompilation, playlistWithCompilation)
-    } catch (error) {
-      console.error(`Failed to play track ${track.title}:`, error)
-    }
-  }
-
-  const handleTogglePlay = () => {
-    try {
-      if (state.currentTrack?.compilationId === compilation.id && state.isPlaying) {
-        togglePlay()
-      } else if (currentTrack) {
-        console.log(`Starting playback for ${compilation.title}`)
-        handlePlayTrack(currentTrack, currentTrackIndex)
-      } else {
-        console.warn(`No tracks available for ${compilation.title}`)
-      }
-    } catch (error) {
-      console.error(`Failed to toggle play for ${compilation.title}:`, error)
-    }
+    playTrack(trackWithCompilation, playlistWithCompilation)
   }
 
   const handleDownloadTrack = (track: Track) => {
@@ -155,12 +113,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
       artist: track.artist,
       downloadUrl: track.downloadUrl,
       audioUrl: track.audioUrl,
-      coverArt: track.coverArt,
+      coverArt: track.coverArt || compilation.coverArt,
     })
-  }
-
-  const isThisCardCurrentlyPlaying = () => {
-    return state.currentTrack?.compilationId === compilation.id && state.isPlaying
   }
 
   const isCurrentlyPlaying = (track: Track) => {
@@ -171,14 +125,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     return state.currentTrack?.id === track.id
   }
 
-  useEffect(() => {
-    if (state.currentTrack?.compilationId === compilation.id) {
-      setIsCardPlaying(state.isPlaying)
-    } else {
-      setIsCardPlaying(false)
-    }
-  }, [state.isPlaying, state.currentTrack, compilation.id])
-
+  // Calculate total duration safely
   const totalDuration = tracks.reduce((total, track) => {
     const [minutes, seconds] = track.duration.split(":").map(Number)
     return total + minutes * 60 + seconds
@@ -194,22 +141,25 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     return `${minutes}m`
   }
 
-  const displayTrackCount = tracks.length > 0 ? tracks.length : 0
-
   return (
     <Card
       className={`bg-zinc-900/50 backdrop-blur-sm border ${colors.border} hover:border-opacity-40 transition-all duration-300 overflow-hidden group`}
     >
       <CardContent className="p-0">
+        {/* Mobile-First Layout */}
         <div className="flex flex-col">
+          {/* Full-Width Cover Art Section - Mobile Optimized */}
           <div className="relative w-full">
+            {/* Mobile: Full square aspect ratio for maximum artwork display */}
             <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square overflow-hidden">
+              {/* Loading placeholder with brand colors */}
               {!imageLoaded && (
                 <div className={`absolute inset-0 ${colors.bg} animate-pulse flex items-center justify-center`}>
                   <Music className={`h-16 w-16 sm:h-20 sm:w-20 ${colors.primary} opacity-50`} />
                 </div>
               )}
 
+              {/* Full artwork display */}
               <Image
                 src={compilation.coverArt || "/placeholder.svg"}
                 alt={compilation.title}
@@ -220,16 +170,12 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 priority
                 onLoad={() => setImageLoaded(true)}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  if (target.src !== "/placeholder.svg") {
-                    target.src = "/placeholder.svg"
-                  }
-                }}
               />
 
+              {/* Enhanced gradient overlay for mobile readability */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 sm:via-black/20 to-transparent" />
 
+              {/* Genre badge - Mobile positioned */}
               <div className="absolute top-4 left-4 z-10">
                 <Badge
                   variant="secondary"
@@ -239,6 +185,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </Badge>
               </div>
 
+              {/* Release date - Mobile positioned */}
               <div className="absolute top-4 right-4 z-10">
                 <div className="flex items-center text-white/90 text-xs sm:text-sm bg-black/40 backdrop-blur-md rounded-full px-3 py-1">
                   <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
@@ -246,14 +193,15 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </div>
               </div>
 
+              {/* Play Button Overlay - Enhanced for mobile */}
               {currentTrack && (
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   <Button
-                    onClick={handleTogglePlay}
+                    onClick={() => handlePlayTrack(currentTrack, 0)}
                     size="lg"
                     className={`${colors.button} text-white rounded-full p-0 shadow-2xl hover:scale-110 transition-all duration-200 h-16 w-16 sm:h-20 sm:w-20 backdrop-blur-sm`}
                   >
-                    {isThisCardCurrentlyPlaying() ? (
+                    {isCurrentlyPlaying(currentTrack) ? (
                       <Pause className="h-7 w-7 sm:h-9 sm:w-9" />
                     ) : (
                       <Play className="h-7 w-7 sm:h-9 sm:w-9 ml-0.5" />
@@ -262,6 +210,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </div>
               )}
 
+              {/* Title overlay on mobile - Bottom positioned for full artwork visibility */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
                 <h2
                   className={`font-cinzel text-xl sm:text-2xl lg:text-3xl font-bold ${colors.primary} mb-1 sm:mb-2 line-clamp-2`}
@@ -270,10 +219,11 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </h2>
                 <p className="text-gray-200 text-sm sm:text-base lg:text-lg line-clamp-1 mb-2">{compilation.artist}</p>
 
+                {/* Quick stats on mobile */}
                 <div className="flex items-center gap-4 text-xs sm:text-sm text-gray-300">
                   <div className="flex items-center">
                     <Music className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                    {displayTrackCount} tracks
+                    {tracks.length} tracks
                   </div>
                   <div className="flex items-center">
                     <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
@@ -284,18 +234,21 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             </div>
           </div>
 
+          {/* Info Section - Compact for mobile */}
           <div className="p-4 sm:p-5 lg:p-6">
+            {/* Description - Mobile optimized */}
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-3 lg:line-clamp-none">
               {compilation.description}
             </p>
 
+            {/* Action Buttons - Mobile-first design */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-              {currentTrack && displayTrackCount > 0 && (
+              {currentTrack && (
                 <Button
-                  onClick={handleTogglePlay}
+                  onClick={() => handlePlayTrack(currentTrack, 0)}
                   className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg`}
                 >
-                  {isThisCardCurrentlyPlaying() ? (
+                  {isCurrentlyPlaying(currentTrack) ? (
                     <>
                       <Pause className="h-4 w-4 mr-2" />
                       Pause
@@ -309,30 +262,29 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 </Button>
               )}
 
-              {displayTrackCount > 0 && (
-                <Button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  variant="outline"
-                  className="border-zinc-600 text-gray-300 hover:bg-zinc-800 bg-transparent flex-1 sm:flex-initial h-11 sm:h-12 text-sm sm:text-base"
-                >
-                  {isExpanded ? (
-                    <>
-                      <ChevronUp className="h-4 w-4 mr-2" />
-                      <span className="hidden sm:inline">Hide Tracks</span>
-                      <span className="sm:hidden">Hide</span>
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDown className="h-4 w-4 mr-2" />
-                      <span className="hidden sm:inline">View Tracks ({displayTrackCount})</span>
-                      <span className="sm:hidden">Tracks ({displayTrackCount})</span>
-                    </>
-                  )}
-                </Button>
-              )}
+              <Button
+                onClick={() => setIsExpanded(!isExpanded)}
+                variant="outline"
+                className="border-zinc-600 text-gray-300 hover:bg-zinc-800 bg-transparent flex-1 sm:flex-initial h-11 sm:h-12 text-sm sm:text-base"
+              >
+                {isExpanded ? (
+                  <>
+                    <ChevronUp className="h-4 w-4 mr-2" />
+                    <span className="hidden sm:inline">Hide Tracks</span>
+                    <span className="sm:hidden">Hide</span>
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-4 w-4 mr-2" />
+                    <span className="hidden sm:inline">View Tracks</span>
+                    <span className="sm:hidden">Tracks</span>
+                  </>
+                )}
+              </Button>
             </div>
           </div>
 
+          {/* Expanded Track List - Mobile optimized */}
           {isExpanded && tracks.length > 0 && (
             <div className="border-t border-zinc-800">
               <div className="p-4 sm:p-5 lg:p-6">
@@ -349,6 +301,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         isCurrentTrack(track) ? `${colors.bg} border ${colors.border}` : "hover:bg-zinc-800/50"
                       }`}
                     >
+                      {/* Track Number / Play Button */}
                       <div className="w-6 sm:w-8 flex items-center justify-center flex-shrink-0">
                         {isCurrentlyPlaying(track) ? (
                           <div className="flex items-center space-x-0.5">
@@ -374,6 +327,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         )}
                       </div>
 
+                      {/* Track Info */}
                       <div className="flex-1 min-w-0">
                         <h4
                           className={`font-medium truncate text-sm sm:text-base ${isCurrentTrack(track) ? colors.primary : "text-white"}`}
@@ -383,8 +337,10 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         <p className="text-gray-400 text-xs sm:text-sm truncate">{track.artist}</p>
                       </div>
 
+                      {/* Duration */}
                       <div className="text-gray-400 text-xs sm:text-sm whitespace-nowrap">{track.duration}</div>
 
+                      {/* Download Button */}
                       <Button
                         onClick={() => handleDownloadTrack(track)}
                         size="sm"
@@ -401,11 +357,11 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             </div>
           )}
 
-          {displayTrackCount === 0 && (
+          {/* Empty State */}
+          {tracks.length === 0 && (
             <div className="p-6 text-center text-gray-400">
               <Music className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p className="text-sm sm:text-base">No tracks available for this compilation.</p>
-              <p className="text-xs text-gray-500 mt-2">Debug: Expected tracks for {compilation.title}</p>
             </div>
           )}
         </div>

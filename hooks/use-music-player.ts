@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback } from "react"
-import { safeBlobUrl } from "@/lib/audio-url-utils"
 
 interface Track {
   id: number
@@ -43,11 +42,13 @@ export function useMusicPlayer(tracks: Track[], playerId: string) {
   useEffect(() => {
     if (typeof window === "undefined" || isInitializedRef.current) return
 
+    // Create main audio element
     const audio = new Audio()
     audio.preload = "metadata"
     audio.crossOrigin = "anonymous"
     audio.volume = state.volume
 
+    // Create crossfade audio element
     const nextAudio = new Audio()
     nextAudio.preload = "metadata"
     nextAudio.crossOrigin = "anonymous"
@@ -99,11 +100,7 @@ export function useMusicPlayer(tracks: Track[], playerId: string) {
           resolve()
         }
 
-        const handleError = (e: Event) => {
-          console.error("Audio load error", {
-            url: safeBlobUrl(track.audioUrl),
-            event: e,
-          })
+        const handleError = () => {
           audio.removeEventListener("canplay", handleCanPlay)
           audio.removeEventListener("error", handleError)
           setState((prev) => ({ ...prev, isLoading: false }))
@@ -113,7 +110,7 @@ export function useMusicPlayer(tracks: Track[], playerId: string) {
         audio.addEventListener("canplay", handleCanPlay)
         audio.addEventListener("error", handleError)
 
-        audio.src = safeBlobUrl(track.audioUrl)
+        audio.src = track.audioUrl
         audio.load()
       })
     },
@@ -197,7 +194,8 @@ export function useMusicPlayer(tracks: Track[], playerId: string) {
     setState((prev) => ({ ...prev, isCrossfading: true }))
 
     try {
-      nextAudio.src = safeBlobUrl(nextTrack.audioUrl)
+      // Load next track
+      nextAudio.src = nextTrack.audioUrl
       nextAudio.volume = 0
       await nextAudio.play()
 

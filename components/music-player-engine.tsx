@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import { safeBlobUrl } from "@/lib/audio-url-utils"
 
 import { createContext, useContext, useRef, useCallback, useEffect, useState } from "react"
 
@@ -65,7 +64,8 @@ interface MusicPlayerProviderProps {
 
 export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderProps) {
   // Audio elements
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const mainAudioRef = useRef<HTMLAudioElement | null>(null)
+  const crossfadeAudioRef = useRef<HTMLAudioElement | null>(null)
 
   // Player state
   const [playerState, setPlayerState] = useState<PlayerState>({
@@ -79,8 +79,8 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
   })
 
   // Playlist and tracks
-  const [tracks, setTracks] = useState<Track[]>([])
-  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0)
+  const tracksRef = useRef<Track[]>([])
+  const currentTrackRef = useRef<Track | null>(null)
   const isInitializedRef = useRef(false)
 
   // Crossfade state
@@ -99,30 +99,42 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
   useEffect(() => {
     if (typeof window === "undefined" || isInitializedRef.current) return
 
-    console.log(`[${playerId}] Initializing audio element`)
+    console.log(`[${playerId}] Initializing audio elements`)
 
-    // Create audio element
-    const audio = new Audio()
-    audio.preload = "metadata"
-    audio.crossOrigin = "anonymous"
-    audio.volume = 1
+    // Create main audio element
+    const mainAudio = new Audio()
+    mainAudio.preload = "metadata"
+    mainAudio.crossOrigin = "anonymous"
+    mainAudio.volume = 1
+
+    // Create crossfade audio element
+    const crossfadeAudio = new Audio()
+    crossfadeAudio.preload = "metadata"
+    crossfadeAudio.crossOrigin = "anonymous"
+    crossfadeAudio.volume = 0
 
     // iOS optimizations
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-      audio.playsInline = true
-      audio.setAttribute("webkit-playsinline", "true")
-      audio.setAttribute("playsinline", "true")
+      mainAudio.playsInline = true
+      crossfadeAudio.playsInline = true
+      mainAudio.setAttribute("webkit-playsinline", "true")
+      crossfadeAudio.setAttribute("webkit-playsinline", "true")
+      mainAudio.setAttribute("playsinline", "true")
+      crossfadeAudio.setAttribute("playsinline", "true")
     }
 
-    audioRef.current = audio
+    mainAudioRef.current = mainAudio
+    crossfadeAudioRef.current = crossfadeAudio
     isInitializedRef.current = true
 
-    console.log(`[${playerId}] Audio element initialized`)
+    console.log(`[${playerId}] Audio elements initialized`)
 
     return () => {
-      console.log(`[${playerId}] Cleaning up audio element`)
-      audio.pause()
-      audio.src = ""
+      console.log(`[${playerId}] Cleaning up audio elements`)
+      mainAudio.pause()
+      crossfadeAudio.pause()
+      mainAudio.src = ""
+      crossfadeAudio.src = ""
       if (crossfadeStateRef.current.animationId) {
         cancelAnimationFrame(crossfadeStateRef.current.animationId)
       }
@@ -153,64 +165,88 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
 
   // Load track into audio element
   const loadTrack = useCallback(
-    async (trackIndex: number) => {
-      const audio = audioRef.current
-      const track = tracks[trackIndex]
+    async (track: Track, audioElement: HTMLAudioElement): Promise<void> => {
+      console.log(`[${playerId}] Loading track:`, track.title)
 
-      if (!audio || !track) return
+      return new Promise((resolve, reject) => {
+        let resolved = false
 
-      updateState({ isLoading: true })
-
-      return new Promise<void>((resolve, reject) => {
         const handleCanPlay = () => {
-          audio.removeEventListener("canplay", handleCanPlay)
-          audio.removeEventListener("error", handleError)
-          updateState({
-            isLoading: false,
-            duration: audio.duration || 0,
-            currentTrack: trackIndex,
-          })
-          resolve()
+          if (!resolved) {
+            resolved = true
+            cleanup()
+            console.log(`[${playerId}] Track loaded successfully:`, track.title)
+            resolve()
+          }
+        }
+
+        const handleLoadedMetadata = () => {
+          if (!resolved && audioElement.readyState >= 2) {
+            resolved = true
+            cleanup()
+            console.log(`[${playerId}] Track metadata loaded:`, track.title)
+            resolve()
+          }
         }
 
         const handleError = (e: Event) => {
-          console.error("Audio load error", {
-            url: safeBlobUrl(track.audioUrl),
-            event: e,
-          })
-          audio.removeEventListener("canplay", handleCanPlay)
-          audio.removeEventListener("error", handleError)
-          updateState({ isLoading: false })
-          reject(new Error("Failed to load track"))
+          if (!resolved) {
+            resolved = true
+            cleanup()
+            console.error(`[${playerId}] Track load error:`, track.title, e)
+            reject(new Error("Failed to load track"))
+          }
         }
 
-        audio.addEventListener("canplay", handleCanPlay)
-        audio.addEventListener("error", handleError)
+        const handleTimeout = () => {
+          if (!resolved) {
+            resolved = true
+            cleanup()
+            console.error(`[${playerId}] Track load timeout:`, track.title)
+            reject(new Error("Timeout loading track"))
+          }
+        }
 
-        audio.src = safeBlobUrl(track.audioUrl)
-        audio.load()
+        const cleanup = () => {
+          audioElement.removeEventListener("canplay", handleCanPlay)
+          audioElement.removeEventListener("loadedmetadata", handleLoadedMetadata)
+          audioElement.removeEventListener("error", handleError)
+          audioElement.removeEventListener("abort", handleError)
+          clearTimeout(timeoutId)
+        }
+
+        audioElement.addEventListener("canplay", handleCanPlay)
+        audioElement.addEventListener("loadedmetadata", handleLoadedMetadata)
+        audioElement.addEventListener("error", handleError)
+        audioElement.addEventListener("abort", handleError)
+
+        const timeoutId = setTimeout(handleTimeout, 10000) // 10 second timeout
+
+        audioElement.src = track.audioUrl
+        audioElement.load()
       })
     },
-    [tracks, updateState, playerId],
+    [playerId],
   )
 
   // Start crossfade transition
   const startCrossfade = useCallback(async () => {
-    const audio = audioRef.current
-    const trackList = tracks
+    const mainAudio = mainAudioRef.current
+    const crossfadeAudio = crossfadeAudioRef.current
+    const tracks = tracksRef.current
 
-    if (!audio || !trackList.length) return
+    if (!mainAudio || !crossfadeAudio || !tracks.length) return
     if (crossfadeStateRef.current.isActive) return
-    if (playerState.currentTrack >= trackList.length - 1) return
+    if (playerState.currentTrack >= tracks.length - 1) return
 
-    const nextTrack = trackList[playerState.currentTrack + 1]
+    const nextTrack = tracks[playerState.currentTrack + 1]
     if (!nextTrack) return
 
     console.log(`[${playerId}] Starting crossfade to:`, nextTrack.title)
 
     try {
       // Load next track
-      await loadTrack(playerState.currentTrack + 1)
+      await loadTrack(nextTrack, crossfadeAudio)
 
       // Start crossfade
       crossfadeStateRef.current.isActive = true
@@ -219,9 +255,9 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
       updateState({ isCrossfading: true })
 
       // Start next track
-      audio.currentTime = 0
-      audio.volume = 0
-      await audio.play()
+      crossfadeAudio.currentTime = 0
+      crossfadeAudio.volume = 0
+      await crossfadeAudio.play()
 
       // Crossfade animation
       const animate = (timestamp: number) => {
@@ -236,7 +272,8 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
           const mainVolume = (1 - progress) * playerState.volume
           const crossfadeVolume = progress * playerState.volume
 
-          audio.volume = Math.max(0, mainVolume)
+          mainAudio.volume = Math.max(0, mainVolume)
+          crossfadeAudio.volume = Math.min(1, crossfadeVolume)
 
           crossfadeStateRef.current.animationId = requestAnimationFrame(animate)
         }
@@ -252,24 +289,39 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
 
   // Complete crossfade transition
   const completeCrossfade = useCallback(() => {
-    const audio = audioRef.current
+    const mainAudio = mainAudioRef.current
+    const crossfadeAudio = crossfadeAudioRef.current
 
-    if (!audio) return
+    if (!mainAudio || !crossfadeAudio) return
 
     console.log(`[${playerId}] Completing crossfade`)
 
-    // Get current position from audio
-    const currentPosition = audio.currentTime
+    // Get current position from crossfade audio
+    const currentPosition = crossfadeAudio.currentTime
+
+    // Swap audio sources
+    const tempSrc = mainAudio.src
+    mainAudio.src = crossfadeAudio.src
+    mainAudio.currentTime = currentPosition
+    mainAudio.volume = playerState.volume
+
+    // Reset crossfade audio
+    crossfadeAudio.src = tempSrc
+    crossfadeAudio.volume = 0
+    crossfadeAudio.pause()
+    crossfadeAudio.currentTime = 0
 
     // Update state
     const newTrackIndex = playerState.currentTrack + 1
-    const newTrack = tracks[newTrackIndex]
+    const newTrack = tracksRef.current[newTrackIndex]
 
     crossfadeStateRef.current.isActive = false
     if (crossfadeStateRef.current.animationId) {
       cancelAnimationFrame(crossfadeStateRef.current.animationId)
       crossfadeStateRef.current.animationId = null
     }
+
+    currentTrackRef.current = newTrack
 
     updateState({
       currentTrack: newTrackIndex,
@@ -278,22 +330,22 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
     })
 
     notifyTrackChange(newTrack)
-  }, [playerState.currentTrack, playerState.volume, updateState, notifyTrackChange, tracks, playerId])
+  }, [playerState.currentTrack, playerState.volume, updateState, notifyTrackChange, playerId])
 
-  // Setup audio event listeners
+  // Setup main audio event listeners
   useEffect(() => {
-    const audio = audioRef.current
-    if (!audio || !isInitializedRef.current) return
+    const mainAudio = mainAudioRef.current
+    if (!mainAudio || !isInitializedRef.current) return
 
     console.log(`[${playerId}] Setting up audio event listeners`)
 
     const handleTimeUpdate = () => {
       if (!crossfadeStateRef.current.isActive) {
-        const currentTime = audio.currentTime
+        const currentTime = mainAudio.currentTime
         updateState({ currentTime })
 
         // Check for crossfade trigger
-        const duration = audio.duration
+        const duration = mainAudio.duration
         if (duration && currentTime > 0 && playerState.isPlaying) {
           const timeRemaining = duration - currentTime
           if (timeRemaining <= 4 && timeRemaining > 3.9 && !crossfadeStateRef.current.isActive) {
@@ -304,9 +356,9 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
     }
 
     const handleLoadedMetadata = () => {
-      console.log(`[${playerId}] Audio metadata loaded, duration:`, audio.duration)
+      console.log(`[${playerId}] Audio metadata loaded, duration:`, mainAudio.duration)
       updateState({
-        duration: audio.duration || 0,
+        duration: mainAudio.duration || 0,
         isLoading: false,
       })
     }
@@ -335,7 +387,7 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
       console.log(`[${playerId}] Audio ended`)
       if (!crossfadeStateRef.current.isActive) {
         // Move to next track if available
-        if (playerState.currentTrack < tracks.length - 1) {
+        if (playerState.currentTrack < tracksRef.current.length - 1) {
           selectTrack(playerState.currentTrack + 1)
         } else {
           updateState({ isPlaying: false, currentTime: 0 })
@@ -348,77 +400,81 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
       updateState({ isLoading: false, isPlaying: false })
     }
 
-    audio.addEventListener("timeupdate", handleTimeUpdate)
-    audio.addEventListener("loadedmetadata", handleLoadedMetadata)
-    audio.addEventListener("play", handlePlay)
-    audio.addEventListener("pause", handlePause)
-    audio.addEventListener("waiting", handleWaiting)
-    audio.addEventListener("playing", handlePlaying)
-    audio.addEventListener("ended", handleEnded)
-    audio.addEventListener("error", handleError)
+    mainAudio.addEventListener("timeupdate", handleTimeUpdate)
+    mainAudio.addEventListener("loadedmetadata", handleLoadedMetadata)
+    mainAudio.addEventListener("play", handlePlay)
+    mainAudio.addEventListener("pause", handlePause)
+    mainAudio.addEventListener("waiting", handleWaiting)
+    mainAudio.addEventListener("playing", handlePlaying)
+    mainAudio.addEventListener("ended", handleEnded)
+    mainAudio.addEventListener("error", handleError)
 
     return () => {
       console.log(`[${playerId}] Removing audio event listeners`)
-      audio.removeEventListener("timeupdate", handleTimeUpdate)
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
-      audio.removeEventListener("play", handlePlay)
-      audio.removeEventListener("pause", handlePause)
-      audio.removeEventListener("waiting", handleWaiting)
-      audio.removeEventListener("playing", handlePlaying)
-      audio.removeEventListener("ended", handleEnded)
-      audio.removeEventListener("error", handleError)
+      mainAudio.removeEventListener("timeupdate", handleTimeUpdate)
+      mainAudio.removeEventListener("loadedmetadata", handleLoadedMetadata)
+      mainAudio.removeEventListener("play", handlePlay)
+      mainAudio.removeEventListener("pause", handlePause)
+      mainAudio.removeEventListener("waiting", handleWaiting)
+      mainAudio.removeEventListener("playing", handlePlaying)
+      mainAudio.removeEventListener("ended", handleEnded)
+      mainAudio.removeEventListener("error", handleError)
     }
-  }, [playerState.currentTrack, playerState.isPlaying, updateState, startCrossfade, tracks, playerId])
+  }, [playerState.currentTrack, playerState.isPlaying, updateState, startCrossfade, playerId])
 
   // Player controls
   const play = useCallback(async (): Promise<void> => {
-    const audio = audioRef.current
-    const track = tracks[currentTrackIndex]
-    if (!audio || !track) {
+    const mainAudio = mainAudioRef.current
+    if (!mainAudio || !currentTrackRef.current) {
       console.error(`[${playerId}] Cannot play: missing audio or track`)
       return
     }
 
-    console.log(`[${playerId}] Play requested for:`, track.title)
+    console.log(`[${playerId}] Play requested for:`, currentTrackRef.current.title)
 
     try {
       updateState({ isLoading: true })
 
       // Ensure audio is loaded
-      if (audio.readyState < 2) {
+      if (mainAudio.readyState < 2) {
         console.log(`[${playerId}] Audio not ready, loading...`)
-        await loadTrack(currentTrackIndex)
+        await loadTrack(currentTrackRef.current, mainAudio)
       }
 
-      await audio.play()
+      await mainAudio.play()
       console.log(`[${playerId}] Play successful`)
     } catch (error) {
       console.error(`[${playerId}] Play failed:`, error)
       updateState({ isLoading: false, isPlaying: false })
       throw error
     }
-  }, [updateState, loadTrack, tracks, currentTrackIndex, playerId])
+  }, [updateState, loadTrack, playerId])
 
   const pause = useCallback(() => {
-    const audio = audioRef.current
-    if (!audio) return
+    const mainAudio = mainAudioRef.current
+    if (!mainAudio) return
 
     console.log(`[${playerId}] Pause requested`)
-    audio.pause()
+    mainAudio.pause()
   }, [playerId])
 
   const seek = useCallback(
     (time: number) => {
-      const audio = audioRef.current
-      if (!audio) return
+      const mainAudio = mainAudioRef.current
+      if (!mainAudio) return
 
       console.log(`[${playerId}] Seek to:`, time)
-      audio.currentTime = time
+      mainAudio.currentTime = time
       updateState({ currentTime: time })
 
       // Reset crossfade if seeking
       if (crossfadeStateRef.current.isActive) {
-        audio.volume = playerState.volume
+        const crossfadeAudio = crossfadeAudioRef.current
+        if (crossfadeAudio) {
+          crossfadeAudio.pause()
+          crossfadeAudio.volume = 0
+        }
+        mainAudio.volume = playerState.volume
         crossfadeStateRef.current.isActive = false
         if (crossfadeStateRef.current.animationId) {
           cancelAnimationFrame(crossfadeStateRef.current.animationId)
@@ -432,12 +488,12 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
 
   const setVolume = useCallback(
     (volume: number) => {
-      const audio = audioRef.current
-      if (!audio) return
+      const mainAudio = mainAudioRef.current
+      if (!mainAudio) return
 
       console.log(`[${playerId}] Set volume:`, volume)
       if (!crossfadeStateRef.current.isActive) {
-        audio.volume = volume
+        mainAudio.volume = volume
       }
       updateState({ volume })
     },
@@ -446,20 +502,23 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
 
   const selectTrack = useCallback(
     async (index: number) => {
-      const track = tracks[index]
-      if (!track) {
+      const tracks = tracksRef.current
+      if (!tracks[index]) {
         console.error(`[${playerId}] Invalid track index:`, index)
         return
       }
 
-      const audio = audioRef.current
-      if (!audio) return
+      const mainAudio = mainAudioRef.current
+      const crossfadeAudio = crossfadeAudioRef.current
+      if (!mainAudio || !crossfadeAudio) return
 
-      console.log(`[${playerId}] Select track:`, index, track.title)
+      console.log(`[${playerId}] Select track:`, index, tracks[index].title)
 
       // Stop any ongoing crossfade
       if (crossfadeStateRef.current.isActive) {
-        audio.volume = playerState.volume
+        crossfadeAudio.pause()
+        crossfadeAudio.volume = 0
+        mainAudio.volume = playerState.volume
         crossfadeStateRef.current.isActive = false
         if (crossfadeStateRef.current.animationId) {
           cancelAnimationFrame(crossfadeStateRef.current.animationId)
@@ -467,6 +526,7 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
         }
       }
 
+      const track = tracks[index]
       const wasPlaying = playerState.isPlaying
 
       try {
@@ -478,29 +538,31 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
         })
 
         // Load new track
-        await loadTrack(index)
-        setCurrentTrackIndex(index)
+        await loadTrack(track, mainAudio)
+        currentTrackRef.current = track
         notifyTrackChange(track)
 
         // Resume playback if was playing
         if (wasPlaying) {
-          await audio.play()
+          await mainAudio.play()
         }
       } catch (error) {
         console.error(`[${playerId}] Track selection failed:`, error)
         updateState({ isLoading: false })
       }
     },
-    [playerState.isPlaying, playerState.volume, updateState, loadTrack, notifyTrackChange, tracks, playerId],
+    [playerState.isPlaying, playerState.volume, updateState, loadTrack, notifyTrackChange, playerId],
   )
 
   const nextTrack = useCallback(() => {
+    const tracks = tracksRef.current
     if (playerState.currentTrack < tracks.length - 1) {
       selectTrack(playerState.currentTrack + 1)
     }
-  }, [playerState.currentTrack, selectTrack, tracks])
+  }, [playerState.currentTrack, selectTrack])
 
   const previousTrack = useCallback(() => {
+    const tracks = tracksRef.current
     if (playerState.currentTime > 3) {
       seek(0)
     } else if (playerState.currentTrack > 0) {
@@ -508,13 +570,13 @@ export function MusicPlayerProvider({ children, playerId }: MusicPlayerProviderP
     } else {
       selectTrack(tracks.length - 1)
     }
-  }, [playerState.currentTrack, playerState.currentTime, selectTrack, seek, tracks])
+  }, [playerState.currentTrack, playerState.currentTime, selectTrack, seek])
 
   const loadPlaylist = useCallback(
-    async (newTracks: Track[], startIndex = 0) => {
-      console.log(`[${playerId}] Load playlist:`, newTracks.length, "tracks, start at:", startIndex)
-      setTracks(newTracks)
-      if (newTracks[startIndex]) {
+    async (tracks: Track[], startIndex = 0) => {
+      console.log(`[${playerId}] Load playlist:`, tracks.length, "tracks, start at:", startIndex)
+      tracksRef.current = tracks
+      if (tracks[startIndex]) {
         await selectTrack(startIndex)
       }
     },

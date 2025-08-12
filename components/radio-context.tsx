@@ -1,7 +1,6 @@
 "use client"
 
 import { createContext, useContext, useState, useRef, useEffect, type ReactNode, useCallback } from "react"
-import { safeBlobUrl } from "@/lib/audio-url-utils"
 
 interface RadioTrack {
   title: string
@@ -88,22 +87,12 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     if (typeof window !== "undefined") {
       console.log("🎵 Initializing Music Square Radio with HD stream")
 
-      const audio = new Audio()
-      audio.volume = volume
-      audio.preload = "none"
-      audio.crossOrigin = "anonymous"
+      audioRef.current = new Audio()
+      audioRef.current.volume = volume
+      audioRef.current.preload = "none"
+      audioRef.current.crossOrigin = "anonymous"
 
-      const handleError = (e: Event) => {
-        console.error("Audio load error", {
-          url: safeBlobUrl(currentQuality.url),
-          event: e,
-        })
-        setIsLoading(false)
-        setIsPlaying(false)
-        handleConnectionError()
-      }
-
-      audioRef.current = audio
+      const audio = audioRef.current
 
       const handleLoadStart = () => {
         console.log(`🔄 Loading HD stream`)
@@ -138,6 +127,13 @@ export function RadioProvider({ children }: { children: ReactNode }) {
       const handlePause = () => {
         console.log("⏸️ Stream paused")
         setIsPlaying(false)
+      }
+
+      const handleError = (e: Event) => {
+        console.error(`❌ Stream error:`, e)
+        setIsLoading(false)
+        setIsPlaying(false)
+        handleConnectionError()
       }
 
       const handleWaiting = () => {
@@ -229,7 +225,8 @@ export function RadioProvider({ children }: { children: ReactNode }) {
 
       console.log(`🔗 Setting stream: ${currentQuality.url}`)
 
-      audio.src = safeBlobUrl(currentQuality.url)
+      // Update source
+      audio.src = currentQuality.url
       audio.load()
 
       // Set connection timeout

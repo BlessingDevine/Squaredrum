@@ -6,7 +6,6 @@ import { Play, Pause, SkipBack, SkipForward, ChevronUp, X, List, Shuffle, Repeat
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import Image from "next/image"
-import { safeBlobUrl } from "@/lib/audio-url-utils"
 
 interface Track {
   id: number
@@ -183,7 +182,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
 
         audio.addEventListener("loadedmetadata", handleLoadedMetadata)
         audio.addEventListener("error", handleError)
-        audio.src = safeBlobUrl(track.audioUrl)
+        audio.src = track.audioUrl
       })
     } catch (error) {
       return track // Return original track if anything fails
@@ -199,7 +198,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
       const audio = new Audio()
       audio.crossOrigin = "anonymous"
       audio.preload = "metadata"
-      audio.src = safeBlobUrl(track.audioUrl)
+      audio.src = track.audioUrl
 
       prefetchCacheRef.current.set(cacheKey, audio)
 
@@ -266,7 +265,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
         }))
 
         // Load and play track
-        primaryAudio.src = safeBlobUrl(trackWithMetadata.audioUrl)
+        primaryAudio.src = trackWithMetadata.audioUrl
         primaryAudio.load()
 
         const playPromise = primaryAudio.play()
@@ -457,7 +456,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
     setState((prev) => ({ ...prev, isCrossfading: true }))
 
     // Load next track
-    crossfadeAudio.src = safeBlobUrl(nextTrack.audioUrl)
+    crossfadeAudio.src = nextTrack.audioUrl
     crossfadeAudio.currentTime = 0
     crossfadeAudio.volume = 0
     crossfadeAudio.load()
@@ -490,7 +489,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
                 const currentTime = crossfadeAudio.currentTime
 
                 primaryAudio.pause()
-                primaryAudio.src = safeBlobUrl(nextTrack.audioUrl)
+                primaryAudio.src = nextTrack.audioUrl
                 primaryAudio.currentTime = currentTime
                 primaryAudio.volume = 1
 
@@ -779,7 +778,6 @@ function GlobalMusicPlayer() {
                     src={
                       getCompilationArtwork(state.currentTrack.compilationId) ||
                       state.currentTrack.coverArt ||
-                      "/placeholder.svg" ||
                       "/placeholder.svg"
                     }
                     alt={state.currentTrack.title}
@@ -848,7 +846,6 @@ function GlobalMusicPlayer() {
                     src={
                       getCompilationArtwork(state.currentTrack.compilationId) ||
                       state.currentTrack.coverArt ||
-                      "/placeholder.svg" ||
                       "/placeholder.svg"
                     }
                     alt={state.currentTrack.title}
@@ -996,7 +993,6 @@ function GlobalMusicPlayer() {
                   src={
                     getCompilationArtwork(state.currentTrack.compilationId) ||
                     state.currentTrack.coverArt ||
-                    "/placeholder.svg" ||
                     "/placeholder.svg"
                   }
                   alt={state.currentTrack.title}
@@ -1174,7 +1170,6 @@ function GlobalMusicPlayer() {
                 src={
                   getCompilationArtwork(state.currentTrack.compilationId) ||
                   state.currentTrack.coverArt ||
-                  "/placeholder.svg" ||
                   "/placeholder.svg"
                 }
                 alt={state.currentTrack.title}

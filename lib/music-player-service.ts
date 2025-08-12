@@ -1,5 +1,4 @@
 import { musicLibraryCache } from "./music-library-cache"
-import { safeBlobUrl } from "@/lib/audio-url-utils"
 
 interface PlayerState {
   currentTrackId: number | null
@@ -68,10 +67,7 @@ class MusicPlayerService {
 
     const audio = new Audio()
     audio.preload = "metadata"
-    audio.src = safeBlobUrl(audioUrl)
-    audio.addEventListener("error", (e) => {
-      console.error("Audio load error", { url: safeBlobUrl(audioUrl), event: e })
-    })
+    audio.src = audioUrl
     this.audioCache.set(audioUrl, audio)
     return audio
   }
@@ -131,7 +127,7 @@ class MusicPlayerService {
   preloadCompilationAudio(compilation: string, limit = 5) {
     const tracks = this.getOptimizedCompilationTracks(compilation).slice(0, limit)
     tracks.forEach((track) => {
-      this.preloadAudio(safeBlobUrl(track.audioUrl))
+      this.preloadAudio(track.audioUrl)
     })
   }
 }

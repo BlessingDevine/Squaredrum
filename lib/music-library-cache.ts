@@ -43,19 +43,19 @@ class MusicLibraryCache {
   async initialize() {
     if (this.initialized) return
 
-    const [afroTracks, countryTracks, popTracks, rnbTracks, dancehallTracks] = await Promise.all([
+    // Dynamically import all track libraries
+    const [afroTracks, countryTracks, popTracks, rnbTracks] = await Promise.all([
       import("./afro-square-tracks"),
       import("./country-square-tracks"),
       import("./pop-square-tracks"),
       import("./rnb-square-tracks"),
-      import("./dancehall-square-tracks"),
     ])
 
+    // Build track cache with compilation info
     this.buildTrackCache("afro-square", afroTracks.afroSquareTracks)
     this.buildTrackCache("country-square", countryTracks.countrySquareTracks)
     this.buildTrackCache("pop-square", popTracks.popSquareTracks)
     this.buildTrackCache("rnb-square", rnbTracks.rnbSquareTracks)
-    this.buildTrackCache("dancehall-square", dancehallTracks.dancehallSquareTracks)
 
     // Build compilation cache
     this.buildCompilationCache()
@@ -98,12 +98,6 @@ class MusicLibraryCache {
         artist: "Various AI Artists",
         genre: "R&B",
         releaseDate: "April 4, 2025",
-      },
-      "dancehall-square": {
-        title: "DANCEHALL SQUARE",
-        artist: "Various AI Artists",
-        genre: "Dancehall",
-        releaseDate: "June 20, 2025",
       },
     }
 

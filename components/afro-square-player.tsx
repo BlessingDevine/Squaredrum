@@ -17,7 +17,6 @@ import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import type { AfroSquareTrack } from "@/lib/afro-square-tracks"
 import Image from "next/image"
-import { safeBlobUrl } from "@/lib/audio-url-utils"
 
 interface AfroSquarePlayerProps {
   tracks: AfroSquareTrack[]
@@ -243,12 +242,7 @@ export default function AfroSquarePlayer({ tracks, onDownloadClick }: AfroSquare
 
   return (
     <div className="bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-sm border border-orange-500/20 rounded-xl p-6">
-      <audio
-        ref={audioRef}
-        src={safeBlobUrl(currentTrack.audioUrl)}
-        preload="metadata"
-        onError={(e) => console.error("Audio load error", { url: safeBlobUrl(currentTrack.audioUrl), event: e })}
-      />
+      <audio ref={audioRef} src={currentTrack.audioUrl} preload="metadata" />
 
       {/* Header */}
       <div className="flex items-center justify-between mb-6">

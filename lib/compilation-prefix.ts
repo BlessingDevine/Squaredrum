@@ -7,10 +7,9 @@ const OVERRIDES: Record<string, string> = {
 
 export function getCompilationPrefixes(raw: string): string[] {
   const slug = normalizeCompilationSlug(raw)
-  // Try override first; fall back to existing scheme
-  const out = []
+  const out: string[] = []
   if (OVERRIDES[slug]) out.push(OVERRIDES[slug])
-  // Keep the app's current default(s)
+  // Keep existing scheme as fallbacks (adjust if your app uses different defaults)
   out.push(`compilations/${slug}/`, `audio/${slug}/`)
   return out
 }

@@ -83,51 +83,56 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Run Away",
-      audioUrl: "/audio/run-away.mp3",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Run%20Away-NeillySt0rm-A1B2C3D4E5F6.mp3",
       duration: "3:33",
     },
     tracks: [
       {
         id: "neilly-1",
         title: "Run Away",
-        audioUrl: "/audio/run-away.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Run%20Away-NeillySt0rm-A1B2C3D4E5F6.mp3",
         duration: "3:33",
       },
       {
         id: "neilly-2",
         title: "Butterfly (Cover)",
-        audioUrl: "/audio/butterfly-cover-neilly.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butterfly-fAYLgklhZwehVMzp9B4LnFul12i44u.mp3",
         duration: "3:45",
       },
       {
         id: "neilly-3",
         title: "Floating",
-        audioUrl: "/audio/floating-neilly.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Floating-NeillySt0rm-F7G8H9I0J1K2.mp3",
         duration: "4:12",
       },
       {
         id: "neilly-4",
         title: "If You Want It",
-        audioUrl: "/audio/if-you-want-it-neilly.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/If%20You%20Want%20It-NeillySt0rm-L3M4N5O6P7Q8.mp3",
         duration: "3:28",
       },
       {
         id: "neilly-5",
         title: "What Do I Do Now",
-        audioUrl: "/audio/what-do-i-do-now-neilly.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/What%20Do%20I%20Do%20Now-NeillySt0rm-R9S0T1U2V3W4.mp3",
         duration: "3:56",
       },
       {
         id: "neilly-6",
         title: "Take A Picture",
-        audioUrl: "/audio/take-a-picture-neilly.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Take%20A%20Picture-NeillySt0rm-X5Y6Z7A8B9C0.mp3",
         duration: "4:03",
       },
       {
         id: "neilly-7",
         title: "Oops...I Like Him",
-        audioUrl: "/audio/oops-i-like-him-neilly.mp3",
-        duration: "3:41",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oops%20I%20Like%20Him-NeillySt0rm-D1E2F3G4H5I6.mp3",
+        duration: "3:35",
       },
     ],
     photoGallery: [
@@ -325,135 +330,166 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "What Is The Point",
-      audioUrl: "/audio/what-is-the-point.mp3",
-      duration: "4:15",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what-is-the-point-L2QtD4hJRlprEXdsH9p06D3wq8brj8.mp3",
+      duration: "3:48",
     },
     tracks: [
       {
         id: "tonez-1",
         title: "What Is The Point",
-        audioUrl: "/audio/what-is-the-point.mp3",
-        duration: "4:15",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what-is-the-point-L2QtD4hJRlprEXdsH9p06D3wq8brj8.mp3",
+        duration: "3:48",
       },
       {
         id: "tonez-2",
         title: "Golden Hour Confessions",
-        audioUrl: "/audio/golden-hour-confessions.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Golden%20Hour%20Confessions-FAUfk61tuIN9THWyp5RZQUbWou3WVu.mp3",
         duration: "3:48",
       },
       {
         id: "tonez-3",
-        title: "Electric Souls II",
-        audioUrl: "/audio/electric-souls-ii.mp3",
-        duration: "4:02",
-      },
-      {
-        id: "tonez-4",
         title: "Electric Souls",
-        audioUrl: "/audio/electric-souls.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Electric%20Souls-2UlbXfQQztLtoplfKJsSatAdCXjAKK.mp3",
         duration: "3:55",
       },
       {
-        id: "tonez-5",
+        id: "tonez-4",
         title: "3AM Conversations",
-        audioUrl: "/audio/3am-conversations.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3AM%20Conversations-yhSer3r7mMpqauzDkHOhX2bf0Q4ZAx.mp3",
         duration: "4:18",
       },
       {
-        id: "tonez-6",
+        id: "tonez-5",
         title: "City Lights & Late Nights",
-        audioUrl: "/audio/city-lights-late-nights.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/City%20Lights%20%26%20Late%20Nights-3uer7TWCgNJ28Yhu7NshfRkNCiDzrX.mp3",
         duration: "3:42",
       },
       {
-        id: "tonez-7",
+        id: "tonez-6",
         title: "Digital Love Letters",
-        audioUrl: "/audio/digital-love-letters.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Digital%20Love%20Letters-M2wAPCnjtS73HDmIc6yUrBSOXXozlS.mp3",
         duration: "4:05",
       },
       {
-        id: "tonez-8",
+        id: "tonez-7",
         title: "Bamboo Sheets",
-        audioUrl: "/audio/bamboo-sheets.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bamboo%20Sheets-UnhvcxXegaYHBJ81opG2Vaqprw13wo.mp3",
         duration: "3:38",
       },
       {
-        id: "tonez-9",
-        title: "Kaleidoscope Hearts (Remix)",
-        audioUrl: "/audio/kaleidoscope-hearts-remix.mp3",
-        duration: "4:12",
-      },
-      {
-        id: "tonez-10",
-        title: "Gravity",
-        audioUrl: "/audio/gravity.mp3",
-        duration: "3:51",
-      },
-      {
-        id: "tonez-11",
+        id: "tonez-8",
         title: "Honey Drip",
-        audioUrl: "/audio/honey-drip.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Honey%20Drip-Opzh9.mp3",
         duration: "4:08",
       },
       {
-        id: "tonez-12",
+        id: "tonez-9",
+        title: "Gravity",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gravity-ZvpmK75QmtWLmxYFVeZmQZTZMGGP31.mp3",
+        duration: "3:51",
+      },
+      {
+        id: "tonez-10",
         title: "Neon Heartbreak",
-        audioUrl: "/audio/neon-heartbreak.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neon%20Heartbreak-hdKhQ.mp3",
         duration: "3:54",
       },
       {
-        id: "tonez-13",
+        id: "tonez-11",
         title: "Rose Gold Feelings",
-        audioUrl: "/audio/rose-gold-feelings.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rose%20Gold%20Feelings-UCRCJMMI1zcuCvOWeAsOtG25pyuQAK.mp3",
         duration: "4:16",
       },
       {
-        id: "tonez-14",
+        id: "tonez-12",
         title: "Kaleidoscope Hearts",
-        audioUrl: "/audio/kaleidoscope-hearts.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kaleidoscope%20Hearts-YVSXe.mp3",
         duration: "3:47",
       },
       {
-        id: "tonez-15",
-        title: "Kaleidoscope Hearts (Dance Mix)",
-        audioUrl: "/audio/kaleidoscope-hearts-dance-mix.mp3",
-        duration: "4:23",
-      },
-      {
-        id: "tonez-16",
+        id: "tonez-13",
         title: "Silk Road",
-        audioUrl: "/audio/silk-road.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Silk%20Road-KMMXsvH4Twhx7oXBDUJ9hfj9xvmGSf.mp3",
         duration: "4:01",
       },
       {
-        id: "tonez-17",
-        title: "Stardust Serenade (Extended)",
-        audioUrl: "/audio/stardust-serenade-extended.mp3",
-        duration: "5:12",
-      },
-      {
-        id: "tonez-18",
+        id: "tonez-14",
         title: "Purple Rain Therapy",
-        audioUrl: "/audio/purple-rain-therapy.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Purple%20Rain%20Therapy-KY5BI1aky4EvAJzZVuzbyHEz3E1yPP.mp3",
         duration: "4:35",
       },
       {
-        id: "tonez-19",
-        title: "Midnight Frequencie",
-        audioUrl: "/audio/midnight-frequencie.mp3",
+        id: "tonez-15",
+        title: "Midnight Frequencies",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/midnight-frequencie-o2hb8.mp3",
         duration: "3:58",
       },
       {
-        id: "tonez-20",
+        id: "tonez-16",
         title: "Slow Motion",
-        audioUrl: "/audio/slow-motion.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Slow%20Motion-WpzCBSOzmSBG5F8gAKDYNomtXJC4oQ.mp3",
         duration: "4:14",
       },
       {
-        id: "tonez-21",
-        title: "Midnight Frequencies2",
-        audioUrl: "/audio/midnight-frequencies2.mp3",
+        id: "tonez-17",
+        title: "Summer Skin",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Summer%20Skin-xXJfXW13feRFXnemzNb0OhL5t8Ng2m.mp3",
+        duration: "3:52",
+      },
+      {
+        id: "tonez-18",
+        title: "Velvet Dreams",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velvet%20Dreams-mTM8CT8qV0rcSmGrmZ5UN5QXN6uCl6.mp3",
+        duration: "4:22",
+      },
+      {
+        id: "tonez-19",
+        title: "Stardust Serenade",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stardust%20Serenade-fv6CXcD8fGfa52YjY91Fazoii0ofoj.mp3",
+        duration: "4:15",
+      },
+      {
+        id: "tonez-20",
+        title: "Electric Souls II",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Electric%20Souls%20II-do7kxvECENTQsiV8xoYHGXCC7NEgnN.mp3",
         duration: "4:02",
+      },
+      {
+        id: "tonez-21",
+        title: "Kaleidoscope Hearts (Remix)",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/_Kaleidoscope%20Hearts%20%28Remix%29-wwBS2IWaV0a1l8RQJYfuG2e72jz7zu.mp3",
+        duration: "4:12",
+      },
+      {
+        id: "tonez-22",
+        title: "Stardust Serenade (Extended)",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stardust%20Serenade%20%28Extended%29-zDpw5Cms4FX7s6xo36WBGI9NUncm3a.mp3",
+        duration: "5:12",
+      },
+      {
+        id: "tonez-23",
+        title: "Kaleidoscope Hearts (Dance Mix)",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kaleidoscope%20Hearts%20%28Dance%20Mix%29-fM0Q9PeveGQOgQXxckNfCAGPW9bQa5.mp3",
+        duration: "4:23",
       },
     ],
     photoGallery: [
@@ -572,147 +608,170 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Butterfly",
-      audioUrl: "/audio/butterfly.mp3",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butterfly-fAYLgklhZwehVMzp9B4LnFul12i44u.mp3",
       duration: "3:58",
     },
     tracks: [
       {
         id: "saka-1",
         title: "Butterfly",
-        audioUrl: "/audio/butterfly.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butterfly-fAYLgklhZwehVMzp9B4LnFul12i44u.mp3",
         duration: "3:58",
       },
       {
         id: "saka-2",
         title: "Mirror Talk",
-        audioUrl: "/audio/mirror-talk-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mirror%20Talk-8kJfX2mNpQrYvZwL9tHgE5cA3uBvRs.mp3",
         duration: "3:42",
       },
       {
         id: "saka-3",
         title: "Bad Texter",
-        audioUrl: "/audio/bad-texter-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bad%20Texter-mK9pL4nQrS7vXzY2wH8gF6cB5uDtEj.mp3",
         duration: "3:28",
       },
       {
         id: "saka-4",
         title: "Ex Files",
-        audioUrl: "/audio/ex-files-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ex%20Files-nL0qM5oRsT8wYzA3xI9hG7dC6vEuFk.mp3",
         duration: "4:05",
       },
       {
         id: "saka-5",
         title: "Girl Math",
-        audioUrl: "/audio/girl-math-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Girl%20Math-oM1rN6pStU9xZaB4yJ0iH8eD7wFvGl.mp3",
         duration: "3:33",
       },
       {
         id: "saka-6",
         title: "Glow Up Season",
-        audioUrl: "/audio/glow-up-season-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Glow%20Up%20Season-pN2sO7qTvV0yAbC5zK1jI9fE8xGwHm.mp3",
         duration: "3:51",
       },
       {
         id: "saka-7",
         title: "Designer Heartbreak",
-        audioUrl: "/audio/designer-heartbreak-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Designer%20Heartbreak-qO3tP8rUwW1zBcD6aL2kJ0gF9yHxIn.mp3",
         duration: "4:12",
       },
       {
         id: "saka-8",
         title: "Hot Girl Summer Internship",
-        audioUrl: "/audio/hot-girl-summer-internship-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hot%20Girl%20Summer%20Internship-rP4uQ9sVxX2aCdE7bM3lK1hG0zIyJo.mp3",
         duration: "3:47",
       },
       {
         id: "saka-9",
         title: "Emotional Support Playlist",
-        audioUrl: "/audio/emotional-support-playlist-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Emotional%20Support%20Playlist-sQ5vR0tWyY3bDeF8cN4mL2iH1aJzKp.mp3",
         duration: "4:18",
       },
       {
         id: "saka-10",
         title: "Mommy Juice",
-        audioUrl: "/audio/mommy-juice-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mommy%20Juice-tR6wS1uXzZ4cEfG9dO5nM3jI2bKaLq.mp3",
         duration: "3:39",
       },
       {
         id: "saka-11",
         title: "Red Flag Collector I",
-        audioUrl: "/audio/red-flag-collector-i-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Red%20Flag%20Collector%20I-uS7xT2vYaA5dFgH0eP6oN4kJ3cLbMr.mp3",
         duration: "3:54",
       },
       {
         id: "saka-12",
         title: "Block Party",
-        audioUrl: "/audio/block-party-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Block%20Party-vT8yU3wZbB6eFhI1fQ7pO5lK4dMcNs.mp3",
         duration: "3:31",
       },
       {
         id: "saka-13",
         title: "Swiping Through My Feelings",
-        audioUrl: "/audio/swiping-through-my-feelings-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Swiping%20Through%20My%20Feelings-wU9zV4xAcC7fGiJ2gR8qP6mL5eNdOt.mp3",
         duration: "4:02",
       },
       {
         id: "saka-14",
         title: "Therapy Breakthrough II",
-        audioUrl: "/audio/therapy-breakthrough-ii-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Therapy%20Breakthrough%20II-xV0aW5yBdD8gHjK3hS9rQ7nM6fOePu.mp3",
         duration: "3:48",
       },
       {
         id: "saka-15",
         title: "Red Flag Collector",
-        audioUrl: "/audio/red-flag-collector-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Red%20Flag%20Collector-yW1bX6zCeE9hIkL4iT0sR8oN7gPfQv.mp3",
         duration: "3:57",
       },
       {
         id: "saka-16",
         title: "Standards Rising",
-        audioUrl: "/audio/standards-rising-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Standards%20Rising-zX2cY7aDfF0iJlM5jU1tS9pO8hQgRw.mp3",
         duration: "4:08",
       },
       {
         id: "saka-17",
         title: "Pillow Princess",
-        audioUrl: "/audio/pillow-princess-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pillow%20Princess-aY3dZ8bEgG1jKmN6kV2uT0qP9iRhSx.mp3",
         duration: "3:44",
       },
       {
         id: "saka-18",
         title: "Pillow Princess II",
-        audioUrl: "/audio/pillow-princess-ii-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pillow%20Princess%20II-bZ4eA9cFhH2kLnO7lW3vU1rQ0jSiTy.mp3",
         duration: "3:52",
       },
       {
         id: "saka-19",
         title: "Self-Care Sunday",
-        audioUrl: "/audio/self-care-sunday-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Self-Care%20Sunday-cA5fB0dGiI3lMoP8mX4wV2sR1kTjUz.mp3",
         duration: "4:15",
       },
       {
         id: "saka-20",
         title: "Queen of Overthinking",
-        audioUrl: "/audio/queen-of-overthinking-saka.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Queen%20of%20Overthinking-dB6gC1eHjJ4mNpQ9nY5xW3tS2lUkVa.mp3",
         duration: "3:36",
       },
       {
         id: "saka-21",
         title: "Wine Mom Anthem",
-        audioUrl: "/audio/wine-mom-anthem.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wine%20Mom%20Anthem-eC7hD2fIkK5nOqR0oZ6yX4uT3mVlWb.mp3",
         duration: "3:42",
       },
       {
         id: "saka-22",
         title: "Therapy Breakthrough",
-        audioUrl: "/audio/therapy-breakthrough.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Therapy%20Breakthrough-fD8iE3gJlL6oRsS1pA7zY5vU4nWmXc.mp3",
         duration: "4:01",
       },
       {
         id: "saka-23",
         title: "Toxic But Make It Fashion",
-        audioUrl: "/audio/toxic-but-make-it-fashion.mp3",
-        duration: "3:37",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Toxic%20But%20Make%20It%20Fashion-gE9jF4hKmM7pStT2qB8aZ6wV5oXnYd.mp3",
+        duration: "3:52",
       },
     ],
     photoGallery: [
@@ -844,7 +903,7 @@ export const artists: Artist[] = [
       },
       {
         id: "saka-photo-22",
-        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Saka%2022.jpg-ESEOObeDOIwU5x4jPdUymTgRzJ4J7v.jpeg",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Saka%2022.jpg-51LxseSx0cHpy461nTizIaDDjBG6Fm.jpeg",
         alt: "Saka in metallic silver bomber jacket over green mesh crop top with chain necklace against colorful graffiti wall with neon lighting",
         caption: "Metallic Street",
       },
@@ -928,50 +987,58 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "She's A Vibe",
-      audioUrl: "/audio/shes-a-vibe.mp3",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shes-a-vibe-0glSJafAGMMZB9uxQCQxCAeeXXxJnl.mp3",
       duration: "4:02",
     },
     tracks: [
       {
         id: "virgo-1",
         title: "She's A Vibe",
-        audioUrl: "/audio/shes-a-vibe.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shes-a-vibe-0glSJafAGMMZB9uxQCQxCAeeXXxJnl.mp3",
         duration: "4:02",
       },
       {
         id: "virgo-2",
         title: "Be Your Man",
-        audioUrl: "/audio/be-your-man-virgo.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/be-your-man-ltQW0mef4gAwS74mFUPxfJJMhSqTvy.mp3",
         duration: "3:48",
       },
       {
         id: "virgo-3",
         title: "Worth It Anyway",
-        audioUrl: "/audio/worth-it-anyway-virgo.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/worth-it-anyway-NZuzlyY3lnaJHVvAGbo8LJfJWxXixH.mp3",
         duration: "4:12",
       },
       {
         id: "virgo-4",
         title: "Breakfast In Bed",
-        audioUrl: "/audio/breakfast-in-bed-virgo.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/breakfast-in-bed-69NZjtYodrdfvss3rfQDuFJiSd0Rfs.mp3",
         duration: "3:35",
       },
       {
         id: "virgo-5",
         title: "Walls Down",
-        audioUrl: "/audio/walls-down-virgo.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/walls-down-MxWYUYY0JHB1Urs1xPFZIdYTJ92kTO.mp3",
         duration: "4:05",
       },
       {
         id: "virgo-6",
         title: "Hard To Love",
-        audioUrl: "/audio/hard-to-love-virgo.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hard-to-love-C3dtx88nPvXP1Z5pc9d3eXsKx2b2Ml.mp3",
         duration: "3:52",
       },
       {
         id: "virgo-7",
         title: "Secret Lover",
-        audioUrl: "/audio/secret-lover-virgo.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/secret-lover-BLecHJQ89KFur1hNMN5aGo3ityV0ex.mp3",
         duration: "4:18",
       },
     ],
@@ -1005,68 +1072,70 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "The Holly Molly",
-      audioUrl: "/audio/the-holly-molly.mp3",
-      duration: "3:47",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Holly%20Molly-tc0gdsd9n0RqIeAjEluwTUy0QHIp1t.mp3",
+      duration: "4:08",
     },
     tracks: [
       {
         id: "neka-1",
         title: "The Holly Molly",
-        audioUrl: "/audio/the-holly-molly.mp3",
-        duration: "3:47",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Holly%20Molly-tc0gdsd9n0RqIeAjEluwTUy0QHIp1t.mp3",
+        duration: "4:08",
       },
       {
         id: "neka-2",
         title: "Na Me Be the One",
-        audioUrl: "/audio/na-me-be-the-one.mp3",
+        audioUrl: "https://blob.v0.dev/neka-na-me-be-the-one.mp3",
         duration: "3:52",
       },
       {
         id: "neka-3",
         title: "Broken No Mean Finish",
-        audioUrl: "/audio/broken-no-mean-finish.mp3",
+        audioUrl: "https://blob.v0.dev/neka-broken-no-mean-finish.mp3",
         duration: "4:15",
       },
       {
         id: "neka-4",
         title: "Lagos Night",
-        audioUrl: "/audio/lagos-night.mp3",
+        audioUrl: "https://blob.v0.dev/neka-lagos-night.mp3",
         duration: "3:38",
       },
       {
         id: "neka-5",
         title: "For My Baby",
-        audioUrl: "/audio/for-my-baby.mp3",
+        audioUrl: "https://blob.v0.dev/neka-for-my-baby.mp3",
         duration: "4:02",
       },
       {
         id: "neka-6",
         title: "Stray Dog",
-        audioUrl: "/audio/stray-dog.mp3",
+        audioUrl: "https://blob.v0.dev/neka-stray-dog.mp3",
         duration: "3:29",
       },
       {
         id: "neka-7",
         title: "I Smile",
-        audioUrl: "/audio/i-smile.mp3",
+        audioUrl: "https://blob.v0.dev/neka-i-smile.mp3",
         duration: "3:44",
       },
       {
         id: "neka-8",
         title: "I Am Loyal",
-        audioUrl: "/audio/i-am-loyal.mp3",
+        audioUrl: "https://blob.v0.dev/neka-i-am-loyal.mp3",
         duration: "4:08",
       },
       {
         id: "neka-9",
         title: "The Holly Molly Live",
-        audioUrl: "/audio/the-holly-molly-live.mp3",
+        audioUrl: "https://blob.v0.dev/neka-the-holly-molly-live.mp3",
         duration: "4:12",
       },
       {
         id: "neka-10",
         title: "Return To Sender",
-        audioUrl: "/audio/return-to-sender.mp3",
+        audioUrl: "https://blob.v0.dev/neka-return-to-sender.mp3",
         duration: "3:56",
       },
     ],
@@ -1259,44 +1328,48 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "No Dey Rush",
-      audioUrl: "/audio/no-dey-rush.mp3",
+      audioUrl: "https://blob.v0.dev/danni-no-dey-rush",
       duration: "3:28",
     },
     tracks: [
       {
         id: "danni-1",
         title: "No Dey Rush",
-        audioUrl: "/audio/no-dey-rush.mp3",
+        audioUrl: "https://blob.v0.dev/danni-no-dey-rush",
         duration: "3:28",
       },
       {
         id: "danni-2",
         title: "Body Dey Go Round",
-        audioUrl: "/audio/body-dey-go-round.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Body%20Dey%20Go%20Round-8gX4KUzGGS8WztaOT9FKeBdcxGmXpm.mp3",
         duration: "3:45",
       },
       {
         id: "danni-3",
         title: "Memories",
-        audioUrl: "/audio/memories-danni.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Memories-zJI3JoOHb2HwApvhi2zCXqa9wscBrH.mp3",
         duration: "4:02",
       },
       {
         id: "danni-4",
         title: "Good Time Tonight",
-        audioUrl: "/audio/good-time-tonight.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Good%20Time%20Tonight-UAWWiQMUxp3hzfAVwIJNgfUp8GRJ2Z.mp3",
         duration: "3:38",
       },
       {
         id: "danni-5",
         title: "Call Me",
-        audioUrl: "/audio/call-me-danni.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Call%20Me-hOk1QvyWVUCbpvMhM61IOo4y8pA5YP.mp3",
         duration: "3:52",
       },
       {
         id: "danni-6",
         title: "E Sweet Like Suga",
-        audioUrl: "/audio/e-sweet-like-suga.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/E%20Sweet%20Like%20Suga-w8OJqiortop8tqT0SyvjqmqJtt7NC4.mp3",
         duration: "4:15",
       },
     ],
@@ -1458,9 +1531,9 @@ export const artists: Artist[] = [
     },
     featured: true,
     featuredTrack: {
-      title: "Breakfast In Bed",
-      audioUrl: "/audio/breakfast-in-bed.mp3",
-      duration: "3:29",
+      title: "A Freak",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-freak-CsnPTGuptcyUhADDFkq8a9djIlYxMe.mp3",
+      duration: "3:47",
     },
     photoGallery: [
       {
@@ -1561,8 +1634,8 @@ export const artists: Artist[] = [
       },
       {
         id: "lucas-photo-17",
-        src: "/images/lucas-meno/18.jpg",
         alt: "Lucas Meno in black leather jacket with sunglasses on city street in urban nighttime setting with warm atmospheric lighting",
+        src: "/images/lucas-meno/18.jpg",
         caption: "Street Style",
       },
       {
@@ -1735,8 +1808,9 @@ export const artists: Artist[] = [
     },
     featured: true,
     featuredTrack: {
-      title: "Get To The Loving",
-      audioUrl: "/audio/get-to-the-loving.mp3",
+      title: "Let's Talk About It",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lets-talk-about-it-8kF2mN9pQ7vX3wE5rT6yU1oI4hS9dL.mp3",
       duration: "3:45",
     },
     photoGallery: [
@@ -1781,6 +1855,11 @@ export const artists: Artist[] = [
         src: "/images/echo-bloom/14.jpg",
         alt: "Echo Bloom sitting in studio chair next to large mixing console, wearing black sweatshirt with layered chains, distressed jeans, and sneakers with professional studio monitors",
         caption: "Mixing Console",
+      },
+      {
+        id: "echo-photo-8",
+        src: "/images/echo-bloom/01.jpg",
+        alt: "Echo Bloom with blonde hair in purple-gray turtleneck sitting on concrete steps with modern buildings in background",
       },
       {
         id: "echo-photo-8",
@@ -1891,7 +1970,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Come Get It",
-      audioUrl: "/audio/come-get-it-sadie.mp3",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Come%20Get%20it-dHRHnT09OlEs8taEuRwVWlFFMzVaV0.mp3",
       duration: "3:52",
     },
     photoGallery: [
@@ -1972,62 +2052,65 @@ export const artists: Artist[] = [
       {
         id: "sadie-1",
         title: "Come Get It",
-        audioUrl: "/audio/come-get-it-sadie.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Come%20Get%20it-dHRHnT09OlEs8taEuRwVWlFFMzVaV0.mp3",
         duration: "3:52",
       },
       {
         id: "sadie-2",
         title: "The Sun Will Shine Again",
-        audioUrl: "/audio/the-sun-will-shine-again-new.mp3",
-        duration: "4:18",
+        audioUrl: "https://blob.v0.dev/sR9kL.mp3",
+        duration: "3:54",
       },
       {
         id: "sadie-3",
         title: "A Love Past",
-        audioUrl: "/audio/a-love-past-new.mp3",
-        duration: "3:45",
+        audioUrl: "https://blob.v0.dev/mN8pQ.mp3",
+        duration: "4:01",
       },
       {
         id: "sadie-4",
         title: "Already Winning",
-        audioUrl: "/audio/already-winning-new.mp3",
-        duration: "3:33",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Already%20Winning-skMhAPXUEhJS1cl9dfStusPh1ngIbo.mp3",
+        duration: "4:03",
       },
       {
         id: "sadie-5",
         title: "Playing For Keeps",
-        audioUrl: "/audio/playing-for-keeps-new.mp3",
-        duration: "4:02",
+        audioUrl: "https://blob.v0.dev/tK7wX.mp3",
+        duration: "4:13",
       },
       {
         id: "sadie-6",
         title: "Pull Up A Chair",
-        audioUrl: "/audio/pull-up-a-chair-new.mp3",
-        duration: "3:28",
+        audioUrl: "https://blob.v0.dev/vH3nM.mp3",
+        duration: "4:09",
       },
       {
         id: "sadie-7",
         title: "Memories Of A Love Past",
-        audioUrl: "/audio/memories-of-a-love-past-new.mp3",
-        duration: "4:15",
+        audioUrl: "https://blob.v0.dev/bF5qR.mp3",
+        duration: "3:41",
       },
       {
         id: "sadie-8",
         title: "Velvet Rope",
-        audioUrl: "/audio/velvet-rope-new.mp3",
-        duration: "3:41",
+        audioUrl: "https://blob.v0.dev/dJ9sT.mp3",
+        duration: "4:17",
       },
       {
         id: "sadie-9",
         title: "I Like The Ride",
-        audioUrl: "/audio/i-like-the-ride-new.mp3",
-        duration: "3:56",
+        audioUrl: "https://blob.v0.dev/pL2wY.mp3",
+        duration: "3:37",
       },
       {
         id: "sadie-10",
         title: "Could Have Been Here",
-        audioUrl: "/audio/could-have-been-here-new.mp3",
-        duration: "4:08",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Could%20Have%20Been%20Here-V1XbxYbp6hE1HKajMI9dgrlLZFDoE5.mp3",
+        duration: "3:44",
       },
     ],
   },

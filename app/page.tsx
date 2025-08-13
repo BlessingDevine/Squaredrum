@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import { Play, Download, Users, Radio, Calendar, MapPin, ChevronDown, Clock, Pause } from 'lucide-react'
+import { Play, Download, Users, Radio, Calendar, MapPin, ChevronDown, Clock, Pause } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import PageBlurOverlay from "@/components/page-blur-overlay"
@@ -50,8 +50,8 @@ const heroImages = [
     alt: "Echo Bloom - Electronic artist in blue suit with arms outstretched",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucas%20Meno.jpg-qm5NB9052ElC9YU9bNz7jLwxvlIZrv.jpeg",
-    alt: "Lucas Meno - R&B/Rap artist in cream suit on vintage chair",
+    src: "/images/lucas-updated.jpg",
+    alt: "Lucas - R&B/Rap artist in cream suit on vintage yellow chair",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neilly%20Storm.jpg-pbl9md9S3nFpvpk2TyAlyI3p5qqb84.jpeg",
@@ -60,6 +60,14 @@ const heroImages = [
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cedar%20Line.jpg-HjdkXYcaCDndFtwrpgspguke6B1CAV.jpeg",
     alt: "Cedar Line - Country band in rural setting with instruments",
+  },
+  {
+    src: "/images/sadie-rose.jpg",
+    alt: "Sadie Rose - Country artist with acoustic guitar in golden sunset field",
+  },
+  {
+    src: "/images/lunah-updated.jpg",
+    alt: "Lunah - Glamorous duo in elegant white outfits with sparkly details",
   },
 ]
 
@@ -626,7 +634,7 @@ export default function HomePage() {
               <h2 className="font-cinzel text-3xl sm:text-4xl font-bold tracking-wider mb-6">
                 EXPERIENCE THE <span className="text-amber-500">FUTURE</span>
               </h2>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   asChild

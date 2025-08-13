@@ -1694,7 +1694,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Let's Talk About It",
-      audioUrl: "/audio/lets-talk-about-it.mp3",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/love-mi-like-sunday-morning-qFkR47hzT5bmstd5FxqqlG3yc3jV5b.mp3",
       duration: "3:45",
     },
     photoGallery: [
@@ -1855,11 +1856,6 @@ export const artists: Artist[] = [
         src: "/images/echo-bloom/14.jpg",
         alt: "Echo Bloom sitting in studio chair next to large mixing console, wearing black sweatshirt with layered chains, distressed jeans, and sneakers with professional studio monitors",
         caption: "Mixing Console",
-      },
-      {
-        id: "echo-photo-8",
-        src: "/images/echo-bloom/01.jpg",
-        alt: "Echo Bloom with blonde hair in purple-gray turtleneck sitting on concrete steps with modern buildings in background",
       },
       {
         id: "echo-photo-8",
@@ -2143,7 +2139,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Wheels Fall Off",
-      audioUrl: "/audio/wheels-fall-off.mp3",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nuh-text-mi-ex-JYMwOV0LN3dtBbbAoWNmR8r5LQ2FI2.mp3",
       duration: "4:12",
     },
     photoGallery: [
@@ -2215,7 +2212,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "The Honky Tonk Heart",
-      audioUrl: "/audio/honky-tonk-heart.mp3",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yuh-love-strong-rULXcfJlvfQmpV21PmpzoB1E1Fg9ki.mp3",
       duration: "4:05",
     },
     photoGallery: [

@@ -83,56 +83,56 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Run Away",
-      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Run%20Away-NeillySt0rm-A1B2C3D4E5F6.mp3",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/run-away-7RyfVWFjdYNbGLIkXqNYlUsVRAb82C.mp3",
       duration: "3:33",
     },
     tracks: [
       {
         id: "neilly-1",
         title: "Run Away",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Run%20Away-NeillySt0rm-A1B2C3D4E5F6.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/run-away-7RyfVWFjdYNbGLIkXqNYlUsVRAb82C.mp3",
         duration: "3:33",
       },
       {
         id: "neilly-2",
         title: "Butterfly (Cover)",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butterfly-fAYLgklhZwehVMzp9B4LnFul12i44u.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-ZO55bNThWIYZBhK49BcpFbhrkC2m6C.mp3",
         duration: "3:45",
       },
       {
         id: "neilly-3",
         title: "Floating",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Floating-NeillySt0rm-F7G8H9I0J1K2.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/floating-0zyS1MdCMiXP7xiCNghQfYqC9ehfzr.mp3",
         duration: "4:12",
       },
       {
         id: "neilly-4",
         title: "If You Want It",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/If%20You%20Want%20It-NeillySt0rm-L3M4N5O6P7Q8.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/it-is-fate-f6UmmOUWLvePJUyHvB43Fa9QqufJbt.mp3",
         duration: "3:28",
       },
       {
         id: "neilly-5",
         title: "What Do I Do Now",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/What%20Do%20I%20Do%20Now-NeillySt0rm-R9S0T1U2V3W4.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what-do-i-do-now-Fokd0arltE8bbslPq1Eb9anvTiS6kH.mp3",
         duration: "3:56",
       },
       {
         id: "neilly-6",
         title: "Take A Picture",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Take%20A%20Picture-NeillySt0rm-X5Y6Z7A8B9C0.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/take-a-picture-6ANzbfQhuYJ12I8s848QwbQ7CYeBT1.mp3",
         duration: "4:03",
       },
       {
         id: "neilly-7",
         title: "Oops...I Like Him",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oops%20I%20Like%20Him-NeillySt0rm-D1E2F3G4H5I6.mp3",
-        duration: "3:35",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/oops...i-like-him-A2gdP68acrNemBqBV3QN7jg0Cg5dMB.mp3",
+        duration: "3:43",
       },
     ],
     photoGallery: [
@@ -608,7 +608,7 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Butterfly",
-      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butterfly-fAYLgklhZwehVMzp9B4LnFul12i44u.mp3",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-ZO55bNThWIYZBhK49BcpFbhrkC2m6C.mp3",
       duration: "3:58",
     },
     tracks: [
@@ -616,161 +616,160 @@ export const artists: Artist[] = [
         id: "saka-1",
         title: "Butterfly",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butterfly-fAYLgklhZwehVMzp9B4LnFul12i44u.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-ZO55bNThWIYZBhK49BcpFbhrkC2m6C.mp3",
         duration: "3:58",
       },
       {
         id: "saka-2",
         title: "Mirror Talk",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mirror%20Talk-8kJfX2mNpQrYvZwL9tHgE5cA3uBvRs.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mirror-talk-7slHCP9pVLQ5Xyo2uGSMWFdKRaoT4C.mp3",
         duration: "3:42",
       },
       {
         id: "saka-3",
         title: "Bad Texter",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bad%20Texter-mK9pL4nQrS7vXzY2wH8gF6cB5uDtEj.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fine-anyway-h4yfvF90KHuGXJMooQytTe4ju9VZtV.mp3",
         duration: "3:28",
       },
       {
         id: "saka-4",
         title: "Ex Files",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ex%20Files-nL0qM5oRsT8wYzA3xI9hG7dC6vEuFk.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ex-files-Yo2BlzS5JkiKROQV8oa7gOvaiSLr7r.mp3",
         duration: "4:05",
       },
       {
         id: "saka-5",
         title: "Girl Math",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Girl%20Math-oM1rN6pStU9xZaB4yJ0iH8eD7wFvGl.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/girl-math-uhf13kCoSXBS7lFzaH6IRdMUNcxzY4.mp3",
         duration: "3:33",
       },
       {
         id: "saka-6",
         title: "Glow Up Season",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Glow%20Up%20Season-pN2sO7qTvV0yAbC5zK1jI9fE8xGwHm.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/glow-up-season-QSGudbgwLO5svaNGVpMK1uNTIQU3rr.mp3",
         duration: "3:51",
       },
       {
         id: "saka-7",
         title: "Designer Heartbreak",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Designer%20Heartbreak-qO3tP8rUwW1zBcD6aL2kJ0gF9yHxIn.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/designer-heartbreak-USSBxt9YFGCPfmAoO9Pe4MEXfx3v2a.mp3",
         duration: "4:12",
       },
       {
         id: "saka-8",
         title: "Hot Girl Summer Internship",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hot%20Girl%20Summer%20Internship-rP4uQ9sVxX2aCdE7bM3lK1hG0zIyJo.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hot-girl-summer-internship-XrxsALICDpFGO89MvrwKzq3CD5zwWG.mp3",
         duration: "3:47",
       },
       {
         id: "saka-9",
         title: "Emotional Support Playlist",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Emotional%20Support%20Playlist-sQ5vR0tWyY3bDeF8cN4mL2iH1aJzKp.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/emotional-support-playlist-kChOEBCUUAYABAolq7ItvN8ebsQjYf.mp3",
         duration: "4:18",
       },
       {
         id: "saka-10",
         title: "Mommy Juice",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mommy%20Juice-tR6wS1uXzZ4cEfG9dO5nM3jI2bKaLq.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mommy-juice-Razhkv83AVIxyH7uLeCYoZ5cUVBghe.mp3",
         duration: "3:39",
       },
       {
         id: "saka-11",
         title: "Red Flag Collector I",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Red%20Flag%20Collector%20I-uS7xT2vYaA5dFgH0eP6oN4kJ3cLbMr.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-flag-collector-i-OJKEbWqb52cU4OTx60jI2GZPuvdKb2.mp3",
         duration: "3:54",
       },
       {
         id: "saka-12",
         title: "Block Party",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Block%20Party-vT8yU3wZbB6eFhI1fQ7pO5lK4dMcNs.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dancing-tonight-46i5tSAjGyLhfNPWu2MQYx6Hqu2J08.mp3",
         duration: "3:31",
       },
       {
         id: "saka-13",
         title: "Swiping Through My Feelings",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Swiping%20Through%20My%20Feelings-wU9zV4xAcC7fGiJ2gR8qP6mL5eNdOt.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swiping-through-my-feelings-r9gZq9wRYCTFWyPXOdFe6KTNeQnTrj.mp3",
         duration: "4:02",
       },
       {
         id: "saka-14",
         title: "Therapy Breakthrough II",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Therapy%20Breakthrough%20II-xV0aW5yBdD8gHjK3hS9rQ7nM6fOePu.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/therapy-breakthrough-ii-Uw3agBjIbKO2ABBZxbX9rqdoR9zIyB.mp3",
         duration: "3:48",
       },
       {
         id: "saka-15",
         title: "Red Flag Collector",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Red%20Flag%20Collector-yW1bX6zCeE9hIkL4iT0sR8oN7gPfQv.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-flag-collector-D9RiIgsPEinujLMUDMoikLqsIpk2sZ.mp3",
         duration: "3:57",
       },
       {
         id: "saka-16",
         title: "Standards Rising",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Standards%20Rising-zX2cY7aDfF0iJlM5jU1tS9pO8hQgRw.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/standards-rising-GcmQepkhPIUgt94azv4o1heTHIjYT7.mp3",
         duration: "4:08",
       },
       {
         id: "saka-17",
         title: "Pillow Princess",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pillow%20Princess-aY3dZ8bEgG1jKmN6kV2uT0qP9iRhSx.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pillow-princess-fxlfnrnRx6rtAEtSiHFE2eCGNd3Sly.mp3",
         duration: "3:44",
       },
       {
         id: "saka-18",
         title: "Pillow Princess II",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pillow%20Princess%20II-bZ4eA9cFhH2kLnO7lW3vU1rQ0jSiTy.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pillow-princess-ii-ErPQP6VmprI0FESLQg5OF4MqTbdXbi.mp3",
         duration: "3:52",
       },
       {
         id: "saka-19",
         title: "Self-Care Sunday",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Self-Care%20Sunday-cA5fB0dGiI3lMoP8mX4wV2sR1kTjUz.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/self-care-sunday-6i5WJzYPxZMeX4AyTVLV0ZoOw6c5UD.mp3",
         duration: "4:15",
       },
       {
         id: "saka-20",
         title: "Queen of Overthinking",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Queen%20of%20Overthinking-dB6gC1eHjJ4mNpQ9nY5xW3tS2lUkVa.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/queen-of-overthinking-hL1HCjlOVe5NcetfdU29xe7FhLkq9E.mp3",
         duration: "3:36",
       },
       {
         id: "saka-21",
         title: "Wine Mom Anthem",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wine%20Mom%20Anthem-eC7hD2fIkK5nOqR0oZ6yX4uT3mVlWb.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wine-mom-anthem-FkGevBhYBzCNKm1fH1hiDvb72Xdh08.mp3",
         duration: "3:42",
       },
       {
         id: "saka-22",
         title: "Therapy Breakthrough",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Therapy%20Breakthrough-fD8iE3gJlL6oRsS1pA7zY5vU4nWmXc.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/therapy-breakthrough-fKDJfzWGHPZk4wKnbQzzlggPk08b4M.mp3",
         duration: "4:01",
       },
       {
         id: "saka-23",
         title: "Toxic But Make It Fashion",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Toxic%20But%20Make%20It%20Fashion-gE9jF4hKmM7pStT2qB8aZ6wV5oXnYd.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/toxic-but-make-it-fashion-dOt9ArJg8EQ7meoL7eOdEAMbnVR9bl.mp3",
         duration: "3:52",
       },
     ],
@@ -1286,7 +1285,7 @@ export const artists: Artist[] = [
       },
       {
         id: "neka-photo-25",
-        src: "/images/neka-new/neka-25.jpg",
+        src: "/images/neka-new/neka-26.jpg",
         alt: "Close-up portrait of Neka with natural hair and locs, wearing orange/yellow top with gold chain necklaces, smiling warmly",
         caption: "Golden Portrait",
       },
@@ -1695,8 +1694,8 @@ export const artists: Artist[] = [
     featuredTrack: {
       title: "Let's Talk About It",
       audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/love-mi-like-sunday-morning-qFkR47hzT5bmstd5FxqqlG3yc3jV5b.mp3",
-      duration: "3:45",
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/let%27s-talk-about-it-Y5KVRtNKWyLiZFAkrfpNZsu9zmtoWM.mp3",
+      duration: "4:02",
     },
     photoGallery: [
       {
@@ -1809,10 +1808,10 @@ export const artists: Artist[] = [
     },
     featured: true,
     featuredTrack: {
-      title: "Let's Talk About It",
+      title: "Get To The Loving",
       audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lets-talk-about-it-8kF2mN9pQ7vX3wE5rT6yU1oI4hS9dL.mp3",
-      duration: "3:45",
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/get-to-the-loving-5RoKnrYEFTud3hCf078L3LivfOQ93B.mp3",
+      duration: "4:15",
     },
     photoGallery: [
       {
@@ -2140,8 +2139,8 @@ export const artists: Artist[] = [
     featuredTrack: {
       title: "Wheels Fall Off",
       audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nuh-text-mi-ex-JYMwOV0LN3dtBbbAoWNmR8r5LQ2FI2.mp3",
-      duration: "4:12",
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheels-fall-off-b3gDDj5mhP7fl6jAeSHbybHGI6Elcr.mp3",
+      duration: "4:05",
     },
     photoGallery: [
       {
@@ -2212,8 +2211,7 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "The Honky Tonk Heart",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yuh-love-strong-rULXcfJlvfQmpV21PmpzoB1E1Fg9ki.mp3",
+      audioUrl: "/audio/honky-tonk-heart.mp3",
       duration: "4:05",
     },
     photoGallery: [

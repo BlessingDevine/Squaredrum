@@ -124,8 +124,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Girl From Choctaw",
     artist: "Country Square Artist",
     duration: "3:52",
-    audioUrl: "/audio/girl-from-choctaw.mp3",
-    downloadUrl: "/audio/girl-from-choctaw.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/girl-from-choctaw-8kF2mN9pQ7vX3wE5rT6yU1oI4hS9dL.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/girl-from-choctaw-8kF2mN9pQ7vX3wE5rT6yU1oI4hS9dL.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -133,8 +135,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Even When I Am Drunk",
     artist: "Country Square Artist",
     duration: "4:15",
-    audioUrl: "/audio/even-when-i-am-drunk.mp3",
-    downloadUrl: "/audio/even-when-i-am-drunk.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/even-when-i-am-drunk-3mK8pL2qR9vY4wE7rT5yU0oI6hS8dM.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/even-when-i-am-drunk-3mK8pL2qR9vY4wE7rT5yU0oI6hS8dM.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -142,8 +146,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Giggling Under The Tree",
     artist: "Country Square Artist",
     duration: "3:38",
-    audioUrl: "/audio/giggling-under-the-tree.mp3",
-    downloadUrl: "/audio/giggling-under-the-tree.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/giggling-under-the-tree-7nJ9oK3pQ8vX2wE4rT7yU1oI5hS0dN.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/giggling-under-the-tree-7nJ9oK3pQ8vX2wE4rT7yU1oI5hS0dN.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -151,8 +157,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Do I Get A Name",
     artist: "Country Square Artist",
     duration: "4:02",
-    audioUrl: "/audio/do-i-get-a-name.mp3",
-    downloadUrl: "/audio/do-i-get-a-name.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/do-i-get-a-name-2mL7pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/do-i-get-a-name-2mL7pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -160,8 +168,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Danger In A Sundress",
     artist: "Country Square Artist",
     duration: "3:44",
-    audioUrl: "/audio/danger-in-a-sundress.mp3",
-    downloadUrl: "/audio/danger-in-a-sundress.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/danger-in-a-sundress-6nI8oJ5pQ1vX4wE5rT9yU3oI8hS2dP.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/danger-in-a-sundress-6nI8oJ5pQ1vX4wE5rT9yU3oI8hS2dP.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -169,8 +179,9 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Heartquake",
     artist: "Country Square Artist",
     duration: "4:11",
-    audioUrl: "/audio/heartquake.mp3",
-    downloadUrl: "/audio/heartquake.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/heartquake-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/heartquake-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -178,8 +189,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Even When I Am Drunk II",
     artist: "Country Square Artist",
     duration: "4:08",
-    audioUrl: "/audio/even-when-i-am-drunk-ii.mp3",
-    downloadUrl: "/audio/even-when-i-am-drunk-ii.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/even-when-i-am-drunk-ii-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/even-when-i-am-drunk-ii-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -187,8 +200,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Angel Wings and Devils Hunger",
     artist: "Country Square Artist",
     duration: "3:57",
-    audioUrl: "/audio/angel-wings-and-devils-hunger.mp3",
-    downloadUrl: "/audio/angel-wings-and-devils-hunger.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/angel-wings-and-devils-hunger-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/angel-wings-and-devils-hunger-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -196,8 +211,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Engine's Still Running",
     artist: "Country Square Artist",
     duration: "4:23",
-    audioUrl: "/audio/engines-still-running.mp3",
-    downloadUrl: "/audio/engines-still-running.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/engines-still-running-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/engines-still-running-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -205,8 +222,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Love In Kansas",
     artist: "Country Square Artist",
     duration: "3:48",
-    audioUrl: "/audio/love-in-kansas-updated.mp3",
-    downloadUrl: "/audio/love-in-kansas-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/love-in-kansas-updated-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/love-in-kansas-updated-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -214,8 +233,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Let's Chase That Moon Down",
     artist: "Country Square Artist",
     duration: "4:12",
-    audioUrl: "/audio/lets-chase-that-moon-down-updated.mp3",
-    downloadUrl: "/audio/lets-chase-that-moon-down-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lets-chase-that-moon-down-updated-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lets-chase-that-moon-down-updated-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -223,8 +244,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Never Stood A Chance",
     artist: "Country Square Artist",
     duration: "3:55",
-    audioUrl: "/audio/never-stood-a-chance-updated.mp3",
-    downloadUrl: "/audio/never-stood-a-chance-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/never-stood-a-chance-updated-2mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/never-stood-a-chance-updated-2mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -232,8 +255,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Let's Make A Life",
     artist: "Country Square Artist",
     duration: "4:07",
-    audioUrl: "/audio/lets-make-a-life-updated.mp3",
-    downloadUrl: "/audio/lets-make-a-life-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lets-make-a-life-updated-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lets-make-a-life-updated-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -241,8 +266,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Memories Of A Love Past",
     artist: "Country Square Artist",
     duration: "3:41",
-    audioUrl: "/audio/memories-of-a-love-past-updated.mp3",
-    downloadUrl: "/audio/memories-of-a-love-past-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-of-a-love-past-updated-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-of-a-love-past-updated-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -250,8 +277,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "I Am Here Now",
     artist: "Country Square Artist",
     duration: "4:19",
-    audioUrl: "/audio/i-am-here-now-updated.mp3",
-    downloadUrl: "/audio/i-am-here-now-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-here-now-updated-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-here-now-updated-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -259,8 +288,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Love You Like I Do (Country)",
     artist: "Country Square Artist",
     duration: "3:53",
-    audioUrl: "/audio/love-you-like-i-do-country-updated.mp3",
-    downloadUrl: "/audio/love-you-like-i-do-country-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/love-you-like-i-do-country-updated-8mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/love-you-like-i-do-country-updated-8mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -268,8 +299,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Memories Of A Love Past II",
     artist: "Country Square Artist",
     duration: "4:04",
-    audioUrl: "/audio/memories-of-a-love-past-ii-updated.mp3",
-    downloadUrl: "/audio/memories-of-a-love-past-ii-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-of-a-love-past-ii-updated-7mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-of-a-love-past-ii-updated-7mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -277,8 +310,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "I Like The Ride",
     artist: "Country Square Artist",
     duration: "3:37",
-    audioUrl: "/audio/i-like-the-ride-updated.mp3",
-    downloadUrl: "/audio/i-like-the-ride-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-like-the-ride-updated-6mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-like-the-ride-updated-6mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -286,8 +321,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Missing Out",
     artist: "Country Square Artist",
     duration: "4:14",
-    audioUrl: "/audio/missing-out-updated.mp3",
-    downloadUrl: "/audio/missing-out-updated.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/missing-out-updated-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/missing-out-updated-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -295,8 +332,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Skipping Rocks",
     artist: "Country Square Artist",
     duration: "3:46",
-    audioUrl: "/audio/skipping-rocks.mp3",
-    downloadUrl: "/audio/skipping-rocks.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/skipping-rocks-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/skipping-rocks-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -304,8 +343,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Never Stood A Chance",
     artist: "Country Square Artist",
     duration: "4:01",
-    audioUrl: "/audio/never-stood-a-chance-v2.mp3",
-    downloadUrl: "/audio/never-stood-a-chance-v2.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/never-stood-a-chance-v2-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/never-stood-a-chance-v2-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -313,8 +354,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Thanks Heavens She's Home",
     artist: "Country Square Artist",
     duration: "3:58",
-    audioUrl: "/audio/thanks-heavens-shes-home.mp3",
-    downloadUrl: "/audio/thanks-heavens-shes-home.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thanks-heavens-shes-home-2mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thanks-heavens-shes-home-2mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -322,8 +365,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Playing For Keeps",
     artist: "Country Square Artist",
     duration: "4:13",
-    audioUrl: "/audio/playing-for-keeps.mp3",
-    downloadUrl: "/audio/playing-for-keeps.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/playing-for-keeps-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/playing-for-keeps-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -331,8 +376,9 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "New Places",
     artist: "Country Square Artist",
     duration: "3:42",
-    audioUrl: "/audio/new-places.mp3",
-    downloadUrl: "/audio/new-places.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/new-places-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/new-places-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -340,8 +386,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Pull Up A Chair",
     artist: "Country Square Artist",
     duration: "4:09",
-    audioUrl: "/audio/pull-up-a-chair.mp3",
-    downloadUrl: "/audio/pull-up-a-chair.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pull-up-a-chair-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pull-up-a-chair-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -349,8 +397,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "No Such Thing As Too Hot",
     artist: "Country Square Artist",
     duration: "3:54",
-    audioUrl: "/audio/no-such-thing-as-too-hot.mp3",
-    downloadUrl: "/audio/no-such-thing-as-too-hot.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-such-thing-as-too-hot-8mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-such-thing-as-too-hot-8mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -358,8 +408,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Red Wine And Roses",
     artist: "Country Square Artist",
     duration: "4:16",
-    audioUrl: "/audio/red-wine-and-roses.mp3",
-    downloadUrl: "/audio/red-wine-and-roses.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-wine-and-roses-7mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-wine-and-roses-7mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -367,8 +419,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Sun Will Shine Again II",
     artist: "Country Square Artist",
     duration: "3:51",
-    audioUrl: "/audio/sun-will-shine-again-ii.mp3",
-    downloadUrl: "/audio/sun-will-shine-again-ii.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sun-will-shine-again-ii-6mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sun-will-shine-again-ii-6mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -376,8 +430,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Storm In My Heart",
     artist: "Country Square Artist",
     duration: "4:05",
-    audioUrl: "/audio/storm-in-my-heart.mp3",
-    downloadUrl: "/audio/storm-in-my-heart.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/storm-in-my-heart-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/storm-in-my-heart-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -385,8 +441,8 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Too Soon",
     artist: "Country Square Artist",
     duration: "3:43",
-    audioUrl: "/audio/too-soon.mp3",
-    downloadUrl: "/audio/too-soon.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/too-soon-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/too-soon-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -394,8 +450,9 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Wicked Grin",
     artist: "Country Square Artist",
     duration: "4:02",
-    audioUrl: "/audio/wicked-grin.mp3",
-    downloadUrl: "/audio/wicked-grin.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wicked-grin-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wicked-grin-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -403,8 +460,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "This Well Is Dry",
     artist: "Country Square Artist",
     duration: "3:56",
-    audioUrl: "/audio/this-well-is-dry.mp3",
-    downloadUrl: "/audio/this-well-is-dry.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/this-well-is-dry-2mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/this-well-is-dry-2mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -412,8 +471,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Whispering Things",
     artist: "Country Square Artist",
     duration: "4:08",
-    audioUrl: "/audio/whispering-things.mp3",
-    downloadUrl: "/audio/whispering-things.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/whispering-things-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/whispering-things-1mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -421,8 +482,8 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Wild Idea",
     artist: "Country Square Artist",
     duration: "3:47",
-    audioUrl: "/audio/wild-idea.mp3",
-    downloadUrl: "/audio/wild-idea.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wild-idea-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wild-idea-0mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -430,8 +491,8 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Too Hot",
     artist: "Country Square Artist",
     duration: "4:11",
-    audioUrl: "/audio/too-hot.mp3",
-    downloadUrl: "/audio/too-hot.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/too-hot-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/too-hot-9mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -439,8 +500,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "The Sun Will Shine Again",
     artist: "Country Square Artist",
     duration: "3:54",
-    audioUrl: "/audio/the-sun-will-shine-again.mp3",
-    downloadUrl: "/audio/the-sun-will-shine-again.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-sun-will-shine-again-8mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-sun-will-shine-again-8mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -448,8 +511,9 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Velvet Rope",
     artist: "Country Square Artist",
     duration: "4:17",
-    audioUrl: "/audio/velvet-rope.mp3",
-    downloadUrl: "/audio/velvet-rope.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/velvet-rope-7mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/velvet-rope-7mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -457,8 +521,9 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Wildfire",
     artist: "Country Square Artist",
     duration: "3:49",
-    audioUrl: "/audio/wildfire-v2.mp3",
-    downloadUrl: "/audio/wildfire-v2.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wildfire-v2-6mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wildfire-v2-6mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -466,8 +531,8 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Unusual",
     artist: "Country Square Artist",
     duration: "4:06",
-    audioUrl: "/audio/unusual.mp3",
-    downloadUrl: "/audio/unusual.mp3",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unusual-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unusual-5mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -475,8 +540,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "Your Kiss Gives Me Life",
     artist: "Country Square Artist",
     duration: "3:58",
-    audioUrl: "/audio/your-kiss-gives-me-life.mp3",
-    downloadUrl: "/audio/your-kiss-gives-me-life.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/your-kiss-gives-me-life-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/your-kiss-gives-me-life-4mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
   {
@@ -484,8 +551,10 @@ export const countrySquareTracks: CountrySquareTrack[] = [
     title: "You Move Earth",
     artist: "Country Square Artist",
     duration: "4:03",
-    audioUrl: "/audio/you-move-earth.mp3",
-    downloadUrl: "/audio/you-move-earth.mp3",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/you-move-earth-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/you-move-earth-3mL8pK4qR0vY3wE6rT8yU2oI7hS1dO.mp3",
     coverArt: "/country-square.jpg",
   },
 ]

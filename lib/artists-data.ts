@@ -1966,7 +1966,7 @@ export const artists: Artist[] = [
     featuredTrack: {
       title: "Come Get It",
       audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Come%20Get%20it-dHRHnT09OlEs8taEuRwVWlFFMzVaV0.mp3",
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/come-get-it-OJWOYgcILjrZD2V2gumuWBeGYl4OEP.mp3",
       duration: "3:52",
     },
     photoGallery: [
@@ -2048,63 +2048,70 @@ export const artists: Artist[] = [
         id: "sadie-1",
         title: "Come Get It",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Come%20Get%20it-dHRHnT09OlEs8taEuRwVWlFFMzVaV0.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/come-get-it-OJWOYgcILjrZD2V2gumuWBeGYl4OEP.mp3",
         duration: "3:52",
       },
       {
         id: "sadie-2",
         title: "The Sun Will Shine Again",
-        audioUrl: "https://blob.v0.dev/sR9kL.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-sun-will-shine-again-yJTsPWfLMxO4HJZJKeJSb5kUDHxeel.mp3",
         duration: "3:54",
       },
       {
         id: "sadie-3",
         title: "A Love Past",
-        audioUrl: "https://blob.v0.dev/mN8pQ.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-love-past-ii-bOujSNqlozHmkI7eQWFjZtFLBIm0fB.mp3",
         duration: "4:01",
       },
       {
         id: "sadie-4",
         title: "Already Winning",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Already%20Winning-skMhAPXUEhJS1cl9dfStusPh1ngIbo.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/already-winning-aFBlNaPEQsSzbR3ZlBq60CNkE37d6J.mp3",
         duration: "4:03",
       },
       {
         id: "sadie-5",
         title: "Playing For Keeps",
-        audioUrl: "https://blob.v0.dev/tK7wX.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/playing-for-keeps-KnaVdE707qbCoHnhGd1XAbqhli84N3.mp3",
         duration: "4:13",
       },
       {
         id: "sadie-6",
         title: "Pull Up A Chair",
-        audioUrl: "https://blob.v0.dev/vH3nM.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pull-up-a-chair-M0trTMP68zv7UiphDGhzXLpQaq9iy6.mp3",
         duration: "4:09",
       },
       {
         id: "sadie-7",
         title: "Memories Of A Love Past",
-        audioUrl: "https://blob.v0.dev/bF5qR.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-of-a-love-past-SHSzjEHsoghF54191mElgavzzqvlEN.mp3",
         duration: "3:41",
       },
       {
         id: "sadie-8",
         title: "Velvet Rope",
-        audioUrl: "https://blob.v0.dev/dJ9sT.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/velvet-rope-inWXidkBhiUCUA97lcmpDQZmfFNdgv.mp3",
         duration: "4:17",
       },
       {
         id: "sadie-9",
         title: "I Like The Ride",
-        audioUrl: "https://blob.v0.dev/pL2wY.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-like-the-ride-aMY50k2BUdT38sAX4T2qCBbQTzsNnu.mp3",
         duration: "3:37",
       },
       {
         id: "sadie-10",
         title: "Could Have Been Here",
         audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Could%20Have%20Been%20Here-V1XbxYbp6hE1HKajMI9dgrlLZFDoE5.mp3",
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/could-have-been-here-FpGTwY7p0OUvi0fTEUk08IYdjqYC4n.mp3",
         duration: "3:44",
       },
     ],
@@ -2211,7 +2218,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "The Honky Tonk Heart",
-      audioUrl: "/audio/honky-tonk-heart.mp3",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/honky-tonk-heart-JyDemMPTwICBIozXczovBCs7soWokf.mp3",
       duration: "4:05",
     },
     photoGallery: [

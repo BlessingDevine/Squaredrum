@@ -50,7 +50,7 @@ export default function RadioPlayer() {
             <div className="relative">
               <div className="w-10 h-10 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-xl flex items-center justify-center border border-amber-500/30">
                 <Image
-                  src="/music-square-radio-logo-neon.png"
+                  src="/images/music-square-radio-logo.jpeg"
                   alt="Music Square Radio"
                   width={24}
                   height={24}
@@ -110,7 +110,7 @@ export default function RadioPlayer() {
             <div className="relative">
               <div className="w-12 h-12 bg-gradient-to-br from-amber-500/20 to-amber-600/20 rounded-xl flex items-center justify-center border border-amber-500/30">
                 <Image
-                  src="/music-square-radio-logo-neon.png"
+                  src="/images/music-square-radio-logo.jpeg"
                   alt="Music Square Radio"
                   width={28}
                   height={28}

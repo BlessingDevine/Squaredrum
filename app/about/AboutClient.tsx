@@ -130,7 +130,7 @@ export default function AboutClient() {
                 <p className="text-gray-400 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
                   SQUAREDRUM is pioneering the future of music through the revolutionary collaboration between
                   artificial intelligence and human creativity, producing authentic sounds that transcend traditional
-                  boundaries.
+                  boundaries and shine with golden innovation.
                 </p>
               </div>
             </div>
@@ -157,35 +157,38 @@ export default function AboutClient() {
                     belief: the future of music lies in the seamless collaboration between artificial intelligence and
                     human creativity. We{"'"}re not just another record label—we{"'"}re a pioneering collective that
                     demonstrates how AI technology and talented human professionals can work together to create
-                    extraordinary music.
+                    extraordinary music that radiates with warmth and brilliance.
                   </p>
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
                     Our journey began when our founder recognized the incredible potential that emerges when
                     cutting-edge AI systems are combined with human expertise in music production, songwriting, and
                     creative direction. Rather than replacing human talent, we{"'"}ve assembled a unique ecosystem where
                     various AI platforms collaborate with experienced music producers, skilled songwriters, creative
-                    content creators, and industry professionals.
+                    content creators, and industry professionals to forge musical gold.
                   </p>
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
                     Today, SQUAREDRUM represents a diverse roster of AI-generated artists whose music is created using
                     advanced AI systems currently available, then refined and enhanced through collaboration with human
-                    professionals across multiple genres. Our AI systems generate creative foundations, while our human
-                    partners bring industry expertise, emotional intelligence, and professional polish to ensure every
-                    release meets the highest standards.
+                    professionals across multiple genres. Our AI systems generate creative foundations that gleam with
+                    potential, while our human partners bring industry expertise, emotional intelligence, and
+                    professional polish to ensure every release meets the highest standards and shines with premium
+                    quality.
                   </p>
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
                     What sets us apart is our commitment to transparency about this collaborative process, showcasing
                     the capabilities of current AI technology while ensuring fair recognition of both AI and human
                     contributions. We believe that when today{"'"}s most advanced AI systems are guided by human wisdom
-                    and experience, truly magical music happens. We{"'"}re proving that the current state of AI
-                    technology is already capable of creating professional-quality music when properly directed.
+                    and experience, truly luminous music happens. We{"'"}re proving that the current state of AI
+                    technology is already capable of creating professional-quality music when properly directed with
+                    golden precision.
                   </p>
                   <p className="text-gray-300 leading-relaxed text-center">
                     Every track you hear from SQUAREDRUM is the result of this unique AI-human collaboration—where
                     cutting-edge AI systems provide limitless creative possibilities, and human professionals bring the
                     craftsmanship, emotional depth, and industry knowledge needed to create music that resonates with
-                    audiences worldwide. This is the SQUAREDRUM difference: demonstrating that the future of music is
-                    happening now, through the intelligent combination of current AI technology and human expertise.
+                    audiences worldwide and glows with authentic warmth. This is the SQUAREDRUM difference:
+                    demonstrating that the future of music is happening now, through the intelligent combination of
+                    current AI technology and human expertise, creating a sound that burns bright with innovation.
                   </p>
                 </div>
               </div>
@@ -218,6 +221,7 @@ export default function AboutClient() {
                           src={
                             member.image ||
                             "/placeholder.svg?height=400&width=400&query=team%20member%20portrait" ||
+                            "/placeholder.svg" ||
                             "/placeholder.svg" ||
                             "/placeholder.svg"
                           }
@@ -431,9 +435,10 @@ export default function AboutClient() {
                     <p>
                       SQUAREDRUM is built on the principle that the future of music will be a collaboration between AI
                       technologies and human expertise. We work with various AI systems and tools currently available to
-                      generate creative foundations, while our talented human music producers, songwriters, content
-                      creators, and industry professionals bring the craftsmanship, emotional intelligence, and
-                      commercial insight needed to create truly exceptional music.
+                      generate creative foundations that sparkle with potential, while our talented human music
+                      producers, songwriters, content creators, and industry professionals bring the craftsmanship,
+                      emotional intelligence, and commercial insight needed to create truly exceptional music that
+                      radiates with premium brilliance.
                     </p>
 
                     <p>
@@ -441,7 +446,8 @@ export default function AboutClient() {
                       human contributions. Every release represents the best of both worlds: the limitless creative
                       potential of today{"'"}s most advanced AI systems combined with the wisdom, experience, and
                       artistry of human professionals. This is how we{"'"}re shaping the future of music—by showcasing
-                      what{"'"}s possible with current AI technology when guided by human expertise.
+                      what{"'"}s possible with current AI technology when guided by human expertise, creating sounds
+                      that burn bright with golden innovation and warm authenticity.
                     </p>
                   </div>
                 </div>

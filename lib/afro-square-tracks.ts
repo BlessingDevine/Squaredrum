@@ -585,6 +585,108 @@ export const afroSquareTracks: AfroSquareTrack[] = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/All%20I%20Can%20Say%20%28Amapiano%20Remix%29-L9iMaUDmZV8ESxSptMYV20Ey2w184h.mp3",
     coverArt: "/afro-square.jpg",
   },
+  {
+    id: 56,
+    title: "No Dey Rush",
+    artist: "Afro Square Artist",
+    duration: "3:28",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-bGmx9iDWVsij8oc57GU5I22P5bLPHp.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-bGmx9iDWVsij8oc57GU5I22P5bLPHp.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 57,
+    title: "The Holly Molly Live",
+    artist: "Afro Square Artist",
+    duration: "4:12",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-holly-molly-live-BVvuYy4JlGAD0xSXy5wxuB0myDPRf5.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-holly-molly-live-BVvuYy4JlGAD0xSXy5wxuB0myDPRf5.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 58,
+    title: "Stray Dog",
+    artist: "Afro Square Artist",
+    duration: "3:29",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/stray-dog-eCZHbX8EKL3mCe2aSpPUS1YfOOnVhU.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/stray-dog-eCZHbX8EKL3mCe2aSpPUS1YfOOnVhU.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 59,
+    title: "Broken No Mean Finish",
+    artist: "Afro Square Artist",
+    duration: "4:15",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/broken-no-mean-finish-gAUYPZPexvSOKI1kmtnxqIazgJVmRd.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/broken-no-mean-finish-gAUYPZPexvSOKI1kmtnxqIazgJVmRd.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 60,
+    title: "I Am Loyal",
+    artist: "Afro Square Artist",
+    duration: "4:08",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-loyal-WPURRAAjuamvRyZwpXt2oO2ZxCEUTf.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-loyal-WPURRAAjuamvRyZwpXt2oO2ZxCEUTf.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 61,
+    title: "Lagos Night",
+    artist: "Afro Square Artist",
+    duration: "3:38",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lagos-night-GdsEsE6CeysXkuKxueiyzDneeSXcFX.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lagos-night-GdsEsE6CeysXkuKxueiyzDneeSXcFX.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 62,
+    title: "Na Me Be The One",
+    artist: "Afro Square Artist",
+    duration: "3:52",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/na-me-be-the-one-E9mlnfckNmw6nE13Z1nwFfdI1FwuIK.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/na-me-be-the-one-E9mlnfckNmw6nE13Z1nwFfdI1FwuIK.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 63,
+    title: "I Smile",
+    artist: "Afro Square Artist",
+    duration: "3:44",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-smile-v5YJkyjMtcIdJ0JpjqEUZU8zl7iayI.mp3",
+    downloadUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-smile-v5YJkyjMtcIdJ0JpjqEUZU8zl7iayI.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 64,
+    title: "Return To Sender",
+    artist: "Afro Square Artist",
+    duration: "3:56",
+    audioUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/return-to-sender-p0whkokLttf85OSF5g3KW7LYhVg1eP.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/return-to-sender-p0whkokLttf85OSF5g3KW7LYhVg1eP.mp3",
+    coverArt: "/afro-square.jpg",
+  },
+  {
+    id: 65,
+    title: "For My Baby",
+    artist: "Afro Square Artist",
+    duration: "4:02",
+    audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-my-baby-lrPGgSwHNS9bprihQVyTcSrQ8AdsWP.mp3",
+    downloadUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-my-baby-lrPGgSwHNS9bprihQVyTcSrQ8AdsWP.mp3",
+    coverArt: "/afro-square.jpg",
+  },
 ]
 
 export function getAllAfroSquareTracks(): AfroSquareTrack[] {

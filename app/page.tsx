@@ -22,8 +22,8 @@ import { useRadio } from "@/components/radio-context"
 // Hero background images - Updated to use new artist profile images
 const heroImages = [
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez.jpg-4K7M3mReeAKec5cU4bs8w6la5UwIT2.jpeg",
-    alt: "Luv Tonez - R&B group in elegant formal black suits",
+    src: "/images/luv-tonez-new.jpeg",
+    alt: "Luv Tonez - Professional R&B group in elegant formal black suits",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Virgo%20Dunst.jpg-vp9S492loS2RnMXAwqNeHLd624fL3J.jpeg",
@@ -42,8 +42,8 @@ const heroImages = [
     alt: "Neka - Afrobeat artist with gold jewelry and floating orbs",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Danni%20Blaze.jpg-SdFAgQ0v6zRzyydXua2XvyBBz3RumT.jpeg",
-    alt: "Danni Blaze - Afrobeat artist in cream puffer jacket with chains",
+    src: "/images/danni-blaze-regal.jpeg",
+    alt: "Danni Blaze - Afrobeat artist in ornate regal attire with gold jewelry in classical setting",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Echo%20Bloom.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",

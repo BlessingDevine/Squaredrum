@@ -1086,55 +1086,63 @@ export const artists: Artist[] = [
       {
         id: "neka-2",
         title: "Na Me Be the One",
-        audioUrl: "https://blob.v0.dev/neka-na-me-be-the-one.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/na-me-be-the-one-E9mlnfckNmw6nE13Z1nwFfdI1FwuIK.mp3",
         duration: "3:52",
       },
       {
         id: "neka-3",
         title: "Broken No Mean Finish",
-        audioUrl: "https://blob.v0.dev/neka-broken-no-mean-finish.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/broken-no-mean-finish-gAUYPZPexvSOKI1kmtnxqIazgJVmRd.mp3",
         duration: "4:15",
       },
       {
         id: "neka-4",
         title: "Lagos Night",
-        audioUrl: "https://blob.v0.dev/neka-lagos-night.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lagos-night-GdsEsE6CeysXkuKxueiyzDneeSXcFX.mp3",
         duration: "3:38",
       },
       {
         id: "neka-5",
         title: "For My Baby",
-        audioUrl: "https://blob.v0.dev/neka-for-my-baby.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-my-baby-lrPGgSwHNS9bprihQVyTcSrQ8AdsWP.mp3",
         duration: "4:02",
       },
       {
         id: "neka-6",
         title: "Stray Dog",
-        audioUrl: "https://blob.v0.dev/neka-stray-dog.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/stray-dog-eCZHbX8EKL3mCe2aSpPUS1YfOOnVhU.mp3",
         duration: "3:29",
       },
       {
         id: "neka-7",
         title: "I Smile",
-        audioUrl: "https://blob.v0.dev/neka-i-smile.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-smile-v5YJkyjMtcIdJ0JpjqEUZU8zl7iayI.mp3",
         duration: "3:44",
       },
       {
         id: "neka-8",
         title: "I Am Loyal",
-        audioUrl: "https://blob.v0.dev/neka-i-am-loyal.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-loyal-WPURRAAjuamvRyZwpXt2oO2ZxCEUTf.mp3",
         duration: "4:08",
       },
       {
         id: "neka-9",
         title: "The Holly Molly Live",
-        audioUrl: "https://blob.v0.dev/neka-the-holly-molly-live.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-holly-molly-live-BVvuYy4JlGAD0xSXy5wxuB0myDPRf5.mp3",
         duration: "4:12",
       },
       {
         id: "neka-10",
         title: "Return To Sender",
-        audioUrl: "https://blob.v0.dev/neka-return-to-sender.mp3",
+        audioUrl:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/return-to-sender-p0whkokLttf85OSF5g3KW7LYhVg1eP.mp3",
         duration: "3:56",
       },
     ],
@@ -1327,7 +1335,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "No Dey Rush",
-      audioUrl: "https://blob.v0.dev/danni-no-dey-rush",
+      audioUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-bGmx9iDWVsij8oc57GU5I22P5bLPHp.mp3",
       duration: "3:28",
     },
     tracks: [

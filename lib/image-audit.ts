@@ -115,23 +115,8 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/echo-bloom.jpg",
-    usedIn: ["lib/artists-data.ts"],
-    status: "used",
-  },
-  {
-    path: "/images/sadie-rose/sadie-rose.jpg",
-    usedIn: ["lib/artists-data.ts"],
-    status: "used",
-  },
-  {
-    path: "/images/lunah/lunah.jpg",
-    usedIn: ["lib/artists-data.ts"],
-    status: "used",
-  },
-  {
-    path: "/images/cedar-line.jpg",
-    usedIn: ["lib/artists-data.ts"],
+    path: "/images/riven-cole.jpg",
+    usedIn: ["lib/artists-data.ts - Riven Cole profile image"],
     status: "used",
   },
   {
@@ -170,22 +155,22 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/artists/echo-bloom.jpg",
+    path: "/images/artists/riven-cole.jpg",
+    usedIn: ["lib/artists-data.ts - Riven Cole artist image"],
+    status: "used",
+  },
+  {
+    path: "/images/sadie-rose/sadie-rose.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/artists/sadie-rose.jpg",
+    path: "/images/lunah/lunah.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/artists/lunah/lunah.jpg",
-    usedIn: ["lib/artists-data.ts"],
-    status: "used",
-  },
-  {
-    path: "/images/artists/cedar-line.jpg",
+    path: "/images/cedar-line.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
@@ -222,13 +207,8 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/hero/echo-bloom-hero.jpg",
-    usedIn: ["app/page.tsx"],
-    status: "used",
-  },
-  {
-    path: "/images/hero/lucas-meno-hero.jpg",
-    usedIn: ["app/page.tsx"],
+    path: "/images/hero/riven-cole-hero.jpg",
+    usedIn: ["app/page.tsx - Riven Cole hero carousel"],
     status: "used",
   },
   {
@@ -1118,18 +1098,18 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/riven-cole.jpg",
+    path: "/images/sadie-rose.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/artists/riven-cole.jpg",
+    path: "/images/lunah.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/hero/riven-cole-hero.jpg",
-    usedIn: ["app/page.tsx"],
+    path: "/images/cedar-line.jpg",
+    usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
 ]

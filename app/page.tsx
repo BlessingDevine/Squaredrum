@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import { Play, Download, Users, Radio, Calendar, MapPin, ChevronDown, Clock, Pause } from 'lucide-react'
+import { Play, Download, Users, Radio, Calendar, MapPin, ChevronDown, Clock, Pause } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import PageBlurOverlay from "@/components/page-blur-overlay"
@@ -46,8 +46,8 @@ const heroImages = [
     alt: "Danni Blaze - Afrobeat artist in cream puffer jacket with chains",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Echo%20Bloom.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",
-    alt: "Echo Bloom - Electronic artist in blue suit with arms outstretched",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Riven%20Cole.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",
+    alt: "Riven Cole - Pop/Rock artist in blue suit with arms outstretched",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucas%20Meno.jpg-qm5NB9052ElC9YU9bNz7jLwxvlIZrv.jpeg",
@@ -626,7 +626,7 @@ export default function HomePage() {
               <h2 className="font-cinzel text-3xl sm:text-4xl font-bold tracking-wider mb-6">
                 EXPERIENCE THE <span className="text-amber-500">FUTURE</span>
               </h2>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   asChild

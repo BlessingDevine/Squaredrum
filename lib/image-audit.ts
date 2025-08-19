@@ -115,7 +115,22 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/riven-cole.jpg",
+    path: "/images/echo-bloom.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/sadie-rose/sadie-rose.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/lunah/lunah.jpg",
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/cedar-line.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
@@ -155,27 +170,22 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/artists/riven-cole.jpg",
-    usedIn: ["lib/artists-data.ts"],
-    status: "used",
-  },
-  {
     path: "/images/artists/echo-bloom.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/sadie-rose/sadie-rose.jpg",
+    path: "/images/artists/sadie-rose.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/lunah/lunah.jpg",
+    path: "/images/artists/lunah/lunah.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/cedar-line.jpg",
+    path: "/images/artists/cedar-line.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
@@ -212,7 +222,7 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/hero/riven-cole-hero.jpg",
+    path: "/images/hero/echo-bloom-hero.jpg",
     usedIn: ["app/page.tsx"],
     status: "used",
   },
@@ -1108,18 +1118,18 @@ export const imageAudit: ImageReference[] = [
     status: "used",
   },
   {
-    path: "/images/sadie-rose.jpg",
+    path: "/images/riven-cole.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/lunah.jpg",
+    path: "/images/artists/riven-cole.jpg",
     usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
-    path: "/images/cedar-line.jpg",
-    usedIn: ["lib/artists-data.ts"],
+    path: "/images/hero/riven-cole-hero.jpg",
+    usedIn: ["app/page.tsx"],
     status: "used",
   },
 ]

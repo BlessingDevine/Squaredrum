@@ -5,7 +5,10 @@ import { Play, Pause, Download, Clock, Calendar, Music, ChevronDown, ChevronUp }
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Checkbox } from "@/components/ui/checkbox"
 import { useGlobalMusic } from "@/components/global-music-player"
+import { useDownload } from "@/contexts/download-context"
+import DownloadFormModal from "@/components/download-form-modal"
 import Image from "next/image"
 
 interface Track {
@@ -46,7 +49,20 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [isLocallyPlaying, setIsLocallyPlaying] = useState(false)
+  const [showDownloadForm, setShowDownloadForm] = useState(false)
   const { playTrack, pauseTrack, state } = useGlobalMusic()
+
+  const {
+    selectedTracks,
+    toggleTrackSelection,
+    clearSelections,
+    downloadSelected,
+    isTrackSelected,
+    canSelectMore,
+    canDownload,
+    remainingDownloads,
+    maxSelections,
+  } = useDownload()
 
   // Safely handle tracks array
   const tracks = compilation.tracks || []
@@ -189,6 +205,19 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     return `${minutes}m`
   }
 
+  const handleTrackSelection = (track: Track) => {
+    const selectedTrack = {
+      id: track.id,
+      title: track.title,
+      artist: track.artist,
+      downloadUrl: track.downloadUrl,
+      audioUrl: track.audioUrl,
+      coverArt: track.coverArt || compilation.coverArt,
+      compilationId: compilation.id,
+    }
+    toggleTrackSelection(selectedTrack)
+  }
+
   return (
     <Card
       className={`bg-zinc-900/50 backdrop-blur-sm border ${colors.border} hover:border-opacity-40 transition-all duration-300 overflow-hidden group`}
@@ -289,26 +318,16 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
               {compilation.description}
             </p>
 
-            {/* Action Buttons - Mobile-first design */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-              {currentTrack && (
-                <Button
-                  onClick={handlePlayPause}
-                  className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg`}
-                >
-                  {isThisCompilationPlaying() ? (
-                    <>
-                      <Pause className="h-4 w-4 mr-2" />
-                      Pause
-                    </>
-                  ) : (
-                    <>
-                      <Play className="h-4 w-4 mr-2" />
-                      Play All
-                    </>
-                  )}
-                </Button>
-              )}
+              {/* Download Button */}
+              <Button
+                onClick={() => setShowDownloadForm(true)}
+                disabled={selectedTracks.length === 0}
+                className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed`}
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Download ({selectedTracks.length}/{maxSelections})
+              </Button>
 
               <Button
                 onClick={() => setIsExpanded(!isExpanded)}
@@ -330,6 +349,17 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                 )}
               </Button>
             </div>
+
+            <div className="mt-3 text-xs sm:text-sm text-gray-400 space-y-1">
+              <p>Downloads remaining this month: {remainingDownloads}/2</p>
+              {selectedTracks.length > 0 && (
+                <p>
+                  Selected: {selectedTracks.length}/{maxSelections} tracks
+                </p>
+              )}
+              {!canSelectMore && <p className="text-amber-400">Maximum selection reached</p>}
+              {remainingDownloads === 0 && <p className="text-red-400">Monthly download limit reached</p>}
+            </div>
           </div>
 
           {/* Expanded Track List - Mobile optimized */}
@@ -349,6 +379,13 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
                         isCurrentTrack(track) ? `${colors.bg} border ${colors.border}` : "hover:bg-zinc-800/50"
                       }`}
                     >
+                      <Checkbox
+                        checked={isTrackSelected(track.id)}
+                        onCheckedChange={() => handleTrackSelection(track)}
+                        disabled={!canSelectMore && !isTrackSelected(track.id)}
+                        className="flex-shrink-0"
+                      />
+
                       {/* Track Number / Play Button */}
                       <div className="w-6 sm:w-8 flex items-center justify-center flex-shrink-0">
                         {isCurrentlyPlaying(track) ? (
@@ -387,17 +424,6 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
                       {/* Duration */}
                       <div className="text-gray-400 text-xs sm:text-sm whitespace-nowrap">{track.duration}</div>
-
-                      {/* Download Button */}
-                      <Button
-                        onClick={() => handleDownloadTrack(track)}
-                        size="sm"
-                        variant="ghost"
-                        className="text-gray-400 hover:text-white p-0 h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0"
-                        title={`Download ${track.title}`}
-                      >
-                        <Download className="h-3 w-3 sm:h-4 sm:w-4" />
-                      </Button>
                     </div>
                   ))}
                 </div>
@@ -414,6 +440,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
           )}
         </div>
       </CardContent>
+
+      <DownloadFormModal isOpen={showDownloadForm} onClose={() => setShowDownloadForm(false)} />
     </Card>
   )
 }

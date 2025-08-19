@@ -116,7 +116,7 @@ export const imageAudit: ImageReference[] = [
   },
   {
     path: "/images/riven-cole.jpg",
-    usedIn: ["lib/artists-data.ts - Riven Cole profile image"],
+    usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
@@ -156,7 +156,12 @@ export const imageAudit: ImageReference[] = [
   },
   {
     path: "/images/artists/riven-cole.jpg",
-    usedIn: ["lib/artists-data.ts - Riven Cole artist image"],
+    usedIn: ["lib/artists-data.ts"],
+    status: "used",
+  },
+  {
+    path: "/images/artists/echo-bloom.jpg",
+    usedIn: ["lib/artists-data.ts"],
     status: "used",
   },
   {
@@ -208,7 +213,12 @@ export const imageAudit: ImageReference[] = [
   },
   {
     path: "/images/hero/riven-cole-hero.jpg",
-    usedIn: ["app/page.tsx - Riven Cole hero carousel"],
+    usedIn: ["app/page.tsx"],
+    status: "used",
+  },
+  {
+    path: "/images/hero/lucas-meno-hero.jpg",
+    usedIn: ["app/page.tsx"],
     status: "used",
   },
   {

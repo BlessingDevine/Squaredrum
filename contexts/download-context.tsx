@@ -67,8 +67,21 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
   const downloadSelected = () => {
     if (selectedTracks.length === 0) return
 
-    if (typeof window !== "undefined" && window.omnisend) {
+    console.log("[v0] Download button clicked, selected tracks:", selectedTracks.length)
+    console.log(
+      "[v0] Checking window.omnisend:",
+      typeof window !== "undefined" ? !!window.omnisend : "window undefined",
+    )
+
+    if (typeof window !== "undefined") {
+      console.log("[v0] Window omnisend object:", window.omnisend)
+
+      // Ensure omnisend is initialized
+      window.omnisend = window.omnisend || []
+
       try {
+        console.log("[v0] Attempting to track download and open form")
+
         // Track download attempt
         window.omnisend.push([
           "track",
@@ -83,18 +96,21 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
           },
         ])
 
-        // Open the Omnisend form - downloads will be handled after form completion
-        window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
-
         // Store selected tracks for after form completion
         localStorage.setItem("pendingDownload", JSON.stringify(selectedTracks))
+
+        setTimeout(() => {
+          console.log("[v0] Opening Omnisend form")
+          window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
+        }, 100)
       } catch (error) {
-        console.error("Omnisend form error:", error)
+        console.error("[v0] Omnisend form error:", error)
         // Fallback to direct download if form fails
         proceedWithDownload()
       }
     } else {
-      // Fallback if Omnisend is not available
+      console.log("[v0] Window not available, proceeding with direct download")
+      // Fallback if window is not available
       proceedWithDownload()
     }
   }

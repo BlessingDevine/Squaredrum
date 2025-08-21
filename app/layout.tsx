@@ -10,7 +10,6 @@ import RadioPlayer from "@/components/radio-player"
 import { GlobalMusicProvider } from "@/components/global-music-player"
 import { DownloadProvider } from "@/contexts/download-context"
 import { cinzel } from "./fonts"
-import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -70,18 +69,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${cinzel.variable}`}>
-        <Script id="omnisend-tracking" strategy="afterInteractive">
-          {`
-            window.omnisend = window.omnisend || [];
-            omnisend.push(["brandID", "68a3cdb6ab4f8ff06d62f1a1"]);
-            omnisend.push(["track", "$pageViewed"]);
-            !function(){var e=document.createElement("script");
-            e.type="text/javascript",e.async=!0,
-            e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
-            var t=document.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(e,t)}();
-          `}
-        </Script>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <GlobalMusicProvider>
             <AudioProvider>

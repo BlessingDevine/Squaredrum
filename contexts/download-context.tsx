@@ -32,33 +32,16 @@ const DownloadContext = createContext<DownloadContextType | undefined>(undefined
 export function DownloadProvider({ children }: { children: React.ReactNode }) {
   const [selectedTracks, setSelectedTracks] = useState<SelectedTrack[]>([])
   const [monthlyDownloads, setMonthlyDownloads] = useState(0)
-  const maxSelections = 10
-  const maxMonthlyDownloads = 2
+  const maxSelections = 999 // Effectively unlimited
+  const maxMonthlyDownloads = 999 // Effectively unlimited
 
-  // Load data from localStorage on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("squaredrum-downloads")
       if (saved) {
         try {
           const data = JSON.parse(saved)
-          const currentMonth = new Date().getMonth()
-          const currentYear = new Date().getFullYear()
-
-          // Reset if it's a new month
-          if (data.month !== currentMonth || data.year !== currentYear) {
-            setMonthlyDownloads(0)
-            localStorage.setItem(
-              "squaredrum-downloads",
-              JSON.stringify({
-                count: 0,
-                month: currentMonth,
-                year: currentYear,
-              }),
-            )
-          } else {
-            setMonthlyDownloads(data.count || 0)
-          }
+          setMonthlyDownloads(data.count || 0)
         } catch (error) {
           console.error("Error loading download data:", error)
         }
@@ -71,10 +54,9 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
       const isSelected = prev.some((t) => t.id === track.id)
       if (isSelected) {
         return prev.filter((t) => t.id !== track.id)
-      } else if (prev.length < maxSelections) {
+      } else {
         return [...prev, track]
       }
-      return prev
     })
   }
 
@@ -83,9 +65,41 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
   }
 
   const downloadSelected = () => {
-    if (selectedTracks.length === 0 || monthlyDownloads >= maxMonthlyDownloads) return
+    if (selectedTracks.length === 0) return
 
-    // Create and trigger download for each selected track
+    if (typeof window !== "undefined" && window.omnisend) {
+      try {
+        // Track download attempt
+        window.omnisend.push([
+          "track",
+          "downloadAttempted",
+          {
+            trackCount: selectedTracks.length,
+            tracks: selectedTracks.map((track) => ({
+              title: track.title,
+              artist: track.artist,
+              compilationId: track.compilationId,
+            })),
+          },
+        ])
+
+        // Open the Omnisend form - downloads will be handled after form completion
+        window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
+
+        // Store selected tracks for after form completion
+        localStorage.setItem("pendingDownload", JSON.stringify(selectedTracks))
+      } catch (error) {
+        console.error("Omnisend form error:", error)
+        // Fallback to direct download if form fails
+        proceedWithDownload()
+      }
+    } else {
+      // Fallback if Omnisend is not available
+      proceedWithDownload()
+    }
+  }
+
+  const proceedWithDownload = () => {
     selectedTracks.forEach((track) => {
       const link = document.createElement("a")
       link.href = track.downloadUrl
@@ -95,35 +109,60 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
       document.body.removeChild(link)
     })
 
-    // Update monthly download count
     const newCount = monthlyDownloads + 1
     setMonthlyDownloads(newCount)
 
-    // Save to localStorage
     if (typeof window !== "undefined") {
-      const currentMonth = new Date().getMonth()
-      const currentYear = new Date().getFullYear()
       localStorage.setItem(
         "squaredrum-downloads",
         JSON.stringify({
           count: newCount,
-          month: currentMonth,
-          year: currentYear,
+          month: new Date().getMonth(),
+          year: new Date().getFullYear(),
         }),
       )
+
+      // Clear pending download after completion
+      localStorage.removeItem("pendingDownload")
     }
 
-    // Clear selections after download
     clearSelections()
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleFormComplete = () => {
+        const pendingDownload = localStorage.getItem("pendingDownload")
+        if (pendingDownload) {
+          try {
+            const tracks = JSON.parse(pendingDownload)
+            setSelectedTracks(tracks)
+            // Small delay to ensure state is updated
+            setTimeout(() => {
+              proceedWithDownload()
+            }, 100)
+          } catch (error) {
+            console.error("Error processing pending download:", error)
+          }
+        }
+      }
+
+      // Listen for Omnisend form completion events
+      window.addEventListener("omnisend-form-completed", handleFormComplete)
+
+      return () => {
+        window.removeEventListener("omnisend-form-completed", handleFormComplete)
+      }
+    }
+  }, [selectedTracks, monthlyDownloads])
 
   const isTrackSelected = (trackId: number) => {
     return selectedTracks.some((t) => t.id === trackId)
   }
 
-  const canSelectMore = selectedTracks.length < maxSelections
-  const canDownload = selectedTracks.length > 0 && monthlyDownloads < maxMonthlyDownloads
-  const remainingDownloads = maxMonthlyDownloads - monthlyDownloads
+  const canSelectMore = true // Always allow more selections
+  const canDownload = selectedTracks.length > 0 // Only require at least one track selected
+  const remainingDownloads = 999 // Always show unlimited
 
   return (
     <DownloadContext.Provider

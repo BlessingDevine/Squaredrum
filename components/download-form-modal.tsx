@@ -154,18 +154,45 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
     try {
       console.log("[v0] Starting actual download process for", selectedTracks.length, "tracks")
 
-      // Trigger individual file downloads
-      selectedTracks.forEach((track, index) => {
-        setTimeout(() => {
-          console.log("[v0] Downloading track:", track.title)
+      for (let i = 0; i < selectedTracks.length; i++) {
+        const track = selectedTracks[i]
+        console.log("[v0] Downloading track:", track.title)
+
+        try {
+          // Fetch the audio file as a blob
+          const response = await fetch(track.audioUrl)
+          if (!response.ok) {
+            console.error("[v0] Failed to fetch track:", track.title, response.status)
+            continue
+          }
+
+          const blob = await response.blob()
+          const url = window.URL.createObjectURL(blob)
+
+          // Create download link
           const link = document.createElement("a")
-          link.href = track.audioUrl // Use audioUrl as download URL
+          link.href = url
           link.download = `${track.artist} - ${track.title}.mp3`
+          link.style.display = "none"
+
+          // Add to DOM, click, and remove
           document.body.appendChild(link)
           link.click()
           document.body.removeChild(link)
-        }, index * 500) // Stagger downloads by 500ms
-      })
+
+          // Clean up the blob URL
+          setTimeout(() => window.URL.revokeObjectURL(url), 1000)
+
+          console.log("[v0] Successfully initiated download for:", track.title)
+        } catch (error) {
+          console.error("[v0] Error downloading track:", track.title, error)
+        }
+
+        // Stagger downloads to prevent browser blocking
+        if (i < selectedTracks.length - 1) {
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+        }
+      }
 
       // Track the download completion
       if (typeof window !== "undefined" && window.omnisend) {

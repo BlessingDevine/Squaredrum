@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Play, Pause, Download, Clock, Calendar, Music, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -218,6 +218,24 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     toggleTrackSelection(selectedTrack)
   }
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleFormComplete = () => {
+        const pendingDownload = localStorage.getItem("pendingDownload")
+        if (pendingDownload) {
+          console.log("[v0] Form completed, opening download modal")
+          setShowDownloadForm(true)
+        }
+      }
+
+      window.addEventListener("omnisend-form-completed", handleFormComplete)
+
+      return () => {
+        window.removeEventListener("omnisend-form-completed", handleFormComplete)
+      }
+    }
+  }, [])
+
   return (
     <Card
       className={`bg-zinc-900/50 backdrop-blur-sm border ${colors.border} hover:border-opacity-40 transition-all duration-300 overflow-hidden group`}
@@ -321,7 +339,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               {/* Download Button */}
               <Button
-                onClick={() => setShowDownloadForm(true)}
+                onClick={downloadSelected}
                 disabled={selectedTracks.length === 0}
                 className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed`}
               >

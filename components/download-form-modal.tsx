@@ -57,7 +57,6 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
         let formCompleted = false
         let formElement: Element | null = null
 
-        // Method 1: Enhanced DOM mutation observer
         const observer = new MutationObserver((mutations) => {
           mutations.forEach((mutation) => {
             mutation.addedNodes.forEach((node) => {
@@ -78,7 +77,8 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
                     console.log("[v0] Form submission event detected:", e.type)
                     if (!formCompleted) {
                       formCompleted = true
-                      setTimeout(() => proceedWithDownload(), 500)
+                      console.log("[v0] Form successfully submitted, automatically starting download")
+                      setTimeout(() => proceedWithDownload(), 1000) // Slight delay to ensure form processing
                       cleanup()
                     }
                   }
@@ -87,16 +87,34 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
                   omnisendForm.addEventListener("submit", handleFormSubmission)
                   omnisendForm.addEventListener("omnisend:submit", handleFormSubmission)
                   omnisendForm.addEventListener("omnisend:success", handleFormSubmission)
+
+                  // Also listen for successful form completion indicators
+                  const submitButton = omnisendForm.querySelector(
+                    'button[type="submit"], input[type="submit"], .submit-btn',
+                  )
+                  if (submitButton) {
+                    submitButton.addEventListener("click", () => {
+                      // Wait a bit then check if form was successfully submitted
+                      setTimeout(() => {
+                        if (!formCompleted && !omnisendForm.querySelector(".error, .validation-error")) {
+                          console.log("[v0] Form appears to be submitted successfully (no errors found)")
+                          formCompleted = true
+                          setTimeout(() => proceedWithDownload(), 1500)
+                          cleanup()
+                        }
+                      }, 2000)
+                    })
+                  }
                 }
               }
             })
 
             mutation.removedNodes.forEach((node) => {
               if (formElement && node instanceof Element && (node.contains(formElement) || node === formElement)) {
-                console.log("[v0] Omnisend form removed from DOM - assuming successful submission")
+                console.log("[v0] Omnisend form removed from DOM - form completed successfully, starting download")
                 if (!formCompleted) {
                   formCompleted = true
-                  setTimeout(() => proceedWithDownload(), 300)
+                  setTimeout(() => proceedWithDownload(), 500)
                   cleanup()
                 }
               }
@@ -115,7 +133,8 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
           if (event.type.includes("submit") || event.type.includes("success") || event.type.includes("complete")) {
             if (!formCompleted) {
               formCompleted = true
-              setTimeout(() => proceedWithDownload(), 500)
+              console.log("[v0] Form completed via global event, automatically starting download")
+              setTimeout(() => proceedWithDownload(), 1000)
               cleanup()
             }
           }
@@ -144,7 +163,7 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
 
         setTimeout(() => {
           if (!formCompleted) {
-            console.log("[v0] Form timeout after 8 seconds, enabling manual download")
+            console.log("[v0] Form timeout after 8 seconds, proceeding with download anyway")
             formCompleted = true
             proceedWithDownload()
             cleanup()
@@ -163,7 +182,7 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
   const proceedWithDownload = async () => {
     setIsDownloading(true)
     try {
-      console.log("[v0] Starting download process")
+      console.log("[v0] Automatically starting download process after form completion")
       await downloadSelected()
       onClose()
     } catch (error) {

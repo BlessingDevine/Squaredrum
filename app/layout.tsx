@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
@@ -69,6 +70,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${cinzel.variable}`}>
+        <Script
+          id="omnisend-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.omnisend = window.omnisend || [];
+              omnisend.push(["brandID", "68a3cdb6ab4f8ff06d62f1a1"]);
+              omnisend.push(["track", "$pageViewed"]);
+              !function(){
+                var e=document.createElement("script");
+                e.type="text/javascript",e.async=!0,
+                e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
+                var t=document.getElementsByTagName("script")[0];
+                t.parentNode.insertBefore(e,t)
+              }();
+            `,
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <GlobalMusicProvider>
             <AudioProvider>

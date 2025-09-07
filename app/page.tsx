@@ -318,7 +318,7 @@ export default function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8 py-3 text-lg"
+                  className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 text-lg"
                 >
                   <Link href="/releases">
                     <Play className="mr-2 h-5 w-5" />
@@ -329,7 +329,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black px-8 py-3 text-lg bg-transparent"
+                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-8 py-3 text-lg bg-transparent"
                 >
                   <Link href="/artists">
                     <Users className="mr-2 h-5 w-5" />
@@ -387,7 +387,7 @@ export default function HomePage() {
                           className={`absolute inset-0 bg-gradient-to-t ${release.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
                         />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <Button size="lg" className="bg-white/90 text-black hover:bg-white">
+                          <Button size="lg" className="bg-black/90 text-white hover:bg-black border border-white/20">
                             <Play className="mr-2 h-5 w-5" />
                             Listen Now
                           </Button>
@@ -497,13 +497,13 @@ export default function HomePage() {
                   )}
 
                   <div className="flex gap-4">
-                    <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black">
+                    <Button asChild className="bg-amber-500 hover:bg-amber-600 text-white">
                       <Link href={`/artists/${featuredArtist.slug}`}>View Profile</Link>
                     </Button>
                     <Button
                       asChild
                       variant="outline"
-                      className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent"
+                      className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white bg-transparent"
                     >
                       <Link href="/artists">All Artists</Link>
                     </Button>
@@ -553,7 +553,7 @@ export default function HomePage() {
                         behind-the-scenes content.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start relative">
-                        <Button onClick={handleListenLive} className="bg-amber-500 hover:bg-amber-600 text-black">
+                        <Button onClick={handleListenLive} className="bg-amber-500 hover:bg-amber-600 text-white">
                           <Radio className="mr-2 h-4 w-4" />
                           Listen Live
                         </Button>
@@ -562,7 +562,7 @@ export default function HomePage() {
                           <Button
                             onClick={handleViewSchedule}
                             variant="outline"
-                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent schedule-button"
+                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white bg-transparent schedule-button"
                           >
                             <Calendar className="mr-2 h-4 w-4" />
                             View Schedule
@@ -639,7 +639,7 @@ export default function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8 py-3"
+                  className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3"
                 >
                   <Link href="/releases">
                     <Download className="mr-2 h-5 w-5" />
@@ -650,7 +650,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black px-8 py-3 bg-transparent"
+                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-8 py-3 bg-transparent"
                 >
                   <Link href="/about">
                     <MapPin className="mr-2 h-5 w-5" />

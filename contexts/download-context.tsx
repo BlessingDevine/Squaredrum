@@ -105,7 +105,7 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
         }, 100)
       } catch (error) {
         console.error("[v0] Omnisend form error:", error)
-        console.log("[v0] Form failed to open, user must try again")
+        console.log("[v0] Form opening failed, user must complete form to download")
       }
     } else {
       console.log("[v0] Window not available, cannot open form")
@@ -141,6 +141,32 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
 
     clearSelections()
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleFormComplete = () => {
+        console.log("[v0] Form completion detected")
+        const pendingDownload = localStorage.getItem("pendingDownload")
+        if (pendingDownload) {
+          try {
+            const tracks = JSON.parse(pendingDownload)
+            setSelectedTracks(tracks)
+            window.dispatchEvent(new CustomEvent("omnisend-form-completed"))
+            console.log("[v0] Dispatched form completion event")
+          } catch (error) {
+            console.error("Error processing pending download:", error)
+          }
+        }
+      }
+
+      // Listen for Omnisend form completion events
+      window.addEventListener("omnisend-form-completed", handleFormComplete)
+
+      return () => {
+        window.removeEventListener("omnisend-form-completed", handleFormComplete)
+      }
+    }
+  }, [selectedTracks, monthlyDownloads])
 
   const isTrackSelected = (trackId: number) => {
     return selectedTracks.some((t) => t.id === trackId)

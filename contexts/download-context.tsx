@@ -99,6 +99,53 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
         // Store selected tracks for after form completion
         localStorage.setItem("pendingDownload", JSON.stringify(selectedTracks))
 
+        const handleFormSubmission = () => {
+          console.log("[v0] Form submitted successfully")
+
+          // Show success message
+          const successMessage = document.createElement("div")
+          successMessage.innerHTML = `
+            <div style="
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background: #10b981;
+              color: white;
+              padding: 20px 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+              z-index: 10000;
+              font-family: system-ui;
+              font-size: 16px;
+              font-weight: 500;
+              text-align: center;
+              cursor: pointer;
+            ">
+              ✓ Form submitted successfully!<br>
+              <small style="opacity: 0.9; font-size: 14px;">Click to continue to download</small>
+            </div>
+          `
+
+          document.body.appendChild(successMessage)
+
+          // Auto-close success message and trigger modal after 3 seconds or on click
+          const closeAndContinue = () => {
+            document.body.removeChild(successMessage)
+            window.dispatchEvent(new CustomEvent("omnisend-form-completed"))
+          }
+
+          successMessage.addEventListener("click", closeAndContinue)
+          setTimeout(closeAndContinue, 3000)
+        }
+
+        // Listen for form submission
+        window.addEventListener("message", (event) => {
+          if (event.data && event.data.type === "omnisend-form-submitted") {
+            handleFormSubmission()
+          }
+        })
+
         setTimeout(() => {
           console.log("[v0] Opening Omnisend form")
           window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])

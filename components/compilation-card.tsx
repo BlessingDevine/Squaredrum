@@ -19,6 +19,8 @@ interface Track {
   audioUrl: string
   downloadUrl: string
   coverArt?: string
+  compilationId?: string
+  compilationTitle?: string
 }
 
 interface Compilation {
@@ -218,6 +220,8 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     toggleTrackSelection(selectedTrack)
   }
 
+  const compilationSelectedTracks = selectedTracks.filter((track) => track.compilationId === compilation.id)
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleFormComplete = () => {
@@ -228,10 +232,31 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
         }
       }
 
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === "childList") {
+            // Check for Omnisend success indicators
+            const successElements = document.querySelectorAll(
+              '[class*="success"], [class*="thank"], [class*="submitted"]',
+            )
+            if (successElements.length > 0) {
+              console.log("[v0] Detected form success via DOM mutation")
+              window.postMessage({ type: "omnisend-form-submitted" }, "*")
+            }
+          }
+        })
+      })
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      })
+
       window.addEventListener("omnisend-form-completed", handleFormComplete)
 
       return () => {
         window.removeEventListener("omnisend-form-completed", handleFormComplete)
+        observer.disconnect()
       }
     }
   }, [])
@@ -340,11 +365,11 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
               {/* Download Button */}
               <Button
                 onClick={downloadSelected}
-                disabled={selectedTracks.length === 0}
+                disabled={compilationSelectedTracks.length === 0}
                 className={`${colors.button} text-white flex-1 h-11 sm:h-12 text-sm sm:text-base font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 <Download className="h-4 w-4 mr-2" />
-                Download ({selectedTracks.length}/{maxSelections})
+                Download ({compilationSelectedTracks.length}/{maxSelections})
               </Button>
 
               <Button
@@ -370,9 +395,9 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
             <div className="mt-3 text-xs sm:text-sm text-gray-400 space-y-1">
               <p>Downloads remaining this month: {remainingDownloads}/2</p>
-              {selectedTracks.length > 0 && (
+              {compilationSelectedTracks.length > 0 && (
                 <p>
-                  Selected: {selectedTracks.length}/{maxSelections} tracks
+                  Selected: {compilationSelectedTracks.length}/{maxSelections} tracks
                 </p>
               )}
               {!canSelectMore && <p className="text-amber-400">Maximum selection reached</p>}

@@ -19,8 +19,48 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
   if (!isOpen) return null
 
   const handleDownload = async () => {
+    console.log("[v0] Download button clicked, opening Omnisend form")
+
+    try {
+      // Initialize omnisend if not available
+      if (typeof window !== "undefined") {
+        window.omnisend = window.omnisend || []
+
+        // Store selected tracks for after form completion
+        console.log("[v0] Opening Omnisend form with ID: 68a3d3d43a6a28c6e3a0de92")
+        window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
+
+        // Set up form completion listener
+        const handleFormComplete = () => {
+          console.log("[v0] Form completed, proceeding with download")
+          proceedWithDownload()
+          // Remove listener after use
+          window.removeEventListener("omnisend-form-complete", handleFormComplete)
+        }
+
+        // Listen for form completion (you may need to adjust this based on Omnisend's callback system)
+        window.addEventListener("omnisend-form-complete", handleFormComplete)
+
+        // Fallback: if no form completion event is fired within 30 seconds, allow manual download
+        setTimeout(() => {
+          console.log("[v0] Form timeout, enabling manual download")
+          window.removeEventListener("omnisend-form-complete", handleFormComplete)
+        }, 30000)
+      } else {
+        console.log("[v0] Window not available, proceeding with direct download")
+        await proceedWithDownload()
+      }
+    } catch (error) {
+      console.error("[v0] Error opening form:", error)
+      // Fallback to direct download if form fails
+      await proceedWithDownload()
+    }
+  }
+
+  const proceedWithDownload = async () => {
     setIsDownloading(true)
     try {
+      console.log("[v0] Starting download process")
       await downloadSelected()
       onClose()
     } catch (error) {

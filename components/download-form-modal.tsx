@@ -19,155 +19,167 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
   if (!isOpen) return null
 
   const handleDownload = async () => {
-    console.log("[v0] Download button clicked, opening Omnisend form")
+    console.log("[v0] Download button clicked in modal")
+    setIsDownloading(true)
 
     try {
       // Ensure omnisend is available
       window.omnisend = window.omnisend || []
 
-      // Check if Omnisend script is loaded
-      let retryCount = 0
-      const maxRetries = 10
+      console.log("[v0] Opening Omnisend form with ID: 68a3d3d43a6a28c6e3a0de92")
+      window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
 
-      const waitForOmnisend = () => {
-        return new Promise<void>((resolve, reject) => {
-          const checkOmnisend = () => {
-            if (window.omnisend && typeof window.omnisend.push === "function") {
-              console.log("[v0] Omnisend is ready, opening form")
-              resolve()
-            } else if (retryCount < maxRetries) {
-              retryCount++
-              console.log(`[v0] Waiting for Omnisend... attempt ${retryCount}/${maxRetries}`)
-              setTimeout(checkOmnisend, 500)
-            } else {
-              console.log("[v0] Omnisend not available after retries")
-              reject(new Error("Omnisend not available"))
-            }
+      let formCompleted = false
+      let formDetected = false
+
+      const checkForForm = () => {
+        const formSelectors = [
+          "[data-omnisend-form]",
+          ".omnisend-form",
+          '[id*="omnisend"]',
+          '[class*="omnisend"]',
+          'iframe[src*="omnisend"]',
+          ".omnisend-popup",
+          ".omnisend-modal",
+        ]
+
+        for (const selector of formSelectors) {
+          const form = document.querySelector(selector)
+          if (form && form.offsetParent !== null) {
+            // Check if visible
+            console.log("[v0] Omnisend form detected:", selector)
+            formDetected = true
+            setupFormListeners(form)
+            return true
           }
-          checkOmnisend()
-        })
+        }
+        return false
       }
 
-      try {
-        await waitForOmnisend()
+      const setupFormListeners = (formElement: Element) => {
+        const handleFormSuccess = (e: Event) => {
+          console.log("[v0] Form submission detected:", e.type)
+          if (!formCompleted) {
+            formCompleted = true
+            console.log("[v0] Form successfully submitted, starting download")
+            setTimeout(() => proceedWithDownload(), 1000)
+            cleanup()
+          }
+        }
 
-        console.log("[v0] Opening Omnisend form with ID: 68a3d3d43a6a28c6e3a0de92")
-        window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
+        // Listen for various form events
+        formElement.addEventListener("submit", handleFormSuccess)
 
-        let formCompleted = false
-        let formElement: Element | null = null
+        // Listen for Omnisend-specific events
+        document.addEventListener("omnisend:submit", handleFormSuccess)
+        document.addEventListener("omnisend:success", handleFormSuccess)
 
-        // Method 1: Enhanced DOM mutation observer
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-            mutation.addedNodes.forEach((node) => {
-              if (node instanceof Element) {
-                // Look for Omnisend form elements with various selectors
-                const omnisendForm =
-                  node.querySelector?.('[data-omnisend-form], .omnisend-form, [id*="omnisend"], [class*="omnisend"]') ||
-                  (node.matches?.('[data-omnisend-form], .omnisend-form, [id*="omnisend"], [class*="omnisend"]')
-                    ? node
-                    : null)
-
-                if (omnisendForm) {
-                  console.log("[v0] Omnisend form detected in DOM")
-                  formElement = omnisendForm
-
-                  // Listen for form submission events on the form element
-                  const handleFormSubmission = (e: Event) => {
-                    console.log("[v0] Form submission event detected:", e.type)
-                    if (!formCompleted) {
-                      formCompleted = true
-                      setTimeout(() => proceedWithDownload(), 500)
-                      cleanup()
-                    }
-                  }
-
-                  // Listen for various submission events
-                  omnisendForm.addEventListener("submit", handleFormSubmission)
-                  omnisendForm.addEventListener("omnisend:submit", handleFormSubmission)
-                  omnisendForm.addEventListener("omnisend:success", handleFormSubmission)
-                }
-              }
-            })
-
-            mutation.removedNodes.forEach((node) => {
-              if (formElement && node instanceof Element && (node.contains(formElement) || node === formElement)) {
-                console.log("[v0] Omnisend form removed from DOM - assuming successful submission")
-                if (!formCompleted) {
-                  formCompleted = true
-                  setTimeout(() => proceedWithDownload(), 300)
-                  cleanup()
-                }
-              }
-            })
-          })
-        })
-
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true,
-        })
-
-        // Method 2: Listen for global Omnisend events
-        const handleGlobalOmnisendEvent = (event: any) => {
-          console.log("[v0] Global Omnisend event detected:", event.type, event.detail)
-          if (event.type.includes("submit") || event.type.includes("success") || event.type.includes("complete")) {
+        // Check for form closure (successful submission usually closes the form)
+        const observer = new MutationObserver(() => {
+          if (!document.contains(formElement) || formElement.offsetParent === null) {
+            console.log("[v0] Form disappeared - likely submitted successfully")
             if (!formCompleted) {
               formCompleted = true
               setTimeout(() => proceedWithDownload(), 500)
               cleanup()
             }
           }
-        }
-
-        // Listen for various Omnisend events
-        const omnisendEvents = [
-          "omnisend-form-submit",
-          "omnisend-form-success",
-          "omnisend-form-complete",
-          "omnisend:submit",
-          "omnisend:success",
-          "omnisend:complete",
-        ]
-
-        omnisendEvents.forEach((eventName) => {
-          document.addEventListener(eventName, handleGlobalOmnisendEvent)
         })
 
-        const cleanup = () => {
-          observer.disconnect()
-          omnisendEvents.forEach((eventName) => {
-            document.removeEventListener(eventName, handleGlobalOmnisendEvent)
-          })
-        }
+        observer.observe(document.body, { childList: true, subtree: true })
+      }
 
-        setTimeout(() => {
-          if (!formCompleted) {
-            console.log("[v0] Form timeout after 8 seconds, enabling manual download")
-            formCompleted = true
-            proceedWithDownload()
-            cleanup()
+      const cleanup = () => {
+        // Cleanup will be handled by component unmount
+      }
+
+      if (!checkForForm()) {
+        let attempts = 0
+        const formCheckInterval = setInterval(() => {
+          attempts++
+          if (checkForForm() || attempts > 20) {
+            // Check for 10 seconds
+            clearInterval(formCheckInterval)
+            if (!formDetected) {
+              console.log("[v0] Form not detected after 10 seconds")
+              setIsDownloading(false)
+              // Don't proceed with download - user must submit form
+            }
           }
-        }, 8000)
-      } catch (error) {
-        console.error("[v0] Error waiting for Omnisend:", error)
-        await proceedWithDownload()
+        }, 500)
       }
     } catch (error) {
       console.error("[v0] Error in download process:", error)
-      await proceedWithDownload()
+      setIsDownloading(false)
     }
   }
 
   const proceedWithDownload = async () => {
-    setIsDownloading(true)
     try {
-      console.log("[v0] Starting download process")
-      await downloadSelected()
-      onClose()
+      console.log("[v0] Starting actual download process for", selectedTracks.length, "tracks")
+
+      for (let i = 0; i < selectedTracks.length; i++) {
+        const track = selectedTracks[i]
+        console.log("[v0] Downloading track:", track.title)
+
+        try {
+          // Fetch the audio file as a blob
+          const response = await fetch(track.audioUrl)
+          if (!response.ok) {
+            console.error("[v0] Failed to fetch track:", track.title, response.status)
+            continue
+          }
+
+          const blob = await response.blob()
+          const url = window.URL.createObjectURL(blob)
+
+          // Create download link
+          const link = document.createElement("a")
+          link.href = url
+          link.download = `${track.artist} - ${track.title}.mp3`
+          link.style.display = "none"
+
+          // Add to DOM, click, and remove
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+
+          // Clean up the blob URL
+          setTimeout(() => window.URL.revokeObjectURL(url), 1000)
+
+          console.log("[v0] Successfully initiated download for:", track.title)
+        } catch (error) {
+          console.error("[v0] Error downloading track:", track.title, error)
+        }
+
+        // Stagger downloads to prevent browser blocking
+        if (i < selectedTracks.length - 1) {
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+        }
+      }
+
+      // Track the download completion
+      if (typeof window !== "undefined" && window.omnisend) {
+        window.omnisend.push([
+          "track",
+          "downloadCompleted",
+          {
+            trackCount: selectedTracks.length,
+            tracks: selectedTracks.map((track) => ({
+              title: track.title,
+              artist: track.artist,
+              compilationId: track.compilationId,
+            })),
+          },
+        ])
+      }
+
+      // Close modal after a short delay
+      setTimeout(() => {
+        onClose()
+      }, 2000)
     } catch (error) {
-      console.error("Download failed:", error)
+      console.error("[v0] Download failed:", error)
     } finally {
       setIsDownloading(false)
     }
@@ -265,7 +277,7 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
                 <p className="font-medium mb-1">Download Information</p>
                 <ul className="space-y-1 text-amber-200/80">
                   <li>• High-quality MP3 files (320kbps)</li>
-                  <li>• Files will be downloaded as a ZIP archive</li>
+                  <li>• Files will be downloaded individually</li>
                   <li>• You have {remainingDownloads} downloads remaining this month</li>
                   <li>• Download limit resets monthly</li>
                 </ul>

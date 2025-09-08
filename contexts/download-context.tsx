@@ -105,7 +105,10 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
           ...track,
           audioUrl: track.audioUrl || track.downloadUrl, // Ensure we have a download URL
         }))
+
+        const initiatingCompilation = selectedTracks[0]?.compilationId
         localStorage.setItem("pendingDownload", JSON.stringify(tracksWithUrls))
+        localStorage.setItem("downloadInitiator", initiatingCompilation || "")
 
         setTimeout(() => {
           console.log("[v0] Opening Omnisend form")
@@ -127,8 +130,12 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
               })
 
               if (thankYouElements.length > 0 || textElements.length > 0) {
-                console.log("[v0] Omnisend thank you message detected, dispatching event to open download modal")
-                window.dispatchEvent(new CustomEvent("omnisend-form-completed"))
+                console.log("[v0] Omnisend thank you message detected, dispatching compilation-specific event")
+                window.dispatchEvent(
+                  new CustomEvent("omnisend-form-completed", {
+                    detail: { compilationId: initiatingCompilation },
+                  }),
+                )
                 observer.disconnect()
               }
             }

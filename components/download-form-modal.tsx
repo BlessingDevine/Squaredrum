@@ -23,91 +23,7 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
     setIsDownloading(true)
 
     try {
-      // Ensure omnisend is available
-      window.omnisend = window.omnisend || []
-
-      console.log("[v0] Opening Omnisend form with ID: 68a3d3d43a6a28c6e3a0de92")
-      window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
-
-      let formCompleted = false
-      let formDetected = false
-
-      const checkForForm = () => {
-        const formSelectors = [
-          "[data-omnisend-form]",
-          ".omnisend-form",
-          '[id*="omnisend"]',
-          '[class*="omnisend"]',
-          'iframe[src*="omnisend"]',
-          ".omnisend-popup",
-          ".omnisend-modal",
-        ]
-
-        for (const selector of formSelectors) {
-          const form = document.querySelector(selector)
-          if (form && form.offsetParent !== null) {
-            // Check if visible
-            console.log("[v0] Omnisend form detected:", selector)
-            formDetected = true
-            setupFormListeners(form)
-            return true
-          }
-        }
-        return false
-      }
-
-      const setupFormListeners = (formElement: Element) => {
-        const handleFormSuccess = (e: Event) => {
-          console.log("[v0] Form submission detected:", e.type)
-          if (!formCompleted) {
-            formCompleted = true
-            console.log("[v0] Form successfully submitted, starting download")
-            setTimeout(() => proceedWithDownload(), 1000)
-            cleanup()
-          }
-        }
-
-        // Listen for various form events
-        formElement.addEventListener("submit", handleFormSuccess)
-
-        // Listen for Omnisend-specific events
-        document.addEventListener("omnisend:submit", handleFormSuccess)
-        document.addEventListener("omnisend:success", handleFormSuccess)
-
-        // Check for form closure (successful submission usually closes the form)
-        const observer = new MutationObserver(() => {
-          if (!document.contains(formElement) || formElement.offsetParent === null) {
-            console.log("[v0] Form disappeared - likely submitted successfully")
-            if (!formCompleted) {
-              formCompleted = true
-              setTimeout(() => proceedWithDownload(), 500)
-              cleanup()
-            }
-          }
-        })
-
-        observer.observe(document.body, { childList: true, subtree: true })
-      }
-
-      const cleanup = () => {
-        // Cleanup will be handled by component unmount
-      }
-
-      if (!checkForForm()) {
-        let attempts = 0
-        const formCheckInterval = setInterval(() => {
-          attempts++
-          if (checkForForm() || attempts > 20) {
-            // Check for 10 seconds
-            clearInterval(formCheckInterval)
-            if (!formDetected) {
-              console.log("[v0] Form not detected after 10 seconds")
-              setIsDownloading(false)
-              // Don't proceed with download - user must submit form
-            }
-          }
-        }, 500)
-      }
+      await proceedWithDownload()
     } catch (error) {
       console.error("[v0] Error in download process:", error)
       setIsDownloading(false)
@@ -123,20 +39,39 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
         console.log("[v0] Downloading track:", track.title)
 
         try {
-          // Fetch the audio file as a blob
-          const response = await fetch(track.audioUrl)
+          // Fetch the audio file as a blob with proper headers
+          const response = await fetch(track.audioUrl, {
+            method: "GET",
+            headers: {
+              Accept: "audio/*",
+            },
+            mode: "cors",
+          })
+
           if (!response.ok) {
-            console.error("[v0] Failed to fetch track:", track.title, response.status)
+            console.error("[v0] Failed to fetch track:", track.title, response.status, response.statusText)
             continue
           }
 
-          const blob = await response.blob()
-          const url = window.URL.createObjectURL(blob)
+          // Ensure we got audio content
+          const contentType = response.headers.get("content-type")
+          if (!contentType || !contentType.includes("audio")) {
+            console.warn("[v0] Response may not be audio content:", contentType)
+          }
 
-          // Create download link
+          const blob = await response.blob()
+
+          // Create a proper audio blob if needed
+          const audioBlob = new Blob([blob], { type: "audio/mpeg" })
+          const url = window.URL.createObjectURL(audioBlob)
+
+          // Create download link with sanitized filename
+          const sanitizedTitle = track.title.replace(/[^a-zA-Z0-9\s-]/g, "").trim()
+          const sanitizedArtist = track.artist.replace(/[^a-zA-Z0-9\s-]/g, "").trim()
+
           const link = document.createElement("a")
           link.href = url
-          link.download = `${track.artist} - ${track.title}.mp3`
+          link.download = `${sanitizedArtist} - ${sanitizedTitle}.mp3`
           link.style.display = "none"
 
           // Add to DOM, click, and remove
@@ -144,17 +79,36 @@ export default function DownloadFormModal({ isOpen, onClose }: DownloadFormModal
           link.click()
           document.body.removeChild(link)
 
-          // Clean up the blob URL
-          setTimeout(() => window.URL.revokeObjectURL(url), 1000)
+          // Clean up the blob URL after a delay
+          setTimeout(() => {
+            window.URL.revokeObjectURL(url)
+          }, 2000)
 
           console.log("[v0] Successfully initiated download for:", track.title)
         } catch (error) {
           console.error("[v0] Error downloading track:", track.title, error)
+
+          // Try alternative download method as fallback
+          try {
+            const fallbackLink = document.createElement("a")
+            fallbackLink.href = track.audioUrl
+            fallbackLink.download = `${track.artist} - ${track.title}.mp3`
+            fallbackLink.target = "_blank"
+            fallbackLink.style.display = "none"
+
+            document.body.appendChild(fallbackLink)
+            fallbackLink.click()
+            document.body.removeChild(fallbackLink)
+
+            console.log("[v0] Fallback download attempted for:", track.title)
+          } catch (fallbackError) {
+            console.error("[v0] Fallback download also failed:", fallbackError)
+          }
         }
 
         // Stagger downloads to prevent browser blocking
         if (i < selectedTracks.length - 1) {
-          await new Promise((resolve) => setTimeout(resolve, 1000))
+          await new Promise((resolve) => setTimeout(resolve, 1500))
         }
       }
 

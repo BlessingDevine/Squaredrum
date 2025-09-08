@@ -96,8 +96,11 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
           },
         ])
 
-        // Store selected tracks for after form completion
-        localStorage.setItem("pendingDownload", JSON.stringify(selectedTracks))
+        const tracksWithUrls = selectedTracks.map((track) => ({
+          ...track,
+          audioUrl: track.audioUrl || track.downloadUrl, // Ensure we have a download URL
+        }))
+        localStorage.setItem("pendingDownload", JSON.stringify(tracksWithUrls))
 
         setTimeout(() => {
           console.log("[v0] Opening Omnisend form")

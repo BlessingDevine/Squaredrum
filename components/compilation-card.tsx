@@ -60,6 +60,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     clearSelections,
     downloadSelected,
     isTrackSelected,
+    getCompilationSelections,
     canSelectMore,
     canDownload,
     remainingDownloads,
@@ -220,7 +221,7 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
     toggleTrackSelection(selectedTrack)
   }
 
-  const compilationSelectedTracks = selectedTracks.filter((track) => track.compilationId === compilation.id)
+  const compilationSelectedTracks = getCompilationSelections(compilation.id)
 
   useEffect(() => {
     if (typeof window !== "undefined") {

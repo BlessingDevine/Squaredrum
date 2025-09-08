@@ -22,6 +22,7 @@ interface DownloadContextType {
   clearSelections: () => void
   downloadSelected: () => void
   isTrackSelected: (trackId: number, compilationId: string) => boolean
+  getCompilationSelections: (compilationId: string) => SelectedTrack[]
   canSelectMore: boolean
   canDownload: boolean
   remainingDownloads: number
@@ -62,6 +63,10 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
 
   const clearSelections = () => {
     setSelectedTracks([])
+  }
+
+  const getCompilationSelections = (compilationId: string) => {
+    return selectedTracks.filter((track) => track.compilationId === compilationId)
   }
 
   const downloadSelected = () => {
@@ -165,6 +170,7 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
         clearSelections,
         downloadSelected,
         isTrackSelected,
+        getCompilationSelections,
         canSelectMore,
         canDownload,
         remainingDownloads,

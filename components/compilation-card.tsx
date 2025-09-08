@@ -224,39 +224,18 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const handleFormComplete = () => {
+      const handleSuccessClosed = () => {
         const pendingDownload = localStorage.getItem("pendingDownload")
         if (pendingDownload) {
-          console.log("[v0] Form completed, opening download modal")
+          console.log("[v0] Success message closed, opening download modal")
           setShowDownloadForm(true)
         }
       }
 
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === "childList") {
-            // Check for Omnisend success indicators
-            const successElements = document.querySelectorAll(
-              '[class*="success"], [class*="thank"], [class*="submitted"]',
-            )
-            if (successElements.length > 0) {
-              console.log("[v0] Detected form success via DOM mutation")
-              window.postMessage({ type: "omnisend-form-submitted" }, "*")
-            }
-          }
-        })
-      })
-
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-      })
-
-      window.addEventListener("omnisend-form-completed", handleFormComplete)
+      window.addEventListener("omnisend-success-closed", handleSuccessClosed)
 
       return () => {
-        window.removeEventListener("omnisend-form-completed", handleFormComplete)
-        observer.disconnect()
+        window.removeEventListener("omnisend-success-closed", handleSuccessClosed)
       }
     }
   }, [])

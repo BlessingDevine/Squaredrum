@@ -99,57 +99,41 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
         // Store selected tracks for after form completion
         localStorage.setItem("pendingDownload", JSON.stringify(selectedTracks))
 
-        const handleFormSubmission = () => {
-          console.log("[v0] Form submitted successfully")
-
-          // Show success message
-          const successMessage = document.createElement("div")
-          successMessage.innerHTML = `
-            <div style="
-              position: fixed;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              background: #10b981;
-              color: white;
-              padding: 20px 30px;
-              border-radius: 8px;
-              box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-              z-index: 10000;
-              font-family: system-ui;
-              font-size: 16px;
-              font-weight: 500;
-              text-align: center;
-              cursor: pointer;
-            ">
-              ✓ Form submitted successfully!<br>
-              <small style="opacity: 0.9; font-size: 14px;">Click to continue to download</small>
-            </div>
-          `
-
-          document.body.appendChild(successMessage)
-
-          // Auto-close success message and trigger modal after 3 seconds or on click
-          const closeAndContinue = () => {
-            document.body.removeChild(successMessage)
-            window.dispatchEvent(new CustomEvent("omnisend-form-completed"))
-          }
-
-          successMessage.addEventListener("click", closeAndContinue)
-          setTimeout(closeAndContinue, 3000)
-        }
-
-        // Listen for form submission
-        window.addEventListener("message", (event) => {
-          if (event.data && event.data.type === "omnisend-form-submitted") {
-            handleFormSubmission()
-          }
-        })
-
         setTimeout(() => {
           console.log("[v0] Opening Omnisend form")
           window.omnisend.push(["openForm", "68a3d3d43a6a28c6e3a0de92"])
         }, 100)
+
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === "childList") {
+              // Look for Omnisend's built-in thank you message elements
+              const thankYouElements = document.querySelectorAll(
+                '[class*="omnisend"][class*="thank"], [class*="omnisend"][class*="success"], [data-omnisend*="thank"], [data-omnisend*="success"], .omnisend-thank-you, .omnisend-success',
+              )
+
+              // Also check for common thank you message text
+              const textElements = Array.from(document.querySelectorAll("*")).filter((el) => {
+                const text = el.textContent?.toLowerCase() || ""
+                return text.includes("thank you") || text.includes("thanks") || text.includes("submitted")
+              })
+
+              if (thankYouElements.length > 0 || textElements.length > 0) {
+                console.log("[v0] Omnisend thank you message detected, dispatching event to open download modal")
+                window.dispatchEvent(new CustomEvent("omnisend-form-completed"))
+                observer.disconnect()
+              }
+            }
+          })
+        })
+
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+        })
+
+        // Clean up observer after 30 seconds
+        setTimeout(() => observer.disconnect(), 30000)
       } catch (error) {
         console.error("[v0] Omnisend form error:", error)
         console.log("[v0] Form failed to open, user must try again")
@@ -157,36 +141,6 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
     } else {
       console.log("[v0] Window not available, cannot open form")
     }
-  }
-
-  const proceedWithDownload = () => {
-    selectedTracks.forEach((track) => {
-      const link = document.createElement("a")
-      link.href = track.downloadUrl
-      link.download = `${track.artist} - ${track.title}.mp3`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    })
-
-    const newCount = monthlyDownloads + 1
-    setMonthlyDownloads(newCount)
-
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        "squaredrum-downloads",
-        JSON.stringify({
-          count: newCount,
-          month: new Date().getMonth(),
-          year: new Date().getFullYear(),
-        }),
-      )
-
-      // Clear pending download after completion
-      localStorage.removeItem("pendingDownload")
-    }
-
-    clearSelections()
   }
 
   const isTrackSelected = (trackId: number, compilationId: string) => {

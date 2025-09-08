@@ -224,18 +224,18 @@ export default function CompilationCard({ compilation, onDownloadClick }: Compil
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const handleSuccessClosed = () => {
+      const handleFormCompleted = () => {
         const pendingDownload = localStorage.getItem("pendingDownload")
         if (pendingDownload) {
-          console.log("[v0] Success message closed, opening download modal")
+          console.log("[v0] Form completed, opening download modal")
           setShowDownloadForm(true)
         }
       }
 
-      window.addEventListener("omnisend-success-closed", handleSuccessClosed)
+      window.addEventListener("omnisend-form-completed", handleFormCompleted)
 
       return () => {
-        window.removeEventListener("omnisend-success-closed", handleSuccessClosed)
+        window.removeEventListener("omnisend-form-completed", handleFormCompleted)
       }
     }
   }, [])

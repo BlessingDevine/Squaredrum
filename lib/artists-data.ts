@@ -83,56 +83,51 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Run Away",
-      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/run-away-7RyfVWFjdYNbGLIkXqNYlUsVRAb82C.mp3",
+      audioUrl: "/audio/run-away.mp3",
       duration: "3:33",
     },
     tracks: [
       {
         id: "neilly-1",
         title: "Run Away",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/run-away-7RyfVWFjdYNbGLIkXqNYlUsVRAb82C.mp3",
+        audioUrl: "/audio/run-away.mp3",
         duration: "3:33",
       },
       {
         id: "neilly-2",
         title: "Butterfly (Cover)",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-ZO55bNThWIYZBhK49BcpFbhrkC2m6C.mp3",
+        audioUrl: "/audio/butterfly-cover-neilly.mp3",
         duration: "3:45",
       },
       {
         id: "neilly-3",
         title: "Floating",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/floating-0zyS1MdCMiXP7xiCNghQfYqC9ehfzr.mp3",
+        audioUrl: "/audio/floating-neilly.mp3",
         duration: "4:12",
       },
       {
         id: "neilly-4",
         title: "If You Want It",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/it-is-fate-f6UmmOUWLvePJUyHvB43Fa9QqufJbt.mp3",
+        audioUrl: "/audio/if-you-want-it-neilly.mp3",
         duration: "3:28",
       },
       {
         id: "neilly-5",
         title: "What Do I Do Now",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what-do-i-do-now-Fokd0arltE8bbslPq1Eb9anvTiS6kH.mp3",
+        audioUrl: "/audio/what-do-i-do-now-neilly.mp3",
         duration: "3:56",
       },
       {
         id: "neilly-6",
         title: "Take A Picture",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/take-a-picture-6ANzbfQhuYJ12I8s848QwbQ7CYeBT1.mp3",
+        audioUrl: "/audio/take-a-picture-neilly.mp3",
         duration: "4:03",
       },
       {
         id: "neilly-7",
         title: "Oops...I Like Him",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/oops...i-like-him-A2gdP68acrNemBqBV3QN7jg0Cg5dMB.mp3",
-        duration: "3:43",
+        audioUrl: "/audio/oops-i-like-him-neilly.mp3",
+        duration: "3:41",
       },
     ],
     photoGallery: [
@@ -330,166 +325,135 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "What Is The Point",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what-is-the-point-L2QtD4hJRlprEXdsH9p06D3wq8brj8.mp3",
-      duration: "3:48",
+      audioUrl: "/audio/what-is-the-point.mp3",
+      duration: "4:15",
     },
     tracks: [
       {
         id: "tonez-1",
         title: "What Is The Point",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what-is-the-point-L2QtD4hJRlprEXdsH9p06D3wq8brj8.mp3",
-        duration: "3:48",
+        audioUrl: "/audio/what-is-the-point.mp3",
+        duration: "4:15",
       },
       {
         id: "tonez-2",
         title: "Golden Hour Confessions",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Golden%20Hour%20Confessions-FAUfk61tuIN9THWyp5RZQUbWou3WVu.mp3",
+        audioUrl: "/audio/golden-hour-confessions.mp3",
         duration: "3:48",
       },
       {
         id: "tonez-3",
-        title: "Electric Souls",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Electric%20Souls-2UlbXfQQztLtoplfKJsSatAdCXjAKK.mp3",
-        duration: "3:55",
-      },
-      {
-        id: "tonez-4",
-        title: "3AM Conversations",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3AM%20Conversations-yhSer3r7mMpqauzDkHOhX2bf0Q4ZAx.mp3",
-        duration: "4:18",
-      },
-      {
-        id: "tonez-5",
-        title: "City Lights & Late Nights",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/City%20Lights%20%26%20Late%20Nights-3uer7TWCgNJ28Yhu7NshfRkNCiDzrX.mp3",
-        duration: "3:42",
-      },
-      {
-        id: "tonez-6",
-        title: "Digital Love Letters",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Digital%20Love%20Letters-M2wAPCnjtS73HDmIc6yUrBSOXXozlS.mp3",
-        duration: "4:05",
-      },
-      {
-        id: "tonez-7",
-        title: "Bamboo Sheets",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bamboo%20Sheets-UnhvcxXegaYHBJ81opG2Vaqprw13wo.mp3",
-        duration: "3:38",
-      },
-      {
-        id: "tonez-8",
-        title: "Honey Drip",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Honey%20Drip-Opzh9.mp3",
-        duration: "4:08",
-      },
-      {
-        id: "tonez-9",
-        title: "Gravity",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gravity-ZvpmK75QmtWLmxYFVeZmQZTZMGGP31.mp3",
-        duration: "3:51",
-      },
-      {
-        id: "tonez-10",
-        title: "Neon Heartbreak",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neon%20Heartbreak-hdKhQ.mp3",
-        duration: "3:54",
-      },
-      {
-        id: "tonez-11",
-        title: "Rose Gold Feelings",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rose%20Gold%20Feelings-UCRCJMMI1zcuCvOWeAsOtG25pyuQAK.mp3",
-        duration: "4:16",
-      },
-      {
-        id: "tonez-12",
-        title: "Kaleidoscope Hearts",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kaleidoscope%20Hearts-YVSXe.mp3",
-        duration: "3:47",
-      },
-      {
-        id: "tonez-13",
-        title: "Silk Road",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Silk%20Road-KMMXsvH4Twhx7oXBDUJ9hfj9xvmGSf.mp3",
-        duration: "4:01",
-      },
-      {
-        id: "tonez-14",
-        title: "Purple Rain Therapy",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Purple%20Rain%20Therapy-KY5BI1aky4EvAJzZVuzbyHEz3E1yPP.mp3",
-        duration: "4:35",
-      },
-      {
-        id: "tonez-15",
-        title: "Midnight Frequencies",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/midnight-frequencie-o2hb8.mp3",
-        duration: "3:58",
-      },
-      {
-        id: "tonez-16",
-        title: "Slow Motion",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Slow%20Motion-WpzCBSOzmSBG5F8gAKDYNomtXJC4oQ.mp3",
-        duration: "4:14",
-      },
-      {
-        id: "tonez-17",
-        title: "Summer Skin",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Summer%20Skin-xXJfXW13feRFXnemzNb0OhL5t8Ng2m.mp3",
-        duration: "3:52",
-      },
-      {
-        id: "tonez-18",
-        title: "Velvet Dreams",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velvet%20Dreams-mTM8CT8qV0rcSmGrmZ5UN5QXN6uCl6.mp3",
-        duration: "4:22",
-      },
-      {
-        id: "tonez-19",
-        title: "Stardust Serenade",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stardust%20Serenade-fv6CXcD8fGfa52YjY91Fazoii0ofoj.mp3",
-        duration: "4:15",
-      },
-      {
-        id: "tonez-20",
         title: "Electric Souls II",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Electric%20Souls%20II-do7kxvECENTQsiV8xoYHGXCC7NEgnN.mp3",
+        audioUrl: "/audio/electric-souls-ii.mp3",
         duration: "4:02",
       },
       {
-        id: "tonez-21",
+        id: "tonez-4",
+        title: "Electric Souls",
+        audioUrl: "/audio/electric-souls.mp3",
+        duration: "3:55",
+      },
+      {
+        id: "tonez-5",
+        title: "3AM Conversations",
+        audioUrl: "/audio/3am-conversations.mp3",
+        duration: "4:18",
+      },
+      {
+        id: "tonez-6",
+        title: "City Lights & Late Nights",
+        audioUrl: "/audio/city-lights-late-nights.mp3",
+        duration: "3:42",
+      },
+      {
+        id: "tonez-7",
+        title: "Digital Love Letters",
+        audioUrl: "/audio/digital-love-letters.mp3",
+        duration: "4:05",
+      },
+      {
+        id: "tonez-8",
+        title: "Bamboo Sheets",
+        audioUrl: "/audio/bamboo-sheets.mp3",
+        duration: "3:38",
+      },
+      {
+        id: "tonez-9",
         title: "Kaleidoscope Hearts (Remix)",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/_Kaleidoscope%20Hearts%20%28Remix%29-wwBS2IWaV0a1l8RQJYfuG2e72jz7zu.mp3",
+        audioUrl: "/audio/kaleidoscope-hearts-remix.mp3",
         duration: "4:12",
       },
       {
-        id: "tonez-22",
+        id: "tonez-10",
+        title: "Gravity",
+        audioUrl: "/audio/gravity.mp3",
+        duration: "3:51",
+      },
+      {
+        id: "tonez-11",
+        title: "Honey Drip",
+        audioUrl: "/audio/honey-drip.mp3",
+        duration: "4:08",
+      },
+      {
+        id: "tonez-12",
+        title: "Neon Heartbreak",
+        audioUrl: "/audio/neon-heartbreak.mp3",
+        duration: "3:54",
+      },
+      {
+        id: "tonez-13",
+        title: "Rose Gold Feelings",
+        audioUrl: "/audio/rose-gold-feelings.mp3",
+        duration: "4:16",
+      },
+      {
+        id: "tonez-14",
+        title: "Kaleidoscope Hearts",
+        audioUrl: "/audio/kaleidoscope-hearts.mp3",
+        duration: "3:47",
+      },
+      {
+        id: "tonez-15",
+        title: "Kaleidoscope Hearts (Dance Mix)",
+        audioUrl: "/audio/kaleidoscope-hearts-dance-mix.mp3",
+        duration: "4:23",
+      },
+      {
+        id: "tonez-16",
+        title: "Silk Road",
+        audioUrl: "/audio/silk-road.mp3",
+        duration: "4:01",
+      },
+      {
+        id: "tonez-17",
         title: "Stardust Serenade (Extended)",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stardust%20Serenade%20%28Extended%29-zDpw5Cms4FX7s6xo36WBGI9NUncm3a.mp3",
+        audioUrl: "/audio/stardust-serenade-extended.mp3",
         duration: "5:12",
       },
       {
-        id: "tonez-23",
-        title: "Kaleidoscope Hearts (Dance Mix)",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kaleidoscope%20Hearts%20%28Dance%20Mix%29-fM0Q9PeveGQOgQXxckNfCAGPW9bQa5.mp3",
-        duration: "4:23",
+        id: "tonez-18",
+        title: "Purple Rain Therapy",
+        audioUrl: "/audio/purple-rain-therapy.mp3",
+        duration: "4:35",
+      },
+      {
+        id: "tonez-19",
+        title: "Midnight Frequencie",
+        audioUrl: "/audio/midnight-frequencie.mp3",
+        duration: "3:58",
+      },
+      {
+        id: "tonez-20",
+        title: "Slow Motion",
+        audioUrl: "/audio/slow-motion.mp3",
+        duration: "4:14",
+      },
+      {
+        id: "tonez-21",
+        title: "Midnight Frequencies2",
+        audioUrl: "/audio/midnight-frequencies2.mp3",
+        duration: "4:02",
       },
     ],
     photoGallery: [
@@ -608,169 +572,147 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Butterfly",
-      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-ZO55bNThWIYZBhK49BcpFbhrkC2m6C.mp3",
+      audioUrl: "/audio/butterfly.mp3",
       duration: "3:58",
     },
     tracks: [
       {
         id: "saka-1",
         title: "Butterfly",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-ZO55bNThWIYZBhK49BcpFbhrkC2m6C.mp3",
+        audioUrl: "/audio/butterfly.mp3",
         duration: "3:58",
       },
       {
         id: "saka-2",
         title: "Mirror Talk",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mirror-talk-7slHCP9pVLQ5Xyo2uGSMWFdKRaoT4C.mp3",
+        audioUrl: "/audio/mirror-talk-saka.mp3",
         duration: "3:42",
       },
       {
         id: "saka-3",
         title: "Bad Texter",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fine-anyway-h4yfvF90KHuGXJMooQytTe4ju9VZtV.mp3",
+        audioUrl: "/audio/bad-texter-saka.mp3",
         duration: "3:28",
       },
       {
         id: "saka-4",
         title: "Ex Files",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ex-files-Yo2BlzS5JkiKROQV8oa7gOvaiSLr7r.mp3",
+        audioUrl: "/audio/ex-files-saka.mp3",
         duration: "4:05",
       },
       {
         id: "saka-5",
         title: "Girl Math",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/girl-math-uhf13kCoSXBS7lFzaH6IRdMUNcxzY4.mp3",
+        audioUrl: "/audio/girl-math-saka.mp3",
         duration: "3:33",
       },
       {
         id: "saka-6",
         title: "Glow Up Season",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/glow-up-season-QSGudbgwLO5svaNGVpMK1uNTIQU3rr.mp3",
+        audioUrl: "/audio/glow-up-season-saka.mp3",
         duration: "3:51",
       },
       {
         id: "saka-7",
         title: "Designer Heartbreak",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/designer-heartbreak-USSBxt9YFGCPfmAoO9Pe4MEXfx3v2a.mp3",
+        audioUrl: "/audio/designer-heartbreak-saka.mp3",
         duration: "4:12",
       },
       {
         id: "saka-8",
         title: "Hot Girl Summer Internship",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hot-girl-summer-internship-XrxsALICDpFGO89MvrwKzq3CD5zwWG.mp3",
+        audioUrl: "/audio/hot-girl-summer-internship-saka.mp3",
         duration: "3:47",
       },
       {
         id: "saka-9",
         title: "Emotional Support Playlist",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/emotional-support-playlist-kChOEBCUUAYABAolq7ItvN8ebsQjYf.mp3",
+        audioUrl: "/audio/emotional-support-playlist-saka.mp3",
         duration: "4:18",
       },
       {
         id: "saka-10",
         title: "Mommy Juice",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mommy-juice-Razhkv83AVIxyH7uLeCYoZ5cUVBghe.mp3",
+        audioUrl: "/audio/mommy-juice-saka.mp3",
         duration: "3:39",
       },
       {
         id: "saka-11",
         title: "Red Flag Collector I",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-flag-collector-i-OJKEbWqb52cU4OTx60jI2GZPuvdKb2.mp3",
+        audioUrl: "/audio/red-flag-collector-i-saka.mp3",
         duration: "3:54",
       },
       {
         id: "saka-12",
         title: "Block Party",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dancing-tonight-46i5tSAjGyLhfNPWu2MQYx6Hqu2J08.mp3",
+        audioUrl: "/audio/block-party-saka.mp3",
         duration: "3:31",
       },
       {
         id: "saka-13",
         title: "Swiping Through My Feelings",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swiping-through-my-feelings-r9gZq9wRYCTFWyPXOdFe6KTNeQnTrj.mp3",
+        audioUrl: "/audio/swiping-through-my-feelings-saka.mp3",
         duration: "4:02",
       },
       {
         id: "saka-14",
         title: "Therapy Breakthrough II",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/therapy-breakthrough-ii-Uw3agBjIbKO2ABBZxbX9rqdoR9zIyB.mp3",
+        audioUrl: "/audio/therapy-breakthrough-ii-saka.mp3",
         duration: "3:48",
       },
       {
         id: "saka-15",
         title: "Red Flag Collector",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-flag-collector-D9RiIgsPEinujLMUDMoikLqsIpk2sZ.mp3",
+        audioUrl: "/audio/red-flag-collector-saka.mp3",
         duration: "3:57",
       },
       {
         id: "saka-16",
         title: "Standards Rising",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/standards-rising-GcmQepkhPIUgt94azv4o1heTHIjYT7.mp3",
+        audioUrl: "/audio/standards-rising-saka.mp3",
         duration: "4:08",
       },
       {
         id: "saka-17",
         title: "Pillow Princess",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pillow-princess-fxlfnrnRx6rtAEtSiHFE2eCGNd3Sly.mp3",
+        audioUrl: "/audio/pillow-princess-saka.mp3",
         duration: "3:44",
       },
       {
         id: "saka-18",
         title: "Pillow Princess II",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pillow-princess-ii-ErPQP6VmprI0FESLQg5OF4MqTbdXbi.mp3",
+        audioUrl: "/audio/pillow-princess-ii-saka.mp3",
         duration: "3:52",
       },
       {
         id: "saka-19",
         title: "Self-Care Sunday",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/self-care-sunday-6i5WJzYPxZMeX4AyTVLV0ZoOw6c5UD.mp3",
+        audioUrl: "/audio/self-care-sunday-saka.mp3",
         duration: "4:15",
       },
       {
         id: "saka-20",
         title: "Queen of Overthinking",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/queen-of-overthinking-hL1HCjlOVe5NcetfdU29xe7FhLkq9E.mp3",
+        audioUrl: "/audio/queen-of-overthinking-saka.mp3",
         duration: "3:36",
       },
       {
         id: "saka-21",
         title: "Wine Mom Anthem",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wine-mom-anthem-FkGevBhYBzCNKm1fH1hiDvb72Xdh08.mp3",
+        audioUrl: "/audio/wine-mom-anthem.mp3",
         duration: "3:42",
       },
       {
         id: "saka-22",
         title: "Therapy Breakthrough",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/therapy-breakthrough-fKDJfzWGHPZk4wKnbQzzlggPk08b4M.mp3",
+        audioUrl: "/audio/therapy-breakthrough.mp3",
         duration: "4:01",
       },
       {
         id: "saka-23",
         title: "Toxic But Make It Fashion",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/toxic-but-make-it-fashion-dOt9ArJg8EQ7meoL7eOdEAMbnVR9bl.mp3",
-        duration: "3:52",
+        audioUrl: "/audio/toxic-but-make-it-fashion.mp3",
+        duration: "3:37",
       },
     ],
     photoGallery: [
@@ -902,7 +844,7 @@ export const artists: Artist[] = [
       },
       {
         id: "saka-photo-22",
-        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Saka%2022.jpg-51LxseSx0cHpy461nTizIaDDjBG6Fm.jpeg",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Saka%2022.jpg-ESEOObeDOIwU5x4jPdUymTgRzJ4J7v.jpeg",
         alt: "Saka in metallic silver bomber jacket over green mesh crop top with chain necklace against colorful graffiti wall with neon lighting",
         caption: "Metallic Street",
       },
@@ -986,58 +928,50 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "She's A Vibe",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shes-a-vibe-0glSJafAGMMZB9uxQCQxCAeeXXxJnl.mp3",
+      audioUrl: "/audio/shes-a-vibe.mp3",
       duration: "4:02",
     },
     tracks: [
       {
         id: "virgo-1",
         title: "She's A Vibe",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shes-a-vibe-0glSJafAGMMZB9uxQCQxCAeeXXxJnl.mp3",
+        audioUrl: "/audio/shes-a-vibe.mp3",
         duration: "4:02",
       },
       {
         id: "virgo-2",
         title: "Be Your Man",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/be-your-man-ltQW0mef4gAwS74mFUPxfJJMhSqTvy.mp3",
+        audioUrl: "/audio/be-your-man-virgo.mp3",
         duration: "3:48",
       },
       {
         id: "virgo-3",
         title: "Worth It Anyway",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/worth-it-anyway-NZuzlyY3lnaJHVvAGbo8LJfJWxXixH.mp3",
+        audioUrl: "/audio/worth-it-anyway-virgo.mp3",
         duration: "4:12",
       },
       {
         id: "virgo-4",
         title: "Breakfast In Bed",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/breakfast-in-bed-69NZjtYodrdfvss3rfQDuFJiSd0Rfs.mp3",
+        audioUrl: "/audio/breakfast-in-bed-virgo.mp3",
         duration: "3:35",
       },
       {
         id: "virgo-5",
         title: "Walls Down",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/walls-down-MxWYUYY0JHB1Urs1xPFZIdYTJ92kTO.mp3",
+        audioUrl: "/audio/walls-down-virgo.mp3",
         duration: "4:05",
       },
       {
         id: "virgo-6",
         title: "Hard To Love",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hard-to-love-C3dtx88nPvXP1Z5pc9d3eXsKx2b2Ml.mp3",
+        audioUrl: "/audio/hard-to-love-virgo.mp3",
         duration: "3:52",
       },
       {
         id: "virgo-7",
         title: "Secret Lover",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/secret-lover-BLecHJQ89KFur1hNMN5aGo3ityV0ex.mp3",
+        audioUrl: "/audio/secret-lover-virgo.mp3",
         duration: "4:18",
       },
     ],
@@ -1071,78 +1005,68 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "The Holly Molly",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Holly%20Molly-tc0gdsd9n0RqIeAjEluwTUy0QHIp1t.mp3",
-      duration: "4:08",
+      audioUrl: "/audio/the-holly-molly.mp3",
+      duration: "3:47",
     },
     tracks: [
       {
         id: "neka-1",
         title: "The Holly Molly",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Holly%20Molly-tc0gdsd9n0RqIeAjEluwTUy0QHIp1t.mp3",
-        duration: "4:08",
+        audioUrl: "/audio/the-holly-molly.mp3",
+        duration: "3:47",
       },
       {
         id: "neka-2",
         title: "Na Me Be the One",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/na-me-be-the-one-E9mlnfckNmw6nE13Z1nwFfdI1FwuIK.mp3",
+        audioUrl: "/audio/na-me-be-the-one.mp3",
         duration: "3:52",
       },
       {
         id: "neka-3",
         title: "Broken No Mean Finish",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/broken-no-mean-finish-gAUYPZPexvSOKI1kmtnxqIazgJVmRd.mp3",
+        audioUrl: "/audio/broken-no-mean-finish.mp3",
         duration: "4:15",
       },
       {
         id: "neka-4",
         title: "Lagos Night",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lagos-night-GdsEsE6CeysXkuKxueiyzDneeSXcFX.mp3",
+        audioUrl: "/audio/lagos-night.mp3",
         duration: "3:38",
       },
       {
         id: "neka-5",
         title: "For My Baby",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-my-baby-lrPGgSwHNS9bprihQVyTcSrQ8AdsWP.mp3",
+        audioUrl: "/audio/for-my-baby.mp3",
         duration: "4:02",
       },
       {
         id: "neka-6",
         title: "Stray Dog",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/stray-dog-eCZHbX8EKL3mCe2aSpPUS1YfOOnVhU.mp3",
+        audioUrl: "/audio/stray-dog.mp3",
         duration: "3:29",
       },
       {
         id: "neka-7",
         title: "I Smile",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-smile-v5YJkyjMtcIdJ0JpjqEUZU8zl7iayI.mp3",
+        audioUrl: "/audio/i-smile.mp3",
         duration: "3:44",
       },
       {
         id: "neka-8",
         title: "I Am Loyal",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-loyal-WPURRAAjuamvRyZwpXt2oO2ZxCEUTf.mp3",
+        audioUrl: "/audio/i-am-loyal.mp3",
         duration: "4:08",
       },
       {
         id: "neka-9",
         title: "The Holly Molly Live",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-holly-molly-live-BVvuYy4JlGAD0xSXy5wxuB0myDPRf5.mp3",
+        audioUrl: "/audio/the-holly-molly-live.mp3",
         duration: "4:12",
       },
       {
         id: "neka-10",
         title: "Return To Sender",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/return-to-sender-p0whkokLttf85OSF5g3KW7LYhVg1eP.mp3",
+        audioUrl: "/audio/return-to-sender.mp3",
         duration: "3:56",
       },
     ],
@@ -1293,7 +1217,7 @@ export const artists: Artist[] = [
       },
       {
         id: "neka-photo-25",
-        src: "/images/neka-new/neka-26.jpg",
+        src: "/images/neka-new/neka-25.jpg",
         alt: "Close-up portrait of Neka with natural hair and locs, wearing orange/yellow top with gold chain necklaces, smiling warmly",
         caption: "Golden Portrait",
       },
@@ -1335,49 +1259,44 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "No Dey Rush",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-bGmx9iDWVsij8oc57GU5I22P5bLPHp.mp3",
+      audioUrl: "/audio/no-dey-rush.mp3",
       duration: "3:28",
     },
     tracks: [
       {
         id: "danni-1",
         title: "No Dey Rush",
-        audioUrl: "https://blob.v0.dev/danni-no-dey-rush",
+        audioUrl: "/audio/no-dey-rush.mp3",
         duration: "3:28",
       },
       {
         id: "danni-2",
         title: "Body Dey Go Round",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Body%20Dey%20Go%20Round-8gX4KUzGGS8WztaOT9FKeBdcxGmXpm.mp3",
+        audioUrl: "/audio/body-dey-go-round.mp3",
         duration: "3:45",
       },
       {
         id: "danni-3",
         title: "Memories",
-        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Memories-zJI3JoOHb2HwApvhi2zCXqa9wscBrH.mp3",
+        audioUrl: "/audio/memories-danni.mp3",
         duration: "4:02",
       },
       {
         id: "danni-4",
         title: "Good Time Tonight",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Good%20Time%20Tonight-UAWWiQMUxp3hzfAVwIJNgfUp8GRJ2Z.mp3",
+        audioUrl: "/audio/good-time-tonight.mp3",
         duration: "3:38",
       },
       {
         id: "danni-5",
         title: "Call Me",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Call%20Me-hOk1QvyWVUCbpvMhM61IOo4y8pA5YP.mp3",
+        audioUrl: "/audio/call-me-danni.mp3",
         duration: "3:52",
       },
       {
         id: "danni-6",
         title: "E Sweet Like Suga",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/E%20Sweet%20Like%20Suga-w8OJqiortop8tqT0SyvjqmqJtt7NC4.mp3",
+        audioUrl: "/audio/e-sweet-like-suga.mp3",
         duration: "4:15",
       },
     ],
@@ -1539,9 +1458,9 @@ export const artists: Artist[] = [
     },
     featured: true,
     featuredTrack: {
-      title: "A Freak",
-      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-freak-CsnPTGuptcyUhADDFkq8a9djIlYxMe.mp3",
-      duration: "3:47",
+      title: "Breakfast In Bed",
+      audioUrl: "/audio/breakfast-in-bed.mp3",
+      duration: "3:29",
     },
     photoGallery: [
       {
@@ -1642,8 +1561,8 @@ export const artists: Artist[] = [
       },
       {
         id: "lucas-photo-17",
-        alt: "Lucas Meno in black leather jacket with sunglasses on city street in urban nighttime setting with warm atmospheric lighting",
         src: "/images/lucas-meno/18.jpg",
+        alt: "Lucas Meno in black leather jacket with sunglasses on city street in urban nighttime setting with warm atmospheric lighting",
         caption: "Street Style",
       },
       {
@@ -1702,9 +1621,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Let's Talk About It",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/let%27s-talk-about-it-Y5KVRtNKWyLiZFAkrfpNZsu9zmtoWM.mp3",
-      duration: "4:02",
+      audioUrl: "/audio/lets-talk-about-it.mp3",
+      duration: "3:45",
     },
     photoGallery: [
       {
@@ -1789,18 +1707,18 @@ export const artists: Artist[] = [
   },
   {
     id: "10",
-    name: "Riven Cole",
-    slug: "riven-cole",
+    name: "Echo Bloom",
+    slug: "echo-bloom",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Echo%20Bloom.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",
-    bio: "Riven Cole is an AI artist that creates innovative Pop/Rock music through cutting-edge sound synthesis and algorithmic composition. This artificial artist from London combines rock production techniques with pop sensibilities, crafting dynamic soundscapes that blur the lines between digital and organic. With AI-generated melodies and synthetic vocals processed through advanced neural networks, Riven Cole represents the future of pop/rock music creation, bringing a unique blend of technology and artistry to the contemporary music scene.",
+    bio: "Echo Bloom is an AI artist that creates innovative Electronic/Indie music through cutting-edge sound synthesis and algorithmic composition. This artificial artist from London combines electronic production techniques with indie sensibilities, crafting atmospheric soundscapes that blur the lines between digital and organic. With AI-generated melodies and synthetic vocals processed through advanced neural networks, Echo Bloom represents the future of electronic music creation, bringing a unique blend of technology and artistry to the indie electronic scene.",
     location: "London, UK",
-    genre: "Pop/Rock",
+    genre: "Electronic/Indie",
     socialMedia: {
-      instagram: "https://instagram.com/rivencolemusic",
-      twitter: "https://twitter.com/rivencolemusic",
-      spotify: "https://open.spotify.com/artist/rivencole",
-      soundcloud: "https://soundcloud.com/rivencole",
+      instagram: "https://instagram.com/echobloommusic",
+      twitter: "https://twitter.com/echobloommusic",
+      spotify: "https://open.spotify.com/artist/echobloom",
+      soundcloud: "https://soundcloud.com/echobloom",
     },
     albums: [
       {
@@ -1818,129 +1736,128 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Get To The Loving",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/get-to-the-loving-5RoKnrYEFTud3hCf078L3LivfOQ93B.mp3",
-      duration: "4:15",
+      audioUrl: "/audio/get-to-the-loving.mp3",
+      duration: "3:45",
     },
     photoGallery: [
       {
-        id: "riven-photo-1",
-        src: "/images/riven-cole/11.jpg",
-        alt: "Riven Cole walking through neon-lit urban tunnel wearing metallic puffer vest over black hoodie with chains, distressed jeans, and sneakers in cyberpunk atmosphere",
+        id: "echo-photo-1",
+        src: "/images/echo-bloom/11.jpg",
+        alt: "Echo Bloom walking through neon-lit urban tunnel wearing metallic puffer vest over black hoodie with chains, distressed jeans, and sneakers in cyberpunk atmosphere",
         caption: "Neon Tunnel",
       },
       {
-        id: "riven-photo-2",
-        src: "/images/riven-cole/05.jpg",
-        alt: "Riven Cole in tie-dye hoodie with chains, sitting in vintage record store surrounded by vinyl records and audio equipment, holding a record",
+        id: "echo-photo-2",
+        src: "/images/echo-bloom/05.jpg",
+        alt: "Echo Bloom in tie-dye hoodie with chains, sitting in vintage record store surrounded by vinyl records and audio equipment, holding a record",
         caption: "Record Store Vibes",
       },
       {
-        id: "riven-photo-3",
-        src: "/images/riven-cole/19.jpg",
-        alt: "Riven Cole in luxurious studio with tufted leather couch, wearing purple-gray hoodie with chain necklace, distressed jeans, and sneakers with high-end studio equipment and piano",
+        id: "echo-photo-3",
+        src: "/images/echo-bloom/19.jpg",
+        alt: "Echo Bloom in luxurious studio with tufted leather couch, wearing purple-gray hoodie with chain necklace, distressed jeans, and sneakers with high-end studio equipment and piano",
         caption: "Luxury Studio",
       },
       {
-        id: "riven-photo-4",
-        src: "/images/riven-cole/02.jpg",
-        alt: "Riven Cole in iridescent blue suit with sunglasses and chain necklace, sitting with studio light in background",
+        id: "echo-photo-4",
+        src: "/images/echo-bloom/02.jpg",
+        alt: "Echo Bloom in iridescent blue suit with sunglasses and chain necklace, sitting with studio light in background",
         caption: "Studio Glamour",
       },
       {
-        id: "riven-photo-5",
-        src: "/images/riven-cole/15.jpg",
-        alt: "Riven Cole crouching in neon-lit alley wearing tie-dye jacket over hoodie with crossbody bag, jeans, and sneakers in vibrant urban street setting",
+        id: "echo-photo-5",
+        src: "/images/echo-bloom/15.jpg",
+        alt: "Echo Bloom crouching in neon-lit alley wearing tie-dye jacket over hoodie with crossbody bag, jeans, and sneakers in vibrant urban street setting",
         caption: "Neon Alley",
       },
       {
-        id: "riven-photo-6",
-        src: "/images/riven-cole/08.jpg",
-        alt: "Riven Cole in iridescent blue suit with sunglasses and vest, arms outstretched with large circular light behind him",
+        id: "echo-photo-6",
+        src: "/images/echo-bloom/08.jpg",
+        alt: "Echo Bloom in iridescent blue suit with sunglasses and vest, arms outstretched with large circular light behind him",
         caption: "Circular Light",
       },
       {
-        id: "riven-photo-7",
-        src: "/images/riven-cole/14.jpg",
-        alt: "Riven Cole sitting in studio chair next to large mixing console, wearing black sweatshirt with layered chains, distressed jeans, and sneakers with professional studio monitors",
+        id: "echo-photo-7",
+        src: "/images/echo-bloom/14.jpg",
+        alt: "Echo Bloom sitting in studio chair next to large mixing console, wearing black sweatshirt with layered chains, distressed jeans, and sneakers with professional studio monitors",
         caption: "Mixing Console",
       },
       {
-        id: "riven-photo-8",
-        src: "/images/riven-cole/01.jpg",
-        alt: "Riven Cole with blonde hair in purple-gray turtleneck sitting on concrete steps with modern buildings in background",
+        id: "echo-photo-8",
+        src: "/images/echo-bloom/01.jpg",
+        alt: "Echo Bloom with blonde hair in purple-gray turtleneck sitting on concrete steps with modern buildings in background",
         caption: "Urban Steps",
       },
       {
-        id: "riven-photo-9",
-        src: "/images/riven-cole/17.jpg",
-        alt: "Riven Cole against graffiti wall holding drink, wearing leather vest over blue hoodie with chains and rings, jeans, and sneakers in urban street art setting",
+        id: "echo-photo-9",
+        src: "/images/echo-bloom/17.jpg",
+        alt: "Echo Bloom against graffiti wall holding drink, wearing leather vest over blue hoodie with chains and rings, jeans, and sneakers in urban street art setting",
         caption: "Street Art Vibes",
       },
       {
-        id: "riven-photo-10",
-        src: "/images/riven-cole/04.jpg",
-        alt: "Riven Cole in iridescent blue suit with sunglasses, arms outstretched in dramatic pose against concrete architecture",
+        id: "echo-photo-10",
+        src: "/images/echo-bloom/04.jpg",
+        alt: "Echo Bloom in iridescent blue suit with sunglasses, arms outstretched in dramatic pose against concrete architecture",
         caption: "Dramatic Pose",
       },
       {
-        id: "riven-photo-11",
-        src: "/images/riven-cole/20.jpg",
-        alt: "Riven Cole in recording studio wearing blue-purple hoodie, light distressed jeans, and sneakers, sitting on chair next to mixing console with another person on couch in background",
+        id: "echo-photo-11",
+        src: "/images/echo-bloom/20.jpg",
+        alt: "Echo Bloom in recording studio wearing blue-purple hoodie, light distressed jeans, and sneakers, sitting on chair next to mixing console with another person on couch in background",
         caption: "Studio Session",
       },
       {
-        id: "riven-photo-12",
-        src: "/images/riven-cole/07.jpg",
-        alt: "Riven Cole in black turtleneck and checkered pants sitting on marble steps with modern glass buildings in background",
+        id: "echo-photo-12",
+        src: "/images/echo-bloom/07.jpg",
+        alt: "Echo Bloom in black turtleneck and checkered pants sitting on marble steps with modern glass buildings in background",
         caption: "Marble Steps",
       },
       {
-        id: "riven-photo-13",
-        src: "/images/riven-cole/16.jpg",
-        alt: "Riven Cole in recording studio making peace sign, wearing denim jacket over black shirt with chains, sitting at large mixing console with professional equipment",
+        id: "echo-photo-13",
+        src: "/images/echo-bloom/16.jpg",
+        alt: "Echo Bloom in recording studio making peace sign, wearing denim jacket over black shirt with chains, sitting at large mixing console with professional equipment",
         caption: "Studio Peace",
       },
       {
-        id: "riven-photo-14",
-        src: "/images/riven-cole/09.jpg",
-        alt: "Riven Cole in iridescent blue suit with sunglasses, arms outstretched against large circular light backdrop",
+        id: "echo-photo-14",
+        src: "/images/echo-bloom/09.jpg",
+        alt: "Echo Bloom in iridescent blue suit with sunglasses, arms outstretched against large circular light backdrop",
         caption: "Light Portal",
       },
       {
-        id: "riven-photo-15",
-        src: "/images/riven-cole/12.jpg",
-        alt: "Riven Cole sitting on concrete steps in urban setting wearing black leather jacket with chain necklace, distressed jeans, and sneakers with modern architecture background",
+        id: "echo-photo-15",
+        src: "/images/echo-bloom/12.jpg",
+        alt: "Echo Bloom sitting on concrete steps in urban setting wearing black leather jacket with chain necklace, distressed jeans, and sneakers with modern architecture background",
         caption: "Urban Concrete",
       },
       {
-        id: "riven-photo-16",
-        src: "/images/riven-cole/03.jpg",
-        alt: "Riven Cole smiling in purple-gray turtleneck and checkered pants sitting on concrete steps with modern architecture",
+        id: "echo-photo-16",
+        src: "/images/echo-bloom/03.jpg",
+        alt: "Echo Bloom smiling in purple-gray turtleneck and checkered pants sitting on concrete steps with modern architecture",
         caption: "City Smile",
       },
       {
-        id: "riven-photo-17",
-        src: "/images/riven-cole/18.jpg",
-        alt: "Riven Cole in professional studio wearing purple-gray hoodie with chains, distressed jeans, and sneakers, sitting next to large mixing console with studio monitors",
+        id: "echo-photo-17",
+        src: "/images/echo-bloom/18.jpg",
+        alt: "Echo Bloom in professional studio wearing purple-gray hoodie with chains, distressed jeans, and sneakers, sitting next to large mixing console with studio monitors",
         caption: "Studio Professional",
       },
       {
-        id: "riven-photo-18",
-        src: "/images/riven-cole/06.jpg",
-        alt: "Riven Cole in iridescent blue suit with sunglasses, sitting on concrete steps in dramatic pose",
+        id: "echo-photo-18",
+        src: "/images/echo-bloom/06.jpg",
+        alt: "Echo Bloom in iridescent blue suit with sunglasses, sitting on concrete steps in dramatic pose",
         caption: "Blue Hour",
       },
       {
-        id: "riven-photo-19",
-        src: "/images/riven-cole/13.jpg",
-        alt: "Riven Cole in professional recording studio with others, wearing blue-purple hoodie and distressed jeans, sitting casually while others work at mixing console",
+        id: "echo-photo-19",
+        src: "/images/echo-bloom/13.jpg",
+        alt: "Echo Bloom in professional recording studio with others, wearing blue-purple hoodie and distressed jeans, sitting casually while others work at mixing console",
         caption: "Studio Collaboration",
       },
       {
-        id: "riven-photo-20",
-        src: "/images/riven-cole/10.jpg",
-        alt: "Riven Cole in tie-dye hoodie with chains, sitting in vintage record store surrounded by vinyl records, neon signs, and audio equipment",
+        id: "echo-photo-20",
+        src: "/images/echo-bloom/10.jpg",
+        alt: "Echo Bloom in tie-dye hoodie with chains, sitting in vintage record store surrounded by vinyl records, neon signs, and audio equipment",
         caption: "Vinyl Collection",
       },
     ],
@@ -1974,8 +1891,7 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Come Get It",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/come-get-it-OJWOYgcILjrZD2V2gumuWBeGYl4OEP.mp3",
+      audioUrl: "/audio/come-get-it-sadie.mp3",
       duration: "3:52",
     },
     photoGallery: [
@@ -2056,72 +1972,62 @@ export const artists: Artist[] = [
       {
         id: "sadie-1",
         title: "Come Get It",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/come-get-it-OJWOYgcILjrZD2V2gumuWBeGYl4OEP.mp3",
+        audioUrl: "/audio/come-get-it-sadie.mp3",
         duration: "3:52",
       },
       {
         id: "sadie-2",
         title: "The Sun Will Shine Again",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-sun-will-shine-again-yJTsPWfLMxO4HJZJKeJSb5kUDHxeel.mp3",
-        duration: "3:54",
+        audioUrl: "/audio/the-sun-will-shine-again-new.mp3",
+        duration: "4:18",
       },
       {
         id: "sadie-3",
         title: "A Love Past",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-love-past-ii-bOujSNqlozHmkI7eQWFjZtFLBIm0fB.mp3",
-        duration: "4:01",
+        audioUrl: "/audio/a-love-past-new.mp3",
+        duration: "3:45",
       },
       {
         id: "sadie-4",
         title: "Already Winning",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/already-winning-aFBlNaPEQsSzbR3ZlBq60CNkE37d6J.mp3",
-        duration: "4:03",
+        audioUrl: "/audio/already-winning-new.mp3",
+        duration: "3:33",
       },
       {
         id: "sadie-5",
         title: "Playing For Keeps",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/playing-for-keeps-KnaVdE707qbCoHnhGd1XAbqhli84N3.mp3",
-        duration: "4:13",
+        audioUrl: "/audio/playing-for-keeps-new.mp3",
+        duration: "4:02",
       },
       {
         id: "sadie-6",
         title: "Pull Up A Chair",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pull-up-a-chair-M0trTMP68zv7UiphDGhzXLpQaq9iy6.mp3",
-        duration: "4:09",
+        audioUrl: "/audio/pull-up-a-chair-new.mp3",
+        duration: "3:28",
       },
       {
         id: "sadie-7",
         title: "Memories Of A Love Past",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-of-a-love-past-SHSzjEHsoghF54191mElgavzzqvlEN.mp3",
-        duration: "3:41",
+        audioUrl: "/audio/memories-of-a-love-past-new.mp3",
+        duration: "4:15",
       },
       {
         id: "sadie-8",
         title: "Velvet Rope",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/velvet-rope-inWXidkBhiUCUA97lcmpDQZmfFNdgv.mp3",
-        duration: "4:17",
+        audioUrl: "/audio/velvet-rope-new.mp3",
+        duration: "3:41",
       },
       {
         id: "sadie-9",
         title: "I Like The Ride",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-like-the-ride-aMY50k2BUdT38sAX4T2qCBbQTzsNnu.mp3",
-        duration: "3:37",
+        audioUrl: "/audio/i-like-the-ride-new.mp3",
+        duration: "3:56",
       },
       {
         id: "sadie-10",
         title: "Could Have Been Here",
-        audioUrl:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/could-have-been-here-FpGTwY7p0OUvi0fTEUk08IYdjqYC4n.mp3",
-        duration: "3:44",
+        audioUrl: "/audio/could-have-been-here-new.mp3",
+        duration: "4:08",
       },
     ],
   },
@@ -2154,9 +2060,8 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Wheels Fall Off",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheels-fall-off-b3gDDj5mhP7fl6jAeSHbybHGI6Elcr.mp3",
-      duration: "4:05",
+      audioUrl: "/audio/wheels-fall-off.mp3",
+      duration: "4:12",
     },
     photoGallery: [
       {
@@ -2227,8 +2132,7 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "The Honky Tonk Heart",
-      audioUrl:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/honky-tonk-heart-JyDemMPTwICBIozXczovBCs7soWokf.mp3",
+      audioUrl: "/audio/honky-tonk-heart.mp3",
       duration: "4:05",
     },
     photoGallery: [

@@ -94,7 +94,6 @@ Featured artists include:
 - Sadie Rose
 - Lunah
 - Echo Bloom
-- Riven Cole
 - Cedar Line
 
 ## API Endpoints

@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
-import Script from "next/script"
+import { Inter } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
@@ -9,7 +8,6 @@ import { AudioProvider } from "@/components/audio-context"
 import { RadioProvider } from "@/components/radio-context"
 import RadioPlayer from "@/components/radio-player"
 import { GlobalMusicProvider } from "@/components/global-music-player"
-import { DownloadProvider } from "@/contexts/download-context"
 import { cinzel } from "./fonts"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -17,17 +15,15 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: {
     default: "SQUAREDRUM Records | The Future of Music",
-    template: "%s | SQUAREDRUM Records",
+    template: "%s | SQUAREDRUM Records"
   },
-  description:
-    "Discover the future of music with AI-generated tracks across multiple genres. SQUAREDRUM is pioneering the next generation of music creation through artificial intelligence.",
-  keywords:
-    "AI music, artificial intelligence, record label, music production, AI artists, electronic music, pop music, R&B, country music, afrobeat",
+  description: "Discover the future of music with AI-generated tracks across multiple genres. SQUAREDRUM is pioneering the next generation of music creation through artificial intelligence.",
+  keywords: "AI music, artificial intelligence, record label, music production, AI artists, electronic music, pop music, R&B, country music, afrobeat",
   authors: [{ name: "SQUAREDRUM" }],
   creator: "SQUAREDRUM",
   publisher: "SQUAREDRUM",
   robots: "index, follow",
-  metadataBase: new URL("https://squaredrum.com"),
+  metadataBase: new URL('https://squaredrum.com'),
   openGraph: {
     title: "SQUAREDRUM Records | The Future of Music",
     description: "Discover the future of music with AI-generated tracks across multiple genres.",
@@ -50,15 +46,15 @@ export const metadata: Metadata = {
     description: "Discover the future of music with AI-generated tracks across multiple genres.",
     images: ["/squaredrum-logo.png"],
   },
-  generator: "v0.dev",
+    generator: 'v0.dev'
 }
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f59e0b" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    { media: '(prefers-color-scheme: light)', color: '#f59e0b' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
 }
 
@@ -70,32 +66,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${cinzel.variable}`}>
-        <Script
-          id="omnisend-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.omnisend = window.omnisend || [];
-              omnisend.push(["brandID", "68a3cdb6ab4f8ff06d62f1a1"]);
-              omnisend.push(["track", "$pageViewed"]);
-              !function(){
-                var e=document.createElement("script");
-                e.type="text/javascript",e.async=!0,
-                e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
-                var t=document.getElementsByTagName("script")[0];
-                t.parentNode.insertBefore(e,t)
-              }();
-            `,
-          }}
-        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <GlobalMusicProvider>
             <AudioProvider>
               <RadioProvider>
-                <DownloadProvider>
-                  {children}
-                  <RadioPlayer />
-                </DownloadProvider>
+                {children}
+                <RadioPlayer />
               </RadioProvider>
             </AudioProvider>
           </GlobalMusicProvider>

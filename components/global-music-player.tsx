@@ -467,6 +467,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
       crossfadeAudio
         .play()
         .then(() => {
+          // 2-second crossfade
           let step = 0
           const steps = 20
           const interval = 100 // 2000ms / 20 = 100ms per step
@@ -541,6 +542,7 @@ export function GlobalMusicProvider({ children }: GlobalMusicProviderProps) {
           duration: duration || 0,
         }))
 
+        // Trigger crossfade 2 seconds before end
         if (duration && currentTime > 0) {
           const timeRemaining = duration - currentTime
           if (
@@ -776,7 +778,6 @@ function GlobalMusicPlayer() {
                     src={
                       getCompilationArtwork(state.currentTrack.compilationId) ||
                       state.currentTrack.coverArt ||
-                      "/placeholder.svg" ||
                       "/placeholder.svg"
                     }
                     alt={state.currentTrack.title}
@@ -845,7 +846,6 @@ function GlobalMusicPlayer() {
                     src={
                       getCompilationArtwork(state.currentTrack.compilationId) ||
                       state.currentTrack.coverArt ||
-                      "/placeholder.svg" ||
                       "/placeholder.svg"
                     }
                     alt={state.currentTrack.title}
@@ -993,7 +993,6 @@ function GlobalMusicPlayer() {
                   src={
                     getCompilationArtwork(state.currentTrack.compilationId) ||
                     state.currentTrack.coverArt ||
-                    "/placeholder.svg" ||
                     "/placeholder.svg"
                   }
                   alt={state.currentTrack.title}
@@ -1171,7 +1170,6 @@ function GlobalMusicPlayer() {
                 src={
                   getCompilationArtwork(state.currentTrack.compilationId) ||
                   state.currentTrack.coverArt ||
-                  "/placeholder.svg" ||
                   "/placeholder.svg"
                 }
                 alt={state.currentTrack.title}

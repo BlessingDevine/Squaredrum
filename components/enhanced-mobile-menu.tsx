@@ -525,16 +525,16 @@ export default function EnhancedMobileMenu({
             {showArtists && (
               <div className="mt-4 ml-8 space-y-3 animate-in slide-in-from-top-2 duration-300">
                 <div
-                  className="max-h-64 overflow-y-auto enhanced-scrollbar space-y-3 pr-2"
+                  className="max-h-48 overflow-y-auto enhanced-scrollbar space-y-3 pr-2"
                   style={{ overscrollBehavior: "contain" }}
                 >
-                  {artists.map((artist, index) => (
+                  {artists.slice(0, 6).map((artist, index) => (
                     <Link
                       key={artist.id}
                       href={`/artists/${artist.slug}`}
                       className="block text-gray-300 hover:text-amber-500 transition-all duration-300 touch-target text-base group transform hover:translate-x-1 py-2"
                       onClick={() => handleMenuItemClick()}
-                      style={{ animationDelay: `${index * 30}ms` }}
+                      style={{ animationDelay: `${index * 50}ms` }}
                     >
                       <div className="flex items-center">
                         <div className="w-1 h-1 bg-gray-600 rounded-full mr-3 group-hover:bg-amber-500 transition-colors duration-300"></div>
@@ -553,7 +553,7 @@ export default function EnhancedMobileMenu({
                 >
                   <div className="flex items-center">
                     <div className="w-1 h-1 bg-amber-500 rounded-full mr-3 animate-pulse"></div>
-                    <span className="font-light tracking-wide">View Artists Page ({artists.length} total) →</span>
+                    <span className="font-light tracking-wide">View All Artists →</span>
                   </div>
                 </Link>
               </div>

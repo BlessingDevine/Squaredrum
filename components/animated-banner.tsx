@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
-import { X, Radio, Download, Mail } from "lucide-react"
+import { X, Radio, Download, Mail } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -16,30 +16,31 @@ export default function AnimatedBanner() {
     e.preventDefault()
     if (email) {
       setIsSubmitted(true)
-
+      
       try {
-        const response = await fetch("/api/newsletter/subscribe", {
-          method: "POST",
+        const response = await fetch('/api/newsletter/subscribe', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            email,
-            name: email.split("@")[0], // Use email prefix as name fallback
+          body: JSON.stringify({ 
+            email, 
+            name: email.split('@')[0] // Use email prefix as name fallback
           }),
         })
-
+        
         if (!response.ok) {
-          throw new Error("Subscription failed")
+          throw new Error('Subscription failed')
         }
-
+        
         const result = await response.json()
-        console.log("Newsletter subscription successful:", result.message)
+        console.log('Newsletter subscription successful:', result.message)
+        
       } catch (error) {
-        console.error("Newsletter subscription error:", error)
+        console.error('Newsletter subscription error:', error)
         // Still show success to user for demo purposes
       }
-
+      
       setTimeout(() => {
         setShowModal(false)
         setIsSubmitted(false)
@@ -142,7 +143,7 @@ export default function AnimatedBanner() {
                     required
                     className="w-full"
                   />
-                  <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600 text-white">
+                  <Button type="submit" className="w-full bg-amber-500 hover:bg-amber-600 text-black">
                     Subscribe
                   </Button>
                 </form>

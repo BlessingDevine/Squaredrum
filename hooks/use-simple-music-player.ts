@@ -120,6 +120,7 @@ export function useSimpleMusicPlayer(tracks: Track[]) {
       crossfadeAudio
         .play()
         .then(() => {
+          // 2-second crossfade
           let step = 0
           const steps = 20
           const interval = 100 // 2000ms / 20 = 100ms per step

@@ -2438,5 +2438,67 @@ export const artists: Artist[] = [
         duration: "4:09",
       },
     ],
+    photoGallery: [
+      {
+        id: "elkana-photo-1",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9-fzfrwy468GQuMXvSp2SsFjXLmKWHIk.jpeg",
+        alt: "ELKANA wearing sunglasses and brown sherpa jacket, looking upward in urban setting",
+        caption: "Urban Vibes",
+      },
+      {
+        id: "elkana-photo-2",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-Jyvu9HNuxJdGXBbBtgrd8jUJvnn8k5.jpeg",
+        alt: "ELKANA in studio with headband, brown sherpa jacket, chains, and rectangular sunglasses",
+        caption: "Studio Session",
+      },
+      {
+        id: "elkana-photo-3",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-FC8h6b3SpaenlScaSDsc7pWc9iT6Oj.jpeg",
+        alt: "ELKANA at music production console wearing headband and sherpa jacket",
+        caption: "In the Lab",
+      },
+      {
+        id: "elkana-photo-4",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5-OfUhPrTAgFC63DNLvhpbOoPW3IN6np.jpeg",
+        alt: "ELKANA seated outdoors wearing headband and brown sherpa jacket in relaxed pose",
+        caption: "Reflective Moments",
+      },
+      {
+        id: "elkana-photo-5",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-Pov5Nzl2fYLa3kIBoSTK70lV9lkbwJ.jpeg",
+        alt: "ELKANA full body shot in urban warehouse setting with brown sherpa jacket",
+        caption: "Street Style",
+      },
+      {
+        id: "elkana-photo-6",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4-XtLnBR1JouCdvFrynB0P3QvOAqcqJP.jpeg",
+        alt: "ELKANA close-up in black shirt showing jewelry collection with studio monitors in background",
+        caption: "The Details",
+      },
+      {
+        id: "elkana-photo-7",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10-4mUv37TnaxO27pSlnrGxdqcS0HLA8y.jpeg",
+        alt: "ELKANA artistic side profile with dramatic lighting wearing headband and sherpa jacket",
+        caption: "Artistic Vision",
+      },
+      {
+        id: "elkana-photo-8",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/8-YWMayeWKyLpVZw4zm17RcMim2asyLx.jpeg",
+        alt: "ELKANA close-up portrait with dramatic lighting and direct gaze wearing headband and sherpa jacket",
+        caption: "Focused",
+      },
+      {
+        id: "elkana-photo-9",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7-QkSQITqxVxwFLjEnwNi1K6VfoPI9Lt.jpeg",
+        alt: "ELKANA full body shot against weathered wooden door wearing sherpa jacket and distressed jeans",
+        caption: "Against the Grain",
+      },
+      {
+        id: "elkana-photo-10",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6-l1azATWHN5UmtAWn39vzFCKYSiAeve.jpeg",
+        alt: "ELKANA medium shot with warm studio lighting in contemplative pose wearing headband and sherpa jacket",
+        caption: "Contemplation",
+      },
+    ],
   },
 ]

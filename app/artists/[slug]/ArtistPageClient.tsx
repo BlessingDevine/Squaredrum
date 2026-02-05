@@ -73,7 +73,11 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         featuredAudio.currentTime = 0
       }
 
-      const audio = new Audio(artist.featuredTrack.audioUrl)
+      const audioUrl = artist.featuredTrack.audioUrl.includes('hebbkx1anhila5yf')
+        ? `/api/audio?url=${encodeURIComponent(artist.featuredTrack.audioUrl)}`
+        : artist.featuredTrack.audioUrl
+
+      const audio = new Audio(audioUrl)
       audio.crossOrigin = "anonymous"
       audio.volume = 0.7
 
@@ -120,7 +124,11 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         setIsPlayingFeatured(false)
       }
 
-      const audio = new Audio(track.audioUrl)
+      const audioUrl = track.audioUrl.includes('hebbkx1anhila5yf')
+        ? `/api/audio?url=${encodeURIComponent(track.audioUrl)}`
+        : track.audioUrl
+
+      const audio = new Audio(audioUrl)
       audio.crossOrigin = "anonymous"
       audio.volume = 0.7
 

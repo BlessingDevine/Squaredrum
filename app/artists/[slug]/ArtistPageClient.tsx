@@ -95,13 +95,20 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
       })
 
       audio.addEventListener("error", (e) => {
-        console.error("Error playing featured track:", e)
+        console.error("[v0] Error playing featured track:", {
+          error: e,
+          errorCode: audio.error?.code,
+          errorMessage: audio.error?.message,
+          src: audio.src,
+          networkState: audio.networkState,
+          readyState: audio.readyState,
+        })
         setIsPlayingFeatured(false)
         setFeaturedAudio(null)
       })
 
       audio.play().catch((error) => {
-        console.error("Error playing featured track:", error)
+        console.error("[v0] Error calling play():", error, { src: audio.src })
         setIsPlayingFeatured(false)
       })
 
@@ -148,14 +155,26 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
       })
 
       audio.addEventListener("error", (e) => {
-        console.error("Error playing track:", e)
+        console.error("[v0] Error playing track:", {
+          track: track.title,
+          error: e,
+          errorCode: audio.error?.code,
+          errorMessage: audio.error?.message,
+          src: audio.src,
+          networkState: audio.networkState,
+          readyState: audio.readyState,
+        })
         setIsPlaying(false)
         setCurrentTrack(null)
         setCurrentAudio(null)
       })
 
       audio.play().catch((error) => {
-        console.error("Error playing track:", error)
+        console.error("[v0] Error calling play() for track:", {
+          track: track.title,
+          error,
+          src: audio.src,
+        })
         setIsPlaying(false)
         setCurrentTrack(null)
       })

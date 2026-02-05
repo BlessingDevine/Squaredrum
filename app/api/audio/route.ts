@@ -1,22 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
   try {
-    const url = request.nextUrl.searchParams.get('url')
+    const url = new URL(request.url)
+    const audioUrl = url.searchParams.get('url')
     
-    if (!url) {
+    if (!audioUrl) {
       return NextResponse.json({ error: 'Missing url parameter' }, { status: 400 })
     }
 
     // Validate it's a blob storage URL
-    if (!url.includes('hebbkx1anhila5yf.public.blob.vercel-storage.com')) {
+    if (!audioUrl.includes('hebbkx1anhila5yf.public.blob.vercel-storage.com')) {
       return NextResponse.json({ error: 'Invalid audio URL' }, { status: 403 })
     }
 
     // Fetch the audio from blob storage
-    const audioResponse = await fetch(url)
+    const audioResponse = await fetch(audioUrl)
     
     if (!audioResponse.ok) {
+      console.error('[v0] Failed to fetch audio:', audioResponse.status, audioUrl)
       return NextResponse.json(
         { error: `Failed to fetch audio: ${audioResponse.status}` },
         { status: audioResponse.status }
@@ -38,7 +40,7 @@ export async function GET(request: NextRequest) {
       },
     })
   } catch (error) {
-    console.error('Audio proxy error:', error)
+    console.error('[v0] Audio proxy error:', error)
     return NextResponse.json({ error: 'Failed to proxy audio' }, { status: 500 })
   }
 }

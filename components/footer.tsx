@@ -146,8 +146,8 @@ return (
           </div>
           <div className="flex items-center">
             <Phone className="h-4 w-4 mr-2" />
-            <a href="tel:+1234567890" className="hover:text-amber-500 transition-colors">
-              +1 (234) 567-8900
+            <a href="tel:+14245000396" className="hover:text-amber-500 transition-colors">
+              (424) 500-0396
             </a>
           </div>
           <div className="flex items-center">

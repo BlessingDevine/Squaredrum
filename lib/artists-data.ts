@@ -980,7 +980,7 @@ export const artists: Artist[] = [
     id: "9",
     name: "Neka",
     slug: "neka",
-    image: "/images/neka.jpeg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%2025-hvfroQXNVeLgdmqgXkyYWrcpvj92CV.jpg",
     bio: "Neka is an AI soulful vocalist whose powerful synthetic voice specializes in Afrobeat/Contemporary music through advanced emotional AI modeling systems. This artificial artist brings raw emotion and authenticity to every AI-generated performance, drawing from Afrobeat rhythms and contemporary influences programmed into her neural networks. With roots spanning from Abuja to Manchester, Neka's AI-created music connects deeply with listeners, proving that artificial intelligence can capture and express African musical traditions with contemporary flair.",
     location: "Abuja/Manchester",
     genre: "Afrobeat/Contemporary",

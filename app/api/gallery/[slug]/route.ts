@@ -9,9 +9,16 @@ export const revalidate = 0
 export async function GET(_: Request, { params }: { params: { slug: string } }) {
   try {
     const slug = params.slug.toLowerCase()
-    const dir = path.join(process.cwd(), "public", "images", slug)
+    
+    // First check for photoGallery in artist data (higher priority)
+    const artist = artists.find((a) => a.slug === slug)
+    if (artist?.photoGallery && artist.photoGallery.length > 0) {
+      // Return the photo gallery URLs directly
+      return NextResponse.json(artist.photoGallery.map((photo) => photo.src))
+    }
 
-    // Check if physical directory exists
+    // Fall back to physical directory if no photoGallery
+    const dir = path.join(process.cwd(), "public", "images", slug)
     if (fs.existsSync(dir)) {
       const files = fs
         .readdirSync(dir)
@@ -19,13 +26,6 @@ export async function GET(_: Request, { params }: { params: { slug: string } }) 
         .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
 
       return NextResponse.json(files)
-    }
-
-    // If no physical directory, check for photoGallery in artist data
-    const artist = artists.find((a) => a.slug === slug)
-    if (artist?.photoGallery && artist.photoGallery.length > 0) {
-      // Return the photo gallery URLs directly
-      return NextResponse.json(artist.photoGallery.map((photo) => photo.src))
     }
 
     return NextResponse.json([])

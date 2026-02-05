@@ -2190,6 +2190,30 @@ export const artists: Artist[] = [
         alt: "Lunah in recording studio holding microphone with blonde ombre wavy hair and black leather jacket",
         caption: "Recording Studio",
       },
+      {
+        id: "lunah-photo-18",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah21-8lHz4CIBYR8nC1luOmwyhQlznTypoh.jpeg",
+        alt: "Lunah on urban street with brick buildings in background, wearing olive leather jacket over graphic portrait t-shirt",
+        caption: "Graphic Tee Street",
+      },
+      {
+        id: "lunah-photo-19",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah23-AAnDxKgBrdIduTCBKVBohC5SulcdlQ.jpeg",
+        alt: "Lunah in recording studio with professional microphone, blonde ombre hair, black leather jacket with warm studio lighting",
+        caption: "Studio Focus",
+      },
+      {
+        id: "lunah-photo-20",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah24-JXkLJuRzlKQwJBBQeLN3QJ4BVX8VbL.jpeg",
+        alt: "Lunah against pink brick wall wearing tan knit blazer over black lace crop top with sunglasses",
+        caption: "Knit Blazer",
+      },
+      {
+        id: "lunah-photo-21",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah22-pKjdF0SBtUpKzf2o7YOcS3QsQUkfsK.jpeg",
+        alt: "Lunah in recording studio with professional microphone, blonde ombre wavy hair, black leather jacket and studio equipment",
+        caption: "Studio Perfection",
+      },
     ],
   },
   {

@@ -551,7 +551,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               src={
                                 dynamicGalleryFiles[currentGalleryIndex].startsWith("http")
                                   ? dynamicGalleryFiles[currentGalleryIndex]
-                                  : `/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`
+                                  : `/images/${artist.slug}/${encodeURIComponent(dynamicGalleryFiles[currentGalleryIndex])}`
                               }
                               alt={`${artist.name} gallery image`}
                               fill

@@ -412,6 +412,48 @@ export const artists: Artist[] = [
         alt: "Neilly Storm leaning against glass pillar on rooftop at night with neon-lit city skyline, metallic sequin wrap dress with pink-tipped hair",
         caption: "Neon Skyline",
       },
+      {
+        id: "neilly-photo-48",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-Wjr86qAS333PGnBgaHZWEihRTXuFQE.jpg",
+        alt: "Neilly Storm full body standing against colorful graffiti mural wall, wearing black and yellow patchwork windbreaker over sparkly black top with leather pants and tan beret, pink-tipped hair",
+        caption: "Graffiti Full Look",
+      },
+      {
+        id: "neilly-photo-49",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-FbzmbVVUkTux5BxPXCmlvJNlErMRy0.jpg",
+        alt: "Neilly Storm on stage in sparkly black sequin bodysuit with gold and silver fringe kimono sleeves, pink curly hair, smiling under dramatic stage lights",
+        caption: "Stage Sparkle",
+      },
+      {
+        id: "neilly-photo-50",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-ao5FqIKxUgRpjMnMtvdHwX1Z1zBl2U.jpg",
+        alt: "Neilly Storm close-up on stage in sparkly black sequin bodysuit with gold fringe kimono, choker necklace, pink curly hair with warm amber side lighting",
+        caption: "Golden Stage Light",
+      },
+      {
+        id: "neilly-photo-51",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-JN8QeBs9YdGTKeZFmOiGxDLPtA8Rg1.jpg",
+        alt: "Neilly Storm in front of colorful graffiti wall, black and yellow patchwork jacket over sparkly black lace crop top with leather pants, tan beret, cross necklace and pink-tipped hair",
+        caption: "Urban Patchwork",
+      },
+      {
+        id: "neilly-photo-52",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/26-uUEN4csQ9HFNmGHgrFOhpF222iRN7w.jpg",
+        alt: "Neilly Storm low angle close-up portrait against colorful graffiti wall, patchwork jacket, cross necklace, tan beret and pink-tipped hair with confident gaze",
+        caption: "Street Confidence",
+      },
+      {
+        id: "neilly-photo-53",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-fUMxr691KIEgHijY6FDsPB1eFeTk1c.jpg",
+        alt: "Neilly Storm on stage in sparkly black sequin bodysuit with gold and silver fringe kimono, hands on waist, choker necklace, pink wavy hair with warm amber stage lighting",
+        caption: "Stage Power Pose",
+      },
+      {
+        id: "neilly-photo-54",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/27-8hNqaaf30zulooDahUxqD6mxGQgFkl.jpg",
+        alt: "Neilly Storm against colorful graffiti mural, patchwork jacket over sparkly black lace top, cross necklace, pink-tipped hair blowing in breeze",
+        caption: "Mural Portrait",
+      },
     ],
   },
   {

@@ -95,8 +95,8 @@ export default function GalleryClient({
               }`}
             >
               <Image
-                src={`/images/${slug}/${file}`}
-                alt={`${slug} ${file}`}
+                src={file.startsWith("http") ? file : `/images/${slug}/${file}`}
+                alt={`${slug} gallery image ${index + 1}`}
                 fill
                 className="object-cover"
                 sizes="100px"

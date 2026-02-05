@@ -548,7 +548,11 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                           {/* Featured Image */}
                           <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-zinc-900/50 border border-zinc-800">
                             <Image
-                              src={`/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`}
+                              src={
+                                dynamicGalleryFiles[currentGalleryIndex].startsWith("http")
+                                  ? dynamicGalleryFiles[currentGalleryIndex]
+                                  : `/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`
+                              }
                               alt={`${artist.name} gallery image`}
                               fill
                               className="object-cover"

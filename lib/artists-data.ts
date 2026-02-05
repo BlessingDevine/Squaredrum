@@ -1710,6 +1710,66 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Loving%20You%20Quietly-l9FiHasjMw0pzhNSfJhGeug7kGZRDA.mp3",
         duration: "4:08",
       },
+      {
+        id: "lucas-11",
+        title: "Read at 2:17 AM",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Read%20at%202_17%20AM-Z23HsGvE7cvrp6sL2vZFW9qX6WDvMG.mp3",
+        duration: "3:44",
+      },
+      {
+        id: "lucas-12",
+        title: "Stay a Little Longer",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stay%20a%20Little%20Longer-sXf2cq9XpCv9tReTbANQP78hnrPHoK.mp3",
+        duration: "3:56",
+      },
+      {
+        id: "lucas-13",
+        title: "You Know What This Is",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/You%20Know%20What%20This%20Is-BHE4NMz2r5AnpdeSJGb0VxLme0FlJN.mp3",
+        duration: "3:29",
+      },
+      {
+        id: "lucas-14",
+        title: "Unsaid Things",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Unsaid%20Things-I4zdy1VNP7YkE8JItoM9hfyd6q8Haz.mp3",
+        duration: "3:53",
+      },
+      {
+        id: "lucas-15",
+        title: "Right Here Feels Good",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Right%20Here%20Feels%20Good-zFPnboyWOiMtci85HjyJNGiFr3R3hY.mp3",
+        duration: "3:41",
+      },
+      {
+        id: "lucas-16",
+        title: "Take It Slow With Me",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Take%20It%20Slow%20With%20Me-b27TsWNAh9qjMtB4Wnh4dTTkvTzdKc.mp3",
+        duration: "4:05",
+      },
+      {
+        id: "lucas-17",
+        title: "Soft Spot",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Soft%20Spot-G90pMNIxVLNQX5favltFzCNkJJFmXv.mp3",
+        duration: "3:38",
+      },
+      {
+        id: "lucas-18",
+        title: "Still Choosing You",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Still%20Choosing%20You-yyKrt9VkuRlfIaCwJWYvvlfK2H8C2t.mp3",
+        duration: "3:52",
+      },
+      {
+        id: "lucas-19",
+        title: "Touch Me Slowly",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Touch%20Me%20Slowly-0GZUWV4bSjArUlPyjN1BOPuvUPm9RC.mp3",
+        duration: "4:12",
+      },
+      {
+        id: "lucas-20",
+        title: "Voice Notes & Regrets",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Voice%20Notes%20%26%20Regrets-A2mAzwySwRhCrMrAR5DbuBKRrcEt4t.mp3",
+        duration: "3:46",
+      },
     ],
     photoGallery: [
       {

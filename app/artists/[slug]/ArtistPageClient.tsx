@@ -555,8 +555,9 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               }
                               alt={`${artist.name} gallery image`}
                               fill
-                              className="object-cover"
+                              className="object-contain"
                               sizes="(max-width: 768px) 100vw, 66vw"
+                              unoptimized={dynamicGalleryFiles[currentGalleryIndex].startsWith("http")}
                             />
 
                             {/* Navigation Arrows */}

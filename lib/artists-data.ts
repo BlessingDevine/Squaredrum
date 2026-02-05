@@ -58,6 +58,7 @@ export const artists: Artist[] = [
     name: "Neilly Storm",
     slug: "neilly-storm",
     image: "/images/neilly-storm/13.jpg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%2018-4rVWB1APWUCeL2ugeT7oDsSNBA5vmp.jpg",
     bio: "Neilly Storm is an AI powerhouse vocalist created through advanced voice synthesis technology and emotional modeling algorithms specializing in Indie/Alternative Pop. This artificial artist commands attention with AI-generated dynamic range and emotional delivery, drawing from indie and alternative pop influences processed through machine learning. Based conceptually in Los Angeles, Neilly Storm creates anthemic indie-pop songs that resonate with audiences worldwide, with AI-generated performances that capture the essence of alternative music.",
     location: "Los Angeles, CA",
     genre: "Indie/Alternative Pop",

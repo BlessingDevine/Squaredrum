@@ -1649,6 +1649,68 @@ export const artists: Artist[] = [
       audioUrl: "/audio/breakfast-in-bed.mp3",
       duration: "3:29",
     },
+    tracks: [
+      {
+        id: "lucas-1",
+        title: "Almost Yours",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Almost%20Yours-NX8VWThf1avFDz004EPBOl9uLoOGaO.mp3",
+        duration: "3:42",
+      },
+      {
+        id: "lucas-2",
+        title: "Let the Night Decide",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Let%20the%20Night%20Decide-i1uer708cfGcqI3CYguhre78h4BcOA.mp3",
+        duration: "3:58",
+      },
+      {
+        id: "lucas-3",
+        title: "Easy on My Heart",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Easy%20on%20My%20Heart-SXmmoeHCbMUn5ahRsM7iW8Lu8HrzNf.mp3",
+        duration: "3:35",
+      },
+      {
+        id: "lucas-4",
+        title: "Breathing Again",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Breathing%20Again-w1Igtoqthjy8Rb15s1RVZuBDlukKp0.mp3",
+        duration: "3:47",
+      },
+      {
+        id: "lucas-5",
+        title: "No Red Flags (Yet)",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/No%20Red%20Flags%20%28Yet%29-DeFnriLlzZLEcYrlhfyDqQIwbk8ZQp.mp3",
+        duration: "3:24",
+      },
+      {
+        id: "lucas-6",
+        title: "No Hard Feelings (Just Distance)",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/No%20Hard%20Feelings%20%28Just%20Distance%29-kczYvTom0IuE8Y74y4A9FHFIfNe7p3.mp3",
+        duration: "4:02",
+      },
+      {
+        id: "lucas-7",
+        title: "Feels Different This Time",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Feels%20Different%20This%20Time-IAChhjJeaElfVElN8acR5YjfbTC9ki.mp3",
+        duration: "3:39",
+      },
+      {
+        id: "lucas-8",
+        title: "Don\u2019t Make This Complicated",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Don%E2%80%99t%20Make%20This%20Complicated-DSC6JU2G0aPohyZm44RRHje9lmnk0M.mp3",
+        duration: "3:51",
+      },
+      {
+        id: "lucas-9",
+        title: "Getting Used to the Quiet",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Getting%20Used%20to%20the%20Quiet-tmZdUuluBGHAwZ4Ml6v1WxrQJ5JWvg.mp3",
+        duration: "3:33",
+      },
+      {
+        id: "lucas-10",
+        title: "Loving You Quietly",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Loving%20You%20Quietly-l9FiHasjMw0pzhNSfJhGeug7kGZRDA.mp3",
+        duration: "4:08",
+      },
+    ],
     photoGallery: [
       {
         id: "lucas-photo-1",

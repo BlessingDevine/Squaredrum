@@ -1305,7 +1305,73 @@ export const artists: Artist[] = [
       followers: "47K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "The Holly Molly",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Holly%20Molly-KKMLEj9lHTeag6M1WaOoB0MUtVioCn.mp3",
+      duration: "3:47",
+    },
+    tracks: [
+      {
+        id: "neka-1",
+        title: "The Holly Molly",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Holly%20Molly-KKMLEj9lHTeag6M1WaOoB0MUtVioCn.mp3",
+        duration: "3:47",
+      },
+      {
+        id: "neka-2",
+        title: "Na Me Be the One",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/na-me-be-the-one-dnkqL2yDEIscdUuGWQV3yyeWdmeYEC.mp3",
+        duration: "3:52",
+      },
+      {
+        id: "neka-3",
+        title: "Broken No Mean Finish",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/broken-no-mean-finish-s9RjhMXiTFJHRUnt35L4nm4XyyMqMW.mp3",
+        duration: "4:15",
+      },
+      {
+        id: "neka-4",
+        title: "Lagos Night",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lagos-night-Ds3TQl7hCc45D0aX0yBka9EGuMlyD0.mp3",
+        duration: "3:38",
+      },
+      {
+        id: "neka-5",
+        title: "For My Baby",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/for-my-baby-UgplZtigGHmPC9Kp5KllUzUYUc0VhV.mp3",
+        duration: "4:02",
+      },
+      {
+        id: "neka-6",
+        title: "Stray Dog",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/stray-dog-0vDj6CRleAvMfukNTTzXchWgZOpgGi.mp3",
+        duration: "3:29",
+      },
+      {
+        id: "neka-7",
+        title: "I Smile",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-smile-FleEe1Cs9T1Lou1cpdvkKRLfi60zqs.mp3",
+        duration: "3:44",
+      },
+      {
+        id: "neka-8",
+        title: "I Am Loyal",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/i-am-loyal-fM0zDv2yCqhCnvZ3sc7O9qouATiKM2.mp3",
+        duration: "4:08",
+      },
+      {
+        id: "neka-9",
+        title: "The Holly Molly Live",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/the-holly-molly-live-xl70yaEHBgpyt6wARCFijJg3i1Mwzi.mp3",
+        duration: "4:12",
+      },
+      {
+        id: "neka-10",
+        title: "Return To Sender",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/return-to-sender-7624A7t3JtaSbiMMGLtpQsoOTlt2FW.mp3",
+        duration: "3:56",
+      },
+    ],
     photoGallery: [
       {
         id: "neka-photo-1",

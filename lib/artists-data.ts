@@ -81,55 +81,7 @@ export const artists: Artist[] = [
       followers: "58K",
     },
     featured: true,
-    featuredTrack: {
-      title: "Run Away",
-      audioUrl: "/audio/run-away.mp3",
-      duration: "3:33",
-    },
-    tracks: [
-      {
-        id: "neilly-1",
-        title: "Run Away",
-        audioUrl: "/audio/run-away.mp3",
-        duration: "3:33",
-      },
-      {
-        id: "neilly-2",
-        title: "Butterfly (Cover)",
-        audioUrl: "/audio/butterfly-cover-neilly.mp3",
-        duration: "3:45",
-      },
-      {
-        id: "neilly-3",
-        title: "Floating",
-        audioUrl: "/audio/floating-neilly.mp3",
-        duration: "4:12",
-      },
-      {
-        id: "neilly-4",
-        title: "If You Want It",
-        audioUrl: "/audio/if-you-want-it-neilly.mp3",
-        duration: "3:28",
-      },
-      {
-        id: "neilly-5",
-        title: "What Do I Do Now",
-        audioUrl: "/audio/what-do-i-do-now-neilly.mp3",
-        duration: "3:56",
-      },
-      {
-        id: "neilly-6",
-        title: "Take A Picture",
-        audioUrl: "/audio/take-a-picture-neilly.mp3",
-        duration: "4:03",
-      },
-      {
-        id: "neilly-7",
-        title: "Oops...I Like Him",
-        audioUrl: "/audio/oops-i-like-him-neilly.mp3",
-        duration: "3:41",
-      },
-    ],
+    tracks: [],
     photoGallery: [],
   },
   {

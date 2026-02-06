@@ -1559,7 +1559,7 @@ export const artists: Artist[] = [
     id: "5",
     name: "Danni Blaze",
     slug: "danni-blaze",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/02-DS5kcmiOcQBS5cC4ceMMXalrGlnO0K.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-ZDtbIoMlxOTZpKfvItvnuCyc5FQTMm.jpg",
     bio: "Danni Blaze is an AI artist that brings fire to the Afrobeat/Amapiano scene with razor-sharp lyrics generated through advanced language models and infectious beats created by AI music systems. This artificial artist from Accra, Ghana specializes in Afrobeat rhythms and Amapiano grooves, tackling diverse subjects while keeping the energy high through sophisticated AI emotional processing. Her unique AI-generated style showcases the versatility of artificial creativity in African-inspired genres, bringing authentic Ghanaian musical influences to the global stage.",
     location: "Accra, Ghana",
     genre: "Afrobeat/Amapiano",
@@ -1572,7 +1572,7 @@ export const artists: Artist[] = [
       {
         title: "Fire & Ice",
         year: 2025,
-        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-2PzELLT6ypGGn7o0OhY4ofnINNjvYt.jpeg",
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/18-wcc9E7Mfc5bTSD5Gsq8Oq3DM3jRaCR.jpg",
         tracks: ["Ignite", "Freeze Frame", "Hot & Cold", "Blaze Trail", "Ice Queen"],
       },
     ],

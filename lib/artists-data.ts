@@ -294,7 +294,7 @@ export const artists: Artist[] = [
     name: "Luv Tonez",
     slug: "luv-tonez",
     image:
-      "/images/luv-20tonez.jpeg",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30-4dGZsrxcQhXaPM3ib6AeMoIWN0MEpM.jpeg",
     bio: "Luv Tonez is an AI R&B group that creates soulful harmonies and contemporary R&B music through advanced vocal synthesis and group dynamics algorithms. This artificial collective, conceptualized from Atlanta, combines multiple AI-generated voices to produce rich, layered harmonies that blend classic soul elements with modern R&B production. Each member of the group represents a different vocal range and personality, showcasing AI's capability in creating authentic group dynamics and emotional music collaboration.",
     location: "Atlanta, GA",
     genre: "R&B Group",
@@ -305,10 +305,10 @@ export const artists: Artist[] = [
     },
     albums: [
       {
-        title: "Harmony Laboratory",
+        title: "Luv Tonez I",
         year: 2025,
-        coverArt: "/images/albums/harmony-laboratory.jpg",
-        tracks: ["Group Dynamics", "Vocal Blend", "Soul Synthesis", "R&B Collective", "Digital Harmony"],
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez%20I-657KwGlOGHZySfeBVuNkFFfDtlbELY.jpg",
+        tracks: ["Golden Hour Confessions", "Electric Souls", "3AM Conversations", "City Lights & Late Nights", "Digital Love Letters", "Bamboo Sheets", "Gravity", "Honey Drip", "Kaleidoscope Hearts (Dance Mix)", "Electric Souls Dance Mix", "Kaleidoscope Hearts", "Kaleidoscope Hearts (Remix)", "Neon Heartbreak", "Rose Gold Feelings", "Silk Road", "Slow Motion", "Midnight Frequency", "Purple Rain Therapy", "Stardust Serenade", "Stardust Serenade (Extended)", "Velvet Dreams", "Summer Skin"],
       },
     ],
     stats: {

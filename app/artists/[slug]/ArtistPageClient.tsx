@@ -73,18 +73,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         featuredAudio.currentTime = 0
       }
 
-      const audioUrl = artist.featuredTrack.audioUrl.includes('hebbkx1anhila5yf')
-        ? `/api/audio?url=${encodeURIComponent(artist.featuredTrack.audioUrl)}`
-        : artist.featuredTrack.audioUrl
-
-      console.log('[v0] Playing featured track:', { 
-        originalUrl: artist.featuredTrack.audioUrl, 
-        proxyUrl: audioUrl,
-        title: artist.featuredTrack.title 
-      })
-
-      const audio = new Audio(audioUrl)
-      audio.crossOrigin = "anonymous"
+      const audio = new Audio(artist.featuredTrack.audioUrl)
       audio.volume = 0.7
 
       audio.addEventListener("play", () => {
@@ -100,21 +89,12 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         setFeaturedAudio(null)
       })
 
-      audio.addEventListener("error", (e) => {
-        console.error("[v0] Error playing featured track:", {
-          error: e,
-          errorCode: audio.error?.code,
-          errorMessage: audio.error?.message,
-          src: audio.src,
-          networkState: audio.networkState,
-          readyState: audio.readyState,
-        })
+      audio.addEventListener("error", () => {
         setIsPlayingFeatured(false)
         setFeaturedAudio(null)
       })
 
-      audio.play().catch((error) => {
-        console.error("[v0] Error calling play():", error, { src: audio.src })
+      audio.play().catch(() => {
         setIsPlayingFeatured(false)
       })
 
@@ -137,18 +117,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         setIsPlayingFeatured(false)
       }
 
-      const audioUrl = track.audioUrl.includes('hebbkx1anhila5yf')
-        ? `/api/audio?url=${encodeURIComponent(track.audioUrl)}`
-        : track.audioUrl
-
-      console.log('[v0] Playing track:', { 
-        originalUrl: track.audioUrl, 
-        proxyUrl: audioUrl,
-        title: track.title 
-      })
-
-      const audio = new Audio(audioUrl)
-      audio.crossOrigin = "anonymous"
+      const audio = new Audio(track.audioUrl)
       audio.volume = 0.7
 
       audio.addEventListener("play", () => {
@@ -166,27 +135,13 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         setCurrentAudio(null)
       })
 
-      audio.addEventListener("error", (e) => {
-        console.error("[v0] Error playing track:", {
-          track: track.title,
-          error: e,
-          errorCode: audio.error?.code,
-          errorMessage: audio.error?.message,
-          src: audio.src,
-          networkState: audio.networkState,
-          readyState: audio.readyState,
-        })
+      audio.addEventListener("error", () => {
         setIsPlaying(false)
         setCurrentTrack(null)
         setCurrentAudio(null)
       })
 
-      audio.play().catch((error) => {
-        console.error("[v0] Error calling play() for track:", {
-          track: track.title,
-          error,
-          src: audio.src,
-        })
+      audio.play().catch(() => {
         setIsPlaying(false)
         setCurrentTrack(null)
       })

@@ -307,7 +307,7 @@ export const artists: Artist[] = [
       {
         title: "Luv Tonez I",
         year: 2025,
-        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez%20I-657KwGlOGHZySfeBVuNkFFfDtlbELY.jpg",
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez%20I-dQklRrPe9LBZwp9Ke2COxrm42gfy33.jpg",
         tracks: ["Golden Hour Confessions", "Electric Souls", "3AM Conversations", "City Lights & Late Nights", "Digital Love Letters", "Bamboo Sheets", "Gravity", "Honey Drip", "Kaleidoscope Hearts (Dance Mix)", "Electric Souls Dance Mix", "Kaleidoscope Hearts", "Kaleidoscope Hearts (Remix)", "Neon Heartbreak", "Rose Gold Feelings", "Silk Road", "Slow Motion", "Midnight Frequency", "Purple Rain Therapy", "Stardust Serenade", "Stardust Serenade (Extended)", "Velvet Dreams", "Summer Skin"],
       },
     ],

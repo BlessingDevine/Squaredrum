@@ -445,7 +445,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               <div className="flex items-center gap-4">
                                 <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                   <Image
-                                    src={artist.image || "/placeholder.svg"}
+                                    src={artist.albums?.[0]?.coverArt || artist.image || "/placeholder.svg"}
                                     alt={artist.featuredTrack.title}
                                     fill
                                     className="object-cover"
@@ -489,7 +489,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                                 <div className="flex items-center gap-3">
                                   <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                                     <Image
-                                      src={artist.image || "/placeholder.svg"}
+                                      src={artist.albums?.[0]?.coverArt || artist.image || "/placeholder.svg"}
                                       alt={track.title}
                                       fill
                                       className="object-cover"

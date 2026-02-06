@@ -443,6 +443,18 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stardust%20Serenade%20%28Extended%29-sTWUiMQIwZKdDA5kuKoa9YlxK4dQy7.mp3",
         duration: "5:12",
       },
+      {
+        id: "tonez-21",
+        title: "Velvet Dreams",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velvet%20Dreams-l7sPPhySaiRKqSu5FEsb7PflvaVMeT.mp3",
+        duration: "4:10",
+      },
+      {
+        id: "tonez-22",
+        title: "Summer Skin",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Summer%20Skin-DuFxraWtfXLU4mljAbfeidJexJUaiJ.mp3",
+        duration: "3:45",
+      },
     ],
     photoGallery: [],
   },

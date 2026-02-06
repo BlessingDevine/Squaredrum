@@ -77,6 +77,12 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         ? `/api/audio?url=${encodeURIComponent(artist.featuredTrack.audioUrl)}`
         : artist.featuredTrack.audioUrl
 
+      console.log('[v0] Playing featured track:', { 
+        originalUrl: artist.featuredTrack.audioUrl, 
+        proxyUrl: audioUrl,
+        title: artist.featuredTrack.title 
+      })
+
       const audio = new Audio(audioUrl)
       audio.crossOrigin = "anonymous"
       audio.volume = 0.7
@@ -134,6 +140,12 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
       const audioUrl = track.audioUrl.includes('hebbkx1anhila5yf')
         ? `/api/audio?url=${encodeURIComponent(track.audioUrl)}`
         : track.audioUrl
+
+      console.log('[v0] Playing track:', { 
+        originalUrl: track.audioUrl, 
+        proxyUrl: audioUrl,
+        title: track.title 
+      })
 
       const audio = new Audio(audioUrl)
       audio.crossOrigin = "anonymous"
@@ -472,7 +484,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               <div className="flex items-center gap-4">
                                 <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                   <Image
-                                    src={artist.image || "/placeholder.svg"}
+                                    src={artist.heroImage || artist.image || "/placeholder.svg"}
                                     alt={artist.featuredTrack.title}
                                     fill
                                     className="object-cover"
@@ -516,7 +528,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                                 <div className="flex items-center gap-3">
                                   <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                                     <Image
-                                      src={artist.image || "/placeholder.svg"}
+                                      src={artist.heroImage || artist.image || "/placeholder.svg"}
                                       alt={track.title}
                                       fill
                                       className="object-cover"

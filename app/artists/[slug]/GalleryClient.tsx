@@ -95,13 +95,7 @@ export default function GalleryClient({
               }`}
             >
               <Image
-                src={
-                  file.startsWith("http")
-                    ? file
-                    : file.startsWith("/")
-                      ? file
-                      : `/images/${slug}/${encodeURIComponent(file)}`
-                }
+                src={file.startsWith("http") ? file : `/images/${slug}/${file}`}
                 alt={`${slug} gallery image ${index + 1}`}
                 fill
                 className="object-cover object-center"

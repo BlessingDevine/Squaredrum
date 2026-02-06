@@ -74,6 +74,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
       }
 
       const audio = new Audio(artist.featuredTrack.audioUrl)
+      audio.crossOrigin = "anonymous"
       audio.volume = 0.7
 
       audio.addEventListener("play", () => {
@@ -89,12 +90,14 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         setFeaturedAudio(null)
       })
 
-      audio.addEventListener("error", () => {
+      audio.addEventListener("error", (e) => {
+        console.error("Error playing featured track:", e)
         setIsPlayingFeatured(false)
         setFeaturedAudio(null)
       })
 
-      audio.play().catch(() => {
+      audio.play().catch((error) => {
+        console.error("Error playing featured track:", error)
         setIsPlayingFeatured(false)
       })
 
@@ -118,6 +121,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
       }
 
       const audio = new Audio(track.audioUrl)
+      audio.crossOrigin = "anonymous"
       audio.volume = 0.7
 
       audio.addEventListener("play", () => {
@@ -135,13 +139,15 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
         setCurrentAudio(null)
       })
 
-      audio.addEventListener("error", () => {
+      audio.addEventListener("error", (e) => {
+        console.error("Error playing track:", e)
         setIsPlaying(false)
         setCurrentTrack(null)
         setCurrentAudio(null)
       })
 
-      audio.play().catch(() => {
+      audio.play().catch((error) => {
+        console.error("Error playing track:", error)
         setIsPlaying(false)
         setCurrentTrack(null)
       })
@@ -439,7 +445,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               <div className="flex items-center gap-4">
                                 <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                   <Image
-                                    src={artist.heroImage || artist.image || "/placeholder.svg"}
+                                    src={artist.image || "/placeholder.svg"}
                                     alt={artist.featuredTrack.title}
                                     fill
                                     className="object-cover"
@@ -483,7 +489,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                                 <div className="flex items-center gap-3">
                                   <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                                     <Image
-                                      src={artist.heroImage || artist.image || "/placeholder.svg"}
+                                      src={artist.image || "/placeholder.svg"}
                                       alt={track.title}
                                       fill
                                       className="object-cover"
@@ -545,9 +551,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               src={
                                 dynamicGalleryFiles[currentGalleryIndex].startsWith("http")
                                   ? dynamicGalleryFiles[currentGalleryIndex]
-                                  : dynamicGalleryFiles[currentGalleryIndex].startsWith("/")
-                                    ? dynamicGalleryFiles[currentGalleryIndex]
-                                    : `/images/${artist.slug}/${encodeURIComponent(dynamicGalleryFiles[currentGalleryIndex])}`
+                                  : `/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`
                               }
                               alt={`${artist.name} gallery image`}
                               fill

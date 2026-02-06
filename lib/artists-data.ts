@@ -697,6 +697,24 @@ export const artists: Artist[] = [
         alt: "Solo shots of Luv Tonez member in recording studio, left panel standing by mixing console wearing headphones and satin bomber jacket with cargo pants, right panel seated playing acoustic guitar wearing designer monogram hoodie and track pants",
         caption: "Solo Studio",
       },
+      {
+        id: "tonez-photo-41",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/44-VonFyCaZMkvKFJrhLou0eeyftXk3Jy.jpeg",
+        alt: "Luv Tonez trio outside modern glass office building at golden hour, one in charcoal gray suit with black shirt, one with arms crossed in black velvet blazer over white floral print shirt, one with afro in navy blue suit leaning on metal railing",
+        caption: "Corporate Chic",
+      },
+      {
+        id: "tonez-photo-42",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/45-sc9s5ReuWI3X13HjU6sp6JsQ4ZKYiy.jpeg",
+        alt: "Two solo portraits in brick loft studio, left member seated on pink velvet couch arm wearing tan fedora hat and black and champagne satin bomber jacket with dark jeans, right member with afro leaning against exposed brick wall wearing brown fedora and leather biker jacket over ornate print shirt",
+        caption: "Loft Portraits",
+      },
+      {
+        id: "tonez-photo-43",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/46-EDCNM9bwaDO5v2Qz7OcHBR2Xw57rsZ.jpeg",
+        alt: "Luv Tonez trio standing on stage with dramatic smoke and spotlights behind them, all wearing matching gold and black brocade baroque floral print blazers over black satin shirts with black trousers",
+        caption: "Gold Brocade Stage",
+      },
     ],
   },
   {

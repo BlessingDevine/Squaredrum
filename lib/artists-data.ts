@@ -1582,7 +1582,55 @@ export const artists: Artist[] = [
       followers: "41K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "No Dey Rush",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-4kv6CL3sNEolDMbo2207DE3thYpLxN.mp3",
+      duration: "3:28",
+    },
+    tracks: [
+      {
+        id: "danni-1",
+        title: "No Dey Rush",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-4kv6CL3sNEolDMbo2207DE3thYpLxN.mp3",
+        duration: "3:28",
+      },
+      {
+        id: "danni-2",
+        title: "Body Dey Go Round",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/body-dey-go-round-NLOZuTNyz1Y5b7RxHTGUT6cfRIkkBs.mp3",
+        duration: "3:45",
+      },
+      {
+        id: "danni-3",
+        title: "Memories",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/memories-McXF1B6oAS7k86q37wNNvJdZSjAJoN.mp3",
+        duration: "4:02",
+      },
+      {
+        id: "danni-4",
+        title: "Good Time Tonight",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/good-time-tonight-GgNeRHxrRKTshrVhR5wk0E23g1W9La.mp3",
+        duration: "3:38",
+      },
+      {
+        id: "danni-5",
+        title: "Call Me",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/call-me-ck5pxMSGTZXR9L292UMWGWU7ZJ4nzG.mp3",
+        duration: "3:52",
+      },
+      {
+        id: "danni-6",
+        title: "E Sweet Like Suga",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/e-sweet-like-suga-mdLbs9BobI37sgDGb2eVnsUITYIz7i.mp3",
+        duration: "4:15",
+      },
+      {
+        id: "danni-7",
+        title: "No Dey Rush (Live)",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/no-dey-rush-8aMmMrnprEoRzPxGppmDQO4kXTBKsk.mp3",
+        duration: "3:35",
+      },
+    ],
     photoGallery: [
       {
         id: "danni-photo-1",

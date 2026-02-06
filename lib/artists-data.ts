@@ -58,7 +58,7 @@ export const artists: Artist[] = [
     name: "Neilly Storm",
     slug: "neilly-storm",
     image:
-      "/images/neilly-20storm.jpeg",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%2018-xt7EONuwVfvJ1hRjEkbxM6Cgsd958X.jpg",
     bio: "Neilly Storm is an AI powerhouse vocalist created through advanced voice synthesis technology and emotional modeling algorithms specializing in Indie/Alternative Pop. This artificial artist commands attention with AI-generated dynamic range and emotional delivery, drawing from indie and alternative pop influences processed through machine learning. Based conceptually in Los Angeles, Neilly Storm creates anthemic indie-pop songs that resonate with audiences worldwide, with AI-generated performances that capture the essence of alternative music.",
     location: "Los Angeles, CA",
     genre: "Indie/Alternative Pop",
@@ -71,8 +71,8 @@ export const artists: Artist[] = [
       {
         title: "Thunder & Lightning",
         year: 2025,
-        coverArt: "/images/albums/thunder-lightning.jpg",
-        tracks: ["Storm Warning", "Electric", "Thunder Rolls", "Lightning Strike", "After the Rain"],
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%2018-xt7EONuwVfvJ1hRjEkbxM6Cgsd958X.jpg",
+        tracks: ["Run Away", "Butterfly", "Floating", "Yours If You Want It", "What Do I Do Now", "Oops...I Like Him"],
       },
     ],
     stats: {
@@ -81,7 +81,49 @@ export const artists: Artist[] = [
       followers: "58K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "Run Away",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/run%20away-3gGfMcaX77BQTsCVOknqRh68F7JnNy.mp3",
+      duration: "3:33",
+    },
+    tracks: [
+      {
+        id: "neilly-1",
+        title: "Run Away",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/run%20away-3gGfMcaX77BQTsCVOknqRh68F7JnNy.mp3",
+        duration: "3:33",
+      },
+      {
+        id: "neilly-2",
+        title: "Butterfly",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butterfly-8GsFDxuXJSf8vwLCLzLAVm0LcZulxu.mp3",
+        duration: "3:45",
+      },
+      {
+        id: "neilly-3",
+        title: "Floating",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/floating-kpx2ED5LNItB66YwddSthGS5KiKzfN.mp3",
+        duration: "4:12",
+      },
+      {
+        id: "neilly-4",
+        title: "Yours If You Want It",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yours%20if%20you%20want%20it-b9QCni39eiRO3dpFCsJ0y72dnGAQBj.mp3",
+        duration: "3:28",
+      },
+      {
+        id: "neilly-5",
+        title: "What Do I Do Now",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/what%20do%20i%20do%20now-tYkukcu4Rv31NsGN6CfMlaHf6Tvoeo.mp3",
+        duration: "3:56",
+      },
+      {
+        id: "neilly-6",
+        title: "Oops...I Like Him",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/oops...i%20like%20him-yovproiIKQKsLUxEJqRZuYHy8F0jkC.mp3",
+        duration: "3:41",
+      },
+    ],
     photoGallery: [
       {
         id: "neilly-photo-1",

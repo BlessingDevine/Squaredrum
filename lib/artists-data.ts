@@ -203,6 +203,48 @@ export const artists: Artist[] = [
         alt: "Neilly Storm looking over shoulder with pink hair, wearing colorblock jacket with yellow sleeves and beige cap against graffiti wall",
         caption: "Urban Style",
       },
+      {
+        id: "neilly-photo-21",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-KsaxitynK2ariO2bMUYNNVVn9odiyC.jpg",
+        alt: "Neilly Storm with pink hair wearing patchwork jacket with yellow sleeves, black sequined crop top, leather pants, and beige cap standing against colorful pastel graffiti mural",
+        caption: "Street Art Vibes",
+      },
+      {
+        id: "neilly-photo-22",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-NDAqnNmLaXuvmjaKc2BTrDfQ4TNqKo.jpg",
+        alt: "Full body shot of Neilly Storm on stage with pink hair, smiling, wearing black sequined bodysuit with metallic fringe sleeves, standing center stage with warm amber and teal lighting",
+        caption: "Stage Presence",
+      },
+      {
+        id: "neilly-photo-23",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-IagJLxS7zVmZtnonIhIc3Aw4C23Aol.jpg",
+        alt: "Neilly Storm performing on stage in black sequined bodysuit with metallic fringe sleeves, hands on studded belt, intense gaze under warm amber stage lighting",
+        caption: "Concert Power",
+      },
+      {
+        id: "neilly-photo-24",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-Yi8W1ILH2iqL0Q0ab2Mwf2kWjAA9CC.jpg",
+        alt: "Neilly Storm smiling on stage with pink hair, wearing black sequined bodysuit with metallic fringe sleeves and choker necklace, warm golden spotlight",
+        caption: "Stage Glow",
+      },
+      {
+        id: "neilly-photo-25",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-VOA1ntJ67jQfPwObTCxsOzrFWXnVSW.jpg",
+        alt: "Neilly Storm with pink hair wearing patchwork jacket with yellow sleeves, beige cap, black sequined crop top, and leather pants against graffiti wall",
+        caption: "LA Street Fashion",
+      },
+      {
+        id: "neilly-photo-26",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/26-lD1rsbBu1OFthTAi1HkIBmJWCMW5HW.jpg",
+        alt: "Close-up of Neilly Storm with pink hair and beige cap, wearing patchwork jacket with yellow sleeves, cross necklace and layered jewelry against graffiti wall",
+        caption: "Indie Aesthetic",
+      },
+      {
+        id: "neilly-photo-27",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/27-sdQJudG2kZrVq49V78aZP0Jss3O7fU.jpg",
+        alt: "Neilly Storm with pink hair wearing patchwork jacket with yellow sleeves over black sequined top, layered necklaces, standing against vibrant graffiti wall",
+        caption: "Alternative Edge",
+      },
     ],
   },
   {

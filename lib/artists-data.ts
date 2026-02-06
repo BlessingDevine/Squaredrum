@@ -1908,6 +1908,66 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Feels%20Different%20This%20Time-Q3UZci9AE0ONIJqXP0auhINGxl36qY.mp3",
         duration: "3:48",
       },
+      {
+        id: "lucas-11",
+        title: "Still Choosing You",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Still%20Choosing%20You-P3NKA5gKUxRdUs8UlQtbOF9U4ZJA4V.mp3",
+        duration: "3:40",
+      },
+      {
+        id: "lucas-12",
+        title: "Unsaid Things",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Unsaid%20Things-7ULAE973OshHEeV2WYtJrEWVAfTxkM.mp3",
+        duration: "3:56",
+      },
+      {
+        id: "lucas-13",
+        title: "Right Here Feels Good",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Right%20Here%20Feels%20Good-qyM5LbZDHaip73jOBe6Y8C2dBCMxtP.mp3",
+        duration: "3:35",
+      },
+      {
+        id: "lucas-14",
+        title: "Stay a Little Longer",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stay%20a%20Little%20Longer-ZatRx0cBaGFiLnUncMPXrP26Q9J246.mp3",
+        duration: "4:08",
+      },
+      {
+        id: "lucas-15",
+        title: "You Know What This Is",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/You%20Know%20What%20This%20Is-wcz2GXhHFwatFtUduODlg2gOvIOo4O.mp3",
+        duration: "3:29",
+      },
+      {
+        id: "lucas-16",
+        title: "Voice Notes & Regrets",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Voice%20Notes%20%26%20Regrets-OH9ngaj7UHE8mBhDM0b4RfzANlm9bH.mp3",
+        duration: "3:47",
+      },
+      {
+        id: "lucas-17",
+        title: "Take It Slow With Me",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Take%20It%20Slow%20With%20Me-j5P7ycy0nRGplGRwkzqY2VmGUNUp53.mp3",
+        duration: "4:01",
+      },
+      {
+        id: "lucas-18",
+        title: "Soft Spot",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Soft%20Spot-gguSbNP6ICCPzcaOCTa7i4tXthGqUs.mp3",
+        duration: "3:22",
+      },
+      {
+        id: "lucas-19",
+        title: "Touch Me Slowly",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Touch%20Me%20Slowly-xxyKIGXwJd9x370soKVrk5JdK0Zvhw.mp3",
+        duration: "3:44",
+      },
+      {
+        id: "lucas-20",
+        title: "Read at 2:17 AM",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Read%20at%202_17%20AM-5qNvRR7BEIfJWQ2AGewkfReagrOWPd.mp3",
+        duration: "3:38",
+      },
     ],
     photoGallery: [
       {

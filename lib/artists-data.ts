@@ -2162,7 +2162,19 @@ export const artists: Artist[] = [
       followers: "45K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "Let's Talk About It",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/let%27s%20talk%20about%20it-GCMVpymUNB3HN9A4uS3WnJsmBBbA08.mp3",
+      duration: "3:45",
+    },
+    tracks: [
+      {
+        id: "jcruz-1",
+        title: "Let's Talk About It",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/let%27s%20talk%20about%20it-GCMVpymUNB3HN9A4uS3WnJsmBBbA08.mp3",
+        duration: "3:45",
+      },
+    ],
     photoGallery: [
       {
         id: "jcruz-photo-1",

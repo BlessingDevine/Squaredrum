@@ -2586,6 +2586,66 @@ export const artists: Artist[] = [
         alt: "Sadie Rose seated in olive green velvet armchair in dark teal blazer suit, delicate gold boot pendant necklace, gold earrings, honey-blonde wavy hair, warm wood-paneled wall with tropical plant to the left",
         caption: "Studio Lounge",
       },
+      {
+        id: "sadie-photo-11",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-GuwY5Mu0KuFQDLHmtxEEeqpW3Gibxq.jpg",
+        alt: "Sadie Rose standing in open prairie at golden hour in cream bohemian v-neck dress with embroidered details, layered silver pendant necklaces, small hoop earrings, blonde wavy hair backlit by low sun, tufted grass and flat horizon behind",
+        caption: "Golden Prairie",
+      },
+      {
+        id: "sadie-photo-12",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-F7dzBaygIidILqIAZlYqFGDj0Nnlbm.jpg",
+        alt: "Sadie Rose close-up portrait outdoors in black blazer, brown wide-brim cowboy hat, turquoise and silver dreamcatcher pendant necklace, auburn-blonde wavy hair, desert plains and soft sunset sky behind",
+        caption: "Desert Cowgirl",
+      },
+      {
+        id: "sadie-photo-13",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-Cv9KkaBp0weEY5kgUeXh7SE4e8nyBR.jpg",
+        alt: "Sadie Rose half-body in teal and gold geometric-pattern high-neck dress with gold choker and layered pendant necklaces, gold cuff bracelet, turquoise drop earring, hand in hair, vibrant orange-red lit studio backdrop with orange rim light on hair",
+        caption: "Fire & Teal",
+      },
+      {
+        id: "sadie-photo-14",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/14-sWG4BcUzR1ulfQ3GHV0ETFkEN7PMIf.jpg",
+        alt: "Sadie Rose standing holding acoustic cutaway guitar in black long-sleeve top, brown cowboy hat with leather band, blonde wavy hair, neutral gray studio backdrop",
+        caption: "Guitar Studio",
+      },
+      {
+        id: "sadie-photo-15",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15-aZO8alU4keu1PNu44Nzl9QAdwXM2U1.jpg",
+        alt: "Sadie Rose seated in olive green velvet sofa in dark emerald green blazer suit, delicate gold circle pendant necklace, gold drop earrings, honey-blonde wavy hair in loose updo, tropical monstera plant and dark foliage behind",
+        caption: "Emerald Suite",
+      },
+      {
+        id: "sadie-photo-16",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/16-67m7n4dTV7K0C1xN3Pv2SUXFdQvSQy.jpg",
+        alt: "Sadie Rose seated in olive green velvet sofa in dark emerald green blazer suit, hand touching face, delicate gold chain necklace, gold drop earrings, blonde hair in soft updo, large monstera leaf and dark green foliage behind",
+        caption: "Green Room",
+      },
+      {
+        id: "sadie-photo-17",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/17-CQZTPtmvPQMPlmkaPLBffz16SA35kg.jpg",
+        alt: "Sadie Rose seated in olive green velvet armchair in dark emerald green blazer suit with brown cowboy hat and leather satin band, gold double-drop pendant necklace, turquoise feather earrings, hands clasped on knees, lush tropical foliage behind",
+        caption: "Hat & Suit",
+      },
+      {
+        id: "sadie-photo-18",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/18-hbNOQhb2F6mitFFCsnAhcSuzgVLKAW.jpg",
+        alt: "Sadie Rose close-up portrait in deep plum blazer, brown wide-brim cowboy hat with silver concho band, layered chunky gemstone and silver statement necklaces, gold chandelier earrings, blonde wavy hair, dark teal-gray studio backdrop",
+        caption: "Plum Portrait",
+      },
+      {
+        id: "sadie-photo-19",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-D76SWiea6cuYRwhDQI6nPRK0XIHUxn.jpg",
+        alt: "Sadie Rose standing in wheat field at golden hour in cream bohemian tassel-front dress, layered delicate beaded necklaces with turquoise pendant, gold drop earrings, blonde wavy hair wind-blown, warm sunset glow and open field behind",
+        caption: "Windswept Wheat",
+      },
+      {
+        id: "sadie-photo-20",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-H1FkhKNFHwYqwh9WeL5sVlD3p3tcPH.jpg",
+        alt: "Sadie Rose standing holding acoustic parlor guitar in black mock-neck long-sleeve top, brown cowboy hat with ornate silver band, blonde wavy hair, dark charcoal textured studio backdrop",
+        caption: "Dark Guitar",
+      },
     ],
     tracks: [
       {

@@ -2357,7 +2357,19 @@ export const artists: Artist[] = [
       followers: "34K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "Get To The Loving",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/get%20to%20the%20loving-gZWXPxGmmLF2Ij2ohDGr9YgZpRhJGQ.mp3",
+      duration: "3:45",
+    },
+    tracks: [
+      {
+        id: "riven-1",
+        title: "Get To The Loving",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/get%20to%20the%20loving-gZWXPxGmmLF2Ij2ohDGr9YgZpRhJGQ.mp3",
+        duration: "3:45",
+      },
+    ],
     photoGallery: [
       {
         id: "riven-photo-1",

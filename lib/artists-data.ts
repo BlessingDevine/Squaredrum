@@ -2284,6 +2284,36 @@ export const artists: Artist[] = [
         alt: "J Cruz eyes closed smiling contentedly, light gray henley shirt, black over-ear headphones around neck, stud earring, seated in teal armchair, warm sunlit room with wooden shelves behind",
         caption: "Feeling the Music",
       },
+      {
+        id: "jcruz-photo-21",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-6QSc2mbiPdFxbNQzkoPD5RuGvdCMBl.jpg",
+        alt: "J Cruz seated in brown leather armchair in cream button-down shirt over white tee, stud earring, recording studio with mixing console, studio monitors, and acoustic panels behind",
+        caption: "Studio Chair",
+      },
+      {
+        id: "jcruz-photo-22",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-R7RGi3KmXn5JcaTk3HEsQ1rV3CqYz0.jpg",
+        alt: "J Cruz walking on European city street in light blue denim jacket over black and white striped tee, olive trousers, brown-tinted aviator sunglasses, yellow taxi and sandstone buildings behind",
+        caption: "European Stroll",
+      },
+      {
+        id: "jcruz-photo-23",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-gQDj0aADkGvSPJ3k7hfVqalE4SWvc8.jpg",
+        alt: "J Cruz seated at marble table in black blazer over white tee, ripped gray jeans, black high-top sneakers, silver ring, minimalist concrete interior with bonsai trees and black steel-framed windows",
+        caption: "Minimalist Lounge",
+      },
+      {
+        id: "jcruz-photo-24",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-oKYnOpP8Ztn4DGVtKwSTRXt9Bi1xeY.jpg",
+        alt: "J Cruz seated in open silk kimono-style jacket with botanical print over gray crewneck tee, dark gray jeans, warm afternoon sunlight casting shadows on beige stucco wall behind",
+        caption: "Kimono Sun",
+      },
+      {
+        id: "jcruz-photo-25",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/26-fMs66aZD50BihpPmQPY8ChpSK9GJDN.jpg",
+        alt: "J Cruz lounging in brown leather armchair in gray-green denim button-down shirt over white tee, dark jeans, stud earring, recording studio with wood-paneled speakers, mixing console, and acoustic curtains behind",
+        caption: "Studio Lounge",
+      },
     ],
   },
   {

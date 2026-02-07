@@ -3234,6 +3234,36 @@ export const artists: Artist[] = [
         alt: "Cedar Line six-piece band studio portrait on gray backdrop with lighting stands visible, man in denim jacket holding brown hat at side left, woman in floral wrap dress standing, lead singer center in blue denim vest over chambray shirt, blonde in black leather jacket holding Les Paul guitar, woman in denim jacket and cream jumpsuit with arm around her, man in dark western shirt holding semi-hollow guitar right",
         caption: "Denim & Hats Studio",
       },
+      {
+        id: "cedar-photo-31",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10-lGGD0PeSTm7xq4FZ7AYGEcrnurApqP.jpeg",
+        alt: "Cedar Line six-piece band on CMA Awards red carpet at night, men in black western suits with brown suede yoke panels, cowboy hats, and bolo ties, blonde in champagne sequin cap-sleeve gown, brunette in nude chiffon fringe-waist gown with turquoise bolo necklace, woman in cream floral embroidered v-neck gown, guitarist holding semi-hollow with leather strap, CMA Awards step-and-repeat and ABC logo behind",
+        caption: "CMA Western Formal",
+      },
+      {
+        id: "cedar-photo-32",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/11-DykzwDzORntrLsnB0x3H6JvYVLPSFT.jpeg",
+        alt: "Cedar Line five members on CMA Awards red carpet at blue-hour dusk in downtown Nashville, men in black tuxedos with bow ties and cowboy hats, brunette in white lace long-sleeve gown with turquoise jewelry, woman in gold sequin high-slit gown with nude heels, guitarist holding sunburst semi-hollow, member holding banjo, photographers and velvet ropes left, CMA Awards ABC step-and-repeat right",
+        caption: "CMA Black Tie",
+      },
+      {
+        id: "cedar-photo-33",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-gZ1Jh7mCB6k4N14Gn2Asmqxu5SRu0N.jpeg",
+        alt: "Cedar Line six members relaxed at corral fence in rural homestead at orange sunset, cowboy hat member standing left leaning on fence post, brunette in denim jacket and white maxi seated on wooden crate, lead singer crouching center in leather jacket over plaid, blonde seated playing Les Paul in tan jacket, woman in cream dress standing behind, cowboy hat guitarist seated on fence right playing semi-hollow, rustic houses and power lines on both sides",
+        caption: "Corral Fence Sunset",
+      },
+      {
+        id: "cedar-photo-34",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-kdULQNcltFYFHNtHuUqtY5GV5FwghC.jpeg",
+        alt: "Cedar Line six members arranged around wooden posts and old wagon in open prairie at golden sunset, cowboy hat member leaning against fence post with arms crossed left, brunette in denim jacket seated on ground smiling, lead singer seated on post center playing acoustic guitar, woman in cream dress standing with hand on his shoulder behind, blonde seated on ground with guitar case in tan jacket, cowboy hat guitarist leaning against wagon wheel right playing semi-hollow, barbed wire fence visible",
+        caption: "Prairie Wagon Session",
+      },
+      {
+        id: "cedar-photo-35",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/14-oP5CsH3uEywukRVqqAi682CDNiZtYg.jpeg",
+        alt: "Cedar Line six members walking casually through rural homestead at warm orange sunset, cowboy hat member in black leather jacket left, brunette in denim jacket and white maxi dress with hands clasped, lead singer center in leather jacket over plaid smiling, blonde with Les Paul slung behind back in tan jacket, woman in cream dress with arms folded, cowboy hat guitarist looking down tuning semi-hollow right, rustic houses and power lines, warm backlit glow",
+        caption: "Homestead Stroll",
+      },
     ],
   },
   {

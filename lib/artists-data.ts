@@ -1826,13 +1826,13 @@ export const artists: Artist[] = [
       {
         title: "Quiet Mornings",
         year: 2025,
-        coverArt: "/images/albums/quiet-mornings.jpg",
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample%20cover%202-74fagUut6BtVhSW0mbEzA5ZR29Z0tl.jpg",
         tracks: ["Coffee Shop", "Morning Light", "Whispered Words", "Sunday Drive"],
       },
       {
         title: "Stories Untold",
         year: 2024,
-        coverArt: "/images/albums/stories-untold.jpg",
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample%20cover%202-74fagUut6BtVhSW0mbEzA5ZR29Z0tl.jpg",
         tracks: ["Old Letters", "Hometown", "Memories", "New Beginnings", "The Road Ahead"],
       },
     ],

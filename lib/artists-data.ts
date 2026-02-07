@@ -2728,6 +2728,7 @@ export const artists: Artist[] = [
     name: "Lunah",
     slug: "lunah",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah1-22KgiBN7LSNYNqCvqWbdZB9DOGK389.jpeg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah18-gD5PNUSmeEkrq7UC0Wl2kyiL7h7kwx.jpeg",
     bio: "Lunah is an AI R&B duo that creates heartfelt harmonies and contemporary R&B music through sophisticated emotional modeling and vocal synthesis algorithms. This artificial duo brings the spirit of modern R&B into the digital age, with AI-generated vocal arrangements that capture the essence of duo dynamics and emotional depth. Their synthetic vocals carry the warmth and soul that R&B fans love, proving that artificial intelligence can master the art of R&B collaboration and harmony.",
     location: "Austin, TX",
     genre: "R&B Duo",

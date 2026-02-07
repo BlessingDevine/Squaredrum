@@ -48,7 +48,7 @@ const heroImages = [
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Echo%20Bloom.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",
-    alt: "Echo Bloom - Electronic artist in blue suit with arms outstretched",
+    alt: "RIVEN COLE - Electronic artist in blue suit with arms outstretched",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucas%20Meno.jpg-qm5NB9052ElC9YU9bNz7jLwxvlIZrv.jpeg",

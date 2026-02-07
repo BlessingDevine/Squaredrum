@@ -445,7 +445,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                               <div className="flex items-center gap-4">
                                 <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                   <Image
-                                    src={artist.image || "/placeholder.svg"}
+                                    src={artist.albums?.[0]?.coverArt || artist.image || "/placeholder.svg"}
                                     alt={artist.featuredTrack.title}
                                     fill
                                     className="object-cover"
@@ -489,7 +489,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                                 <div className="flex items-center gap-3">
                                   <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                                     <Image
-                                      src={artist.image || "/placeholder.svg"}
+                                      src={artist.albums?.[0]?.coverArt || artist.image || "/placeholder.svg"}
                                       alt={track.title}
                                       fill
                                       className="object-cover"
@@ -548,11 +548,16 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
                           {/* Featured Image */}
                           <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-zinc-900/50 border border-zinc-800">
                             <Image
-                              src={`/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`}
+                              src={
+                                dynamicGalleryFiles[currentGalleryIndex].startsWith("http")
+                                  ? dynamicGalleryFiles[currentGalleryIndex]
+                                  : `/images/${artist.slug}/${dynamicGalleryFiles[currentGalleryIndex]}`
+                              }
                               alt={`${artist.name} gallery image`}
                               fill
-                              className="object-cover"
+                              className="object-contain"
                               sizes="(max-width: 768px) 100vw, 66vw"
+                              unoptimized={dynamicGalleryFiles[currentGalleryIndex].startsWith("http")}
                             />
 
                             {/* Navigation Arrows */}

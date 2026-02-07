@@ -7,6 +7,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import PageBlurOverlay from "@/components/page-blur-overlay"
 import AnimatedBanner from "@/components/animated-banner"
+import Hero3DBackground from "@/components/hero-3d-background"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -22,8 +23,8 @@ import { useRadio } from "@/components/radio-context"
 // Hero background images - Updated to use new artist profile images
 const heroImages = [
   {
-    src: "/images/luv-tonez-new.jpeg",
-    alt: "Luv Tonez - Professional R&B group in elegant formal black suits",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez.jpg-4K7M3mReeAKec5cU4bs8w6la5UwIT2.jpeg",
+    alt: "Luv Tonez - R&B group in elegant formal black suits",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Virgo%20Dunst.jpg-vp9S492loS2RnMXAwqNeHLd624fL3J.jpeg",
@@ -42,16 +43,16 @@ const heroImages = [
     alt: "Neka - Afrobeat artist with gold jewelry and floating orbs",
   },
   {
-    src: "/images/danni-blaze-regal.jpeg",
-    alt: "Danni Blaze - Afrobeat artist in ornate regal attire with gold jewelry in classical setting",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Danni%20Blaze.jpg-SdFAgQ0v6zRzyydXua2XvyBBz3RumT.jpeg",
+    alt: "Danni Blaze - Afrobeat artist in cream puffer jacket with chains",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Echo%20Bloom.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",
-    alt: "Riven Cole - Pop/Rock artist in blue suit with arms outstretched",
+    alt: "RIVEN COLE - Electronic artist in blue suit with arms outstretched",
   },
   {
-    src: "/images/lucas-updated.jpg",
-    alt: "Lucas - R&B/Rap artist in cream suit on vintage yellow chair",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucas%20Meno.jpg-qm5NB9052ElC9YU9bNz7jLwxvlIZrv.jpeg",
+    alt: "Lucas Meno - R&B/Rap artist in cream suit on vintage chair",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neilly%20Storm.jpg-pbl9md9S3nFpvpk2TyAlyI3p5qqb84.jpeg",
@@ -60,14 +61,6 @@ const heroImages = [
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cedar%20Line.jpg-HjdkXYcaCDndFtwrpgspguke6B1CAV.jpeg",
     alt: "Cedar Line - Country band in rural setting with instruments",
-  },
-  {
-    src: "/images/sadie-rose.jpg",
-    alt: "Sadie Rose - Country artist with acoustic guitar in golden sunset field",
-  },
-  {
-    src: "/images/lunah-updated.jpg",
-    alt: "Lunah - Glamorous duo in elegant white outfits with sparkly details",
   },
 ]
 
@@ -276,6 +269,8 @@ export default function HomePage() {
       <PageBlurOverlay isBlurred={isPageBlurred}>
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <Hero3DBackground />
+
           {/* Background Image Carousel */}
           <div className="absolute inset-0 z-0 opacity-70">
             <div className="relative w-full h-full">
@@ -298,8 +293,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            {/* Reduced opacity gradient overlay - decreased by 20% */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
           </div>
 
           {/* Hero Content */}
@@ -318,7 +312,7 @@ export default function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 text-lg"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8 py-3 text-lg"
                 >
                   <Link href="/releases">
                     <Play className="mr-2 h-5 w-5" />
@@ -329,7 +323,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-8 py-3 text-lg bg-transparent"
+                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black px-8 py-3 text-lg bg-transparent"
                 >
                   <Link href="/artists">
                     <Users className="mr-2 h-5 w-5" />
@@ -387,7 +381,7 @@ export default function HomePage() {
                           className={`absolute inset-0 bg-gradient-to-t ${release.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
                         />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <Button size="lg" className="bg-black/90 text-white hover:bg-black border border-white/20">
+                          <Button size="lg" className="bg-white/90 text-black hover:bg-white">
                             <Play className="mr-2 h-5 w-5" />
                             Listen Now
                           </Button>
@@ -497,13 +491,13 @@ export default function HomePage() {
                   )}
 
                   <div className="flex gap-4">
-                    <Button asChild className="bg-amber-500 hover:bg-amber-600 text-white">
+                    <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black">
                       <Link href={`/artists/${featuredArtist.slug}`}>View Profile</Link>
                     </Button>
                     <Button
                       asChild
                       variant="outline"
-                      className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white bg-transparent"
+                      className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent"
                     >
                       <Link href="/artists">All Artists</Link>
                     </Button>
@@ -553,7 +547,7 @@ export default function HomePage() {
                         behind-the-scenes content.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start relative">
-                        <Button onClick={handleListenLive} className="bg-amber-500 hover:bg-amber-600 text-white">
+                        <Button onClick={handleListenLive} className="bg-amber-500 hover:bg-amber-600 text-black">
                           <Radio className="mr-2 h-4 w-4" />
                           Listen Live
                         </Button>
@@ -562,7 +556,7 @@ export default function HomePage() {
                           <Button
                             onClick={handleViewSchedule}
                             variant="outline"
-                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white bg-transparent schedule-button"
+                            className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black bg-transparent schedule-button"
                           >
                             <Calendar className="mr-2 h-4 w-4" />
                             View Schedule
@@ -639,7 +633,7 @@ export default function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-8 py-3"
                 >
                   <Link href="/releases">
                     <Download className="mr-2 h-5 w-5" />
@@ -650,7 +644,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-8 py-3 bg-transparent"
+                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black px-8 py-3 bg-transparent"
                 >
                   <Link href="/about">
                     <MapPin className="mr-2 h-5 w-5" />

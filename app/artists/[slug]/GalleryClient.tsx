@@ -95,11 +95,12 @@ export default function GalleryClient({
               }`}
             >
               <Image
-                src={`/images/${slug}/${file}`}
-                alt={`${slug} ${file}`}
+                src={file.startsWith("http") ? file : `/images/${slug}/${file}`}
+                alt={`${slug} gallery image ${index + 1}`}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="100px"
+                unoptimized={file.startsWith("http")}
               />
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">

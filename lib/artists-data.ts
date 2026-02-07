@@ -2750,7 +2750,73 @@ export const artists: Artist[] = [
       followers: "27K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "Healing Looks Good on Me",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Healing%20Looks%20Good%20on%20Me-4XK5IKGqlvkBHa0ChVgvLEiK9gqPBl.mp3",
+      duration: "3:45",
+    },
+    tracks: [
+      {
+        id: "lunah-1",
+        title: "Healing Looks Good on Me",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Healing%20Looks%20Good%20on%20Me-4XK5IKGqlvkBHa0ChVgvLEiK9gqPBl.mp3",
+        duration: "3:45",
+      },
+      {
+        id: "lunah-2",
+        title: "Mood: Unavailable",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mood_%20Unavailable-VJV46vOtkYbaAS123GWkgruShYZ3yc.mp3",
+        duration: "3:32",
+      },
+      {
+        id: "lunah-3",
+        title: "I Kept the Glow",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/I%20Kept%20the%20Glow-9fYAnqZ1X8CMkywRVX4mCYfqTX9tB8.mp3",
+        duration: "3:58",
+      },
+      {
+        id: "lunah-4",
+        title: "Low Battery, High Standards",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Low%20Battery%2C%20High%20Standards-PrIWk3i6ukA8uXeeZIBIyOneWGmPpo.mp3",
+        duration: "3:41",
+      },
+      {
+        id: "lunah-5",
+        title: "I Know What This Is",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/I%20Know%20What%20This%20Is-hjqZ7Ibt0GiMoiXp47YWCpH9gkjbpb.mp3",
+        duration: "3:27",
+      },
+      {
+        id: "lunah-6",
+        title: "Love Me in Real Time",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Love%20Me%20in%20Real%20Time-ki04sgb1H9EYnxoSpHF9leu8fYDAda.mp3",
+        duration: "4:02",
+      },
+      {
+        id: "lunah-7",
+        title: "Mirror Talk",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mirror%20Talk-fqzSmJtzxxAuah2YEVlnkLhFhrmu7e.mp3",
+        duration: "3:36",
+      },
+      {
+        id: "lunah-8",
+        title: "Don't Text Me At Midnight",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Don%27t%20Text%20%20Me%20At%20Midnight-RTrwswkinDxcnf2iftYRXOuRx1ANZy.mp3",
+        duration: "3:49",
+      },
+      {
+        id: "lunah-9",
+        title: "Almost Love Don\u2019t Count",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Almost%20Love%20Don%E2%80%99t%20Count-I4MvfUbNKaVf5AvH5AyujkYivQjgwv.mp3",
+        duration: "3:54",
+      },
+      {
+        id: "lunah-10",
+        title: "If I Wanted To",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/If%20I%20Wanted%20To-fn1CfYOyTV59Y3erTKk3CnQyXKOvuc.mp3",
+        duration: "3:38",
+      },
+    ],
     photoGallery: [
       {
         id: "lunah-photo-1",

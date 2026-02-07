@@ -3052,7 +3052,43 @@ export const artists: Artist[] = [
       followers: "24K",
     },
     featured: true,
-    tracks: [],
+    featuredTrack: {
+      title: "Honky Tonk Heart",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/honky%20tonk%20heart-bYI7yNfDLbFRseLN26EKmmPEGwD3nk.mp3",
+      duration: "4:05",
+    },
+    tracks: [
+      {
+        id: "cedar-1",
+        title: "Honky Tonk Heart",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/honky%20tonk%20heart-bYI7yNfDLbFRseLN26EKmmPEGwD3nk.mp3",
+        duration: "4:05",
+      },
+      {
+        id: "cedar-2",
+        title: "New Places",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/New%20Places-0DLEhtaXJHVedc6bzz0FGYfxtxABnV.mp3",
+        duration: "3:48",
+      },
+      {
+        id: "cedar-3",
+        title: "Skipping Rocks",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skipping%20Rocks-yD0Tqpix0DxOTtQQl6AmmU7Q6E6RRn.mp3",
+        duration: "3:36",
+      },
+      {
+        id: "cedar-4",
+        title: "Truck Bed Temptation",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Truck%20Bed%20Temptation-dggcKVfrwzXfYkw9Uw5CyatcsXBJNg.mp3",
+        duration: "3:52",
+      },
+      {
+        id: "cedar-5",
+        title: "Missing Out",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/missing%20out-OBjBeQ2PU9l1pSQ8dVtV8l9bhn6q9S.mp3",
+        duration: "3:41",
+      },
+    ],
     photoGallery: [
       {
         id: "cedar-photo-1",

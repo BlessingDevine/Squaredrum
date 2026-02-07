@@ -3030,6 +3030,7 @@ export const artists: Artist[] = [
     name: "Cedar Line",
     slug: "cedar-line",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-S0Wvh6wDwrgeb7KJxWJhp5DDlCpu2v.jpeg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-mCZzZ3Cl8ju46UAbWa3mLkyXpjg9y1.jpeg",
     bio: "Cedar Line is an AI country band that creates authentic country music through collaborative AI systems and traditional country instrumentation algorithms. This artificial group brings together multiple AI-generated personalities to create the classic country band sound, with harmonies, storytelling, and instrumental arrangements that honor country music traditions while pushing the boundaries of AI music creation. Their synthetic performances capture the camaraderie and musical chemistry that makes country bands special.",
     location: "Memphis, TN",
     genre: "Country Band",
@@ -3042,7 +3043,7 @@ export const artists: Artist[] = [
       {
         title: "Southern Roots",
         year: 2025,
-        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-S0Wvh6wDwrgeb7KJxWJhp5DDlCpu2v.jpeg",
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/02-Le5XO8lwkZGknRBwEVM6NHUJgvWWR5.jpeg",
         tracks: ["Southern Pride", "Country Roads", "Memphis Blues", "Family Ties", "Country Strong"],
       },
     ],

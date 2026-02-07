@@ -2523,7 +2523,7 @@ export const artists: Artist[] = [
     featured: true,
     featuredTrack: {
       title: "Come Get It",
-      audioUrl: "/audio/come-get-it-sadie.mp3",
+      audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Come%20Get%20it-BeQO1xlg3Mm8khHtfLTodCYwFzDc4T.mp3",
       duration: "3:52",
     },
     photoGallery: [
@@ -2712,62 +2712,14 @@ export const artists: Artist[] = [
       {
         id: "sadie-1",
         title: "Come Get It",
-        audioUrl: "/audio/come-get-it-sadie.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Come%20Get%20it-BeQO1xlg3Mm8khHtfLTodCYwFzDc4T.mp3",
         duration: "3:52",
       },
       {
         id: "sadie-2",
-        title: "The Sun Will Shine Again",
-        audioUrl: "/audio/the-sun-will-shine-again-new.mp3",
-        duration: "4:18",
-      },
-      {
-        id: "sadie-3",
-        title: "A Love Past",
-        audioUrl: "/audio/a-love-past-new.mp3",
-        duration: "3:45",
-      },
-      {
-        id: "sadie-4",
         title: "Already Winning",
-        audioUrl: "/audio/already-winning-new.mp3",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Already%20Winning-knjBWbVO073iOulnT1XildAhUoQklp.mp3",
         duration: "3:33",
-      },
-      {
-        id: "sadie-5",
-        title: "Playing For Keeps",
-        audioUrl: "/audio/playing-for-keeps-new.mp3",
-        duration: "4:02",
-      },
-      {
-        id: "sadie-6",
-        title: "Pull Up A Chair",
-        audioUrl: "/audio/pull-up-a-chair-new.mp3",
-        duration: "3:28",
-      },
-      {
-        id: "sadie-7",
-        title: "Memories Of A Love Past",
-        audioUrl: "/audio/memories-of-a-love-past-new.mp3",
-        duration: "4:15",
-      },
-      {
-        id: "sadie-8",
-        title: "Velvet Rope",
-        audioUrl: "/audio/velvet-rope-new.mp3",
-        duration: "3:41",
-      },
-      {
-        id: "sadie-9",
-        title: "I Like The Ride",
-        audioUrl: "/audio/i-like-the-ride-new.mp3",
-        duration: "3:56",
-      },
-      {
-        id: "sadie-10",
-        title: "Could Have Been Here",
-        audioUrl: "/audio/could-have-been-here-new.mp3",
-        duration: "4:08",
       },
     ],
   },

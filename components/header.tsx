@@ -121,6 +121,7 @@ export default function Header({ onBlurChange }: HeaderProps) {
             alt="SQUAREDRUM"
             width={28}
             height={28}
+            style={{ width: "auto", height: "auto" }}
             className="mr-2 sm:mr-3 sm:w-10 sm:h-10 transition-transform duration-200 group-hover:scale-105 object-contain"
           />
           <span className="font-cinzel text-base sm:text-lg lg:text-xl tracking-widest">

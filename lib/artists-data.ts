@@ -2872,6 +2872,30 @@ export const artists: Artist[] = [
         alt: "Lunah standing on sidewalk near red brick building in burgundy tweed long blazer over black lace bralette crop top, black leather pants, cat-eye sunglasses, gold hoop earrings, diamond statement necklace, curly black hair, hand touching hair",
         caption: "Burgundy Tweed",
       },
+      {
+        id: "lunah-photo-21",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah21-uktMrN4pTzoq99SagZIHR5ZqAYqGdX.jpeg",
+        alt: "Lunah standing outdoors in front of brick and glass building at golden hour, wearing olive green leather biker jacket over cream graphic portrait tee, black jeans, silver hoop earrings, silver cross pendant necklace, curly black hair",
+        caption: "Golden Hour Moto",
+      },
+      {
+        id: "lunah-photo-22",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah22-UqnZlnHUlfrsY4uuSgkg1SWr5Zo4Xs.jpeg",
+        alt: "Lunah close-up in recording studio holding silver condenser microphone on stand, wearing black leather biker jacket over black top, gold hoop earrings, silver chain pendant necklace, blonde ombre wavy hair, pink nails, rack equipment with warm orange light behind",
+        caption: "Studio Vocals",
+      },
+      {
+        id: "lunah-photo-23",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah23-6BoMRdMPEHm5BTXDJZfYuyv6nIITtt.jpeg",
+        alt: "Lunah close-up in recording studio holding silver vintage condenser microphone in spider mount, wearing black leather biker jacket over black top, gold hoop earrings, silver pendant necklace, blonde ombre wavy hair, pink nails, silver ring, warm orange backlit rack equipment behind",
+        caption: "Vintage Mic",
+      },
+      {
+        id: "lunah-photo-24",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah24-i9frSfa7U8d8j4RGSO1b0XDd5mzWHg.jpeg",
+        alt: "Lunah leaning against red brick wall in tan houndstooth check blazer over black lace bustier crop top, black leather pants, cat-eye sunglasses, gold hoop earrings, diamond y-pendant necklace, curly black hair, hands in pockets",
+        caption: "Houndstooth Wall",
+      },
     ],
   },
   {

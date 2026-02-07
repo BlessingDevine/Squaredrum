@@ -2816,6 +2816,66 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/If%20I%20Wanted%20To-fn1CfYOyTV59Y3erTKk3CnQyXKOvuc.mp3",
         duration: "3:38",
       },
+      {
+        id: "lunah-11",
+        title: "Velvet Voice Notes",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velvet%20Voice%20Notes-9V35M85P2s2mJvOZVIaXcISr7owjbi.mp3",
+        duration: "3:42",
+      },
+      {
+        id: "lunah-12",
+        title: "This Ain\u2019t Vulnerability",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/This%20Ain%E2%80%99t%20Vulnerability-y9efvY1vw1ywRATwNsfYgPkA2gYaFt.mp3",
+        duration: "3:36",
+      },
+      {
+        id: "lunah-13",
+        title: "Read Receipts Off",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Read%20Receipts%20Off-IZqN21x4hOYWqWMyegAzTWsCMYgQUS.mp3",
+        duration: "3:29",
+      },
+      {
+        id: "lunah-14",
+        title: "Tender, Not Weak",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tender%2C%20Not%20Weak-Yv7dFzEWjYl80jTssq6N5EaUDpUUY2.mp3",
+        duration: "4:05",
+      },
+      {
+        id: "lunah-15",
+        title: "Slow Burn, No Smoke",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Slow%20Burn%2C%20No%20Smoke-TiKWWhC5qZzjLrd3HN0vp4oOkdnNNZ.mp3",
+        duration: "3:51",
+      },
+      {
+        id: "lunah-16",
+        title: "Quietly Over You",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Quietly%20Over%20You-E9q8Xcw8BclUkLdiK2EZxoCrPy0Gsg.mp3",
+        duration: "3:47",
+      },
+      {
+        id: "lunah-17",
+        title: "You Lost Access",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/You%20Lost%20Access-I5GPCqrmXfv2YMTP5f2Ic5TVaGrIS9.mp3",
+        duration: "3:33",
+      },
+      {
+        id: "lunah-18",
+        title: "Soft Life, Hard Boundaries",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Soft%20Life%2C%20Hard%20Boundaries-jVSVpqVUc2LiBJ8vUdLIPoFena7Zcp.mp3",
+        duration: "3:58",
+      },
+      {
+        id: "lunah-19",
+        title: "Only Cry in Silk",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Only%20Cry%20in%20Silk-jOUetZCnWGrCmE9LWn39yTvJqhWWDP.mp3",
+        duration: "4:01",
+      },
+      {
+        id: "lunah-20",
+        title: "Pretty When I\u2019m Distant",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pretty%20When%20I%E2%80%99m%20Distant-kceN1VmB47eLzSjfC3qVxAfRlPrkRH.mp3",
+        duration: "3:44",
+      },
     ],
     photoGallery: [
       {

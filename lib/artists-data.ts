@@ -1813,7 +1813,7 @@ export const artists: Artist[] = [
     name: "Lucas Meno",
     slug: "lucas-meno",
     image:
-      "/images/lucas-20meno.jpeg",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31-EQaG0I4PFm5Tll7bJmw8nZpJ21sWxx.jpg",
     bio: "Lucas Meno is an AI artist that blends R&B smoothness with Rap elements through sophisticated natural language processing and music composition algorithms. Originally conceptualized with urban music traditions in mind, this artificial New York-based artist brings a modern AI approach to R&B/Rap fusion. His AI-generated honest storytelling and warm synthetic vocals create an intimate connection with listeners, proving that artificial intelligence can capture urban music authenticity with the energy and diversity of New York City.",
     location: "New York, NY",
     genre: "R&B/Rap",

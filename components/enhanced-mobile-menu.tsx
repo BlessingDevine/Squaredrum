@@ -368,7 +368,6 @@ export default function EnhancedMobileMenu({
                 alt="SQUAREDRUM"
                 width={24}
                 height={24}
-                style={{ width: "auto", height: "auto" }}
                 className="mr-3 rounded-sm ring-2 ring-amber-500/30 group-hover:ring-amber-500/60 transition-all duration-200"
               />
             </div>

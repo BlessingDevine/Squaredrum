@@ -21,7 +21,7 @@ return (
         {/* Brand Section */}
         <div className="lg:col-span-1">
           <div className="flex items-center mb-4">
-            <Image src="/squaredrum-logo.png" alt="SquareDrum Records" width={40} height={40} style={{ width: "auto", height: "auto" }} className="mr-3" />
+            <Image src="/squaredrum-logo.png" alt="SquareDrum Records" width={40} height={40} className="mr-3" />
             <div>
               <h3 className="font-cinzel text-xl font-bold text-amber-500">SQUAREDRUM</h3>
             </div>

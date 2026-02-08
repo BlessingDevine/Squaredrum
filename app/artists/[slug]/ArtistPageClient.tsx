@@ -247,6 +247,7 @@ export default function ArtistPageClient({ artist }: ArtistPageClientProps) {
               className="object-cover"
               priority
               sizes="100vw"
+              quality={85}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
           </div>

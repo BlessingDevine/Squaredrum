@@ -7,9 +7,9 @@ export const dynamic = "force-dynamic"
 export const revalidate = 0
 
 interface ArtistPageProps {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
 export async function generateStaticParams() {
@@ -19,8 +19,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ArtistPageProps): Promise<Metadata> {
-  const { slug } = await params
-  const artist = artists.find((a) => a.slug === slug)
+  const artist = artists.find((a) => a.slug === params.slug)
 
   if (!artist) {
     return {
@@ -40,9 +39,8 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 }
 
-export default async function ArtistPage({ params }: ArtistPageProps) {
-  const { slug } = await params
-  const artist = artists.find((a) => a.slug === slug)
+export default function ArtistPage({ params }: ArtistPageProps) {
+  const artist = artists.find((a) => a.slug === params.slug)
 
   if (!artist) {
     notFound()

@@ -6,10 +6,9 @@ import { artists } from "@/lib/artists-data"
 export const dynamic = "force-dynamic"
 export const revalidate = 0
 
-export async function GET(_: Request, { params }: { params: Promise<{ slug: string }> }) {
+export async function GET(_: Request, { params }: { params: { slug: string } }) {
   try {
-    const { slug: rawSlug } = await params
-    const slug = rawSlug.toLowerCase()
+    const slug = params.slug.toLowerCase()
     
     // First check for photoGallery in artist data (higher priority)
     const artist = artists.find((a) => a.slug === slug)

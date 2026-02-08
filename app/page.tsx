@@ -20,11 +20,49 @@ import Link from "next/link"
 import Image from "next/image"
 import { useRadio } from "@/components/radio-context"
 
-// Hero background images - dynamically built from artists data
-const heroImages = artists.map((artist) => ({
-  src: artist.heroImage || artist.image,
-  alt: `${artist.name} - ${artist.genre} artist`,
-}))
+// Hero background images - Updated to use new artist profile images
+const heroImages = [
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez.jpg-4K7M3mReeAKec5cU4bs8w6la5UwIT2.jpeg",
+    alt: "Luv Tonez - R&B group in elegant formal black suits",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Virgo%20Dunst.jpg-vp9S492loS2RnMXAwqNeHLd624fL3J.jpeg",
+    alt: "Virgo Dunst - R&B artist in orange jacket and sunglasses",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/J%20Cruz.jpg-7StypHKFMQkoNrrg6anUnsECTtCP99.jpeg",
+    alt: "J Cruz - Pop/R&B artist in light blue outfit in icy environment",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Saka.jpg-Baf8Jk6hVqnuPMJGhZTQ0RBeaxJiaI.jpeg",
+    alt: "Saka - Alternative Pop artist in black leather on urban steps",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neka.jpg-TARTWffKgN9aVmuYJLnVAVvrAFmgcx.jpeg",
+    alt: "Neka - Afrobeat artist with gold jewelry and floating orbs",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Danni%20Blaze.jpg-SdFAgQ0v6zRzyydXua2XvyBBz3RumT.jpeg",
+    alt: "Danni Blaze - Afrobeat artist in cream puffer jacket with chains",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Echo%20Bloom.jpg-dBP2iOnunJC3qywooHfqq8S9fkEOmM.jpeg",
+    alt: "RIVEN COLE - Electronic artist in blue suit with arms outstretched",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucas%20Meno.jpg-qm5NB9052ElC9YU9bNz7jLwxvlIZrv.jpeg",
+    alt: "Lucas Meno - R&B/Rap artist in cream suit on vintage chair",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neilly%20Storm.jpg-pbl9md9S3nFpvpk2TyAlyI3p5qqb84.jpeg",
+    alt: "Neilly Storm - Indie/Alternative artist in dramatic red feathered coat",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cedar%20Line.jpg-HjdkXYcaCDndFtwrpgspguke6B1CAV.jpeg",
+    alt: "Cedar Line - Country band in rural setting with instruments",
+  },
+]
 
 export default function HomePage() {
   const [isPageBlurred, setIsPageBlurred] = useState(false)
@@ -250,6 +288,7 @@ export default function HomePage() {
                     className="object-cover"
                     priority={index < 3}
                     sizes="100vw"
+                    quality={85}
                   />
                 </div>
               ))}
@@ -336,6 +375,7 @@ export default function HomePage() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          quality={90}
                         />
                         <div
                           className={`absolute inset-0 bg-gradient-to-t ${release.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}

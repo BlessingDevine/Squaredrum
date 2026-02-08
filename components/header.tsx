@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu, Radio, Play, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useIsMobile } from "@/hooks/use-mobile"
+import { useMobile } from "@/hooks/use-mobile"
 import { useRadio } from "@/components/radio-context"
 import EnhancedMobileMenu from "@/components/enhanced-mobile-menu"
 import { artists } from "@/lib/artists-data"
@@ -15,7 +15,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onBlurChange }: HeaderProps) {
-  const isMobile = useIsMobile()
+  const isMobile = useMobile()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showSchedule, setShowSchedule] = useState(false)
   const [showArtistsDropdown, setShowArtistsDropdown] = useState(false)
@@ -121,7 +121,6 @@ export default function Header({ onBlurChange }: HeaderProps) {
             alt="SQUAREDRUM"
             width={28}
             height={28}
-            style={{ width: "auto", height: "auto" }}
             className="mr-2 sm:mr-3 sm:w-10 sm:h-10 transition-transform duration-200 group-hover:scale-105 object-contain"
           />
           <span className="font-cinzel text-base sm:text-lg lg:text-xl tracking-widest">

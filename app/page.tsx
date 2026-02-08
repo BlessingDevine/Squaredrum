@@ -7,7 +7,12 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import PageBlurOverlay from "@/components/page-blur-overlay"
 import AnimatedBanner from "@/components/animated-banner"
-import Hero3DBackground from "@/components/hero-3d-background"
+import dynamic from "next/dynamic"
+
+const Hero3DBackground = dynamic(() => import("@/components/hero-3d-background"), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 z-0 bg-black" />,
+})
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"

@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu, Radio, Play, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useMobile } from "@/hooks/use-mobile"
+import { useIsMobile } from "@/hooks/use-mobile"
 import { useRadio } from "@/components/radio-context"
 import EnhancedMobileMenu from "@/components/enhanced-mobile-menu"
 import { artists } from "@/lib/artists-data"
@@ -15,7 +15,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onBlurChange }: HeaderProps) {
-  const isMobile = useMobile()
+  const isMobile = useIsMobile()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showSchedule, setShowSchedule] = useState(false)
   const [showArtistsDropdown, setShowArtistsDropdown] = useState(false)

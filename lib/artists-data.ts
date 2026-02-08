@@ -16,6 +16,7 @@ export interface Artist {
   name: string
   slug: string
   image: string
+  heroImage?: string
   bio: string
   location: string
   genre: string
@@ -3398,6 +3399,7 @@ export const artists: Artist[] = [
     name: "ELKANA",
     slug: "elkana",
     image: "/images/elkana/album-cover.jpg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/14-asaVJLiSUcRtW2by0FwVUgjFzv5yjX.jpg",
     bio: "ELKANA is an AI-generated R&B/Hip-Hop artist that explores the duality of ambition and vulnerability through emotionally charged music. This artificial artist combines smooth R&B melodies with hip-hop production, creating introspective tracks that navigate the complex relationship between success and heartbreak. With AI-generated vocals that convey raw emotion and authenticity, ELKANA's debut album 'Success & Heartbreak' delves into themes of commitment, personal growth, and the emotional toll of pursuing dreams.",
     location: "Toronto, ON",
     genre: "R&B/Hip-Hop",

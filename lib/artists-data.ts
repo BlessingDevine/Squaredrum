@@ -3673,7 +3673,7 @@ export const artists: Artist[] = [
     name: "LEA BABI",
     slug: "lea-babi",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20cover.png-ZnLfuetr9AVGmFGsYoOaJZaIZtHy8o.jpeg",
-    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20cover.png-ZnLfuetr9AVGmFGsYoOaJZaIZtHy8o.jpeg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20club-Y7OhaQaDUdbkLH3HOCbfIiRWeG4KDy.jpg",
     bio: "LEA BABI is an AI-generated Afro R&B artist whose sound blends sultry melodies with Afrobeats-infused rhythms and deeply personal storytelling. This artificial artist channels the warmth and complexity of modern relationships through lush vocal arrangements and atmospheric production. From late-night confessions to quiet moments of vulnerability, LEA BABI's music captures the emotional landscape of love, longing, and self-discovery. Her debut project weaves together intimate vignettes — parking lot conversations, borrowed hoodies, draft texts never sent — into a cohesive sonic diary that feels both deeply personal and universally relatable.",
     location: "Atlanta, GA",
     genre: "Afro R&B",
@@ -3844,7 +3844,14 @@ export const artists: Artist[] = [
         duration: "3:32",
       },
     ],
-    photoGallery: [],
+    photoGallery: [
+      {
+        id: "leababi-photo-1",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20club-Y7OhaQaDUdbkLH3HOCbfIiRWeG4KDy.jpg",
+        alt: "LEA BABI leaning against a dark paneled wall in an upscale lounge, wearing a black leather jacket with fur-trimmed cuffs and pearl-embellished gloves, black lace-up knee-high boots, silver hoop earrings, curly black hair, warm amber bar lighting in the background",
+        caption: "Late Night Lounge",
+      },
+    ],
   },
   {
     id: "17",

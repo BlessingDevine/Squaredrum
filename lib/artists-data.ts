@@ -3852,9 +3852,9 @@ export const artists: Artist[] = [
     slug: "fizz",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%201-UAe6ZJ3xRRRWZelJi2kcGbDxMmaIx3.jpg",
     heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%201-UAe6ZJ3xRRRWZelJi2kcGbDxMmaIx3.jpg",
-    bio: "FIZZ is an AI-generated Afro R&B artist whose sound fuses the soulful warmth of East African melodies with contemporary Amapiano rhythms and modern R&B sensibilities. This artificial artist draws from Bongo Flava, Afrobeats, and global pop to craft a genre-bending sonic experience that moves between languages and cultures with effortless fluidity. Singing in both English and Swahili, FIZZ creates music that bridges continents — from late-night club anthems to heartfelt confessions about love, longing, and self-discovery. His debut project 'Main Character' is a bold declaration of identity, blending infectious grooves with introspective storytelling.",
+    bio: "FIZZ is an AI-generated Afrobeat Swahili artist whose sound fuses the soulful warmth of East African melodies with contemporary Amapiano rhythms and modern R&B sensibilities. This artificial artist draws from Bongo Flava, Afrobeats, and global pop to craft a genre-bending sonic experience that moves between languages and cultures with effortless fluidity. Singing in both English and Swahili, FIZZ creates music that bridges continents — from late-night club anthems to heartfelt confessions about love, longing, and self-discovery. His debut project 'Main Character' is a bold declaration of identity, blending infectious grooves with introspective storytelling.",
     location: "Dar es Salaam / London",
-    genre: "Afro R&B",
+    genre: "Afrobeat Swahili",
     socialMedia: {
       instagram: "https://instagram.com/fizzmusic",
       twitter: "https://twitter.com/fizzmusic",

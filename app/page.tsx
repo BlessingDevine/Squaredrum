@@ -292,7 +292,7 @@ export default function HomePage() {
           <Hero3DBackground />
 
           {/* Background Image Carousel */}
-          <div className="absolute inset-0 z-0 opacity-70">
+          <div className="absolute inset-0 z-[1] opacity-80">
             <div className="relative w-full h-full">
               {heroImages.map((image, index) => (
                 <div

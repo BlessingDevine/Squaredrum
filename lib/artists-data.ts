@@ -4046,6 +4046,30 @@ export const artists: Artist[] = [
         alt: "FIZZ in red leather biker jacket over red tee with silver Cuban link chain, diamond watch, and diamond rings, hands clasped over chest, contemplative look, light studio backdrop",
         caption: "Red Reflection",
       },
+      {
+        id: "fizz-photo-6",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2005-GQuc6TCS2jlt1ZyshEHGxX2p8oq3ap.jpg",
+        alt: "FIZZ seated in black crystal-embroidered blazer over black tee with silver chain, sunglasses, diamond watch and bracelet, ripped black jeans, blue bokeh lights behind, dark moody studio",
+        caption: "Crystal Night",
+      },
+      {
+        id: "fizz-photo-7",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2006-GNnSBwarJ9huCkoJFZ95Jy2V79OuFe.jpg",
+        alt: "FIZZ crouching in all-black leather biker jacket and leather pants with white sneakers, sunglasses, silver chain, peace sign, modern living room with abstract wall art",
+        caption: "Peace Out",
+      },
+      {
+        id: "fizz-photo-8",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2007-6VOLaSHfDNQcvPzVPaxZuZpZbwZEbz.jpg",
+        alt: "FIZZ seated in black crystal-embroidered blazer over black tee with silver chain, sunglasses, diamond watch, ripped black jeans, grid of blue LED lights behind, dark studio",
+        caption: "LED Grid",
+      },
+      {
+        id: "fizz-photo-9",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2008-wrlThXnmuDlm53oXdc911T4V7SHGOJ.jpg",
+        alt: "FIZZ seated on tan leather couch in black fur-lined leather jacket over white tee with silver cross pendant chain, sunglasses, diamond watch, leather pants, sparkling dark backdrop",
+        caption: "Fur Luxe",
+      },
     ],
   },
   {

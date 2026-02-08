@@ -26,6 +26,7 @@ interface RadioContextType {
   isLoading: boolean
   isRadioOpen: boolean
   isMinimized: boolean
+  isDesktopHeadless: boolean
   currentTrack: RadioTrack | null
   volume: number
   currentQuality: StreamQuality
@@ -38,6 +39,7 @@ interface RadioContextType {
   setVolume: (volume: number) => void
   setQuality: (quality: StreamQuality) => void
   retryConnection: () => void
+  setDesktopHeadless: (value: boolean) => void
 }
 
 const RadioContext = createContext<RadioContextType | undefined>(undefined)
@@ -69,6 +71,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false)
   const [isRadioOpen, setIsRadioOpen] = useState(false)
   const [isMinimized, setIsMinimized] = useState(true)
+  const [isDesktopHeadless, setIsDesktopHeadless] = useState(false)
   const [currentTrack, setCurrentTrack] = useState<RadioTrack | null>(null)
   const [volume, setVolumeState] = useState(0.7)
   const [currentQuality, setCurrentQuality] = useState<StreamQuality>(STREAM_QUALITIES[0]) // Start with HD
@@ -305,6 +308,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     setIsRadioOpen(false)
     setIsPlaying(false)
     setIsLoading(false)
+    setIsDesktopHeadless(false)
     setConnectionStatus({ status: "idle", message: "Ready to connect to Music Square Radio" })
     setCurrentQuality(STREAM_QUALITIES[0]) // Reset to HD
     retryCountRef.current = 0
@@ -370,6 +374,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     isLoading,
     isRadioOpen,
     isMinimized,
+    isDesktopHeadless,
     currentTrack,
     volume,
     currentQuality,
@@ -382,6 +387,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     setVolume,
     setQuality,
     retryConnection,
+    setDesktopHeadless,
   }
 
   return <RadioContext.Provider value={value}>{children}</RadioContext.Provider>

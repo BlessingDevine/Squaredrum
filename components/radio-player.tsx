@@ -12,6 +12,7 @@ export default function RadioPlayer() {
     isLoading,
     isRadioOpen,
     isMinimized,
+    isDesktopHeadless,
     volume,
     connectionStatus,
     togglePlay,
@@ -22,6 +23,9 @@ export default function RadioPlayer() {
   } = useRadio()
 
   if (!isRadioOpen) return null
+
+  // Desktop headless mode: radio plays without showing the player UI
+  if (isDesktopHeadless) return null
 
   const getStatusColor = () => {
     switch (connectionStatus.status) {

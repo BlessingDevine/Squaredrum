@@ -17,14 +17,11 @@ export function useMobile() {
       setIsMobile(mobile)
     }
 
-    // Check on mount
     checkMobile()
 
-    // Add event listeners
     window.addEventListener("resize", checkMobile)
     window.addEventListener("orientationchange", checkMobile)
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", checkMobile)
       window.removeEventListener("orientationchange", checkMobile)

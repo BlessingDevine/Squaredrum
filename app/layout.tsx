@@ -9,6 +9,7 @@ import { RadioProvider } from "@/components/radio-context"
 import RadioPlayer from "@/components/radio-player"
 import { GlobalMusicProvider } from "@/components/global-music-player"
 import { cinzel } from "./fonts"
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -77,6 +78,7 @@ export default function RootLayout({
           </GlobalMusicProvider>
           <Toaster />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

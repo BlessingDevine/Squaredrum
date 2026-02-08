@@ -4015,6 +4015,37 @@ export const artists: Artist[] = [
         duration: "3:33",
       },
     ],
-    photoGallery: [],
+    photoGallery: [
+      {
+        id: "fizz-photo-1",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2001-RczHsY5ILBPm6hvVZRkQw6Rj91ugda.jpg",
+        alt: "FIZZ in black leather biker jacket over black tee with gold chain necklace and gold watch, serious expression, hand on jacket lapel, light gray studio backdrop",
+        caption: "Classic Edge",
+      },
+      {
+        id: "fizz-photo-2",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2002-vZVgiBI4lFSLMmMw94O8AfbYYDRael.jpg",
+        alt: "FIZZ smiling in black leather biker jacket over black tee with gold chain necklace and gold watch, relaxed confident pose, light gray to warm gradient studio backdrop",
+        caption: "All Smiles",
+      },
+      {
+        id: "fizz-photo-3",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2003-MrlbiplRs3I5wNhyfJSP0d0eEon7rc.jpg",
+        alt: "FIZZ smiling warmly in black leather biker jacket over black tee with gold chain necklace and gold watch, hand touching jacket, light beige studio backdrop",
+        caption: "Golden Hour",
+      },
+      {
+        id: "fizz-photo-4",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/851deeba-60c1-40f1-8e3f-e7e54bdfcbc2-deuTBUVdhzBFQ9NTHFc7nXbiWRUN9R.png",
+        alt: "FIZZ in red leather biker jacket over red tee with silver Cuban link chain, diamond watch, and diamond rings, arms crossed, intense gaze, light studio backdrop",
+        caption: "Red Statement",
+      },
+      {
+        id: "fizz-photo-5",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/84f4662e-debb-43a1-919e-6b9db773f6e5-RTH5PlJ0Edaa0jWMhMkMh5wCVu27kB.png",
+        alt: "FIZZ in red leather biker jacket over red tee with silver Cuban link chain, diamond watch, and diamond rings, hands clasped over chest, contemplative look, light studio backdrop",
+        caption: "Red Reflection",
+      },
+    ],
   },
 ]

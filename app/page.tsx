@@ -20,11 +20,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { useRadio } from "@/components/radio-context"
 
-// Hero background images - Updated to use new artist profile images
+// Hero background images - Updated to use artist page background images
 const heroImages = [
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Luv%20Tonez.jpg-4K7M3mReeAKec5cU4bs8w6la5UwIT2.jpeg",
-    alt: "Luv Tonez - R&B group in elegant formal black suits",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30-4dGZsrxcQhXaPM3ib6AeMoIWN0MEpM.jpeg",
+    alt: "Luv Tonez - R&B group",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Virgo%20Dunst.jpg-vp9S492loS2RnMXAwqNeHLd624fL3J.jpeg",
@@ -51,16 +51,36 @@ const heroImages = [
     alt: "RIVEN COLE - Electronic artist in blue suit with arms outstretched",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucas%20Meno.jpg-qm5NB9052ElC9YU9bNz7jLwxvlIZrv.jpeg",
-    alt: "Lucas Meno - R&B/Rap artist in cream suit on vintage chair",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31-EQaG0I4PFm5Tll7bJmw8nZpJ21sWxx.jpg",
+    alt: "Lucas Meno - R&B/Rap artist",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neilly%20Storm.jpg-pbl9md9S3nFpvpk2TyAlyI3p5qqb84.jpeg",
     alt: "Neilly Storm - Indie/Alternative artist in dramatic red feathered coat",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cedar%20Line.jpg-HjdkXYcaCDndFtwrpgspguke6B1CAV.jpeg",
-    alt: "Cedar Line - Country band in rural setting with instruments",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-mCZzZ3Cl8ju46UAbWa3mLkyXpjg9y1.jpeg",
+    alt: "Cedar Line - Country band",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lunah18-gD5PNUSmeEkrq7UC0Wl2kyiL7h7kwx.jpeg",
+    alt: "Lunah - R&B duo",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/14-asaVJLiSUcRtW2by0FwVUgjFzv5yjX.jpg",
+    alt: "ELKANA - R&B/Hip-Hop artist",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20club-Y7OhaQaDUdbkLH3HOCbfIiRWeG4KDy.jpg",
+    alt: "LEA BABI - Afro R&B artist in upscale lounge",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2001-RczHsY5ILBPm6hvVZRkQw6Rj91ugda.jpg",
+    alt: "FIZZ - Afrobeat Swahili artist",
+  },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/05-HPLAMhHejSLZoh63h6siMaHcaJIjrU.jpg",
+    alt: "Echo Rae - Alternative Pop artist",
   },
 ]
 

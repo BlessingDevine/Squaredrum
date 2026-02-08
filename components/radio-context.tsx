@@ -387,7 +387,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     setVolume,
     setQuality,
     retryConnection,
-    setDesktopHeadless,
+    setDesktopHeadless: setIsDesktopHeadless,
   }
 
   return <RadioContext.Provider value={value}>{children}</RadioContext.Provider>

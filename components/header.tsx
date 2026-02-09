@@ -21,7 +21,7 @@ export default function Header({ onBlurChange }: HeaderProps) {
   const [showArtistsDropdown, setShowArtistsDropdown] = useState(false)
   const [hoveredArtist, setHoveredArtist] = useState<number | null>(null)
 
-  const { toggleRadio, togglePlay, isPlaying: radioPlaying, isRadioOpen, setDesktopHeadless } = useRadio()
+  const { toggleRadio, toggleDesktopRadio, isPlaying: radioPlaying, isRadioOpen, isDesktopHeadless } = useRadio()
 
   // Refs for click outside detection
   const desktopArtistsRef = useRef<HTMLDivElement>(null)
@@ -45,24 +45,7 @@ export default function Header({ onBlurChange }: HeaderProps) {
   const handleRadioClick = () => {
     if (!isMobile) {
       // Desktop: toggle play/pause directly without opening the player UI
-      if (!isRadioOpen) {
-        setDesktopHeadless(true)
-        toggleRadio() // Opens radio (sets isRadioOpen) so the audio source gets set
-        // Small delay to allow audio source to initialize before playing
-        setTimeout(() => {
-          togglePlay()
-        }, 300)
-      } else if (radioPlaying) {
-        // If playing, stop and close radio
-        togglePlay()
-        setTimeout(() => {
-          toggleRadio()
-          setDesktopHeadless(false)
-        }, 100)
-      } else {
-        // If radio is open but not playing, start playing
-        togglePlay()
-      }
+      toggleDesktopRadio()
     } else {
       // Mobile: open/close the radio player as before
       toggleRadio()

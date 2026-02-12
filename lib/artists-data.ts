@@ -3686,7 +3686,7 @@ export const artists: Artist[] = [
       {
         title: "Comfortable Silence",
         year: 2025,
-        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20cover.png-ZnLfuetr9AVGmFGsYoOaJZaIZtHy8o.jpeg",
+        coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20Cover%20I-ujneGwF2EGXEpgIQRQtXPuwBn1NqIW.jpg",
         tracks: [
           "Deja Vu",
           "2 AM Thoughts",

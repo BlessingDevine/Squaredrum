@@ -3673,7 +3673,7 @@ export const artists: Artist[] = [
     name: "LEA BABI",
     slug: "lea-babi",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20cover.png-ZnLfuetr9AVGmFGsYoOaJZaIZtHy8o.jpeg",
-    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20club-Y7OhaQaDUdbkLH3HOCbfIiRWeG4KDy.jpg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-SNyUzz9ToV7662tcKJg36Ya5JauPae.jpg",
     bio: "LEA BABI is an AI-generated Afro R&B artist whose sound blends sultry melodies with Afrobeats-infused rhythms and deeply personal storytelling. This artificial artist channels the warmth and complexity of modern relationships through lush vocal arrangements and atmospheric production. From late-night confessions to quiet moments of vulnerability, LEA BABI's music captures the emotional landscape of love, longing, and self-discovery. Her debut project weaves together intimate vignettes — parking lot conversations, borrowed hoodies, draft texts never sent — into a cohesive sonic diary that feels both deeply personal and universally relatable.",
     location: "Atlanta, GA",
     genre: "Afro R&B",

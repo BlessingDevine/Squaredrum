@@ -76,8 +76,8 @@ const heroImages = [
     alt: "ELKANA - R&B/Hip-Hop artist",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lea%20club-Y7OhaQaDUdbkLH3HOCbfIiRWeG4KDy.jpg",
-    alt: "LEA BABI - Afro R&B artist in upscale lounge",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-d1SeTvK9UkPOcFv8EC03DhWWdhc1De.jpg",
+    alt: "Lea Babi - Afro R&B artist in red velvet cardigan",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fizz%2001-RczHsY5ILBPm6hvVZRkQw6Rj91ugda.jpg",

@@ -4633,6 +4633,24 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nebula%20Nights%20%28Fckboy%20Free%29-51dpovHUBIvAQju6t6dswRtnIP84Hs.mp3",
         duration: "3:41",
       },
+      {
+        id: "lumiastra-20",
+        title: "The Guadeloupe Glide",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Guadeloupe%20Glide-w9l2cWL2Kg2sTp4IHKBVH66URFbJ2c.mp3",
+        duration: "3:34",
+      },
+      {
+        id: "lumiastra-21",
+        title: "Tidal Wave Tease",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tidal%20Wave%20Tease-6t9SYuefsV6XKrP9pOP22iDNEZpJmH.mp3",
+        duration: "3:18",
+      },
+      {
+        id: "lumiastra-22",
+        title: "Voyager Vows",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Voyager%20Vows-DGfLq9W4sWtIFgpIqeSCTx6pmZCPu8.mp3",
+        duration: "3:52",
+      },
     ],
     photoGallery: [
       {
@@ -4640,6 +4658,48 @@ export const artists: Artist[] = [
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lumi1-zL78OOWh95XIZOt2esPeYxPBw9YvFI.jpg",
         alt: "LUMI ASTRA in black blazer with choker necklace, geometric red circle and building shapes in background",
         caption: "Cosmic Vision",
+      },
+      {
+        id: "lumiastra-photo-2",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/02-3H6yvyvcLLwEQVMHdhYwGcwV7VD35u.jpg",
+        alt: "LUMI ASTRA in black blazer with red circle halo and geometric building elements, modern pop aesthetic",
+        caption: "Geometric Pop",
+      },
+      {
+        id: "lumiastra-photo-3",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/14-kTbOQ9oJ5cWGRXRj3taJvH9QV2eRXf.jpg",
+        alt: "LUMI ASTRA profile portrait with braided hair, chain and studded shoulder piece against black background",
+        caption: "Chain Link Edge",
+      },
+      {
+        id: "lumiastra-photo-4",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/15-Hcj30qaOqyhOEvcxjrK9neMWyPvlRh.jpg",
+        alt: "LUMI ASTRA profile with braids and metallic chain details, edgy moody lighting",
+        caption: "Edgy Profile",
+      },
+      {
+        id: "lumiastra-photo-5",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/12-mbPoZEezNS3azFDhxLRrLEpnXGrFjU.jpg",
+        alt: "LUMI ASTRA full body in metallic silver corset-style top with metal bra cups and straps against black background",
+        caption: "Futuristic Corset",
+      },
+      {
+        id: "lumiastra-photo-6",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/16-1QaGeWbVIoRzigy7v0eCKzy1IMsomm.jpg",
+        alt: "LUMI ASTRA in black corset outfit with metal details against red and black striped geometric background",
+        caption: "Striped Futurism",
+      },
+      {
+        id: "lumiastra-photo-7",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/01-shyXy0tQWyektatCukD34cRR8592Qz.jpg",
+        alt: "LUMI ASTRA full body in black metal-accented corset against red and black striped geometric background",
+        caption: "Red Striped Glam",
+      },
+      {
+        id: "lumiastra-photo-8",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/13-lJJEHwlS2TxHiDVKiJdXAJ7TLojozy.jpg",
+        alt: "LUMI ASTRA profile in black sleeveless top with metal accents and braided hair against dark background",
+        caption: "Minimalist Metal",
       },
     ],
   },

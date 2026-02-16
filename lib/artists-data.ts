@@ -3959,6 +3959,48 @@ export const artists: Artist[] = [
         alt: "LEA BABI in red knit cardigan with red mesh crop top against warm gradient background",
         caption: "Warm Tones",
       },
+      {
+        id: "leababi-photo-20",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-d1SeTvK9UkPOcFv8EC03DhWWdhc1De.jpg",
+        alt: "LEA BABI in red velvet cardigan with red mesh crop top and black bottoms against brown-to-gold gradient",
+        caption: "Velvet Luxe",
+      },
+      {
+        id: "leababi-photo-21",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-Wq2LNvcc5p7yCYUefB4BPhyPs6HEtJ.jpg",
+        alt: "LEA BABI in desert landscape wearing red fuzzy cardigan with red mesh top and black bottoms against golden sky",
+        caption: "Desert Heat",
+      },
+      {
+        id: "leababi-photo-22",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-lKdXqnWNLoME43Itp1JSi04O5EYOlV.jpg",
+        alt: "LEA BABI in black leather jacket with fur trim and studded details in urban nighttime setting with modern building",
+        caption: "Urban Edge",
+      },
+      {
+        id: "leababi-photo-23",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-iBnydz4wvtPaiUzHc0KmAVl7n2low4.jpg",
+        alt: "LEA BABI in white blazer with diamond chandelier earrings at beach with ocean waves in background",
+        caption: "Beach Elegance",
+      },
+      {
+        id: "leababi-photo-24",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24-BcwP3F8uGbWnUQdtQn8V9XLoySBDNB.jpg",
+        alt: "LEA BABI in black long-sleeve crop top and black shorts with wrist chains against white background",
+        caption: "Chain Link",
+      },
+      {
+        id: "leababi-photo-25",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-kOuDvRbh0K90VNYdNpykPEfE2p3V4f.jpg",
+        alt: "LEA BABI in red and gold striped sweater with LB branding and cap holding vinyl records with pink labels",
+        caption: "Music Brand",
+      },
+      {
+        id: "leababi-photo-26",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/26-GB2U3KWhh04XvdQxy82R6BiEYOdCTL.jpg",
+        alt: "LEA BABI in black crop hoodie and black shorts with chain bracelets against white background",
+        caption: "Street Style",
+      },
     ],
   },
   {

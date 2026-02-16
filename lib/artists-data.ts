@@ -4749,6 +4749,24 @@ export const artists: Artist[] = [
         alt: "LUMI ASTRA moody close-up portrait in black sleeveless top with metal chain bracelets, dramatic dark atmospheric lighting",
         caption: "Dark Moody",
       },
+      {
+        id: "lumiastra-photo-17",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/18-o0bxr9j0h03FITd73FhOvuPaUs1HX6.jpg",
+        alt: "LUMI ASTRA in silver metallic blazer with geometric diamond tribal embroidery in red and gold, hands framing face, blue-to-purple gradient background",
+        caption: "Tribal Metallic",
+      },
+      {
+        id: "lumiastra-photo-18",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/17-mjiavlqQCtpJ8NSD0GjYo01BCSRCre.jpg",
+        alt: "LUMI ASTRA profile side pose in silver metallic blazer dress with tribal geometric embroidery, black wavy hair with braid, blue gradient background",
+        caption: "Silver Profile",
+      },
+      {
+        id: "lumiastra-photo-19",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-eolfNXHVFORehap61PfilXARJYGJJr.jpg",
+        alt: "LUMI ASTRA close-up in black sleeveless turtleneck with black gloves featuring silver chain bracelets against dark black background",
+        caption: "Chain Glam",
+      },
     ],
   },
 ]

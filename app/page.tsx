@@ -28,8 +28,8 @@ import { useRadio } from "@/components/radio-context"
 // Hero background images - Updated to use artist page background images
 const heroImages = [
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/30-4dGZsrxcQhXaPM3ib6AeMoIWN0MEpM.jpeg",
-    alt: "Luv Tonez - R&B group",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-HzK6wNy2rPJ9vMK8JR5WWtm2HfqtG2.jpg",
+    alt: "Luv Tonez - R&B group in black leather jackets with ornate embroidery",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Virgo%20Dunst.jpg-vp9S492loS2RnMXAwqNeHLd624fL3J.jpeg",

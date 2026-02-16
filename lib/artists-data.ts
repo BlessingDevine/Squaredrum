@@ -4573,6 +4573,66 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/24%20Karat%20Constellation%20%28ALT%29-uz9mwuk2sHqCX6FD5sBv2VRlQW30oI.mp3",
         duration: "3:38",
       },
+      {
+        id: "lumiastra-10",
+        title: "Retrograde Roulette",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Retrograde%20Roulette-wDf8sj4PPVEpUWLcky8tnwqBfCVOZs.mp3",
+        duration: "3:33",
+      },
+      {
+        id: "lumiastra-11",
+        title: "The Event Horizon of You",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Event%20Horizon%20of%20You-kG7CzE2yoc0gtclmUZJVFW2XGf9Diy.mp3",
+        duration: "3:44",
+      },
+      {
+        id: "lumiastra-12",
+        title: "Neon Zodiac Sign",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Neon%20Zodiac%20Sign-FIoqdya5xYXUKJIqAhU2K1VajL7b28.mp3",
+        duration: "3:20",
+      },
+      {
+        id: "lumiastra-13",
+        title: "Pointe-à-Pitre Paradise",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pointe-a%CC%80-Pitre%20Paradise-TzHbFbkRV5u6CKsgCLve0zI92U5SNa.mp3",
+        duration: "3:29",
+      },
+      {
+        id: "lumiastra-14",
+        title: "The Bermuda Triangle of Us",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Bermuda%20Triangle%20of%20Us-WIxGmJ7WyOdz1CdGMj13mGYp66OSpu.mp3",
+        duration: "3:52",
+      },
+      {
+        id: "lumiastra-15",
+        title: "Solar Flare Kiss",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Solar%20Flare%20Kiss-Ja862bdxC0LTWOJkeRrnqOvfm8oSFj.mp3",
+        duration: "3:15",
+      },
+      {
+        id: "lumiastra-16",
+        title: "Orbit Me, Don't Stop Me",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Orbit%20Me%2C%20Don%27t%20Stop%20Me-WszF1KLp1CKlfb1YgaXk2pJ9ahTEnc.mp3",
+        duration: "3:47",
+      },
+      {
+        id: "lumiastra-17",
+        title: "Parallel Universe Promise",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Parallel%20Universe%20Promise-ODvy5jgi0ydOT7Q1GeTDzPkOH1dBX9.mp3",
+        duration: "3:36",
+      },
+      {
+        id: "lumiastra-18",
+        title: "Starlight Glitch",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Starlight%20Glitch-wvsbugqSNuIwnw84MP6R32fTnWQoI1.mp3",
+        duration: "3:24",
+      },
+      {
+        id: "lumiastra-19",
+        title: "Nebula Nights (Fckboy Free)",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nebula%20Nights%20%28Fckboy%20Free%29-51dpovHUBIvAQju6t6dswRtnIP84Hs.mp3",
+        duration: "3:41",
+      },
     ],
     photoGallery: [
       {

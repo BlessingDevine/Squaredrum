@@ -88,7 +88,7 @@ const heroImages = [
     alt: "Echo Rae - Alternative Pop artist",
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-eolfNXHVFORehap61PfilXARJYGJJr.jpg",
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-TcNVRL0eKvJrOTLNixNSu5meN9uz2I.jpg",
     alt: "LUMI ASTRA - Pop artist in black turtleneck with silver chain bracelets",
   },
 ]

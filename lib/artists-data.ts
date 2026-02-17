@@ -4480,7 +4480,7 @@ export const artists: Artist[] = [
     name: "LUMI ASTRA",
     slug: "lumi-astra",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lumi1-zL78OOWh95XIZOt2esPeYxPBw9YvFI.jpg",
-    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/lumi1-zL78OOWh95XIZOt2esPeYxPBw9YvFI.jpg",
+    heroImage: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-eolfNXHVFORehap61PfilXARJYGJJr.jpg",
     bio: "LUMI ASTRA is an emerging pop artist known for her ethereal soundscapes and contemporary aesthetic. Her music blends catchy pop melodies with atmospheric production, creating an immersive listening experience that captures themes of cosmic exploration, emotional depth, and modern relationships. With tracks that shimmer between introspective lyrics and uplifting beats, LUMI ASTRA crafts a sonic universe that feels both intimate and expansive. Her artistic vision combines cutting-edge pop sensibilities with artistic innovation.",
     location: "Los Angeles, CA",
     genre: "Pop",

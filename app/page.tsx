@@ -87,6 +87,10 @@ const heroImages = [
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/05-HPLAMhHejSLZoh63h6siMaHcaJIjrU.jpg",
     alt: "Echo Rae - Alternative Pop artist",
   },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-eolfNXHVFORehap61PfilXARJYGJJr.jpg",
+    alt: "LUMI ASTRA - Pop artist in black turtleneck with silver chain bracelets",
+  },
 ]
 
 export default function HomePage() {

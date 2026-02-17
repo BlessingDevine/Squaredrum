@@ -4767,6 +4767,30 @@ export const artists: Artist[] = [
         alt: "LUMI ASTRA close-up in black sleeveless turtleneck with black gloves featuring silver chain bracelets against dark black background",
         caption: "Chain Glam",
       },
+      {
+        id: "lumiastra-photo-20",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/21-jrt0wnoLbPNzqkPGo3Odd5rVUWsSRr.jpg",
+        alt: "LUMI ASTRA dramatic close-up with braided updo, black choker, black gloves with silver chain bracelets and rings covering lower face",
+        caption: "Braided Chains",
+      },
+      {
+        id: "lumiastra-photo-21",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20-Pe0Jw7XZzZz0mG5LJ1VBZ34aCPqHau.jpg",
+        alt: "LUMI ASTRA side angle in metallic silver corset with straps over black long-sleeve crop, black choker against light grey background",
+        caption: "Corset Side",
+      },
+      {
+        id: "lumiastra-photo-22",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-g7KFfymQnX5SlfImAQKyyjoywPFeFD.jpg",
+        alt: "LUMI ASTRA profile pose in metallic silver corset top with straps, black turtleneck choker and long sleeves against grey background",
+        caption: "Silver Profile Pose",
+      },
+      {
+        id: "lumiastra-photo-23",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/22-6HAzmseADUDoe6VKEIMn5fRvs1HZwj.jpg",
+        alt: "LUMI ASTRA full body frontal in black corset with silver metal bra cups and belt, black shorts with white buttons and metal shoulder straps",
+        caption: "Metal Corset Frontal",
+      },
     ],
   },
 ]

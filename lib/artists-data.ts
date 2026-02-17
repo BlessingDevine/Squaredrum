@@ -4891,6 +4891,18 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Digital%20Crown%20%28ALT%29-rvOPy3KgHBnLq65OjuiOXedqjlRyuE.mp3",
         duration: "3:29",
       },
+      {
+        id: "novaliyah-10",
+        title: "Ocean of Shining Angels",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ocean%20of%20Shining%20Angels%20-EcdPlcxHyPRWzxEkElYBeQT2PkfCvK.mp3",
+        duration: "3:33",
+      },
+      {
+        id: "novaliyah-11",
+        title: "Light warrior protocol",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Light%20warrior%20protocol-tRP7861qUY2ZqGQh3pCgDV5MuhtInF.mp3",
+        duration: "3:42",
+      },
     ],
     photoGallery: [
       {
@@ -4898,6 +4910,54 @@ export const artists: Artist[] = [
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/0-40v2Ggy0YKWfIl7wTFE8xHHuQvR2I7.jpg",
         alt: "NOVA LIYAH in platinum blonde wavy hair, round black sunglasses, geometric diamond earrings, floral jacket with red and orange flowers over black turtleneck against teal gradient",
         caption: "Cosmic Elegance",
+      },
+      {
+        id: "novaliyah-photo-2",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/04-QKvDp51KoCgldxzeKjCAA6wzaEMN1v.jpg",
+        alt: "NOVA LIYAH profile portrait with platinum blonde wavy hair, golden geometric earrings, looking upward, black turtleneck against grey background",
+        caption: "Profile Elegance",
+      },
+      {
+        id: "novaliyah-photo-3",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/07-wbqTYdJqrANLqhq44u8qAf7CK5iuWs.jpg",
+        alt: "NOVA LIYAH side profile wearing oversized round black sunglasses with chain detail, cream cardigan over black turtleneck, minimalist grey background",
+        caption: "Minimalist Chic",
+      },
+      {
+        id: "novaliyah-photo-4",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/09-19DzbJr7d5duBkYvvV3cRhYUCrbhe2.jpg",
+        alt: "NOVA LIYAH editorial artwork surrounded by vibrant tropical florals with orange and red flowers, green leaves, wearing sunglasses and cream cardigan with orange circle halo background",
+        caption: "Tropical Vibes",
+      },
+      {
+        id: "novaliyah-photo-5",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/06-KbKdzltZNPTZJLnneNNAiivsd2fbT3.jpg",
+        alt: "NOVA LIYAH profile in round black sunglasses with chain detail, platinum blonde wavy hair, hand near neck, cream and black two-tone outfit, grey background",
+        caption: "Chain Detail",
+      },
+      {
+        id: "novaliyah-photo-6",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-pqt4tCbciU7hUIzSvs3sJIGUW4Q7lO.jpg",
+        alt: "NOVA LIYAH elegant pose wearing amber and orange-tinted round sunglasses, sheer white tulle overlay creating ethereal effect, teal gradient atmospheric background",
+        caption: "Ethereal Dreams",
+      },
+      {
+        id: "novaliyah-photo-7",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/03-9ltSTEpCVIbXeE2Gw6FQ3eamNWd2k0.jpg",
+        alt: "NOVA LIYAH profile with oversized round black sunglasses, platinum blonde wavy hair, golden dangling earrings, black and cream layered outfit, grey background",
+        caption: "Golden Accents",
+      },
+      {
+        id: "novaliyah-photo-8",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/08-lhzvHXS17HAIbx1glgOdSMLURWWrBg.jpg",
+        alt: "NOVA LIYAH in white cardigan over black turtleneck, round black sunglasses, platinum blonde wavy hair flowing, gold earrings, upward gaze against grey background",
+        caption: "Upward Gaze",
+      },
+      {
+        id: "novaliyah-photo-9",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/05-yhDBNpjbBb0anztheU84ot7Xr11Fv8.jpg",
+        alt: "NOVA LIYAH dynamic profile with windswept platinum blonde hair flowing, round black sunglasses, gold chain earrings, black and cream outfit, motion-captured pose",
+        caption: "Motion & Flow",
       },
     ],
   },

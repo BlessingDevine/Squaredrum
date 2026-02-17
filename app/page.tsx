@@ -91,6 +91,10 @@ const heroImages = [
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-TcNVRL0eKvJrOTLNixNSu5meN9uz2I.jpg",
     alt: "LUMI ASTRA - Pop artist in black turtleneck with silver chain bracelets",
   },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/0-40v2Ggy0YKWfIl7wTFE8xHHuQvR2I7.jpg",
+    alt: "NOVA LIYAH - Pop artist with platinum blonde hair, round sunglasses, geometric diamond earrings, floral jacket",
+  },
 ]
 
 export default function HomePage() {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei"
 import * as THREE from "three"
@@ -52,9 +52,23 @@ function FloatingParticles() {
 }
 
 export default function Hero3DBackground() {
+  const [hasError, setHasError] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted || hasError) {
+    return <div className="absolute inset-0 z-0 bg-black" />
+  }
+
   return (
     <div className="absolute inset-0 z-0 opacity-30">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 75 }}
+        onCreated={() => {}}
+      >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <pointLight position={[-10, -10, -10]} intensity={0.5} color="#f59e0b" />

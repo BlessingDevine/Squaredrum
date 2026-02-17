@@ -26,6 +26,7 @@ interface RadioContextType {
   isLoading: boolean
   isRadioOpen: boolean
   isMinimized: boolean
+  isDesktopHeadless: boolean
   currentTrack: RadioTrack | null
   volume: number
   currentQuality: StreamQuality
@@ -33,6 +34,7 @@ interface RadioContextType {
   connectionStatus: ConnectionStatus
   togglePlay: () => void
   toggleRadio: () => void
+  toggleDesktopRadio: () => void
   toggleMinimized: () => void
   closeRadio: () => void
   setVolume: (volume: number) => void
@@ -69,6 +71,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false)
   const [isRadioOpen, setIsRadioOpen] = useState(false)
   const [isMinimized, setIsMinimized] = useState(true)
+  const [isDesktopHeadless, setIsDesktopHeadless] = useState(false)
   const [currentTrack, setCurrentTrack] = useState<RadioTrack | null>(null)
   const [volume, setVolumeState] = useState(0.7)
   const [currentQuality, setCurrentQuality] = useState<StreamQuality>(STREAM_QUALITIES[0]) // Start with HD
@@ -279,10 +282,64 @@ export function RadioProvider({ children }: { children: ReactNode }) {
   const toggleRadio = useCallback(() => {
     console.log(`📻 ${isRadioOpen ? "Closing" : "Opening"} Music Square Radio`)
     setIsRadioOpen(!isRadioOpen)
+    setIsDesktopHeadless(false) // Always reset headless when using normal toggle
     if (!isRadioOpen) {
       setIsMinimized(true) // Start minimized by default
     }
   }, [isRadioOpen])
+
+  // Desktop headless toggle: opens radio + plays audio without showing UI
+  const toggleDesktopRadio = useCallback(() => {
+    if (!audioRef.current) return
+
+    if (!isRadioOpen) {
+      // Not open yet: open in headless mode, set source, and play
+      console.log("📻 Desktop: Starting radio headless")
+      setIsDesktopHeadless(true)
+      setIsRadioOpen(true)
+      setIsMinimized(true)
+
+      const audio = audioRef.current
+      audio.src = currentQuality.url
+      audio.load()
+
+      // Wait for the source to load then play
+      const playWhenReady = () => {
+        audio.play().catch((err) => {
+          console.error("Failed to play radio:", err)
+        })
+        audio.removeEventListener("canplay", playWhenReady)
+      }
+      audio.addEventListener("canplay", playWhenReady)
+
+      // Also try playing after a timeout in case canplay already fired
+      setTimeout(() => {
+        if (!isPlaying && audio.readyState >= 2) {
+          audio.play().catch(() => {})
+        }
+      }, 2000)
+    } else if (isPlaying) {
+      // Currently playing: stop and close
+      console.log("📻 Desktop: Stopping radio")
+      audioRef.current.pause()
+      audioRef.current.src = ""
+      setIsRadioOpen(false)
+      setIsPlaying(false)
+      setIsDesktopHeadless(false)
+      setConnectionStatus({ status: "idle", message: "Ready to connect to Music Square Radio" })
+    } else {
+      // Open but not playing: start playing
+      console.log("📻 Desktop: Resuming radio")
+      const audio = audioRef.current
+      if (!audio.src || audio.src === "") {
+        audio.src = currentQuality.url
+        audio.load()
+      }
+      audio.play().catch((err) => {
+        console.error("Failed to play radio:", err)
+      })
+    }
+  }, [isRadioOpen, isPlaying, currentQuality])
 
   const toggleMinimized = useCallback(() => {
     console.log(`${isMinimized ? "🔍 Maximizing" : "🔎 Minimizing"} radio player`)
@@ -305,6 +362,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     setIsRadioOpen(false)
     setIsPlaying(false)
     setIsLoading(false)
+    setIsDesktopHeadless(false)
     setConnectionStatus({ status: "idle", message: "Ready to connect to Music Square Radio" })
     setCurrentQuality(STREAM_QUALITIES[0]) // Reset to HD
     retryCountRef.current = 0
@@ -370,6 +428,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     isLoading,
     isRadioOpen,
     isMinimized,
+    isDesktopHeadless,
     currentTrack,
     volume,
     currentQuality,
@@ -377,6 +436,7 @@ export function RadioProvider({ children }: { children: ReactNode }) {
     connectionStatus,
     togglePlay,
     toggleRadio,
+    toggleDesktopRadio,
     toggleMinimized,
     closeRadio,
     setVolume,

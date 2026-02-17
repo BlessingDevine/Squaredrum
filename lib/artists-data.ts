@@ -4903,6 +4903,60 @@ export const artists: Artist[] = [
         audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Light%20warrior%20protocol-tRP7861qUY2ZqGQh3pCgDV5MuhtInF.mp3",
         duration: "3:42",
       },
+      {
+        id: "novaliyah-12",
+        title: "Supernova Crush",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Supernova%20Crush-pwyJtUnXDwvnetvpzpx2apxEDpsYKZ.mp3",
+        duration: "3:25",
+      },
+      {
+        id: "novaliyah-13",
+        title: "Skin Made of Shooting Stars",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Skin%20Made%20of%20Shooting%20Stars-r5xITpo0JSYivgQBLtofhjLStRQr8g.mp3",
+        duration: "3:39",
+      },
+      {
+        id: "novaliyah-14",
+        title: "Sunlight on Your Shoulder",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sunlight%20on%20Your%20Shoulder-VGnFD6Mz9hG2J3KUTNSgB98btocrAl.mp3",
+        duration: "3:31",
+      },
+      {
+        id: "novaliyah-15",
+        title: "Spirit in the Signal",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Spirit%20in%20the%20Signal-yW4B8IfeJnsfrmSm2cGVFt3ZwtmiRf.mp3",
+        duration: "3:44",
+      },
+      {
+        id: "novaliyah-16",
+        title: "Starborn & Sovereign",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Starborn%20%26%20Sovereign-7YU3k5PfMJjPoX3qa7wHjsx0NKbN43.mp3",
+        duration: "3:36",
+      },
+      {
+        id: "novaliyah-17",
+        title: "Oracle's Lullaby",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oracle%E2%80%99s%20Lullaby-ZV0pMmHASmNegKZVOSXhZCymxjYje8.mp3",
+        duration: "3:28",
+      },
+      {
+        id: "novaliyah-18",
+        title: "Prayers to the Outer Light",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Prayers%20to%20the%20Outer%20Light-RotBMK811Wr3f3CSU47GRV9fo4fvAL.mp3",
+        duration: "3:51",
+      },
+      {
+        id: "novaliyah-19",
+        title: "Portal of Stillness",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Portal%20of%20Stillness-2ZuqzE9rRwQX74xAONJXH32hJUeXCY.mp3",
+        duration: "3:33",
+      },
+      {
+        id: "novaliyah-20",
+        title: "Pink Horizon Love",
+        audioUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pink%20Horizon%20Love-MD3VXKuQ3ZreYz20xovvtPS2RRKXYG.mp3",
+        duration: "3:40",
+      },
     ],
     photoGallery: [
       {
@@ -4958,6 +5012,12 @@ export const artists: Artist[] = [
         src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/05-yhDBNpjbBb0anztheU84ot7Xr11Fv8.jpg",
         alt: "NOVA LIYAH dynamic profile with windswept platinum blonde hair flowing, round black sunglasses, gold chain earrings, black and cream outfit, motion-captured pose",
         caption: "Motion & Flow",
+      },
+      {
+        id: "novaliyah-photo-10",
+        src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/10-dV7p1kbqbFKN5W2NqlZtZReuRTozCm.jpg",
+        alt: "NOVA LIYAH profile wearing oversized black round sunglasses with decorative studded crystal rim details, platinum blonde wavy shoulder-length hair, black turtleneck, elaborate gold filigree textured statement earrings, head tilted upward",
+        caption: "Luxe Details",
       },
     ],
   },

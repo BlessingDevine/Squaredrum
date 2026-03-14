@@ -4,71 +4,213 @@ import { useState, useEffect } from "react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import PageBlurOverlay from "@/components/page-blur-overlay"
-import { Instagram, Facebook, Youtube } from 'lucide-react'
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { RefreshCw, ExternalLink, Loader2 } from 'lucide-react'
+import Image from "next/image"
+
+interface Article {
+  id: string
+  title: string
+  description: string
+  link: string
+  pubDate: string
+  image?: string
+  source: string
+  category: string
+  aiSummary?: string
+}
+
+const AI_KEYWORDS = [
+  "ai music",
+  "generative",
+  "suno",
+  "udio",
+  "machine learning",
+  "neural",
+  "music ai",
+  "ai-generated",
+  "music generation"
+]
+
+const RSS_SOURCES = [
+  "https://musictech.com/feed/",
+  "https://www.musicbusinessworldwide.com/feed/",
+  "https://hypebot.com/feed/",
+  "https://techcrunch.com/feed/",
+  "https://www.theverge.com/rss/index.xml",
+  "https://www.billboard.com/feed/",
+]
+
+const CATEGORY_MAP: { [key: string]: string } = {
+  "musictech": "Tools & Tech",
+  "musicbusinessworldwide": "Business",
+  "hypebot": "Industry",
+  "techcrunch": "Tools & Tech",
+  "theverge": "Tools & Tech",
+  "billboard": "Industry",
+}
+
+const CATEGORIES = ["All", "Industry", "Tools & Tech", "Copyright", "Releases", "Business"]
+
+function isAIMusicArticle(text: string): boolean {
+  const lowerText = text.toLowerCase()
+  return AI_KEYWORDS.some(keyword => lowerText.includes(keyword))
+}
+
+function getCategoryFromSource(source: string): string {
+  for (const [key, category] of Object.entries(CATEGORY_MAP)) {
+    if (source.toLowerCase().includes(key)) {
+      return category
+    }
+  }
+  return "Industry"
+}
 
 export default function NewsPageClient() {
   const [isPageBlurred, setIsPageBlurred] = useState(false)
+  const [articles, setArticles] = useState<Article[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null)
 
-  // Load the social media widget scripts
-  useEffect(() => {
-    // Load Facebook widget script
-    const facebookScript = document.createElement("script")
-    facebookScript.src = "https://widgets.sociablekit.com/facebook-page-posts/widget.js"
-    facebookScript.defer = true
-    document.head.appendChild(facebookScript)
+  const fetchNewsArticles = async () => {
+    setLoading(true)
+    try {
+      const allArticles: Article[] = []
+      const seenTitles = new Set<string>()
 
-    // Load Instagram widget script
-    const instagramScript = document.createElement("script")
-    instagramScript.src = "https://widgets.sociablekit.com/instagram-feed/widget.js"
-    instagramScript.defer = true
-    document.head.appendChild(instagramScript)
+      for (const rssUrl of RSS_SOURCES) {
+        try {
+          const encodedUrl = encodeURIComponent(rssUrl)
+          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodedUrl}&count=25&api_key=ktaqpe7tzqbdvhrcbgnfpfwntm5qzwmw7y9l2vha`
+          
+          const response = await fetch(apiUrl)
+          const data = await response.json()
 
-    // Load Twitter widget script
-    const twitterScript = document.createElement("script")
-    twitterScript.src = "https://widgets.sociablekit.com/twitter-feed/widget.js"
-    twitterScript.defer = true
-    document.head.appendChild(twitterScript)
+          if (data.items && Array.isArray(data.items)) {
+            for (const item of data.items) {
+              const title = item.title || ""
+              const description = item.description || ""
+              const fullText = `${title} ${description}`
 
-    // Load TikTok widget script
-    const tiktokScript = document.createElement("script")
-    tiktokScript.src = "https://widgets.sociablekit.com/tiktok-feed/widget.js"
-    tiktokScript.defer = true
-    document.head.appendChild(tiktokScript)
+              if (isAIMusicArticle(fullText) && !seenTitles.has(title)) {
+                seenTitles.add(title)
+                const sourceName = new URL(rssUrl).hostname?.replace("www.", "").split(".")[0] || "News"
+                const category = getCategoryFromSource(rssUrl)
 
-    return () => {
-      // Cleanup Facebook script on unmount
-      const existingFacebookScript = document.querySelector(
-        'script[src="https://widgets.sociablekit.com/facebook-page-posts/widget.js"]',
-      )
-      if (existingFacebookScript) {
-        document.head.removeChild(existingFacebookScript)
+                allArticles.push({
+                  id: `${sourceName}-${item.pubDate}`,
+                  title,
+                  description: item.description?.substring(0, 200) || "",
+                  link: item.link || "",
+                  pubDate: item.pubDate || new Date().toISOString(),
+                  image: item.image?.url || item.enclosure?.link,
+                  source: sourceName,
+                  category,
+                })
+              }
+            }
+          }
+        } catch (error) {
+          console.error(`[v0] Error fetching from ${rssUrl}:`, error)
+        }
       }
 
-      // Cleanup Instagram script on unmount
-      const existingInstagramScript = document.querySelector(
-        'script[src="https://widgets.sociablekit.com/instagram-feed/widget.js"]',
+      // Sort by date and get top articles
+      const sorted = allArticles.sort(
+        (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
       )
-      if (existingInstagramScript) {
-        document.head.removeChild(existingInstagramScript)
-      }
 
-      // Cleanup Twitter script on unmount
-      const existingTwitterScript = document.querySelector(
-        'script[src="https://widgets.sociablekit.com/twitter-feed/widget.js"]',
-      )
-      if (existingTwitterScript) {
-        document.head.removeChild(existingTwitterScript)
-      }
+      // Generate AI summaries for top 8 articles
+      const topArticles = sorted.slice(0, 8)
+      const articlesWithSummaries = await generateSummaries(topArticles)
 
-      // Cleanup TikTok script on unmount
-      const existingTikTokScript = document.querySelector(
-        'script[src="https://widgets.sociablekit.com/tiktok-feed/widget.js"]',
-      )
-      if (existingTikTokScript) {
-        document.head.removeChild(existingTikTokScript)
-      }
+      setArticles(articlesWithSummaries)
+      setLastUpdated(new Date().toLocaleTimeString())
+    } catch (error) {
+      console.error("[v0] Error fetching news:", error)
+    } finally {
+      setLoading(false)
     }
+  }
+
+  const generateSummaries = async (articlesToSummarize: Article[]): Promise<Article[]> => {
+    try {
+      const headlinesText = articlesToSummarize
+        .map((a, i) => `${i + 1}. "${a.title}" - ${a.description}`)
+        .join("\n")
+
+      const prompt = `You are a music industry insider writing for SQUAREDRUM Records, a pioneering AI music label. Generate 1-sentence insider summaries for each headline below in a witty, knowledgeable tone. Format as JSON with keys "1", "2", etc.
+
+Headlines:
+${headlinesText}
+
+Respond ONLY with valid JSON, no other text.`
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.ANTHROPIC_API_KEY || "",
+          "anthropic-version": "2023-06-01"
+        },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1024,
+          messages: [
+            {
+              role: "user",
+              content: prompt
+            }
+          ]
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error(`Anthropic API error: ${response.status}`)
+      }
+
+      const data = await response.json()
+      const summaryText = data.content?.[0]?.text || ""
+
+      try {
+        const summaries = JSON.parse(summaryText)
+        return articlesToSummarize.map((article, index) => ({
+          ...article,
+          aiSummary: summaries[String(index + 1)] || ""
+        }))
+      } catch {
+        return articlesToSummarize
+      }
+    } catch (error) {
+      console.error("[v0] Error generating summaries:", error)
+      return articlesToSummarize
+    }
+  }
+
+  useEffect(() => {
+    fetchNewsArticles()
   }, [])
+
+  const filteredArticles = selectedCategory === "All"
+    ? articles
+    : articles.filter(a => a.category === selectedCategory)
+
+  const featuredArticles = filteredArticles.slice(0, 4)
+  const remainingArticles = filteredArticles.slice(4)
+
+  const ArticleSkeleton = () => (
+    <Card className="bg-zinc-900/50 border-zinc-700 animate-pulse">
+      <div className="h-48 bg-zinc-800 rounded-t-lg" />
+      <CardContent className="p-4">
+        <div className="h-6 bg-zinc-800 rounded mb-3" />
+        <div className="h-4 bg-zinc-800 rounded mb-2" />
+        <div className="h-4 bg-zinc-800 rounded w-3/4" />
+      </CardContent>
+    </Card>
+  )
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white mobile-optimized">
@@ -81,103 +223,148 @@ export default function NewsPageClient() {
             <div className="container mx-auto">
               <div className="text-center mb-12 sm:mb-16">
                 <h1 className="font-cinzel tracking-widest text-responsive-4xl mb-6">
-                  <span className="text-amber-500">NEWS</span> & UPDATES
+                  <span className="text-amber-500">AI MUSIC</span> NEWS
                 </h1>
                 <p className="text-reading text-gray-300 text-responsive-lg max-w-2xl mx-auto">
-                  Stay connected with the world's first fully AI-driven music label. Follow our AI artists' latest
-                  releases, updates, and news across all social platforms.
+                  The latest industry news on AI music generation, curated by SQUAREDRUM and powered by insider analysis
                 </p>
               </div>
 
-              {/* Facebook Posts Widget */}
-              <div className="max-w-4xl mx-auto mb-16">
-                <h2 className="font-cinzel tracking-wider text-responsive-2xl text-center mb-8">
-                  <span className="text-amber-500">FACEBOOK</span> UPDATES
-                </h2>
-                <div className="sk-ww-facebook-page-posts" data-embed-id="25574820"></div>
+              {/* Category Filter */}
+              <div className="flex flex-wrap justify-center gap-2 mb-12">
+                {CATEGORIES.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-4 py-2 rounded-full font-medium transition-all ${
+                      selectedCategory === cat
+                        ? "bg-amber-500 text-black"
+                        : "bg-zinc-800 text-gray-300 hover:bg-zinc-700"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
 
-              {/* Instagram Feed Widget */}
-              <div className="max-w-4xl mx-auto mb-16">
-                <h2 className="font-cinzel tracking-wider text-responsive-2xl text-center mb-8">
-                  <span className="text-amber-500">INSTAGRAM</span> FEED
-                </h2>
-                <div className="sk-instagram-feed" data-embed-id="25574822"></div>
+              {/* Refresh Button */}
+              <div className="text-center mb-8">
+                <Button
+                  onClick={fetchNewsArticles}
+                  disabled={loading}
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-medium"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Loading...
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw className="w-4 h-4 mr-2" />
+                      Refresh News
+                    </>
+                  )}
+                </Button>
+                {lastUpdated && (
+                  <p className="text-gray-400 text-sm mt-2">Last updated: {lastUpdated}</p>
+                )}
               </div>
 
-              {/* Twitter Feed Widget */}
-              <div className="max-w-4xl mx-auto mb-16">
-                <h2 className="font-cinzel tracking-wider text-responsive-2xl text-center mb-8">
-                  <span className="text-amber-500">X (TWITTER)</span> FEED
-                </h2>
-                <div className="sk-ww-twitter-feed" data-embed-id="25574826"></div>
-              </div>
+              {/* Featured Articles Grid */}
+              {loading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                  {[...Array(4)].map((_, i) => (
+                    <ArticleSkeleton key={i} />
+                  ))}
+                </div>
+              ) : featuredArticles.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                  {featuredArticles.map(article => (
+                    <Card key={article.id} className="bg-zinc-900/80 border-zinc-700 hover:border-amber-500/50 transition-all overflow-hidden">
+                      {article.image && (
+                        <div className="relative w-full h-48 bg-zinc-800">
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            className="object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement
+                              target.style.display = "none"
+                            }}
+                          />
+                        </div>
+                      )}
+                      <CardContent className="p-4">
+                        <div className="flex items-start justify-between mb-2">
+                          <Badge className="bg-amber-500 text-black text-xs font-bold">✦ AI DIGEST</Badge>
+                          <Badge variant="outline" className="text-xs">{article.category}</Badge>
+                        </div>
+                        <h3 className="font-cinzel text-lg font-bold mb-2 line-clamp-2">{article.title}</h3>
+                        {article.aiSummary && (
+                          <div className="border-l-4 border-amber-500 pl-3 py-2 mb-3 bg-amber-500/5">
+                            <p className="text-sm text-gray-300 italic">{article.aiSummary}</p>
+                          </div>
+                        )}
+                        <a
+                          href={article.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-amber-400 hover:text-amber-300 text-sm font-medium inline-flex items-center gap-1"
+                        >
+                          Read Full Story
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ) : null}
 
-              {/* TikTok Feed Widget */}
-              <div className="max-w-4xl mx-auto">
-                <h2 className="font-cinzel tracking-wider text-responsive-2xl text-center mb-8">
-                  <span className="text-amber-500">TIKTOK</span> FEED
-                </h2>
-                <div className="sk-tiktok-feed" data-embed-id="25574833"></div>
-              </div>
-            </div>
-          </section>
+              {/* Articles List */}
+              {!loading && remainingArticles.length > 0 && (
+                <div className="max-w-4xl mx-auto">
+                  <h2 className="font-cinzel text-2xl mb-6 text-amber-500">More Articles</h2>
+                  <div className="space-y-4">
+                    {remainingArticles.map(article => (
+                      <Card key={article.id} className="bg-zinc-900/50 border-zinc-700 hover:border-amber-500/30 transition-all">
+                        <CardContent className="p-4">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-1">
+                                <Badge className="bg-amber-500 text-black text-xs">✦ AI</Badge>
+                                <span className="text-xs text-gray-400">{article.source}</span>
+                              </div>
+                              <h3 className="font-cinzel text-base font-bold mb-2">{article.title}</h3>
+                              {article.aiSummary && (
+                                <p className="text-sm text-gray-300 italic border-l-2 border-amber-500 pl-2 mb-2">
+                                  {article.aiSummary}
+                                </p>
+                              )}
+                              <a
+                                href={article.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-amber-400 hover:text-amber-300 text-xs font-medium inline-flex items-center gap-1"
+                              >
+                                Read
+                                <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-          {/* Social Media Links */}
-          <section className="spacing-mobile-section spacing-mobile bg-zinc-950">
-            <div className="container mx-auto text-center">
-              <h2 className="font-cinzel tracking-widest text-responsive-3xl mb-8">
-                FOLLOW <span className="text-amber-500">US</span>
-              </h2>
-              <p className="text-reading text-gray-300 text-responsive-lg mb-12 max-w-2xl mx-auto">
-                Don't miss any updates! Follow us on all platforms for the latest 100% AI-created music releases and
-                exclusive AI artist features.
-              </p>
-
-              <div className="flex justify-center space-x-6">
-                <a
-                  href="https://www.instagram.com/squaredrumla/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full text-white hover:scale-110 transition-transform duration-200"
-                >
-                  <Instagram className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61578083066260"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-full text-white hover:scale-110 transition-transform duration-200"
-                >
-                  <Facebook className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://x.com/Squaredrumla"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-black rounded-full text-white hover:scale-110 transition-transform duration-200 border border-gray-600"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@squaredrum7?_t=ZT-8xhnzRLn5O1&_r=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 bg-black rounded-full text-white hover:scale-110 transition-transform duration-200"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.43z" />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  className="flex items-center justify-center w-12 h-12 bg-red-600 rounded-full text-white hover:scale-110 transition-transform duration-200"
-                >
-                  <Youtube className="h-6 w-6" />
-                </a>
-              </div>
+              {!loading && filteredArticles.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="text-gray-400 text-lg">No articles found in this category.</p>
+                </div>
+              )}
             </div>
           </section>
         </main>

@@ -56,7 +56,7 @@ export default function ReleasesPage() {
       releaseDate: "January 14, 2025",
       genre: "Afrobeat",
       description:
-        "AI-generated Afrobeat rhythms and contemporary African sounds with human production expertise, featuring diverse AI artists and collaborations that showcase the evolution of modern African music through the perfect blend of artificial intelligence and human creativity.",
+        "100% AI-created Afrobeat rhythms and contemporary African sounds featuring diverse AI artists. Every beat, every melody, every vocal track generated entirely by artificial intelligence with zero human involvement.",
       coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Afrobeat.jpg-RGjSYRGm2Ax7GzCvIgl6TGBzrSUz8B.jpeg",
       tracks: safeAfroTracks,
       accentColor: "orange",
@@ -68,7 +68,7 @@ export default function ReleasesPage() {
       releaseDate: "February 19, 2025",
       genre: "Country",
       description:
-        "AI-generated modern country sounds with traditional roots and human production polish, featuring AI solo artists and collaborations that capture the heart of American storytelling through the seamless fusion of artificial intelligence and human musical craftsmanship.",
+        "100% AI-created modern country sounds with traditional roots. Featuring AI artists capturing the heart of American storytelling through pure artificial intelligence—no human musicians or producers involved.",
       coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Country.jpg-Y74tKbTs09Vvd2ZtQc4a5GePRNODgD.jpeg",
       tracks: safeCountryTracks,
       accentColor: "amber",
@@ -80,7 +80,7 @@ export default function ReleasesPage() {
       releaseDate: "March 9, 2025",
       genre: "Pop",
       description:
-        "AI-crafted pop anthems and catchy melodies enhanced by human production techniques, featuring innovative AI artists who push the boundaries of contemporary pop music through machine learning algorithms refined by human musical expertise.",
+        "100% AI-crafted pop anthems and catchy melodies featuring innovative AI artists pushing the boundaries of contemporary pop. Every hook, every chorus, every production element created autonomously by AI.",
       coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pop.jpg-DJQTTu2qb1hvXy3n0J7Ixw53nrO8gt.jpeg",
       tracks: safePopTracks,
       accentColor: "pink",
@@ -92,7 +92,7 @@ export default function ReleasesPage() {
       releaseDate: "April 4, 2025",
       genre: "R&B",
       description:
-        "AI-powered smooth R&B grooves and soulful melodies perfected through human production mastery, featuring talented AI artists who blend classic soul with contemporary AI-generated techniques and human-guided vocal synthesis for an authentic sound.",
+        "100% AI-powered smooth R&B grooves and soulful melodies featuring AI artists blending classic soul with contemporary techniques. Every vocal, every harmony, every mix created entirely by artificial intelligence.",
       coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/R%26B.jpg-465Ppu2BX5kxmQZ2uQgapX0gQjg5si.jpeg",
       tracks: safeRnbTracks,
       accentColor: "purple",
@@ -104,7 +104,7 @@ export default function ReleasesPage() {
       releaseDate: "May 15, 2025",
       genre: "Reggaeton",
       description:
-        "AI-generated reggaeton beats and Latin urban rhythms enhanced by human production expertise, featuring cutting-edge AI artists who capture the essence of Latin street culture through innovative machine learning algorithms and authentic perreo flows.",
+        "100% AI-generated reggaeton beats and Latin urban rhythms featuring cutting-edge AI artists capturing the essence of Latin street culture. Pure AI-created perreo flows with no human production involvement.",
       coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Reggaton%20I.jpg-UkdxvBplWuxUExqZUOa6a0crPOtuYi.jpeg",
       tracks: safeReggaetonTracks,
       accentColor: "red",
@@ -116,7 +116,7 @@ export default function ReleasesPage() {
       releaseDate: "June 20, 2025",
       genre: "Dancehall",
       description:
-        "AI-crafted dancehall riddims and Caribbean vibes perfected through human production mastery, featuring revolutionary AI artists who blend traditional Jamaican sounds with futuristic digital elements for an authentic bashment experience.",
+        "100% AI-crafted dancehall riddims and Caribbean vibes featuring revolutionary AI artists blending traditional Jamaican sounds with futuristic elements. Every riddim created entirely by artificial intelligence.",
       coverArt: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DancehallI.jpg-SIzFBVr2tMJK5jrNkblAtrOEqRq7Hq.jpeg",
       tracks: safeDancehallTracks,
       accentColor: "cyan",
@@ -161,7 +161,7 @@ export default function ReleasesPage() {
               <div className="text-center max-w-4xl mx-auto">
                 <div className="inline-flex items-center bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 rounded-full px-3 sm:px-4 lg:px-6 py-2 mb-3 sm:mb-4">
                   <span className="text-amber-500 font-cinzel text-xs sm:text-sm tracking-wider">
-                    AI-GENERATED + HUMAN PRODUCED
+                    100% AI-CREATED MUSIC
                   </span>
                 </div>
                 <h1 className="font-cinzel tracking-widest text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-3 sm:mb-4">
@@ -171,8 +171,8 @@ export default function ReleasesPage() {
                 </h1>
                 <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto rounded-full" />
                 <p className="text-gray-400 text-sm sm:text-base lg:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto px-2">
-                  Discover our latest music compilations featuring innovative artificial intelligence artists across
-                  multiple genres, AI-generated with a human production touch, showcasing the future of music creation.
+                  Discover our latest music compilations—every track created 100% by AI with no human involvement.
+                  Pure artificial intelligence artistry across multiple genres, proving great music knows no creator.
                 </p>
               </div>
             </div>

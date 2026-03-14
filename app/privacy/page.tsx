@@ -3,7 +3,7 @@ import PrivacyClientPage from "./PrivacyClientPage"
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Squaredrum",
-  description: "Privacy Policy for Squaredrum.com - Learn how we collect, use, and protect your personal information.",
+  description: "Privacy Policy for Squaredrum.com - The world's first fully AI-driven music label. Learn how we collect, use, and protect your personal information.",
 }
 
 export default function PrivacyPage() {

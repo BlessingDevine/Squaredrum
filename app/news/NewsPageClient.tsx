@@ -84,8 +84,8 @@ export default function NewsPageClient() {
                   <span className="text-amber-500">NEWS</span> & UPDATES
                 </h1>
                 <p className="text-reading text-gray-300 text-responsive-lg max-w-2xl mx-auto">
-                  Stay connected with the latest from SQUAREDRUM. Follow our artists' journeys, behind-the-scenes
-                  content, and music updates across all our social platforms.
+                  Stay connected with the world's first fully AI-driven music label. Follow our AI artists' latest
+                  releases, updates, and news across all social platforms.
                 </p>
               </div>
 
@@ -130,8 +130,8 @@ export default function NewsPageClient() {
                 FOLLOW <span className="text-amber-500">US</span>
               </h2>
               <p className="text-reading text-gray-300 text-responsive-lg mb-12 max-w-2xl mx-auto">
-                Don't miss any updates! Follow us on all platforms for the latest music, behind-the-scenes content, and
-                exclusive artist features.
+                Don't miss any updates! Follow us on all platforms for the latest 100% AI-created music releases and
+                exclusive AI artist features.
               </p>
 
               <div className="flex justify-center space-x-6">

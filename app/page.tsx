@@ -91,6 +91,10 @@ const heroImages = [
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/19-TcNVRL0eKvJrOTLNixNSu5meN9uz2I.jpg",
     alt: "LUMI ASTRA - Pop artist in black turtleneck with silver chain bracelets",
   },
+  {
+    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/0-40v2Ggy0YKWfIl7wTFE8xHHuQvR2I7.jpg",
+    alt: "NOVA LIYAH - Pop artist with platinum blonde hair, round sunglasses, geometric diamond earrings, floral jacket",
+  },
 ]
 
 export default function HomePage() {
@@ -331,10 +335,10 @@ export default function HomePage() {
               <h1 className="font-cinzel text-4xl sm:text-6xl lg:text-8xl font-bold tracking-wider mb-6">
                 <span className="text-amber-500">SQUARE</span>DRUM
               </h1>
-              <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-4 font-light">THE FUTURE OF MUSIC</p>
+              <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-4 font-light">THE WORLD'S FIRST FULLY AI-DRIVEN MUSIC LABEL</p>
               <p className="text-lg sm:text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Where AI innovation meets human creativity. Experience the revolutionary collaboration between
-                artificial intelligence and talented music professionals.
+                Every track. Every artist. Every production. Created entirely by artificial intelligence.
+                No human involvement in the creative process. Just exceptional music for those who love great sound.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -382,8 +386,8 @@ export default function HomePage() {
                 FEATURED <span className="text-amber-500">RELEASES</span>
               </h2>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                Discover our latest AI-generated music compilations, crafted through the perfect collaboration of
-                artificial intelligence and human expertise.
+                Discover our latest music compilations—every note, every beat, every vocal track created
+                entirely by AI. Pure artificial intelligence artistry with zero human involvement.
               </p>
             </motion.div>
 
@@ -427,7 +431,7 @@ export default function HomePage() {
                         <p className="text-gray-400 text-sm mb-3">{release.artist}</p>
                         <div className="flex items-center justify-between text-xs text-gray-500">
                           <span>{release.tracks} tracks</span>
-                          <span>AI + Human</span>
+                          <span>100% AI</span>
                         </div>
                       </CardContent>
                     </Link>
@@ -550,7 +554,7 @@ export default function HomePage() {
                 MUSIC SQUARE <span className="text-amber-500">RADIO</span>
               </h2>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                Tune in to our 24/7 AI-curated radio station featuring the best of SQUAREDRUM artists
+                Tune in to our 24/7 radio station featuring 100% AI-created music across all genres
               </p>
             </motion.div>
 
@@ -572,8 +576,8 @@ export default function HomePage() {
                       </div>
                       <h3 className="font-cinzel text-2xl font-bold mb-2">Music Square Radio</h3>
                       <p className="text-gray-400 mb-6">
-                        Broadcasting the latest AI-generated hits 24/7. Discover new tracks, exclusive releases, and
-                        behind-the-scenes content.
+                        Broadcasting fully AI-created music 24/7. Every track you hear is generated entirely by
+                        artificial intelligence—no human musicians, producers, or vocalists involved.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start relative">
                         <Button onClick={handleListenLive} className="bg-amber-500 hover:bg-amber-600 text-black">

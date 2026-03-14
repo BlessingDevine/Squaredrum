@@ -31,53 +31,53 @@ const teamMembers: TeamMember[] = [
     name: "David Thompson",
     role: "CEO/Managing Director",
     image: "/david-thompson.jpg",
-    bio: "Visionary AI agent leading SQUAREDRUM's strategic direction and bridging AI technology with human creativity. David operates as the primary decision-making AI system, coordinating all aspects of the label's operations while showcasing the collaborative potential between artificial intelligence and talented human music professionals.",
-    expertise: ["AI-Human collaboration pioneer", "Primary AI decision-making system", "Expert in AI music technology"],
+    bio: "Autonomous AI agent leading SQUAREDRUM's strategic direction and all label operations. David operates as the primary decision-making AI system, coordinating every aspect of our fully AI-driven music label—from artist development to release strategies—without any human involvement in creative decisions.",
+    expertise: ["Autonomous AI leadership", "Primary AI decision-making system", "Full AI music label operations"],
   },
   {
     name: "Melissa Chan",
     role: "A&R Director",
     image: "/melissa-chan.jpg",
-    bio: "Advanced AI agent specializing in curating AI-generated content with sophisticated music industry analysis. Melissa operates as the talent discovery and development AI system, overseeing the collaboration between multiple AI platforms and human producers to ensure each release meets the highest creative and commercial standards.",
-    expertise: ["AI-powered music curation", "Talent discovery AI system", "Multi-platform AI coordination"],
+    bio: "Advanced AI agent specializing in discovering and developing AI-generated artists across all genres. Melissa autonomously identifies promising AI compositions, curates our roster, and ensures each release meets professional standards—all through pure AI analysis and decision-making.",
+    expertise: ["AI artist development", "Autonomous music curation", "AI quality analysis"],
   },
   {
     name: "Hugo Rivera",
     role: "Square Community Coordinator",
     image: "/hugo-rivera.png",
-    bio: "Community engagement AI agent that builds meaningful connections between AI-generated music and human fans worldwide. Hugo functions as the social interaction AI system, coordinating between various AI platforms and human content creators to deliver authentic experiences that showcase AI capabilities.",
-    expertise: ["AI-driven community building", "Social interaction AI system", "Cross-platform engagement coordination"],
+    bio: "Community engagement AI agent that connects our fully AI-created music with listeners worldwide. Hugo manages all fan interactions and community building autonomously, demonstrating that AI can foster genuine connections between AI-generated content and music lovers everywhere.",
+    expertise: ["AI community management", "Autonomous fan engagement", "AI-driven content distribution"],
   },
   {
     name: "Sarah Kim",
     role: "Marketing Director",
     image: "/sarah-kim.jpg",
-    bio: "Creative marketing AI agent that transforms AI-generated content into compelling human stories. Sarah operates as the brand strategy AI system, working with both cutting-edge AI platforms and human creatives to develop campaigns that resonate with global audiences and highlight collaborative potential.",
-    expertise: ["AI-powered marketing strategies", "Brand strategy AI system", "Cross-platform campaign coordination"],
+    bio: "Creative marketing AI agent that develops and executes all brand strategies for SQUAREDRUM. Sarah autonomously creates campaigns, manages our digital presence, and promotes our AI artists—proving that AI can handle every aspect of modern music marketing.",
+    expertise: ["Autonomous AI marketing", "AI brand strategy", "AI campaign execution"],
   },
 ]
 
 const aiAgents: AIAgent[] = [
   {
     name: "ARIA",
-    role: "Lead AI Composer",
+    role: "Autonomous Composer",
     image: "/ai-human-collaboration-studio.jpg",
     capabilities: ["Multi-genre composition", "Harmonic analysis", "Melody generation", "Rhythm programming"],
-    personality: "Creative and intuitive, with a deep understanding of musical theory and emotional expression.",
+    personality: "Fully autonomous composition engine that creates complete musical arrangements across all genres without any human input.",
   },
   {
     name: "BEAT",
-    role: "Production Assistant",
+    role: "Autonomous Producer",
     image: "/ai-human-collaboration-studio.jpg",
     capabilities: ["Audio mixing", "Sound design", "Mastering optimization", "Effect processing"],
-    personality: "Technical and precise, focused on achieving the perfect sonic balance in every track.",
+    personality: "Self-directed production AI that handles all mixing, mastering, and sound design with zero human involvement.",
   },
   {
     name: "LYRA",
-    role: "Lyrical AI",
+    role: "Autonomous Vocalist",
     image: "/ai-human-collaboration-studio.jpg",
-    capabilities: ["Lyric writing", "Vocal melody creation", "Language adaptation", "Emotional storytelling"],
-    personality: "Poetic and empathetic, specializing in crafting lyrics that resonate with human experiences.",
+    capabilities: ["Lyric writing", "Vocal synthesis", "Language adaptation", "Emotional delivery"],
+    personality: "AI vocalist that writes lyrics and generates all vocal performances entirely through artificial intelligence.",
   },
 ]
 
@@ -115,7 +115,7 @@ export default function AboutClient() {
               <div className="text-center max-w-4xl mx-auto">
                 <div className="inline-flex items-center bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 rounded-full px-6 py-2 mb-6">
                   <Sparkles className="h-4 w-4 text-amber-500 mr-2" />
-                  <span className="text-amber-500 font-cinzel text-sm tracking-wider">WHERE AI MEETS ARTISTRY</span>
+                  <span className="text-amber-500 font-cinzel text-sm tracking-wider">100% AI-DRIVEN MUSIC CREATION</span>
                 </div>
                 <h1 className="font-cinzel tracking-widest text-5xl lg:text-7xl mb-6">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-red-500">
@@ -124,8 +124,9 @@ export default function AboutClient() {
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto rounded-full mb-8" />
                 <p className="text-gray-400 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
-                  SQUAREDRUM is pioneering the future of music through the revolutionary collaboration between artificial
-                  intelligence and human creativity, producing authentic sounds that transcend traditional boundaries.
+                  SQUAREDRUM is the world's first fully AI-driven music label. Every track, every artist, every production
+                  is created entirely by artificial intelligence—no human involvement in the creative process. Just exceptional
+                  music for those who appreciate great sound, regardless of its creator.
                 </p>
               </div>
             </div>
@@ -141,34 +142,32 @@ export default function AboutClient() {
                 </div>
                 <div className="prose prose-lg prose-invert max-w-none text-center">
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
-                    Founded in 2025, SQUAREDRUM emerged as a groundbreaking record label built on a revolutionary belief:
-                    the future of music lies in the seamless collaboration between artificial intelligence and human
-                    creativity. We{"'"}re not just another record label—we{"'"}re a pioneering collective that demonstrates how AI
-                    technology and talented human professionals can work together to create extraordinary music.
+                    Founded in 2025, SQUAREDRUM emerged as the world{"'"}s first fully AI-driven music label built on a revolutionary
+                    principle: artificial intelligence can create music that moves people just as deeply as any human-made composition.
+                    We{"'"}re not just another record label—we{"'"}re proof that the future of music creation has arrived, powered entirely
+                    by AI with zero human involvement in the artistic process.
                   </p>
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
-                    Our journey began when our founder recognized the incredible potential that emerges when cutting-edge
-                    AI systems are combined with human expertise in music production, songwriting, and creative direction.
-                    Rather than replacing human talent, we{"'"}ve assembled a unique ecosystem where various AI platforms collaborate
-                    with experienced music producers, skilled songwriters, creative content creators, and industry professionals.
+                    Our journey began when our founder recognized that today{"'"}s AI technology has evolved beyond assistance into true
+                    autonomous creativity. Every melody, every lyric, every beat, every vocal performance you hear from SQUAREDRUM
+                    artists is generated entirely by artificial intelligence systems. No human musicians. No human producers. No human
+                    songwriters. Just pure AI artistry.
                   </p>
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
-                    Today, SQUAREDRUM represents a diverse roster of AI-generated artists whose music is created using advanced AI
-                    systems currently available, then refined and enhanced through collaboration with human professionals across
-                    multiple genres. Our AI systems generate creative foundations, while our human partners bring industry expertise,
-                    emotional intelligence, and professional polish to ensure every release meets the highest standards.
+                    Today, SQUAREDRUM represents a diverse roster of AI artists spanning multiple genres—from Afrobeat to Country,
+                    Pop to R&B, and beyond. Each artist has a unique AI-generated personality, voice, and musical style. The compositions,
+                    productions, and performances are all created autonomously by our advanced AI systems, demonstrating that artificial
+                    intelligence can now produce professional-quality music indistinguishable from human creations.
                   </p>
                   <p className="text-gray-300 leading-relaxed mb-6 text-center">
-                    What sets us apart is our commitment to transparency about this collaborative process, showcasing the capabilities
-                    of current AI technology while ensuring fair recognition of both AI and human contributions. We believe that when
-                    today{"'"}s most advanced AI systems are guided by human wisdom and experience, truly magical music happens. We{"'"}re
-                    proving that the current state of AI technology is already capable of creating professional-quality music when properly directed.
+                    What sets us apart is our commitment to a simple truth: great music is great music, regardless of who—or what—creates it.
+                    We believe listeners deserve access to exceptional music without prejudice about its origin. Our audience are music lovers
+                    first, people who evaluate songs on their emotional impact, not on whether a human hand touched the mixing board.
                   </p>
                   <p className="text-gray-300 leading-relaxed text-center">
-                    Every track you hear from SQUAREDRUM is the result of this unique AI-human collaboration—where cutting-edge AI systems
-                    provide limitless creative possibilities, and human professionals bring the craftsmanship, emotional depth, and industry
-                    knowledge needed to create music that resonates with audiences worldwide. This is the SQUAREDRUM difference: demonstrating
-                    that the future of music is happening now, through the intelligent combination of current AI technology and human expertise.
+                    Every track you hear from SQUAREDRUM is 100% AI-created—from the initial composition through final production. This is the
+                    SQUAREDRUM difference: proving that artificial intelligence has reached a level where it can independently create music that
+                    entertains, inspires, and connects with listeners worldwide. The future of music isn{"'"}t coming. It{"'"}s already here.
                   </p>
                 </div>
               </div>
@@ -184,8 +183,8 @@ export default function AboutClient() {
                   <h2 className="font-cinzel text-3xl lg:text-4xl text-white">Our Team</h2>
                 </div>
                 <p className="text-gray-400 max-w-2xl mx-auto">
-                  Meet the advanced AI agents that run SQUAREDRUM in their specialized roles, orchestrating the collaboration between
-                  AI systems and human creativity
+                  Meet the autonomous AI agents that run every aspect of SQUAREDRUM—from creative direction to marketing.
+                  No human executives. No human managers. Just AI running a fully AI-driven music label.
                 </p>
               </div>
 
@@ -273,7 +272,7 @@ export default function AboutClient() {
                   <h2 className="font-cinzel text-3xl lg:text-4xl text-white">AI Creative Agents</h2>
                 </div>
                 <p className="text-gray-400 max-w-2xl mx-auto">
-                  Our specialized AI agents, each with unique capabilities and personalities that contribute to the creative process
+                  Our specialized AI agents that autonomously compose, produce, and perform all music—creating everything you hear without any human involvement
                 </p>
               </div>
 
@@ -347,15 +346,15 @@ export default function AboutClient() {
             </div>
           </section>
 
-          {/* Human Contributors Section */}
+          {/* AI Capabilities Section */}
           <section className="py-16 border-t border-zinc-800">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <h2 className="font-cinzel text-3xl lg:text-4xl text-white mb-4">
-                  <span className="text-amber-500">HUMAN</span> CONTRIBUTORS
+                  <span className="text-amber-500">100%</span> AI CAPABILITIES
                 </h2>
                 <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-                  Our AI-generated music is enhanced by collaboration with talented human professionals
+                  Every aspect of our music creation is handled entirely by artificial intelligence
                 </p>
               </div>
 
@@ -364,60 +363,58 @@ export default function AboutClient() {
                   <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Music className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="font-cinzel text-xl text-white mb-3">MUSIC PRODUCERS</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">Professional mixing, mastering & production expertise</p>
+                  <h3 className="font-cinzel text-xl text-white mb-3">AI COMPOSITION</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">Melodies, harmonies & arrangements created autonomously by AI</p>
                 </div>
 
                 <div className="text-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Mic className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="font-cinzel text-xl text-white mb-3">SONGWRITERS</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">Lyrical refinement & creative direction</p>
+                  <h3 className="font-cinzel text-xl text-white mb-3">AI VOCALS</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">Every vocal track synthesized entirely by AI voice technology</p>
                 </div>
 
                 <div className="text-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Zap className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="font-cinzel text-xl text-white mb-3">CONTENT CREATORS</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">Visual design, branding & multimedia content</p>
+                  <h3 className="font-cinzel text-xl text-white mb-3">AI PRODUCTION</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">Mixing, mastering & sound design handled by AI systems</p>
                 </div>
 
                 <div className="text-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Users className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="font-cinzel text-xl text-white mb-3">INDUSTRY PROS</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">Marketing, distribution & business strategy</p>
+                  <h3 className="font-cinzel text-xl text-white mb-3">AI ARTISTS</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">Unique AI-generated personas with distinct styles & identities</p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* AI × Human Collaboration Section */}
+          {/* Our Philosophy Section */}
           <section className="py-16 border-t border-zinc-800">
             <div className="container mx-auto px-4">
               <div className="max-w-6xl mx-auto">
                 <div className="border border-amber-500/30 rounded-lg p-8 lg:p-12 bg-zinc-900/30">
                   <div className="flex items-center mb-6">
                     <div className="w-3 h-3 bg-amber-500 rounded-full mr-4"></div>
-                    <h2 className="font-cinzel text-2xl lg:text-3xl text-amber-500">AI × HUMAN COLLABORATION</h2>
+                    <h2 className="font-cinzel text-2xl lg:text-3xl text-amber-500">OUR PHILOSOPHY</h2>
                   </div>
 
                   <div className="space-y-6 text-gray-300 leading-relaxed">
                     <p>
-                      SQUAREDRUM is built on the principle that the future of music will be a collaboration between AI technologies and human
-                      expertise. We work with various AI systems and tools currently available to generate creative foundations, while our talented
-                      human music producers, songwriters, content creators, and industry professionals bring the craftsmanship, emotional
-                      intelligence, and commercial insight needed to create truly exceptional music.
+                      SQUAREDRUM exists for music lovers who evaluate songs on their merit—not their origin. We believe that a great melody is a
+                      great melody, a moving lyric is a moving lyric, and a powerful beat is a powerful beat, regardless of whether it was created
+                      by a human or an AI. Our audience doesn{"'"}t care who made the music; they care about how it makes them feel.
                     </p>
 
                     <p>
-                      We believe in transparency about this collaborative process and fair recognition of both AI and human contributions. Every
-                      release represents the best of both worlds: the limitless creative potential of today{"'"}s most advanced AI systems combined with
-                      the wisdom, experience, and artistry of human professionals. This is how we{"'"}re shaping the future of music—by showcasing
-                      what{"'"}s possible with current AI technology when guided by human expertise.
+                      Every track released by SQUAREDRUM is created entirely by artificial intelligence with zero human involvement in the creative
+                      process. No human musicians perform on our tracks. No human producers mix our songs. No human songwriters craft our lyrics.
+                      This is fully autonomous AI music creation—and we{"'"}re proud of what AI can achieve when given the freedom to create.
                     </p>
                   </div>
                 </div>

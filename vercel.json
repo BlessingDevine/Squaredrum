@@ -4,5 +4,11 @@
   "buildCommand": "next build",
   "installCommand": "corepack enable && pnpm install --no-frozen-lockfile",
   "env": {
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/news?refresh=1",
+      "schedule": "0 */6 * * *"
+    }
+  ]
 }

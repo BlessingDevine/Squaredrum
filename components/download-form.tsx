@@ -220,7 +220,7 @@ export default function DownloadForm({ artist, onClose }: DownloadFormProps) {
                 type="text"
                 value={formData.message}
                 onChange={handleInputChange}
-                placeholder="Any message for the artist..."
+                placeholder="Any message about the AI artist..."
                 className="bg-zinc-800 border-zinc-600 text-white placeholder:text-gray-400 focus:border-amber-500"
                 disabled={isSubmitting}
               />
@@ -244,7 +244,7 @@ export default function DownloadForm({ artist, onClose }: DownloadFormProps) {
 
         <div className="text-xs text-gray-500 text-center mt-4">
           <p>By downloading, you agree to our terms of use.</p>
-          <p className="mt-1">High-quality MP3 format • Free download</p>
+          <p className="mt-1">100% AI-created music • High-quality MP3 • Free download</p>
         </div>
       </CardContent>
     </Card>

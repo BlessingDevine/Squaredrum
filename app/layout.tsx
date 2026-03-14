@@ -14,19 +14,19 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "SQUAREDRUM Records | The Future of Music",
+    default: "SQUAREDRUM Records | The World's First Fully AI-Driven Music Label",
     template: "%s | SQUAREDRUM Records"
   },
-  description: "Discover the future of music with AI-generated tracks across multiple genres. SQUAREDRUM is pioneering the next generation of music creation through artificial intelligence.",
-  keywords: "AI music, artificial intelligence, record label, music production, AI artists, electronic music, pop music, R&B, country music, afrobeat",
+  description: "Welcome to the world's first fully AI-driven music label. Every track, every artist, every production is created entirely by artificial intelligence. No human involvement in the creative process. Just pure AI artistry for music lovers everywhere.",
+  keywords: "AI music label, fully AI-generated music, AI artists, artificial intelligence music, autonomous AI music creation, AI-only record label, machine-generated music, AI composers, AI producers",
   authors: [{ name: "SQUAREDRUM" }],
   creator: "SQUAREDRUM",
   publisher: "SQUAREDRUM",
   robots: "index, follow",
   metadataBase: new URL('https://squaredrum.com'),
   openGraph: {
-    title: "SQUAREDRUM Records | The Future of Music",
-    description: "Discover the future of music with AI-generated tracks across multiple genres.",
+    title: "SQUAREDRUM Records | The World's First Fully AI-Driven Music Label",
+    description: "100% AI-created music. No human involvement. Just exceptional music for those who love great sound, regardless of who—or what—created it.",
     url: "https://squaredrum.com",
     siteName: "SQUAREDRUM Records",
     images: [
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SQUAREDRUM Records | The Future of Music",
-    description: "Discover the future of music with AI-generated tracks across multiple genres.",
+    title: "SQUAREDRUM Records | The World's First Fully AI-Driven Music Label",
+    description: "100% AI-created music. No human involvement. Just exceptional music for those who love great sound.",
     images: ["/squaredrum-logo.png"],
   },
     generator: 'v0.dev'

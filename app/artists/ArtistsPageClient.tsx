@@ -60,7 +60,7 @@ export default function ArtistsPageClient() {
                   <span className="text-amber-500">ARTISTS</span>
                 </h1>
                 <p className="font-cormorant text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
-                  Meet the talented artists who make up the SQUAREDRUM family
+                  Meet our roster of AI artists—each one fully AI-generated with unique personalities, voices, and musical styles
                 </p>
               </div>
 

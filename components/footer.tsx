@@ -125,8 +125,8 @@ return (
         <div>
           <h4 className="font-semibold text-white mb-4">Join The Music Square</h4>
           <p className="text-gray-400 text-sm mb-4">
-            Connect with us and be part of the AI music revolution. Follow our journey as we explore the intersection
-            of artificial intelligence and human creativity.
+            Join the world's first fully AI-driven music label. Every track created 100% by AI—no human involvement
+            in the creative process. Just great music for those who love great sound.
           </p>
           <Button onClick={handleJoinClick} className="bg-amber-600 hover:bg-amber-700 text-white text-sm">
             <ExternalLink className="h-4 w-4 mr-2" />

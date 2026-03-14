@@ -18,13 +18,6 @@ interface TeamMember {
   expertise: string[]
 }
 
-interface AIAgent {
-  name: string
-  role: string
-  image: string
-  capabilities: string[]
-  personality: string
-}
 
 const teamMembers: TeamMember[] = [
   {
@@ -57,42 +50,15 @@ const teamMembers: TeamMember[] = [
   },
 ]
 
-const aiAgents: AIAgent[] = [
-  {
-    name: "ARIA",
-    role: "Autonomous Composer",
-    image: "/ai-human-collaboration-studio.jpg",
-    capabilities: ["Multi-genre composition", "Harmonic analysis", "Melody generation", "Rhythm programming"],
-    personality: "Fully autonomous composition engine that creates complete musical arrangements across all genres without any human input.",
-  },
-  {
-    name: "BEAT",
-    role: "Autonomous Producer",
-    image: "/ai-human-collaboration-studio.jpg",
-    capabilities: ["Audio mixing", "Sound design", "Mastering optimization", "Effect processing"],
-    personality: "Self-directed production AI that handles all mixing, mastering, and sound design with zero human involvement.",
-  },
-  {
-    name: "LYRA",
-    role: "Autonomous Vocalist",
-    image: "/ai-human-collaboration-studio.jpg",
-    capabilities: ["Lyric writing", "Vocal synthesis", "Language adaptation", "Emotional delivery"],
-    personality: "AI vocalist that writes lyrics and generates all vocal performances entirely through artificial intelligence.",
-  },
-]
 
 export default function AboutClient() {
   const [expandedMember, setExpandedMember] = useState<string | null>(null)
-  const [expandedAgent, setExpandedAgent] = useState<string | null>(null)
   const [isBlurred, setIsBlurred] = useState(false)
 
   const toggleMemberExpansion = (memberName: string) => {
     setExpandedMember(expandedMember === memberName ? null : memberName)
   }
 
-  const toggleAgentExpansion = (agentName: string) => {
-    setExpandedAgent(expandedAgent === agentName ? null : agentName)
-  }
 
   const handleBlurChange = (blurred: boolean) => {
     setIsBlurred(blurred)
@@ -256,89 +222,6 @@ export default function AboutClient() {
                           )}
                         </Button>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* AI Agents Section */}
-          <section className="py-16 border-t border-zinc-800">
-            <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center mb-4">
-                  <Bot className="h-6 w-6 text-amber-500 mr-3" />
-                  <h2 className="font-cinzel text-3xl lg:text-4xl text-white">AI Creative Agents</h2>
-                </div>
-                <p className="text-gray-400 max-w-2xl mx-auto">
-                  Our specialized AI agents that autonomously compose, produce, and perform all music—creating everything you hear without any human involvement
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {aiAgents.map((agent) => (
-                  <Card
-                    key={agent.name}
-                    className="bg-gradient-to-br from-zinc-900/80 to-zinc-800/50 border-zinc-700 hover:border-blue-500/50 transition-all duration-300 group"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="relative">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                            <Bot className="h-6 w-6 text-white" />
-                          </div>
-                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-zinc-900 animate-pulse" />
-                        </div>
-                        <div className="ml-4">
-                          <h3 className="font-cinzel text-xl text-white">{agent.name}</h3>
-                          <p className="text-blue-400 text-sm font-medium">{agent.role}</p>
-                        </div>
-                      </div>
-
-                      <p
-                        className={`text-gray-400 text-sm leading-relaxed mb-4 transition-all duration-300 ${
-                          expandedAgent === agent.name ? "" : "line-clamp-3"
-                        }`}
-                      >
-                        {agent.personality}
-                      </p>
-
-                      <div className="space-y-3">
-                        <h4 className="text-white font-medium text-sm">Core Capabilities:</h4>
-                        <div className="grid grid-cols-2 gap-2">
-                          {agent.capabilities
-                            .slice(0, expandedAgent === agent.name ? agent.capabilities.length : 4)
-                            .map((capability) => (
-                              <Badge
-                                key={capability}
-                                variant="secondary"
-                                className="bg-blue-500/10 text-blue-400 border-blue-500/20 text-xs"
-                              >
-                                {capability}
-                              </Badge>
-                            ))}
-                        </div>
-                      </div>
-
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => toggleAgentExpansion(agent.name)}
-                        className="mt-4 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 p-0 h-auto"
-                      >
-                        {expandedAgent === agent.name ? (
-                          <>
-                            <ChevronUp className="h-4 w-4 mr-1" />
-                            Show Less
-                          </>
-                        ) : (
-                          <>
-                            <ChevronDown className="h-4 w-4 mr-1" />
-                            Learn More
-                          </>
-                        )}
-                      </Button>
                     </CardContent>
                   </Card>
                 ))}

@@ -29,87 +29,137 @@ const AI_KEYWORDS = [
   "ai album",
   "ai copyright",
   "ai streaming",
+  "ai voice",
+  "ai label",
+  "synthetic voice",
+  "deepfake",
 ]
 
+// Using RSS feeds that are more reliable and don't block server requests
 const RSS_SOURCES = [
-  "https://musictech.com/feed/",
-  "https://www.musicbusinessworldwide.com/feed/",
-  "https://hypebot.com/feed/",
-  "https://techcrunch.com/feed/",
-  "https://www.theverge.com/rss/index.xml",
-  "https://www.billboard.com/feed/",
+  { url: "https://news.google.com/rss/search?q=AI+music+industry&hl=en-US&gl=US&ceid=US:en", name: "Google News", category: "Industry" },
+  { url: "https://news.google.com/rss/search?q=Suno+AI+music&hl=en-US&gl=US&ceid=US:en", name: "Google News", category: "Tools & Tech" },
+  { url: "https://news.google.com/rss/search?q=Udio+AI+music&hl=en-US&gl=US&ceid=US:en", name: "Google News", category: "Tools & Tech" },
+  { url: "https://news.google.com/rss/search?q=AI+music+copyright&hl=en-US&gl=US&ceid=US:en", name: "Google News", category: "Copyright" },
+  { url: "https://news.google.com/rss/search?q=generative+AI+music&hl=en-US&gl=US&ceid=US:en", name: "Google News", category: "Tools & Tech" },
+  { url: "https://news.google.com/rss/search?q=AI+music+streaming&hl=en-US&gl=US&ceid=US:en", name: "Google News", category: "Business" },
 ]
 
-const CATEGORY_MAP: Record<string, string> = {
-  musictech: "Tools & Tech",
-  musicbusinessworldwide: "Business",
-  hypebot: "Industry",
-  techcrunch: "Tools & Tech",
-  theverge: "Tools & Tech",
-  billboard: "Industry",
+function extractTextContent(xml: string, tag: string): string {
+  const regex = new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>|<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'gi')
+  const match = regex.exec(xml)
+  if (match) {
+    return (match[1] || match[2] || '').trim()
+  }
+  return ''
 }
 
-function isAIMusicArticle(text: string): boolean {
-  const lowerText = text.toLowerCase()
-  return AI_KEYWORDS.some((keyword) => lowerText.includes(keyword))
+function extractImageFromContent(content: string): string | undefined {
+  // Try to extract image from content HTML
+  const imgRegex = /<img[^>]+src=["']([^"']+)["']/i
+  const match = imgRegex.exec(content)
+  if (match && match[1]) {
+    return match[1]
+  }
+  return undefined
 }
 
-function getCategoryFromSource(source: string): string {
-  for (const [key, category] of Object.entries(CATEGORY_MAP)) {
-    if (source.toLowerCase().includes(key)) {
-      return category
+function parseRSSXML(xml: string, sourceName: string, category: string): Article[] {
+  const articles: Article[] = []
+  
+  // Split by <item> tags
+  const itemRegex = /<item>([\s\S]*?)<\/item>/gi
+  let match
+  
+  while ((match = itemRegex.exec(xml)) !== null) {
+    const itemXml = match[1]
+    
+    const title = extractTextContent(itemXml, 'title')
+      .replace(/<[^>]*>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+    
+    const link = extractTextContent(itemXml, 'link')
+    const description = extractTextContent(itemXml, 'description')
+      .replace(/<[^>]*>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .substring(0, 300)
+    
+    const pubDate = extractTextContent(itemXml, 'pubDate')
+    const content = extractTextContent(itemXml, 'content:encoded') || extractTextContent(itemXml, 'content')
+    
+    // Try to get image from media:content or enclosure
+    let image: string | undefined
+    const mediaRegex = /<media:content[^>]+url=["']([^"']+)["']/i
+    const mediaMatch = mediaRegex.exec(itemXml)
+    if (mediaMatch) {
+      image = mediaMatch[1]
+    }
+    
+    if (!image) {
+      const enclosureRegex = /<enclosure[^>]+url=["']([^"']+)["']/i
+      const enclosureMatch = enclosureRegex.exec(itemXml)
+      if (enclosureMatch) {
+        image = enclosureMatch[1]
+      }
+    }
+    
+    if (!image) {
+      image = extractImageFromContent(content || description)
+    }
+
+    // Extract actual source from Google News title (format: "Title - Source")
+    let actualSource = sourceName
+    const sourceMatch = title.match(/ - ([^-]+)$/)
+    if (sourceMatch && sourceName === "Google News") {
+      actualSource = sourceMatch[1].trim()
+    }
+    
+    if (title && link) {
+      articles.push({
+        id: `${sourceName}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        title: title.replace(/ - [^-]+$/, ''), // Remove source suffix from title
+        description,
+        link,
+        pubDate: pubDate || new Date().toISOString(),
+        image,
+        source: actualSource,
+        category,
+      })
     }
   }
-  return "Industry"
+  
+  return articles
 }
 
-async function fetchRSSFeed(rssUrl: string): Promise<Article[]> {
-  const articles: Article[] = []
-
+async function fetchRSSFeed(source: { url: string; name: string; category: string }): Promise<Article[]> {
   try {
-    const encodedUrl = encodeURIComponent(rssUrl)
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodedUrl}&count=25&api_key=ktaqpe7tzqbdvhrcbgnfpfwntm5qzwmw7y9l2vha`
-
-    const response = await fetch(apiUrl, {
+    const response = await fetch(source.url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; SquaredrumBot/1.0)',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+      },
       next: { revalidate: 21600 }, // Cache for 6 hours
     })
 
     if (!response.ok) {
-      console.error(`Failed to fetch RSS from ${rssUrl}: ${response.status}`)
-      return articles
+      console.error(`Failed to fetch RSS from ${source.url}: ${response.status}`)
+      return []
     }
 
-    const data = await response.json()
-
-    if (data.items && Array.isArray(data.items)) {
-      for (const item of data.items) {
-        const title = item.title || ""
-        const description = item.description || ""
-        const fullText = `${title} ${description}`
-
-        if (isAIMusicArticle(fullText)) {
-          const sourceName =
-            new URL(rssUrl).hostname?.replace("www.", "").split(".")[0] || "News"
-          const category = getCategoryFromSource(rssUrl)
-
-          articles.push({
-            id: `${sourceName}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-            title,
-            description: item.description?.replace(/<[^>]*>/g, "").substring(0, 250) || "",
-            link: item.link || "",
-            pubDate: item.pubDate || new Date().toISOString(),
-            image: item.thumbnail || item.enclosure?.link,
-            source: sourceName,
-            category,
-          })
-        }
-      }
-    }
+    const xml = await response.text()
+    return parseRSSXML(xml, source.name, source.category)
   } catch (error) {
-    console.error(`Error fetching RSS from ${rssUrl}:`, error)
+    console.error(`Error fetching RSS from ${source.url}:`, error)
+    return []
   }
-
-  return articles
 }
 
 async function generateSummaries(articles: Article[]): Promise<Article[]> {
@@ -180,17 +230,18 @@ export async function GET(request: Request) {
 
   try {
     // Fetch all RSS feeds in parallel
-    const feedPromises = RSS_SOURCES.map((url) => fetchRSSFeed(url))
+    const feedPromises = RSS_SOURCES.map((source) => fetchRSSFeed(source))
     const feedResults = await Promise.all(feedPromises)
 
-    // Flatten and deduplicate articles
+    // Flatten and deduplicate articles by title
     const seenTitles = new Set<string>()
     const allArticles: Article[] = []
 
     for (const articles of feedResults) {
       for (const article of articles) {
-        if (!seenTitles.has(article.title)) {
-          seenTitles.add(article.title)
+        const normalizedTitle = article.title.toLowerCase().trim()
+        if (!seenTitles.has(normalizedTitle)) {
+          seenTitles.add(normalizedTitle)
           allArticles.push(article)
         }
       }

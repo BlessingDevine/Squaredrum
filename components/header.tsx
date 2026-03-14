@@ -123,7 +123,7 @@ export default function Header({ onBlurChange }: HeaderProps) {
       <div className="container mx-auto flex h-16 sm:h-20 items-center justify-between spacing-mobile">
         <Link href="/" className="flex items-center mobile-tap group touch-target">
           <Image
-            src="/squaredrum-logo.png"
+            src="/squaredrum-logo.svg"
             alt="SQUAREDRUM"
             width={28}
             height={28}

@@ -364,7 +364,7 @@ export default function EnhancedMobileMenu({
           <Link href="/" className="flex items-center group" onClick={() => handleMenuItemClick()}>
             <div className="relative">
               <Image
-                src="/squaredrum-logo.png"
+                src="/squaredrum-logo.svg"
                 alt="SQUAREDRUM"
                 width={24}
                 height={24}

@@ -6,7 +6,8 @@ import { Ecosystem, ImprintGrid, ReleaseCard, SectionHead, ServiceCards, Stats, 
 import { getCatalog, getOnAirSnapshot } from "@/lib/catalog";
 import { img } from "@/lib/img";
 import { toRow } from "@/lib/rows";
-import { FEATURED_RELEASES, HERO, IMPRINTS } from "@/lib/site";
+import { seededShuffle } from "@/lib/seeded";
+import { FEATURED_RELEASES, HERO_ALBUMS, IMPRINTS, dayKey } from "@/lib/site";
 
 // Rebuilt every minute so "on air" is never far behind on first paint;
 // the deck then keeps itself current in the browser.
@@ -15,15 +16,21 @@ export const revalidate = 60;
 export default async function Home() {
   const [c, { at, channels: onAir }] = await Promise.all([getCatalog(), getOnAirSnapshot()]);
 
-  const slides: Slide[] = HERO.flatMap(({ artist, album }) => {
-    const a = c.artistBySlug.get(artist);
-    const al = a && [...c.albumBySlug.values()].find((x) => x.artistSlug === artist && x.title === album);
-    if (!a?.portrait || !al) return [];
+  const slides: Slide[] = seededShuffle(
+    c.artists.filter((a) => a.portrait),
+    `hero:${dayKey()}`,
+  ).flatMap((a) => {
+    const albums = a.albumSlugs.map((s) => c.albumBySlug.get(s)!).filter(Boolean);
+    const al =
+      albums.find((x) => x.title === HERO_ALBUMS[a.slug]) ??
+      albums.find((x) => FEATURED_RELEASES.some(([t, s]) => t === x.title && s === a.slug)) ??
+      [...albums].sort((x, y) => Number(!!y.cover) - Number(!!x.cover) || y.songIds.length - x.songIds.length)[0];
+    if (!al) return [];
     return [
       {
         name: a.name,
         line: [a.imprintName, a.genre].filter(Boolean).join(" · "),
-        portrait: img(a.portrait, 1080),
+        portrait: img(a.portrait!, 1080),
         drop: `${al.title} — ${a.name}`,
         items: al.songIds.map((id) => toRow(c.songById.get(id)!, c)),
       },

@@ -515,3 +515,4 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 @media (max-width:760px){.phead-collage{justify-self:start;width:min(320px,86vw)}.phead-icon{display:none}}
 .ahead .chip{border-color:var(--line-dark);color:#cfccc4}
 @media (max-width:760px){.ahead .chip{border-color:var(--line-light);color:var(--ink)}}
+.bars i.wide-bar{width:120px}

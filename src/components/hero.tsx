@@ -14,7 +14,8 @@ export type Slide = {
 /**
  * The split hero: the page is cut on the diagonal of the logo's drumstick,
  * and the artist appears in colour on the white side and in black and white
- * on the dark side. Rotates through the artists in src/lib/site.ts (HERO).
+ * on the dark side. Rotates through every artist with a portrait (see
+ * HERO_ALBUMS in src/lib/site.ts).
  */
 export function Hero({ slides }: { slides: Slide[] }) {
   const [i, setI] = useState(0);
@@ -28,6 +29,12 @@ export function Hero({ slides }: { slides: Slide[] }) {
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i, slides.length]);
+
+  // Fetch the next portrait ahead of time so the change never shows a blank.
+  useEffect(() => {
+    const next = slides[(i + 1) % slides.length];
+    if (next) new Image().src = next.portrait;
+  }, [i, slides]);
 
   function go(n: number) {
     setFading(true);
@@ -82,17 +89,20 @@ export function Hero({ slides }: { slides: Slide[] }) {
 
         <div className="slide-meta">
           <span className="count">
-            0{i + 1} / 0{slides.length}
+            {String(i + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
           </span>
           <div className="who">
             <b>{s.name}</b>
             <span className="mono" style={{ color: "var(--mute)" }}>
               {s.line}
             </span>
+            {/* One bar per artist when there are a few; a single timer bar when there are many. */}
             <div className="bars">
-              {slides.map((_, n) => (
-                <i key={`${n}-${i}`} className={n === i ? "on" : undefined} />
-              ))}
+              {slides.length <= 8 ? (
+                slides.map((_, n) => <i key={`${n}-${i}`} className={n === i ? "on" : undefined} />)
+              ) : (
+                <i key={i} className="on wide-bar" />
+              )}
             </div>
           </div>
           <div className="arrows">

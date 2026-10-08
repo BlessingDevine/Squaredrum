@@ -27,16 +27,20 @@ export const IMPRINTS: ImprintInfo[] = [
 ];
 
 /**
- * The home page hero rotates through these. `album` must match the album
- * title in the catalogue; its first track plays from the "New drop" button.
- * Every artist here needs a portrait in public/roster.
+ * The home page hero rotates through every artist with a portrait, in a new
+ * order each day. Its "New drop" button plays an album: the one named here
+ * (album title as in the catalogue), else the artist's album in
+ * FEATURED_RELEASES, else their biggest album with a cover.
  */
-export const HERO = [
-  { artist: "lea-babi", album: "SOS" },
-  { artist: "riven-cole", album: "Wandering" },
-  { artist: "ash-revenant", album: "Afterheat" },
-  { artist: "bantan", album: "Wine & Smile" },
-];
+export const HERO_ALBUMS: Record<string, string> = {
+  "lea-babi": "SOS",
+  "riven-cole": "Wandering",
+  "ash-revenant": "Afterheat",
+  "bantan": "Wine & Smile",
+};
+
+/** Today's date in Los Angeles, e.g. "2026-10-08" — the hero's order changes at midnight PT. */
+export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
 
 /** Albums shown first under "New releases", by album title + artist slug. */
 export const FEATURED_RELEASES = [

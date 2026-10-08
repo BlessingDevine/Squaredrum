@@ -13,5 +13,6 @@ export function toRow(s: Song, c: Catalog) {
     album: s.album,
     albumHref: `/releases/${s.albumSlug}`,
     durationMs: s.durationMs,
+    explicit: s.explicit,
   };
 }

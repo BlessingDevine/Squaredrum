@@ -269,6 +269,10 @@ export const TERMS: Block[] = [
  ],
  [
   "p",
+  "Last Updated: October 8, 2026"
+ ],
+ [
+  "p",
   "These Terms of Service (\"Terms\") govern your access to and use of the website Squaredrum.com (\"Site\"), owned and operated by SQUAREDRUM LLC (\"Company,\" \"we,\" \"us,\" or \"our\"). By accessing or using the Site, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, do not use the Site."
  ],
  [
@@ -294,7 +298,19 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "2. Intellectual Property Rights"
+  "2. Age Requirements"
+ ],
+ [
+  "p",
+  "You must be at least 13 years old to use the Site. If you are under 18, or under the age of majority where you live, you may use the Site only with the involvement of a parent or legal guardian."
+ ],
+ [
+  "p",
+  "Some songs contain explicit lyrics and are marked with an \"E\". Some features — such as interacting with our AI artists — may require you to be 18 or older, and we may ask you to confirm your age before you use them."
+ ],
+ [
+  "h2",
+  "3. Intellectual Property Rights"
  ],
  [
   "p",
@@ -306,7 +322,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "3. Free Downloads"
+  "4. Free Downloads"
  ],
  [
   "p",
@@ -334,7 +350,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "4. Licensing and Commercial Use"
+  "5. Licensing and Commercial Use"
  ],
  [
   "p",
@@ -359,7 +375,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "5. Purchases"
+  "6. Purchases"
  ],
  [
   "p",
@@ -367,7 +383,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "6. User Submissions"
+  "7. User Submissions"
  ],
  [
   "p",
@@ -375,7 +391,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "7. AI-Generated Content"
+  "8. AI-Generated Content"
  ],
  [
   "p",
@@ -383,7 +399,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "8. Disclaimer of Warranties"
+  "9. Disclaimer of Warranties"
  ],
  [
   "p",
@@ -391,7 +407,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "9. Limitation of Liability"
+  "10. Limitation of Liability"
  ],
  [
   "p",
@@ -399,7 +415,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "10. Third-Party Links"
+  "11. Third-Party Links"
  ],
  [
   "p",
@@ -407,7 +423,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "11. Governing Law"
+  "12. Governing Law"
  ],
  [
   "p",
@@ -415,7 +431,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "12. Changes to the Terms"
+  "13. Changes to the Terms"
  ],
  [
   "p",
@@ -423,7 +439,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "13. Plain Language Summary"
+  "14. Plain Language Summary"
  ],
  [
   "p",
@@ -443,7 +459,7 @@ export const TERMS: Block[] = [
  ],
  [
   "h2",
-  "14. Contact Us"
+  "15. Contact Us"
  ],
  [
   "p",

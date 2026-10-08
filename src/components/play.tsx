@@ -14,7 +14,16 @@ export function PlayButton({ items, start = 0, label = "Play", className = "btn 
   );
 }
 
-export type Row = PlayItem & { album?: string; albumHref?: string; durationMs: number };
+export type Row = PlayItem & { album?: string; albumHref?: string; durationMs: number; explicit?: boolean };
+
+/** The standard "explicit lyrics" mark, as streaming services show it. */
+export function ExplicitBadge() {
+  return (
+    <abbr className="e-badge" title="Explicit">
+      E
+    </abbr>
+  );
+}
 
 const fmt = (ms: number) => {
   const s = Math.round(ms / 1000);
@@ -41,7 +50,10 @@ export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: 
           </span>
           {showCover ? r.cover ? <img src={r.cover} alt="" loading="lazy" /> : <span className="pbar-blank" /> : <span />}
           <span className="t">
-            <b>{r.title}</b>
+            <b>
+              {r.title}
+              {r.explicit && <ExplicitBadge />}
+            </b>
             <span>{r.artistHref ? <Link href={r.artistHref}>{r.artist}</Link> : r.artist}</span>
           </span>
           {showAlbum ? <span className="al">{r.albumHref ? <Link href={r.albumHref}>{r.album}</Link> : r.album}</span> : <span />}

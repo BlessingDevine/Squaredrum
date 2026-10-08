@@ -28,6 +28,8 @@ export type Song = {
   imprintSlug: string | null;
   src: string;
   cover: string | null;
+  /** Marked explicit in the catalogue (songs.clean_explicit); shown with an E badge. */
+  explicit: boolean;
 };
 
 export type Artist = {
@@ -99,6 +101,7 @@ type SongRow = {
   duration_ms: number | null;
   primary_artist_id: string | null;
   primary_imprint_id: string | null;
+  clean_explicit: string;
   song_files: { storage_key: string; file_type: string }[];
 };
 type StationRow = { slug: string; station_name: string; epoch: string; imprints: { slug: string } | null };
@@ -136,7 +139,7 @@ async function fetchAll() {
     paged<SongRow>((a, b) =>
       db
         .from("songs")
-        .select("song_id, song_code, title, album_title, track_number, duration_ms, primary_artist_id, primary_imprint_id, song_files(storage_key, file_type)")
+        .select("song_id, song_code, title, album_title, track_number, duration_ms, primary_artist_id, primary_imprint_id, clean_explicit, song_files(storage_key, file_type)")
         .eq("song_files.file_type", "mp3")
         .order("song_code")
         .range(a, b),
@@ -198,6 +201,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
       imprintSlug: imprint?.slug ?? null,
       src: url(file.storage_key),
       cover: coverBySong.get(r.song_id) ?? null,
+      explicit: r.clean_explicit === "explicit",
     });
   }
   // A fixed shuffled order per song (as in GoSquare), so lists look natural

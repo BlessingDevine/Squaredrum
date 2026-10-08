@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PlayButton, TrackList } from "@/components/play";
+import { ExplicitBadge, PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard } from "@/components/sections";
 import { getCatalog, sized } from "@/lib/catalog";
 import { toRow } from "@/lib/rows";
@@ -51,6 +51,7 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
               <span className="mono" style={{ color: "#9c998f", marginLeft: 12 }}>
                 {al.songIds.length} songs · {formatLength(al.durationMs)}
               </span>
+              {rows.some((r) => r.explicit) && <ExplicitBadge />}
             </div>
             <div className="btns">
               <PlayButton items={rows} label="Play album" />

@@ -61,22 +61,6 @@ export default async function Home() {
         <OnAirDeck initial={onAir} at={at} imprintNames={Object.fromEntries(IMPRINTS.map((i) => [i.slug, i.name]))} />
       </section>
 
-      <section className="sec wrap imprints" id="imprints">
-        <SectionHead
-          eyebrow="The family"
-          title={
-            <>
-              {c.imprints.length} imprints.
-              <br />
-              One house.
-            </>
-          }
-        >
-          <p>Every sound has a home. Each imprint is its own label — its own artists, its own identity, its own live channel on Musicsquare Radio.</p>
-        </SectionHead>
-        <ImprintGrid imprints={c.imprints} />
-      </section>
-
       <section className="sec dark roster-head" id="roster">
         <div className="wrap">
           <SectionHead
@@ -108,6 +92,22 @@ export default async function Home() {
             <ReleaseCard key={al.slug} album={al} c={c} />
           ))}
         </div>
+      </section>
+
+      <section className="sec wrap imprints" id="imprints">
+        <SectionHead
+          eyebrow="The family"
+          title={
+            <>
+              {c.imprints.length} imprints.
+              <br />
+              One house.
+            </>
+          }
+        >
+          <p>Every sound has a home. Each imprint is its own label — its own artists, its own identity, its own live channel on Musicsquare Radio.</p>
+        </SectionHead>
+        <ImprintGrid imprints={c.imprints} />
       </section>
 
       <Ecosystem channelNames={c.channels.map((ch) => ch.name)} />

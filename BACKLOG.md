@@ -11,6 +11,27 @@ section. (GoSquare has its own list in the gosquare-app repo.)
   artists/influencers to promote, hype, educate and entertain.
 - AI music is free to enjoy for now, until the law settles what it is.
 
+## Scale target
+
+**300 artists and 20,000 songs** (Oct 2026: ~39 artists, ~2,580 songs — about 8× to go).
+What has to change on the way, roughly in order of when it starts to hurt:
+
+1. **GoSquare loads the whole catalogue onto the phone** (and caches it). Fine at
+   2,600 songs; at 20,000 it means slow first opens and a large download. Move to
+   asking the server for pages and search results instead. *Before ~8,000 songs.*
+2. **Artist info lives in code** — the portrait list and hero albums in
+   `src/lib/site.ts`, photos copied into `public/roster` (and into the radio repo).
+   300 artists needs artist profiles in the catalogue (photos on the CDN, persona,
+   colours, links) that Robert fills from the artist folders. *Do this as part of
+   the artist mini-site work.*
+3. **squaredrum.com reads the whole catalogue every 5 minutes** to build pages.
+   Fine now; at 20,000 songs switch to per-page queries. Artist and release lists
+   need search, filters and paging (300 artists / thousands of albums).
+4. **Imports** read every file under IMPRINT each run; fine, but keep an eye on
+   run time and on Google Drive downloading cloud-only files.
+5. **Storage and bandwidth** — ~20,000 × ~7 MB ≈ 140 GB on S3/CloudFront: cheap
+   to store; bandwidth grows with listeners, not songs.
+
 ## Next
 
 1. **Artist pages as mini websites** — each artist's page becomes their own

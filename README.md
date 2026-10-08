@@ -1,124 +1,56 @@
-# SquareDrum Record Label
+# squaredrum.com
 
-A modern music platform built with Next.js, featuring artist profiles, music releases, and an integrated music player.
+The home of SQUAREDRUM Records — the label site that ties together the
+seventeen imprints, Musicsquare Radio and the GoSquare app.
 
-## Features
+Next.js 16 (App Router) · React 19 · plain CSS (`src/app/globals.css`).
 
-- **Artist Profiles**: Detailed pages for each artist with photo galleries and music
-- **Music Player**: Integrated audio player with playlist support
-- **Releases**: Browse and download music compilations
-- **Responsive Design**: Optimized for all devices
-- **Contact Form**: Get in touch with the label
-- **Newsletter Subscription**: Stay updated with new releases
+## Where the content comes from
 
-## Tech Stack
+Artists, imprints, albums, covers and songs are read live from the **same
+Supabase catalogue** Musicsquare Radio and GoSquare use (project "Musicsquare
+Radio"). Anything imported there with the radio repo's scripts
+(`~/Sites/musicsquareradio-2026/scripts/catalog/…`) appears here within five
+minutes — no deploy needed. Audio and covers come from the CloudFront CDN.
 
-- **Framework**: Next.js 14 with App Router
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI primitives
-- **Icons**: Lucide React
-- **Audio**: HTML5 Audio API
-- **TypeScript**: Full type safety
+The connection details in `src/lib/config.ts` are the public publishable key,
+so Vercel needs no environment variables.
 
-## Getting Started
+Things that are *not* in the catalogue live in **`src/lib/site.ts`**:
 
-1. **Clone the repository**
-   \`\`\`bash
-   git clone <repository-url>
-   cd squaredrum-record-label
-   \`\`\`
+- `HERO` — the artists the home page hero rotates through (needs a portrait)
+- `FEATURED_RELEASES` — albums shown first under "New releases"
+- `IMPRINTS` — names, genres and one-line descriptions of all 17 imprints
+- `PORTRAITS` — artists with a photo in `public/roster/<slug>.jpg`
+  (copied from the radio site's roster)
+- `TOPICS` — the contact form's topics
 
-2. **Install dependencies**
-   \`\`\`bash
-   npm install
-   \`\`\`
+## Pages
 
-3. **Run the development server**
-   \`\`\`bash
-   npm run dev
-   \`\`\`
+| Path | What |
+| --- | --- |
+| `/` | Hero, live "On air" turntable, imprints, roster, releases, Radio + GoSquare, story, work with us |
+| `/imprints`, `/imprints/[slug]` | All 17 imprints; each with its artists, releases and songs |
+| `/artists`, `/artists/[slug]` | The roster; each artist with popular songs and discography |
+| `/releases`, `/releases/[slug]` | Every album with a cover (filter with `?imprint=`); album page with tracklist |
+| `/about`, `/work-with-us`, `/contact`, `/news`, `/privacy`, `/terms` | |
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+Old addresses (`/gallery`, `/test-downloads`, old artist slugs) redirect.
 
-## Project Structure
+## Contact form and newsletter
 
-\`\`\`
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   ├── artists/           # Artist pages
-│   ├── contact/           # Contact page
-│   ├── news/              # News page
-│   ├── privacy/           # Privacy policy
-│   ├── releases/          # Music releases
-│   └── terms/             # Terms of service
-├── components/            # React components
-│   ├── ui/               # UI primitives
-│   └── ...               # Custom components
-├── lib/                  # Utility functions and data
-├── public/               # Static assets
-│   ├── audio/            # Music files
-│   └── images/           # Images and photos
-└── styles/               # Global styles
-\`\`\`
+Messages and sign-ups are saved to the Supabase tables `site_messages` and
+`newsletter_signups`. Create them once by running `supabase/site_tables.sql`
+in Supabase → SQL Editor. The website can only add rows, never read them; read
+them in Supabase → Table Editor.
 
-## Key Components
+## Running it
 
-- **Global Music Player**: Persistent audio player across pages
-- **Artist Gallery**: Dynamic photo galleries for each artist
-- **Compilation Cards**: Interactive music compilation browsers
-- **Contact Form**: Functional contact form with validation
-- **Newsletter Signup**: Email subscription functionality
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # what Vercel runs
+```
 
-## Music Library
-
-The platform includes several music compilations:
-- **Afro Square**: African-inspired tracks
-- **Country Square**: Country music collection
-- **R&B Square**: R&B and soul music
-- **Pop Square**: Pop music hits
-- **Reggaeton Square**: Latin urban music
-- **Dancehall Square**: Caribbean dancehall tracks
-
-## Artists
-
-Featured artists include:
-- J Cruz
-- Lucas Meno
-- Neilly Storm
-- Danni Blaze
-- Virgo Dunst
-- Saka
-- Tonez
-- Neka
-- Sadie Rose
-- Lunah
-- Echo Bloom
-- Cedar Line
-
-## API Endpoints
-
-- `POST /api/contact` - Contact form submission
-- `POST /api/newsletter/subscribe` - Newsletter subscription
-
-## Building for Production
-
-\`\`\`bash
-npm run build
-npm start
-\`\`\`
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## License
-
-This project is proprietary and confidential.
-
-## Support
-
-For support, email info@squaredrum.com or visit our contact page.
+Pushing: commit here, then push with GitHub Desktop. Vercel builds every push;
+a branch gets its own preview address, and `main` is squaredrum.com.

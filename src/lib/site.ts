@@ -66,7 +66,7 @@ const PORTRAITS = new Set([
 export const portraitFor = (slug: string) => (PORTRAITS.has(slug) ? `/roster/${slug}.jpg` : null);
 
 /** Contact form topics; links can preselect one with /contact?topic=… */
-export const TOPICS = ["General", "Licensing & sync", "Brand partnership", "Press & media", "GoSquare waitlist", "Artist / producer", "Other"];
+export const TOPICS = ["General", "Brand campaign", "Launch & hype", "Education", "Entertainment", "Press & media", "GoSquare waitlist", "Artist / producer", "Other"];
 
 export function slugify(s: string) {
   return s

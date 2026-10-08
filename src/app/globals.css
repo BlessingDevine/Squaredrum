@@ -245,7 +245,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .stat+.stat{padding-left:28px;border-left:1px solid var(--line-dark)}
 .stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(48px,6vw,92px);line-height:1;color:var(--gold)}
 .stat span{color:#9c998f}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:1100px){.cards{grid-template-columns:repeat(2,1fr)}}
 .card{border:1px solid var(--line-dark);padding:30px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .3s,background .3s}
 .card:hover{border-color:var(--gold);background:rgba(212,162,76,.05)}
 .card b{font-family:var(--display);font-weight:400;font-size:36px;text-transform:uppercase;line-height:1}

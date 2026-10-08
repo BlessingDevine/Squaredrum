@@ -27,6 +27,8 @@ Things that are *not* in the catalogue live in **`src/lib/site.ts`**:
   (copied from the radio site's roster)
 - `TOPICS` — the contact form's topics
 
+Ideas and plans: see `BACKLOG.md`.
+
 ## Pages
 
 | Path | What |

@@ -133,7 +133,7 @@ export default async function Home() {
             </>
           }
         >
-          <p>From a brand campaign to a film scene to a store playlist — the whole catalogue is ready to license.</p>
+          <p>Our artists promote, hype, educate and entertain — openly AI personas with real audiences, ready to work with your brand.</p>
         </SectionHead>
         <ServiceCards />
       </section>

@@ -213,25 +213,32 @@ export function Stats({ c }: { c: Catalog }) {
 
 export const SERVICES = [
   {
-    id: "licensing",
-    title: "Licensing & sync",
-    text: "Cleared music for film, TV, ads, games and creators. Every song in the catalogue is owned by Squaredrum, so licensing is one conversation.",
-    cta: "License a track",
-    topic: "Licensing & sync",
+    id: "promote",
+    title: "Promote",
+    text: "Brand campaigns starring our artists — your product in their posts, songs and videos, in front of their audiences.",
+    cta: "Plan a campaign",
+    topic: "Brand campaign",
   },
   {
-    id: "partners",
-    title: "Brands & partners",
-    text: "Custom sound, in-store radio channels and artist collaborations built around your brand.",
-    cta: "Partner with us",
-    topic: "Brand partnership",
+    id: "hype",
+    title: "Hype",
+    text: "Launches and drops with a buzz: teasers, countdowns, custom songs and live moments built around your big day.",
+    cta: "Build the hype",
+    topic: "Launch & hype",
   },
   {
-    id: "press",
-    title: "Press & media",
-    text: "Artist bios, photos, logos and the story behind the label — ask and we'll send what you need.",
-    cta: "Press enquiries",
-    topic: "Press & media",
+    id: "educate",
+    title: "Educate",
+    text: "Artists who make a message stick — product explainers, tutorials, and programmes for schools and nonprofits.",
+    cta: "Teach with us",
+    topic: "Education",
+  },
+  {
+    id: "entertain",
+    title: "Entertain",
+    text: "Series, skits, live sessions and collabs — recurring content with characters your audience comes back for.",
+    cta: "Make a show",
+    topic: "Entertainment",
   },
 ];
 

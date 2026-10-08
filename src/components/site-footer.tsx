@@ -32,8 +32,8 @@ export function SiteFooter() {
         <div>
           <h4>Business</h4>
           <ul>
-            <li><Link href="/work-with-us">Licensing &amp; sync</Link></li>
-            <li><Link href="/work-with-us#partners">Partnerships</Link></li>
+            <li><Link href="/work-with-us">Work with our artists</Link></li>
+            <li><Link href="/contact?topic=Press%20%26%20media">Press</Link></li>
             <li><Link href="/contact">Contact</Link></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           </ul>

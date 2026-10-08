@@ -2,8 +2,11 @@
  * Where the catalogue lives. These are public by design: the publishable key
  * only ever sees what Row Level Security allows (released songs, public
  * files), and it is the same key Musicsquare Radio and GoSquare ship to every
- * browser and phone. Environment variables override them, so Vercel needs no
- * setup for the site to work.
+ * browser and phone, so Vercel needs no setup for the site to work.
+ *
+ * Overrides use their own CATALOG_* names on purpose: the Vercel project still
+ * holds NEXT_PUBLIC_SUPABASE_URL etc. from the old v0 site, which point at a
+ * different (old) Supabase project and broke the first preview builds.
  */
 
 export const SUPABASE_URL = (process.env.CATALOG_SUPABASE_URL ?? "https://gwmjfzjvpzcjoyflzqci.supabase.co").trim();

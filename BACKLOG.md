@@ -46,6 +46,18 @@ What has to change on the way, roughly in order of when it starts to hurt:
    Squaredrum + personal-use note; decide which songs (all, or picks/drops).
 4. **Follow an artist** — fans follow artists; news and drops by artist.
 
+5. **Label homes** — each imprint page becomes the label's own home inside the
+   site: its colours and logo, artists, releases and live channel (same approach
+   as the artist mini-sites; 17 labels × ~20 artists). When a label starts
+   marketing itself, give it a subdomain (riottemple.squaredrum.com) — or later
+   its own domain — pointing at that page. One site and one codebase underneath:
+   no separate websites to maintain. (Robert asked about per-label subdomains,
+   2026-10-08; agreed: one site, many front doors, when needed.)
+6. **Management dashboard** (private) — per label: its artists and what each is
+   missing (photos, persona brief, covers, videos), held vs live songs, and what's
+   new in the IMPRINT folders since the last import (so nothing goes live by
+   surprise). The tool for running 300 artists.
+
 ## Later
 
 - **Artists as influencers** — fans interact with artists: text chat in the

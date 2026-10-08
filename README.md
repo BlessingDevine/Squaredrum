@@ -14,7 +14,9 @@ Radio"). Anything imported there with the radio repo's scripts
 minutes — no deploy needed. Audio and covers come from the CloudFront CDN.
 
 The connection details in `src/lib/config.ts` are the public publishable key,
-so Vercel needs no environment variables.
+so Vercel needs no environment variables. (Overrides are named `CATALOG_*`;
+the Vercel project's old `NEXT_PUBLIC_SUPABASE_*` variables from the v0 site
+point at a different Supabase project and are deliberately ignored.)
 
 Things that are *not* in the catalogue live in **`src/lib/site.ts`**:
 

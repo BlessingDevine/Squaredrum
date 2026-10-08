@@ -6,9 +6,9 @@
  * setup for the site to work.
  */
 
-export const SUPABASE_URL = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? "https://gwmjfzjvpzcjoyflzqci.supabase.co").trim();
-export const SUPABASE_KEY = (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "sb_publishable_czmyymNfugt-VGQpdOB4Xg_ZWAMpzeb").trim();
-export const AUDIO_BASE = (process.env.NEXT_PUBLIC_AUDIO_BASE_URL ?? "https://d1j1hqrpj9spbo.cloudfront.net").trim().replace(/\/$/, "");
+export const SUPABASE_URL = (process.env.CATALOG_SUPABASE_URL ?? "https://gwmjfzjvpzcjoyflzqci.supabase.co").trim();
+export const SUPABASE_KEY = (process.env.CATALOG_SUPABASE_KEY ?? "sb_publishable_czmyymNfugt-VGQpdOB4Xg_ZWAMpzeb").trim();
+export const AUDIO_BASE = (process.env.CATALOG_AUDIO_BASE_URL ?? "https://d1j1hqrpj9spbo.cloudfront.net").trim().replace(/\/$/, "");
 
 export const SITE_URL = "https://www.squaredrum.com";
 export const RADIO_URL = "https://musicsquareradio.com";

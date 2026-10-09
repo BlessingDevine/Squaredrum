@@ -269,7 +269,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
     }))
     .filter((c) => c.rotation.tracks.length > 0);
 
-  // All seventeen imprints are listed, including ones still waiting for music.
+  // All eighteen imprints are listed, including ones still waiting for music.
   const imprints: Imprint[] = IMPRINTS.map((i) => {
     const a = artBySlug.get(i.slug);
     const cover = a?.cover_key ?? a?.logo_key ?? null; // Gravedigger has a logo only

@@ -66,7 +66,7 @@ export function Hero({ slides }: { slides: Slide[] }) {
 
         <h1 className="display h-left">Music</h1>
         <p className="h-sub">
-          AI-composed. <b>Human-crafted.</b> Seventeen imprints, one house — from Afrobeats to Rock, live around the clock.
+          AI-composed. <b>Human-crafted.</b> Eighteen imprints, one house — from Afrobeats to Rock, live around the clock.
         </p>
         <div className="display h-right" aria-hidden="true">
           Without

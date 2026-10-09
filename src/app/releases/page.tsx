@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHead, ReleaseCard } from "@/components/sections";
 import { getCatalog, sized } from "@/lib/catalog";
 
-export const metadata: Metadata = { title: "Releases", description: "Every Squaredrum album and collection, across seventeen imprints." };
+export const metadata: Metadata = { title: "Releases", description: "Every Squaredrum album and collection, across eighteen imprints." };
 
 export default async function Releases({ searchParams }: PageProps<"/releases">) {
   const { imprint } = await searchParams;

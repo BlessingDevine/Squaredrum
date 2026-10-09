@@ -27,7 +27,7 @@ export default async function Image() {
           <span>WITHOUT</span>
           <span>BORDERS</span>
         </div>
-        <div style={{ position: "absolute", left: 56, bottom: 52, fontSize: 30, color: "#886221", display: "flex", letterSpacing: 2 }}>17 IMPRINTS · LIVE 24/7</div>
+        <div style={{ position: "absolute", left: 56, bottom: 52, fontSize: 30, color: "#886221", display: "flex", letterSpacing: 2 }}>18 IMPRINTS · LIVE 24/7</div>
       </div>
     ),
     { ...size, fonts: [{ name: "Anton", data: anton, style: "normal", weight: 400 }] },

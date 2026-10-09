@@ -3,7 +3,7 @@ import { ImprintGrid, PageHead } from "@/components/sections";
 import { getCatalog, sized } from "@/lib/catalog";
 
 export const revalidate = 300;
-export const metadata: Metadata = { title: "Imprints", description: "Seventeen imprints, one house — every sound has a home at Squaredrum." };
+export const metadata: Metadata = { title: "Imprints", description: "Eighteen imprints, one house — every sound has a home at Squaredrum." };
 
 export default async function Imprints() {
   const c = await getCatalog();

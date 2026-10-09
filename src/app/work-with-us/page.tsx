@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const STEPS = [
   ["Tell us the goal", "Who you want to reach, and what you want them to feel, learn or do."],
-  ["We match the artist", "From seventeen imprints and every genre, we pick the voice and persona that fits your audience."],
+  ["We match the artist", "From eighteen imprints and every genre, we pick the voice and persona that fits your audience."],
   ["Create and launch", "Songs, videos, posts and live moments, made by our team — and always labelled as AI."],
 ];
 

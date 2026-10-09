@@ -4,7 +4,7 @@ import { PageHead, rosterCard } from "@/components/sections";
 import { getCatalog } from "@/lib/catalog";
 
 export const revalidate = 300;
-export const metadata: Metadata = { title: "Artists", description: "The voices of the house — every Squaredrum artist across seventeen imprints." };
+export const metadata: Metadata = { title: "Artists", description: "The voices of the house — every Squaredrum artist across eighteen imprints." };
 
 export default async function Artists() {
   const c = await getCatalog();

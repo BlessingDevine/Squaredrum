@@ -180,7 +180,7 @@ export function Story({ id = "story" }: { id?: string }) {
         <div className="step">
           <span className="mono">03</span>
           <b>Break through.</b>
-          <p>Releases go out across 17 imprints, live on Musicsquare Radio and in the GoSquare app — worldwide.</p>
+          <p>Releases go out across 18 imprints, live on Musicsquare Radio and in the GoSquare app — worldwide.</p>
         </div>
       </div>
     </section>

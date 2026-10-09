@@ -13,7 +13,7 @@ const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], varia
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument" });
 
 const description =
-  "SQUAREDRUM Records — AI creativity, human craft. Seventeen imprints, 2,600+ songs, live around the clock on Musicsquare Radio and in the GoSquare app.";
+  "SQUAREDRUM Records — AI creativity, human craft. Eighteen imprints, 2,600+ songs, live around the clock on Musicsquare Radio and in the GoSquare app.";
 
 export const metadata: Metadata = {
   // Fixed rather than derived from Vercel's URL, which broke previews on the radio site.

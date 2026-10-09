@@ -45,6 +45,7 @@ export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "
 
 /** Albums shown first under "New releases", by album title + artist slug. */
 export const FEATURED_RELEASES = [
+  ["Nna Ke Sharp!", "litha-flow"],
   ["SOS", "lea-babi"],
   ["Afterheat", "ash-revenant"],
   ["Wandering", "riven-cole"],

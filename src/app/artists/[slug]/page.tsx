@@ -217,6 +217,28 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
             </Link>
           )}
         </div>
+        {(media.glance.length > 0 || media.presskit) && (
+          <aside className="mini-glance">
+            {media.glance.length > 0 && (
+              <>
+                <div className="mono gold">At a glance</div>
+                <dl>
+                  {media.glance.map(([k, v]) => (
+                    <div key={k}>
+                      <dt className="mono">{k}</dt>
+                      <dd>{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </>
+            )}
+            {media.presskit && (
+              <a className="btn btn-gold" href={media.presskit.url} download>
+                ↓ Download press kit <span className="mono">PDF · {Math.max(1, Math.round(media.presskit.bytes / 1e5) / 10)} MB</span>
+              </a>
+            )}
+          </aside>
+        )}
       </section>
 
       <section id="releases" className="sec wrap">

@@ -555,12 +555,20 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .lb-next{right:clamp(8px,2vw,28px);top:50%;transform:translateY(-50%)}
 .lb-close{right:16px;top:12px}
 .lb-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#a6a39b}
-.mini-about{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(24px,4vw,64px);align-items:start}
+.mini-about{display:grid;grid-template-columns:.9fr 1.3fr .9fr;gap:clamp(24px,4vw,64px);align-items:start}
 .mini-about .eyebrow{grid-column:1/-1;margin-bottom:0}
 .mini-about h2{font-size:clamp(48px,7vw,110px)}
 .mini-about-text{display:grid;gap:18px;font-size:17px;line-height:1.65;color:#d9d6ce;max-width:620px;justify-items:start}
+.mini-glance{border:1px solid var(--line-dark);padding:22px;display:grid;gap:18px}
+.mini-glance dl div{border-top:1px solid var(--line-dark);padding:10px 0}
+.mini-glance dt{color:var(--gold);font-size:10px;margin-bottom:4px}
+.mini-glance dd{font-size:15px;line-height:1.45;color:#e6e3db}
+.mini-glance .btn{justify-content:center;gap:10px}
+.mini-glance .btn .mono{font-size:10px;opacity:.75}
 .mini-ai{font-size:14px;color:#a6a39b;border-left:2px solid var(--gold);padding-left:14px}
+@media (max-width:1100px){.mini-about{grid-template-columns:1fr 1.3fr}.mini-glance{grid-column:2}}
 @media (max-width:760px){
+  .mini-glance{grid-column:auto}
   .mini-hero{height:calc(88svh - 61px)}
   .mini-nav{top:61px}
   .mini-music,.mini-about{grid-template-columns:1fr}

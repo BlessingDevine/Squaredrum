@@ -25,9 +25,20 @@ export type Photo = {
 
 export type Video = { songId: string; title: string; kind: string; src: string; poster: string | null; width: number; height: number };
 
-export type ArtistMedia = { photos: Photo[]; bio: string | null; videos: Video[] };
+export type ArtistMedia = {
+  photos: Photo[];
+  bio: string | null;
+  /** "Artist at a glance" facts from the press kit, as [label, value]. */
+  glance: [string, string][];
+  presskit: { url: string; bytes: number } | null;
+  videos: Video[];
+};
 
-type Index = { bio: string | null; photos: { id: string; role: Photo["role"]; shape: Photo["shape"]; width: number; height: number; widths: number[]; name: string }[] };
+type Index = {
+  bio: string | null;
+  glance?: [string, string][];
+  presskit?: { key: string; name: string; bytes: number } | null;
+  photos: { id: string; role: Photo["role"]; shape: Photo["shape"]; width: number; height: number; widths: number[]; name: string }[] };
 
 const db = createClient(new URL(SUPABASE_URL).origin, SUPABASE_KEY, { auth: { persistSession: false } });
 
@@ -76,5 +87,6 @@ export async function getArtistMedia(slug: string, songs: { id: string; title: s
     }))
     .sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
 
-  return { photos, bio: index.bio, videos };
+  const presskit = index.presskit ? { url: `${AUDIO_BASE}/${index.presskit.key}`, bytes: index.presskit.bytes } : null;
+  return { photos, bio: index.bio, glance: index.glance ?? [], presskit, videos };
 }

@@ -15,7 +15,7 @@ export const IMPRINTS: ImprintInfo[] = [
   { slug: "island-fyah-ent", name: "Island Fyah Ent.", genre: "Dancehall · Reggae", blurb: "Dancehall heat and roots reggae from the islands." },
   { slug: "livity-sound-system", name: "Livity Sound System", genre: "Island Pop", blurb: "Sun-soaked island pop built for the speaker stack." },
   { slug: "moonroot-afrique", name: "Moonroot Afrique", genre: "Afrocentric", blurb: "Afrocentric sounds rooted in heritage, grown for now." },
-  { slug: "piano-nation", name: "Piano Nation", genre: "Afro House · Amapiano", blurb: "Log drums, deep keys and Afro house from South Africa." },
+  { slug: "piano-nation", name: "Piano Nation", genre: "Amapiano · Afro House", blurb: "Log drums, deep keys and Afro house from South Africa." },
   { slug: "redwood-records", name: "Redwood Records", genre: "Country", blurb: "Country stories with dust on their boots." },
   { slug: "riot-temple", name: "Riot Temple", genre: "Rock", blurb: "Loud guitars, raw voices — rock with nothing to prove." },
   { slug: "sembora", name: "Sembora", genre: "Zouk · Kompa · Kizomba", blurb: "Zouk, kompa and kizomba for close dancing." },

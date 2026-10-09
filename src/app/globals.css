@@ -152,11 +152,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .info .btn{height:42px;padding:0 18px}
 .btn-cream{background:var(--white);color:var(--ink)}
 
-.deck-bar{position:absolute;left:0;right:0;bottom:0;height:84px;display:grid;grid-template-columns:84px 1fr 84px;z-index:4}
+.deck-bar{position:absolute;left:0;right:0;bottom:0;height:84px;display:grid;grid-template-columns:84px minmax(0,1fr) 84px;z-index:4}
 .deck-bar .back{background:var(--white);display:grid;place-items:center;font-size:20px}
-.deck-bar .wave{background:var(--ink-2);display:flex;align-items:center;gap:14px;padding:0 24px;color:#9c998f}
-.wave-bars{flex:1;height:44px;display:flex;align-items:flex-end;gap:2px;cursor:pointer}
-.wave-bars i{flex:1;background:#3a3a3d;border-radius:1px}
+.deck-bar .wave{min-width:0;background:var(--ink-2);display:flex;align-items:center;gap:14px;padding:0 24px;color:#9c998f}
+.wave-bars{flex:1;min-width:0;height:44px;display:flex;align-items:flex-end;gap:2px;cursor:pointer}
+.wave-bars i{flex:1;min-width:0;background:#3a3a3d;border-radius:1px}
 .wave-bars i.p{background:var(--gold)}
 .deck-bar .playbtn{background:var(--ink-2);display:grid;place-items:center}
 .deck-bar .playbtn span{width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:16px;box-shadow:0 0 0 6px rgba(212,162,76,.18)}
@@ -575,4 +575,10 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
   .mini-latest{grid-template-columns:96px 1fr;column-gap:16px;align-items:center}
   .mini-latest img{grid-row:span 3;margin:0}
   .gallery{columns:2}
+}
+@media (max-width:760px){
+  .deck-bar{height:72px;grid-template-columns:60px minmax(0,1fr) 72px}
+  .deck-bar .wave{gap:10px;padding:0 14px}
+  .wave-bars{gap:1px}
+  .deck-bar .playbtn span{width:46px;height:46px}
 }

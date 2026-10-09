@@ -35,6 +35,7 @@ export const IMPRINTS: ImprintInfo[] = [
  */
 export const HERO_ALBUMS: Record<string, string> = {
   "lea-babi": "SOS",
+  "litha-flow": "Nna Ke Sharp!",
   "riven-cole": "Wandering",
   "ash-revenant": "Afterheat",
   "bantan": "Wine & Smile",
@@ -60,7 +61,7 @@ export const FEATURED_RELEASES = [
 
 /** Artists with a 4:5 portrait at public/roster/<slug>.jpg (from Musicsquare Radio's roster). */
 const PORTRAITS = new Set([
-  "ash-revenant", "bantan", "danni-blaze", "echo-rae", "fizz", "iron-mirage", "j-cruz", "lea-babi",
+  "ash-revenant", "bantan", "danni-blaze", "echo-rae", "fizz", "iron-mirage", "j-cruz", "lea-babi", "litha-flow",
   "lucas-meno", "lumi-astra", "lunah", "luv-tonez", "neilly-storm", "neka", "noah-rust", "nova-liyah",
   "pala", "riven-cole", "sadie-rose", "saka", "sanza-benito", "vegah-riot", "virgo-dunst",
 ]);

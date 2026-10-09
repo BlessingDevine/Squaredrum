@@ -42,7 +42,22 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
           <Link href="/releases">Releases</Link> /{imp && <Link href={`/releases?imprint=${imp.slug}`}>{imp.name}</Link>}
         </nav>
         <div className="album-top">
-          {al.cover ? <img className="cv" src={sized(al.cover, 600)!} alt={al.title} /> : <span className="ph-empty" />}
+          {al.canvas ? (
+            <video
+              className="cv canvas"
+              src={al.canvas}
+              poster={al.canvas.replace(/\.mp4$/, ".jpg")}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label={`${al.title} artwork, moving`}
+            />
+          ) : al.cover ? (
+            <img className="cv" src={sized(al.cover, 600)!} alt={al.title} />
+          ) : (
+            <span className="ph-empty" />
+          )}
           <div>
             <div className="eyebrow mono">{al.songIds.length === 1 ? "Single" : "Album"}</div>
             <h1 className="display">{al.title}</h1>

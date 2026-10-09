@@ -52,6 +52,8 @@ export type Album = {
   songIds: string[];
   durationMs: number;
   cover: string | null;
+  /** Canvas loop for the cover (scripts/catalog/canvas.mjs in the radio repo); poster = same path, .jpg. */
+  canvas: string | null;
 };
 
 export type Imprint = {
@@ -116,7 +118,7 @@ type TrackRow = {
   cue_in_ms: number | null;
   cue_out_ms: number | null;
 };
-type CoverRow = { song_id: string; cover_key: string };
+type CoverRow = { song_id: string; cover_key: string; canvas_key: string | null };
 type ArtRow = { slug: string; cover_key: string | null; logo_key: string | null };
 
 const db = createClient(new URL(SUPABASE_URL).origin, SUPABASE_KEY, { auth: { persistSession: false } });
@@ -155,7 +157,7 @@ async function fetchAll() {
         .order("sort_order")
         .range(a, b),
     ),
-    paged<CoverRow>((a, b) => db.from("song_covers").select("song_id, cover_key").order("song_id").range(a, b)),
+    paged<CoverRow>((a, b) => db.from("song_covers").select("song_id, cover_key, canvas_key").order("song_id").range(a, b)),
     paged<ArtRow>((a, b) => db.from("imprint_art").select("slug, cover_key, logo_key").order("slug").range(a, b)),
   ]);
 }
@@ -171,6 +173,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   const imprintById = new Map(imprintRows.map((i) => [i.imprint_id, i]));
   const artistById = new Map(artistRows.map((a) => [a.artist_id, a]));
   const coverBySong = new Map(covers.map((c) => [c.song_id, url(c.cover_key)]));
+  const canvasBySong = new Map(covers.flatMap((c) => (c.canvas_key ? [[c.song_id, url(c.canvas_key)] as const] : [])));
   const artBySlug = new Map(art.map((a) => [a.slug, a]));
 
   const songs: Song[] = [];
@@ -214,12 +217,14 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   for (const s of songs) {
     let album = albumBySlug.get(s.albumSlug);
     if (!album) {
-      album = { slug: s.albumSlug, title: s.album, artist: s.artist, artistSlug: s.artistSlug, imprintSlug: s.imprintSlug, songIds: [], durationMs: 0, cover: null };
+      album = { slug: s.albumSlug, title: s.album, artist: s.artist, artistSlug: s.artistSlug, imprintSlug: s.imprintSlug, songIds: [], durationMs: 0, cover: null, canvas: null };
       albumBySlug.set(s.albumSlug, album);
     }
     album.songIds.push(s.id);
     album.durationMs += s.durationMs;
     album.cover ??= s.cover;
+    // The album's Canvas is the one made for its cover (a single's own cover keeps its own).
+    if (!album.canvas && s.cover === album.cover) album.canvas = canvasBySong.get(s.id) ?? null;
   }
   for (const album of albumBySlug.values()) {
     album.songIds.sort((a, b) => (songById.get(a)!.trackNumber ?? 999) - (songById.get(b)!.trackNumber ?? 999) || place.get(a)! - place.get(b)!);

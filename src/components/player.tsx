@@ -90,9 +90,65 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     currentRef.current = current;
   }, [current]);
 
+  // Live channels change songs on the channel clock, not when the file ends:
+  // the file runs on past the change (its fade-out and trailing silence), and
+  // waiting for "ended" then asking what's on left a gap — often a stall on
+  // phones. The next song is looked up and downloaded ahead of the change.
+  const liveTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const nextLive = useRef<PlayItem | null>(null);
+  const clearLive = useCallback(() => {
+    liveTimers.current.forEach(clearTimeout);
+    liveTimers.current = [];
+    if (fadeRef.current) clearInterval(fadeRef.current);
+    fadeRef.current = null;
+  }, []);
+  const fadeRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const scheduleLive = useCallback(
+    (item: PlayItem) => {
+      clearLive();
+      nextLive.current = null;
+      const live = item.live!;
+      const until = live.endsAt - Date.now();
+      // Look up and warm the next song 12s ahead.
+      liveTimers.current.push(
+        setTimeout(async () => {
+          try {
+            const all: OnAir[] = await fetch(`/api/onair?at=${live.endsAt + 250}`, { cache: "no-store" }).then((r) => r.json());
+            const c = all.find((x) => x.slug === live.slug);
+            if (!c || currentRef.current?.id !== item.id) return;
+            nextLive.current = liveItem(c);
+            fetch(c.src, { mode: "no-cors" }).then((r) => r.arrayBuffer()).catch(() => {});
+          } catch {}
+        }, Math.max(0, until - 12_000)),
+      );
+      // Fade out over the last 1.5s (desktop; iPhone ignores volume), then change.
+      const FADE = 1500;
+      liveTimers.current.push(
+        setTimeout(() => {
+          const el = ref.current;
+          if (!el || currentRef.current?.id !== item.id) return;
+          const t0 = Date.now();
+          fadeRef.current = setInterval(() => {
+            el.volume = Math.max(0, 1 - (Date.now() - t0) / FADE);
+          }, 50);
+        }, Math.max(0, until - FADE)),
+      );
+      liveTimers.current.push(
+        setTimeout(() => {
+          // Handled with the other element events below, where load() lives.
+          if (currentRef.current?.id === item.id) ref.current?.dispatchEvent(new Event("livechange"));
+        }, Math.max(0, until)),
+      );
+    },
+    [clearLive],
+  );
+
   const load = useCallback((item: PlayItem) => {
     const el = ref.current;
     if (!el) return;
+    clearLive();
+    el.volume = 1;
     el.src = item.src;
     if (item.live) {
       // Join the channel where everyone else is.
@@ -100,9 +156,11 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
         el.currentTime = Math.max(0, (Date.now() - item.live!.startedAt) / 1000);
       };
       el.addEventListener("loadedmetadata", seek, { once: true });
+      scheduleLive(item);
     }
     el.play().catch(() => setPlaying(false));
-  }, []);
+  }, [clearLive, scheduleLive]);
+
 
   const playList = useCallback(
     (items: PlayItem[], start = 0) => {
@@ -120,11 +178,14 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     const el = ref.current;
     const cur = currentRef.current;
     if (!el || !cur) return;
-    if (!el.paused) return el.pause();
+    if (!el.paused) {
+      clearLive();
+      return el.pause();
+    }
     // A paused live channel has moved on; rejoin at the right second.
     if (cur.live) return load(cur);
     el.play().catch(() => setPlaying(false));
-  }, [load]);
+  }, [load, clearLive]);
 
   const step = useCallback(
     (by: number) => {
@@ -154,21 +215,31 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     }
   }, [load]);
 
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
     const onEnded = () => (currentRef.current?.live ? continueLive() : step(1));
+    const onLiveChange = () => {
+      const next = nextLive.current;
+      if (!next) return continueLive();
+      setQueue([next]);
+      setIndex(0);
+      load(next);
+    };
     el.addEventListener("play", onPlay);
     el.addEventListener("pause", onPause);
     el.addEventListener("ended", onEnded);
+    el.addEventListener("livechange", onLiveChange);
     return () => {
       el.removeEventListener("play", onPlay);
       el.removeEventListener("pause", onPause);
       el.removeEventListener("ended", onEnded);
+      el.removeEventListener("livechange", onLiveChange);
     };
-  }, [step, continueLive]);
+  }, [step, continueLive, load]);
 
   // Lock-screen and headphone controls.
   useEffect(() => {

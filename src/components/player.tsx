@@ -21,7 +21,7 @@ export type PlayItem = {
   artistHref?: string | null;
   cover: string | null;
   src: string;
-  live?: { slug: string; name: string; startedAt: number; endsAt: number };
+  live?: { slug: string; name: string; startedAt: number; endsAt: number; fadeMs?: number };
 };
 
 type Player = {
@@ -65,7 +65,7 @@ export function useProgress() {
   return t;
 }
 
-type OnAir = { slug: string; name: string; title: string; artist: string; cover: string | null; src: string; startedAt: number; endsAt: number };
+type OnAir = { slug: string; name: string; title: string; artist: string; cover: string | null; src: string; startedAt: number; endsAt: number; fadeMs?: number };
 
 /** A live channel's current song as something the player can play. */
 export function liveItem(c: OnAir): PlayItem {
@@ -75,7 +75,7 @@ export function liveItem(c: OnAir): PlayItem {
     artist: c.artist,
     cover: c.cover,
     src: c.src,
-    live: { slug: c.slug, name: c.name, startedAt: c.startedAt, endsAt: c.endsAt },
+    live: { slug: c.slug, name: c.name, startedAt: c.startedAt, endsAt: c.endsAt, fadeMs: c.fadeMs ?? 0 },
   };
 }
 
@@ -109,12 +109,17 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       clearLive();
       nextLive.current = null;
       const live = item.live!;
-      const until = live.endsAt - Date.now();
+      // There's one element, so no overlap: let the song finish (its cue out,
+      // fadeMs after the channel's change) and join the next one that far in —
+      // the shared seconds come off the next song's intro, not this song's
+      // last line.
+      const songEnd = live.endsAt + (live.fadeMs ?? 0);
+      const until = songEnd - Date.now();
       // Look up and warm the next song 12s ahead.
       liveTimers.current.push(
         setTimeout(async () => {
           try {
-            const all: OnAir[] = await fetch(`/api/onair?at=${live.endsAt + 250}`, { cache: "no-store" }).then((r) => r.json());
+            const all: OnAir[] = await fetch(`/api/onair?at=${songEnd + 250}`, { cache: "no-store" }).then((r) => r.json());
             const c = all.find((x) => x.slug === live.slug);
             if (!c || currentRef.current?.id !== item.id) return;
             nextLive.current = liveItem(c);
@@ -149,15 +154,18 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     if (!el) return;
     clearLive();
     el.volume = 1;
-    el.src = item.src;
     if (item.live) {
-      // Join the channel where everyone else is.
+      // Join the channel where everyone else is: start the file there (#t=)
+      // rather than at 0:00 and jumping, then correct for loading time.
+      const at = Math.max(0, (Date.now() - item.live.startedAt) / 1000);
+      el.src = at > 1 ? `${item.src}#t=${at.toFixed(2)}` : item.src;
       const seek = () => {
-        el.currentTime = Math.max(0, (Date.now() - item.live!.startedAt) / 1000);
+        const target = Math.max(0, (Date.now() - item.live!.startedAt) / 1000);
+        if (Math.abs(el.currentTime - target) > 1.5) el.currentTime = target;
       };
       el.addEventListener("loadedmetadata", seek, { once: true });
       scheduleLive(item);
-    }
+    } else el.src = item.src;
     el.play().catch(() => setPlaying(false));
   }, [clearLive, scheduleLive]);
 

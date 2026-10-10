@@ -37,7 +37,11 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
 
   return (
     <main>
-      <section className="sec wrap dark" style={{ paddingTop: "clamp(48px,6vw,90px)" }}>
+      <section
+        className="sec wrap dark album-hero"
+        // On phones a blurred copy of the cover fills the dark space around it.
+        style={{ paddingTop: "clamp(48px,6vw,90px)", ...(al.cover ? { ["--amb" as string]: `url(${sized(al.cover, 300)})` } : {}) }}
+      >
         <nav className="crumbs mono" aria-label="Breadcrumb">
           <Link href="/releases">Releases</Link> /{imp && <Link href={`/releases?imprint=${imp.slug}`}>{imp.name}</Link>}
         </nav>

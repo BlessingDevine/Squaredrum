@@ -450,7 +450,15 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .album-top .by a{color:var(--white);border-bottom:1px solid var(--gold)}
 .album-top .by a:hover{color:var(--gold)}
 .album-top .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-@media (max-width:760px){.album-top{grid-template-columns:1fr}.album-top img.cv{width:min(320px,100%)}.album-top video.canvas{width:min(260px,70vw)}}
+@media (max-width:760px){
+  .album-top{grid-template-columns:1fr}
+  /* phones: the artwork runs edge to edge over a blurred wash of itself */
+  .album-hero{position:relative;overflow:hidden;isolation:isolate}
+  .album-hero::before{content:"";position:absolute;inset:-60px;z-index:-1;background:var(--amb) center/cover no-repeat;filter:blur(48px) saturate(1.2);opacity:.55}
+  .album-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(11,11,12,.2),rgba(11,11,12,.85) 75%)}
+  .album-top img.cv,.album-top video.canvas{width:calc(100% + var(--gutter) * 2);max-width:none;margin:0 calc(var(--gutter) * -1);box-shadow:none}
+  .album-top video.canvas{max-height:82svh}
+}
 
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
 .group-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-top:1px solid var(--line-light);padding-top:22px;margin:56px 0 24px}

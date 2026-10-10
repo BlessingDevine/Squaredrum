@@ -21,7 +21,7 @@ export type PlayItem = {
   artistHref?: string | null;
   cover: string | null;
   src: string;
-  live?: { slug: string; name: string; startedAt: number; endsAt: number; fadeMs?: number };
+  live?: { slug: string; name: string; startedAt: number; endsAt: number; fadeMs?: number; cueInMs?: number };
 };
 
 type Player = {
@@ -65,7 +65,7 @@ export function useProgress() {
   return t;
 }
 
-type OnAir = { slug: string; name: string; title: string; artist: string; cover: string | null; src: string; startedAt: number; endsAt: number; fadeMs?: number };
+type OnAir = { slug: string; name: string; title: string; artist: string; cover: string | null; src: string; startedAt: number; endsAt: number; fadeMs?: number; cueInMs?: number };
 
 /** A live channel's current song as something the player can play. */
 export function liveItem(c: OnAir): PlayItem {
@@ -75,7 +75,7 @@ export function liveItem(c: OnAir): PlayItem {
     artist: c.artist,
     cover: c.cover,
     src: c.src,
-    live: { slug: c.slug, name: c.name, startedAt: c.startedAt, endsAt: c.endsAt, fadeMs: c.fadeMs ?? 0 },
+    live: { slug: c.slug, name: c.name, startedAt: c.startedAt, endsAt: c.endsAt, fadeMs: c.fadeMs ?? 0, cueInMs: c.cueInMs ?? 0 },
   };
 }
 
@@ -103,6 +103,13 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     fadeRef.current = null;
   }, []);
   const fadeRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Phones play each song whole, start to end. A phone prepares one song at a
+  // time, so joining the next song at the channel's exact second meant
+  // loading then jumping into it — heard as its start being cut (Robert, Oct
+  // 2026). So a phone runs `lag` ms behind the channel clock, a few seconds
+  // more per song; tuning in again resets it. Desktops stay exactly live.
+  const lagRef = useRef(0);
+  const clock = useCallback(() => Date.now() - lagRef.current, []);
 
   const scheduleLive = useCallback(
     (item: PlayItem) => {
@@ -114,7 +121,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       // the shared seconds come off the next song's intro, not this song's
       // last line.
       const songEnd = live.endsAt + (live.fadeMs ?? 0);
-      const until = songEnd - Date.now();
+      const until = songEnd - clock();
       // Look up and warm the next song 12s ahead.
       liveTimers.current.push(
         setTimeout(async () => {
@@ -146,7 +153,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
         }, Math.max(0, until)),
       );
     },
-    [clearLive],
+    [clearLive, clock],
   );
 
   const load = useCallback((item: PlayItem) => {
@@ -157,17 +164,17 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     if (item.live) {
       // Join the channel where everyone else is: start the file there (#t=)
       // rather than at 0:00 and jumping, then correct for loading time.
-      const at = Math.max(0, (Date.now() - item.live.startedAt) / 1000);
+      const at = Math.max(0, (clock() - item.live.startedAt) / 1000);
       el.src = at > 1 ? `${item.src}#t=${at.toFixed(2)}` : item.src;
       const seek = () => {
-        const target = Math.max(0, (Date.now() - item.live!.startedAt) / 1000);
+        const target = Math.max(0, (clock() - item.live!.startedAt) / 1000);
         if (Math.abs(el.currentTime - target) > 1.5) el.currentTime = target;
       };
       el.addEventListener("loadedmetadata", seek, { once: true });
       scheduleLive(item);
     } else el.src = item.src;
     el.play().catch(() => setPlaying(false));
-  }, [clearLive, scheduleLive]);
+  }, [clearLive, scheduleLive, clock]);
 
 
   const playList = useCallback(
@@ -180,7 +187,13 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     [load],
   );
 
-  const playLive = useCallback((item: PlayItem) => playList([item]), [playList]);
+  const playLive = useCallback(
+    (item: PlayItem) => {
+      lagRef.current = 0; // tuning in joins the channel live
+      playList([item]);
+    },
+    [playList],
+  );
 
   const toggle = useCallback(() => {
     const el = ref.current;
@@ -191,7 +204,10 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       return el.pause();
     }
     // A paused live channel has moved on; rejoin at the right second.
-    if (cur.live) return load(cur);
+    if (cur.live) {
+      lagRef.current = 0;
+      return load(cur);
+    }
     el.play().catch(() => setPlaying(false));
   }, [load, clearLive]);
 
@@ -206,22 +222,32 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
   );
 
   // When a live song ends, ask what the channel is playing now and carry on.
+  /** Move on to the channel's next song. Phones start it from its beginning (see lagRef). */
+  const advance = useCallback(
+    (item: PlayItem) => {
+      if (item.live && window.matchMedia?.("(pointer: coarse)").matches) {
+        lagRef.current = Math.max(0, Date.now() - (item.live.startedAt + (item.live.cueInMs ?? 0)));
+      }
+      setQueue([item]);
+      setIndex(0);
+      load(item);
+    },
+    [load],
+  );
+
   const continueLive = useCallback(async () => {
     const cur = currentRef.current;
     if (!cur?.live) return;
     try {
-      const res = await fetch("/api/onair", { cache: "no-store" });
+      const res = await fetch(`/api/onair?at=${clock() + 250}`, { cache: "no-store" });
       const all: OnAir[] = await res.json();
       const c = all.find((x) => x.slug === cur.live!.slug);
       if (!c) return setPlaying(false);
-      const item = liveItem(c);
-      setQueue([item]);
-      setIndex(0);
-      load(item);
+      advance(liveItem(c));
     } catch {
       setPlaying(false);
     }
-  }, [load]);
+  }, [advance, clock]);
 
 
   useEffect(() => {
@@ -233,9 +259,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     const onLiveChange = () => {
       const next = nextLive.current;
       if (!next) return continueLive();
-      setQueue([next]);
-      setIndex(0);
-      load(next);
+      advance(next);
     };
     el.addEventListener("play", onPlay);
     el.addEventListener("pause", onPause);
@@ -247,7 +271,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       el.removeEventListener("ended", onEnded);
       el.removeEventListener("livechange", onLiveChange);
     };
-  }, [step, continueLive, load]);
+  }, [step, continueLive, advance]);
 
   // Lock-screen and headphone controls.
   useEffect(() => {

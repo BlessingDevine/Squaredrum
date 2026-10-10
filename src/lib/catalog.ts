@@ -343,6 +343,8 @@ export type OnAirNow = {
   endsAt: number;
   /** How long after endsAt this song's own end (cue out) is: the crossfade length. */
   fadeMs: number;
+  /** Where the song itself starts in the file (after any silence). */
+  cueInMs: number;
 };
 
 /** The on-air list plus the moment it was computed, for a first paint that matches. */
@@ -372,6 +374,7 @@ export async function getOnAir(at = Date.now()): Promise<OnAirNow[]> {
         startedAt: air.startedAt,
         endsAt: air.endsAt,
         fadeMs: air.fadeMs,
+        cueInMs: air.track.cueInMs,
       },
     ];
   });

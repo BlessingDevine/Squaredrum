@@ -461,9 +461,11 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
   /* with a Canvas, the title and buttons sit on its lower half, over a fade */
   .album-top.has-canvas{grid-template-areas:"stack";gap:0}
   .album-top.has-canvas>*{grid-area:stack}
-  .album-top.has-canvas::after{content:"";grid-area:stack;align-self:end;height:68%;margin:0 calc(var(--gutter) * -1);background:linear-gradient(to bottom,transparent,rgba(11,11,12,.72) 28%,rgba(11,11,12,.88) 55%,rgba(11,11,12,.96));pointer-events:none}
+  .album-top.has-canvas::after{content:"";grid-area:stack;align-self:end;height:68%;margin:0 calc(var(--gutter) * -1);background:linear-gradient(to bottom,transparent,rgba(11,11,12,.72) 28%,rgba(11,11,12,.88) 55%,rgba(11,11,12,.96));pointer-events:none;position:relative;z-index:1;transform:translateZ(0)}
+  /* iOS Safari paints video on its own layer: give every layer an explicit order */
+  .album-top.has-canvas video.canvas{position:relative;z-index:0}
   .album-top.has-canvas>div{text-shadow:0 1px 12px rgba(0,0,0,.55)}
-  .album-top.has-canvas>div{align-self:end;position:relative;z-index:1;padding-bottom:28px}
+  .album-top.has-canvas>div{align-self:end;position:relative;z-index:2;padding-bottom:28px;transform:translateZ(0)}
   .album-top.has-canvas h1{font-size:clamp(44px,13vw,72px)}
 }
 

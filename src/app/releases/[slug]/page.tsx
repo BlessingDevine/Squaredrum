@@ -45,7 +45,7 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
         <nav className="crumbs mono" aria-label="Breadcrumb">
           <Link href="/releases">Releases</Link> /{imp && <Link href={`/releases?imprint=${imp.slug}`}>{imp.name}</Link>}
         </nav>
-        <div className="album-top">
+        <div className={`album-top${al.canvas ? " has-canvas" : ""}`}>
           {al.canvas ? (
             <video
               className="cv canvas"

@@ -458,6 +458,12 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
   .album-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(11,11,12,.2),rgba(11,11,12,.85) 75%)}
   .album-top img.cv,.album-top video.canvas{width:calc(100% + var(--gutter) * 2);max-width:none;margin:0 calc(var(--gutter) * -1);box-shadow:none}
   .album-top video.canvas{max-height:82svh}
+  /* with a Canvas, the title and buttons sit on its lower half, over a fade */
+  .album-top.has-canvas{grid-template-areas:"stack";gap:0}
+  .album-top.has-canvas>*{grid-area:stack}
+  .album-top.has-canvas::after{content:"";grid-area:stack;align-self:end;height:62%;margin:0 calc(var(--gutter) * -1);background:linear-gradient(to bottom,transparent,rgba(11,11,12,.55) 35%,rgba(11,11,12,.92));pointer-events:none}
+  .album-top.has-canvas>div{align-self:end;position:relative;z-index:1;padding-bottom:28px}
+  .album-top.has-canvas h1{font-size:clamp(44px,13vw,72px)}
 }
 
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}

@@ -22,6 +22,9 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
   const p = usePlayer();
   const [channels, setChannels] = useState(initial);
   const [slug, setSlug] = useState(initial[0]?.slug ?? null);
+  // Phones and tablets stack the list above the song; once a channel is picked
+  // the list folds down to that channel until "All channels" opens it again.
+  const [folded, setFolded] = useState(false);
   // Starts at the server's clock so the first paint matches, then ticks.
   const [now, setNow] = useState(at);
 
@@ -54,12 +57,13 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
 
   const tune = (c: OnAirNow) => {
     setSlug(c.slug);
+    setFolded(true);
     if (liveSlug === c.slug) p.toggle();
     else p.playLive({ ...liveItem(c), artistHref: c.artistSlug ? `/artists/${c.artistSlug}` : null });
   };
 
   return (
-    <div className="deck">
+    <div className={`deck${folded ? " folded" : ""}`}>
       <div className="deck-l">
         <div className="display side-word" aria-hidden="true">
           Live
@@ -84,6 +88,9 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
             </li>
           ))}
         </ol>
+        <button className="ch-toggle mono" onClick={() => setFolded((f) => !f)} aria-expanded={!folded}>
+          {folded ? `All ${channels.length} channels ▾` : "Hide channels ▴"}
+        </button>
       </div>
 
       <div className="deck-r info">

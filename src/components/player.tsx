@@ -159,7 +159,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
           setIndex(0);
         },
       });
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NODE_ENV === "development" || location.search.includes("debug")) {
         (window as unknown as { __mixer?: ChannelMixer }).__mixer = mixerRef.current;
       }
     }
@@ -272,17 +272,27 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     };
   }, [step]);
 
-  // Lock-screen and headphone controls.
+  // Lock-screen and headphone controls, for albums only. A live channel's
+  // mixer pauses its element for a moment at every song change; with a media
+  // session open, phones took that pause as the listener stopping and refused
+  // the next song's play() (Robert, iPhone + Android, Oct 2026). The radio
+  // site never opened one, and its channels play on — so channels don't here.
   useEffect(() => {
-    if (!current || !("mediaSession" in navigator)) return;
+    if (!("mediaSession" in navigator)) return;
+    if (!current || current.live) {
+      navigator.mediaSession.metadata = null;
+      navigator.mediaSession.setActionHandler("nexttrack", null);
+      navigator.mediaSession.setActionHandler("previoustrack", null);
+      return;
+    }
     navigator.mediaSession.metadata = new MediaMetadata({
       title: current.title,
       artist: current.artist,
-      album: current.live ? `Musicsquare Radio · ${current.live.name}` : "Squaredrum",
+      album: "Squaredrum",
       artwork: current.cover ? [{ src: current.cover, sizes: "600x600", type: "image/jpeg" }] : [],
     });
-    navigator.mediaSession.setActionHandler("nexttrack", current.live ? null : () => step(1));
-    navigator.mediaSession.setActionHandler("previoustrack", current.live ? null : () => step(-1));
+    navigator.mediaSession.setActionHandler("nexttrack", () => step(1));
+    navigator.mediaSession.setActionHandler("previoustrack", () => step(-1));
   }, [current, step]);
 
   const audio = useCallback(() => ref.current, []);

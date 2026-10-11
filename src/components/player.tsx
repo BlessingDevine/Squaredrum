@@ -106,6 +106,8 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
   const liveSlug = useRef<string | null>(null);
   // Set before the mixer starts: it reports the first song from inside start().
   const liveName = useRef("");
+  // "error" when the phone refused to start a song: a tap on ▶ then restarts the channel.
+  const liveStatus = useRef<MixerStatus | null>(null);
   // The item that started the channel: its cover and artist link stand in
   // until the rotation (with every song's) has loaded.
   const liveHint = useRef<PlayItem | null>(null);
@@ -136,6 +138,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
           return slug ? ((await channel(slug))?.rotation ?? null) : null;
         },
         onStatus: (s: MixerStatus) => {
+          liveStatus.current = s;
           if (liveSlug.current) setPlaying(s !== "error");
         },
         onTrack: (air: Playing) => {
@@ -224,7 +227,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     const cur = currentRef.current;
     if (!cur) return;
     if (cur.live) {
-      if (liveSlug.current) {
+      if (liveSlug.current && liveStatus.current !== "error") {
         stopLive();
         setPlaying(false);
         return;

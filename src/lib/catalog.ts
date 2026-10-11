@@ -345,6 +345,8 @@ export type OnAirNow = {
   fadeMs: number;
   /** Where the song itself starts in the file (after any silence). */
   cueInMs: number;
+  /** The channel track itself, so the player's mixer can start from it inside the tap. */
+  track: ChannelTrack;
 };
 
 /** The on-air list plus the moment it was computed, for a first paint that matches. */
@@ -375,8 +377,28 @@ export async function getOnAir(at = Date.now()): Promise<OnAirNow[]> {
         endsAt: air.endsAt,
         fadeMs: air.fadeMs,
         cueInMs: air.track.cueInMs,
+        track: air.track,
       },
     ];
   });
+}
+
+/** Cover and artist page per song code, for showing what a channel plays. */
+export type TrackMeta = Record<string, { cover: string | null; artistSlug: string | null }>;
+
+/** One channel's rotation, for the player's mixer (it works out the next song itself). */
+export async function getRotation(slug: string): Promise<{ name: string; rotation: Rotation; meta: TrackMeta } | null> {
+  const c = await getCatalog();
+  const ch = c.channels.find((x) => x.slug === slug);
+  if (!ch) return null;
+  const meta: TrackMeta = {};
+  for (const t of ch.rotation.tracks) {
+    const song = c.songByCode.get(t.code);
+    meta[t.code] = {
+      cover: sized(song?.cover ?? null, 600),
+      artistSlug: song?.artistSlug && c.artistBySlug.has(song.artistSlug) ? song.artistSlug : null,
+    };
+  }
+  return { name: ch.name, rotation: ch.rotation, meta };
 }
 

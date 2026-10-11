@@ -1,16 +1,22 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { ChannelMixer, type MixerStatus, type Playing, probeAudioCors } from "@/lib/channel-mixer";
+import { type Rotation, onAirAt } from "@/lib/live-channel";
 
 /**
- * One audio element for the whole site, so music keeps playing while people
- * move between pages. Two ways to play:
- * - a list of songs (an album, an artist's tracks, a release);
- * - a live Musicsquare Radio channel, joined at the second everyone else is
- *   hearing, which carries on to the channel's next song by itself.
+ * The site's player, so music keeps playing while people move between pages.
+ * Two ways to play:
+ * - a list of songs (an album, an artist's tracks, a release), through one
+ *   audio element;
+ * - a live Musicsquare Radio channel, through the radio's own ChannelMixer
+ *   (src/lib/channel-mixer.ts, copied from musicsquareradio-2026 — keep the
+ *   two identical): joined at the second everyone else is hearing, songs
+ *   crossfading into each other on computers, and on phones each song played
+ *   whole, start to end (see the mixer's notes).
  *
  * play() is always called inside the tap itself: iOS Safari refuses it after
- * an await. The audio element never sets crossOrigin (a CloudFront edge
+ * an await. The album element never sets crossOrigin (a CloudFront edge
  * without CORS headers would then refuse every song).
  */
 
@@ -21,7 +27,8 @@ export type PlayItem = {
   artistHref?: string | null;
   cover: string | null;
   src: string;
-  live?: { slug: string; name: string; startedAt: number; endsAt: number; fadeMs?: number; cueInMs?: number };
+  /** A live channel: `air` is the song on now, so the mixer can start from it inside the tap. */
+  live?: { slug: string; name: string; air?: Playing };
 };
 
 type Player = {
@@ -45,7 +52,7 @@ export function usePlayer() {
   return p;
 }
 
-/** Current position and length, updated as the song plays. */
+/** Current position and length of an album song, updated as it plays. */
 export function useProgress() {
   const { audio } = usePlayer();
   const [t, setT] = useState({ time: 0, duration: 0 });
@@ -65,17 +72,20 @@ export function useProgress() {
   return t;
 }
 
-type OnAir = { slug: string; name: string; title: string; artist: string; cover: string | null; src: string; startedAt: number; endsAt: number; fadeMs?: number; cueInMs?: number };
+type OnAir = Playing & { slug: string; name: string; cover: string | null; artistSlug?: string | null };
+type TrackMeta = Record<string, { cover: string | null; artistSlug: string | null }>;
+type Channel = { name: string; rotation: Rotation; meta: TrackMeta };
 
-/** A live channel's current song as something the player can play. */
-export function liveItem(c: OnAir): PlayItem {
+/** A live channel's current song (from /api/onair) as something the player can play. */
+export function liveItem(c: Pick<OnAir, "slug" | "name" | "cover" | "track" | "startedAt" | "endsAt" | "fadeMs"> & { artistSlug?: string | null }): PlayItem {
   return {
     id: `live:${c.slug}:${c.startedAt}`,
-    title: c.title,
-    artist: c.artist,
+    title: c.track.title,
+    artist: c.track.artist,
+    artistHref: c.artistSlug ? `/artists/${c.artistSlug}` : null,
     cover: c.cover,
-    src: c.src,
-    live: { slug: c.slug, name: c.name, startedAt: c.startedAt, endsAt: c.endsAt, fadeMs: c.fadeMs ?? 0, cueInMs: c.cueInMs ?? 0 },
+    src: c.track.src,
+    live: { slug: c.slug, name: c.name, air: { track: c.track, startedAt: c.startedAt, endsAt: c.endsAt, fadeMs: c.fadeMs } },
   };
 }
 
@@ -90,92 +100,115 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     currentRef.current = current;
   }, [current]);
 
-  // Live channels change songs on the channel clock, not when the file ends:
-  // the file runs on past the change (its fade-out and trailing silence), and
-  // waiting for "ended" then asking what's on left a gap — often a stall on
-  // phones. The next song is looked up and downloaded ahead of the change.
-  const liveTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
-  const nextLive = useRef<PlayItem | null>(null);
-  const clearLive = useCallback(() => {
-    liveTimers.current.forEach(clearTimeout);
-    liveTimers.current = [];
-    if (fadeRef.current) clearInterval(fadeRef.current);
-    fadeRef.current = null;
-  }, []);
-  const fadeRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  // Phones play each song whole, start to end. A phone prepares one song at a
-  // time, so joining the next song at the channel's exact second meant
-  // loading then jumping into it — heard as its start being cut (Robert, Oct
-  // 2026). So a phone runs `lag` ms behind the channel clock, a few seconds
-  // more per song; tuning in again resets it. Desktops stay exactly live.
-  const lagRef = useRef(0);
-  const clock = useCallback(() => Date.now() - lagRef.current, []);
+  // --- live channels: the radio's mixer -------------------------------------
 
-  const scheduleLive = useCallback(
+  const mixerRef = useRef<ChannelMixer | null>(null);
+  const liveSlug = useRef<string | null>(null);
+  // Set before the mixer starts: it reports the first song from inside start().
+  const liveName = useRef("");
+  // The item that started the channel: its cover and artist link stand in
+  // until the rotation (with every song's) has loaded.
+  const liveHint = useRef<PlayItem | null>(null);
+  const channels = useRef(new Map<string, Promise<Channel | null>>());
+  // Rotations already here, needed to rejoin a channel inside a tap.
+  const ready = useRef(new Map<string, Channel>());
+
+  const channel = useCallback((slug: string) => {
+    let p = channels.current.get(slug);
+    if (!p) {
+      p = fetch(`/api/rotation/${slug}`)
+        .then((r) => (r.ok ? (r.json() as Promise<Channel>) : null))
+        .catch(() => null);
+      channels.current.set(slug, p);
+      p.then((c) => {
+        if (c) ready.current.set(slug, c);
+        else channels.current.delete(slug); // retried next time
+      });
+    }
+    return p;
+  }, []);
+
+  const ensureMixer = useCallback(() => {
+    if (!mixerRef.current) {
+      mixerRef.current = new ChannelMixer({
+        getRotation: async () => {
+          const slug = liveSlug.current;
+          return slug ? ((await channel(slug))?.rotation ?? null) : null;
+        },
+        onStatus: (s: MixerStatus) => {
+          if (liveSlug.current) setPlaying(s !== "error");
+        },
+        onTrack: (air: Playing) => {
+          const slug = liveSlug.current;
+          if (!slug) return;
+          const ch = ready.current.get(slug);
+          const meta = ch?.meta[air.track.code];
+          const hint = liveHint.current?.live?.air?.track.code === air.track.code ? liveHint.current : null;
+          setQueue([
+            liveItem({
+              slug,
+              name: liveName.current || ch?.name || "",
+              track: air.track,
+              startedAt: air.startedAt,
+              endsAt: air.endsAt,
+              fadeMs: air.fadeMs,
+              cover: meta?.cover ?? hint?.cover ?? null,
+              artistSlug: meta?.artistSlug ?? hint?.artistHref?.replace("/artists/", "") ?? null,
+            }),
+          ]);
+          setIndex(0);
+        },
+      });
+      if (process.env.NODE_ENV === "development") {
+        (window as unknown as { __mixer?: ChannelMixer }).__mixer = mixerRef.current;
+      }
+    }
+    return mixerRef.current;
+  }, [channel]);
+
+  // The crossfade fetches song openings cross-origin; check once, early, that it may.
+  useEffect(() => {
+    fetch("/api/onair", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((all: OnAir[]) => all[0] && probeAudioCors(all[0].track.src))
+      .catch(() => {});
+  }, []);
+
+  const stopLive = useCallback(() => {
+    mixerRef.current?.stop();
+    liveSlug.current = null;
+  }, []);
+
+  const playLive = useCallback(
     (item: PlayItem) => {
-      clearLive();
-      nextLive.current = null;
-      const live = item.live!;
-      // There's one element, so no overlap: let the song finish (its cue out,
-      // fadeMs after the channel's change) and join the next one that far in —
-      // the shared seconds come off the next song's intro, not this song's
-      // last line.
-      const songEnd = live.endsAt + (live.fadeMs ?? 0);
-      const until = songEnd - clock();
-      // Look up and warm the next song 12s ahead.
-      liveTimers.current.push(
-        setTimeout(async () => {
-          try {
-            const all: OnAir[] = await fetch(`/api/onair?at=${songEnd + 250}`, { cache: "no-store" }).then((r) => r.json());
-            const c = all.find((x) => x.slug === live.slug);
-            if (!c || currentRef.current?.id !== item.id) return;
-            nextLive.current = liveItem(c);
-            fetch(c.src, { mode: "no-cors" }).then((r) => r.arrayBuffer()).catch(() => {});
-          } catch {}
-        }, Math.max(0, until - 12_000)),
-      );
-      // Fade out over the last 1.5s (desktop; iPhone ignores volume), then change.
-      const FADE = 1500;
-      liveTimers.current.push(
-        setTimeout(() => {
-          const el = ref.current;
-          if (!el || currentRef.current?.id !== item.id) return;
-          const t0 = Date.now();
-          fadeRef.current = setInterval(() => {
-            el.volume = Math.max(0, 1 - (Date.now() - t0) / FADE);
-          }, 50);
-        }, Math.max(0, until - FADE)),
-      );
-      liveTimers.current.push(
-        setTimeout(() => {
-          // Handled with the other element events below, where load() lives.
-          if (currentRef.current?.id === item.id) ref.current?.dispatchEvent(new Event("livechange"));
-        }, Math.max(0, until)),
-      );
+      const live = item.live;
+      if (!live?.air) return;
+      ref.current?.pause();
+      liveSlug.current = live.slug;
+      liveName.current = live.name;
+      liveHint.current = item;
+      setQueue([item]);
+      setIndex(0);
+      setPlaying(true);
+      // Start inside the tap; the rotation (for the songs after this one) loads meanwhile.
+      ensureMixer().start(live.air);
+      void channel(live.slug);
     },
-    [clearLive, clock],
+    [ensureMixer, channel],
   );
 
-  const load = useCallback((item: PlayItem) => {
-    const el = ref.current;
-    if (!el) return;
-    clearLive();
-    el.volume = 1;
-    if (item.live) {
-      // Join the channel where everyone else is: start the file there (#t=)
-      // rather than at 0:00 and jumping, then correct for loading time.
-      const at = Math.max(0, (clock() - item.live.startedAt) / 1000);
-      el.src = at > 1 ? `${item.src}#t=${at.toFixed(2)}` : item.src;
-      const seek = () => {
-        const target = Math.max(0, (clock() - item.live!.startedAt) / 1000);
-        if (Math.abs(el.currentTime - target) > 1.5) el.currentTime = target;
-      };
-      el.addEventListener("loadedmetadata", seek, { once: true });
-      scheduleLive(item);
-    } else el.src = item.src;
-    el.play().catch(() => setPlaying(false));
-  }, [clearLive, scheduleLive, clock]);
+  // --- albums: one audio element ---------------------------------------------
 
+  const load = useCallback(
+    (item: PlayItem) => {
+      const el = ref.current;
+      if (!el) return;
+      stopLive();
+      el.src = item.src;
+      el.play().catch(() => setPlaying(false));
+    },
+    [stopLive],
+  );
 
   const playList = useCallback(
     (items: PlayItem[], start = 0) => {
@@ -187,29 +220,31 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     [load],
   );
 
-  const playLive = useCallback(
-    (item: PlayItem) => {
-      lagRef.current = 0; // tuning in joins the channel live
-      playList([item]);
-    },
-    [playList],
-  );
-
   const toggle = useCallback(() => {
-    const el = ref.current;
     const cur = currentRef.current;
-    if (!el || !cur) return;
-    if (!el.paused) {
-      clearLive();
-      return el.pause();
-    }
-    // A paused live channel has moved on; rejoin at the right second.
+    if (!cur) return;
     if (cur.live) {
-      lagRef.current = 0;
-      return load(cur);
+      if (liveSlug.current) {
+        stopLive();
+        setPlaying(false);
+        return;
+      }
+      // Rejoin where the channel is now, inside the tap.
+      const slug = cur.live.slug;
+      liveSlug.current = slug;
+      liveName.current = cur.live.name;
+      setPlaying(true);
+      const rotation = ready.current.get(slug)?.rotation;
+      const air = rotation && onAirAt(rotation, Date.now());
+      if (air) ensureMixer().start(air);
+      else void ensureMixer().startFromClock();
+      return;
     }
+    const el = ref.current;
+    if (!el) return;
+    if (!el.paused) return el.pause();
     el.play().catch(() => setPlaying(false));
-  }, [load, clearLive]);
+  }, [stopLive, ensureMixer]);
 
   const step = useCallback(
     (by: number) => {
@@ -221,57 +256,21 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     [queue, index, load],
   );
 
-  // When a live song ends, ask what the channel is playing now and carry on.
-  /** Move on to the channel's next song. Phones start it from its beginning (see lagRef). */
-  const advance = useCallback(
-    (item: PlayItem) => {
-      if (item.live && window.matchMedia?.("(pointer: coarse)").matches) {
-        lagRef.current = Math.max(0, Date.now() - (item.live.startedAt + (item.live.cueInMs ?? 0)));
-      }
-      setQueue([item]);
-      setIndex(0);
-      load(item);
-    },
-    [load],
-  );
-
-  const continueLive = useCallback(async () => {
-    const cur = currentRef.current;
-    if (!cur?.live) return;
-    try {
-      const res = await fetch(`/api/onair?at=${clock() + 250}`, { cache: "no-store" });
-      const all: OnAir[] = await res.json();
-      const c = all.find((x) => x.slug === cur.live!.slug);
-      if (!c) return setPlaying(false);
-      advance(liveItem(c));
-    } catch {
-      setPlaying(false);
-    }
-  }, [advance, clock]);
-
-
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const onPlay = () => setPlaying(true);
-    const onPause = () => setPlaying(false);
-    const onEnded = () => (currentRef.current?.live ? continueLive() : step(1));
-    const onLiveChange = () => {
-      const next = nextLive.current;
-      if (!next) return continueLive();
-      advance(next);
-    };
+    const onPause = () => !liveSlug.current && setPlaying(false);
+    const onEnded = () => step(1);
     el.addEventListener("play", onPlay);
     el.addEventListener("pause", onPause);
     el.addEventListener("ended", onEnded);
-    el.addEventListener("livechange", onLiveChange);
     return () => {
       el.removeEventListener("play", onPlay);
       el.removeEventListener("pause", onPause);
       el.removeEventListener("ended", onEnded);
-      el.removeEventListener("livechange", onLiveChange);
     };
-  }, [step, continueLive, advance]);
+  }, [step]);
 
   // Lock-screen and headphone controls.
   useEffect(() => {

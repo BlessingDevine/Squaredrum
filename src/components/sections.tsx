@@ -149,7 +149,7 @@ export function Story({ id = "story" }: { id?: string }) {
       <div className="story-top">
         <div>
           <div className="eyebrow mono">Our story</div>
-          <h2>
+          <h2 className="display">
             Sound that moves.
             <br />
             <em>Craft</em> that lasts.

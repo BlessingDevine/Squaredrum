@@ -200,7 +200,7 @@ export function Stats({ c }: { c: Catalog }) {
         <span className="mono">Imprints</span>
       </div>
       <div className="stat">
-        <b>{c.artists.length}</b>
+        <b>{c.voices.length}</b>
         <span className="mono">Artists</span>
       </div>
       <div className="stat">

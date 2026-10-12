@@ -42,7 +42,7 @@ export default async function About() {
               turns good music into great music.
             </p>
             <p>
-              Today SQUAREDRUM is home to {c.artists.length} artists across {c.imprints.length} imprints — from Afrobeats to country, pop to R&amp;B,
+              Today SQUAREDRUM is home to {c.voices.length} artists across {c.imprints.length} imprints — from Afrobeats to country, pop to R&amp;B,
               rock to healing music. Each artist has their own personality, voice and style. Behind every release stands a team of people who mix,
               master, design and supervise until every track meets the highest standard.
             </p>
@@ -87,7 +87,7 @@ export default async function About() {
               <br />
               <b>Makes the music</b>
               <p>
-                Home to {c.imprints.length} labels and {c.artists.length} artists, from Afrobeats and Amapiano to R&amp;B, rock, country and healing
+                Home to {c.imprints.length} labels and {c.voices.length} artists, from Afrobeats and Amapiano to R&amp;B, rock, country and healing
                 music. Our artists are AI-powered virtual performers, created and shaped by a human creative team. This site is where you meet them —
                 artist pages, albums, photos, videos, and ways for brands to work with them.
               </p>

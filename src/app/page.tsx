@@ -39,7 +39,8 @@ export default async function Home() {
 
   const featured = FEATURED_RELEASES.flatMap(([title, artist]) => [...c.albumBySlug.values()].filter((x) => x.title === title && x.artistSlug === artist));
   const releases = [...featured, ...c.albums.filter((a) => a.cover && !featured.includes(a))].slice(0, 10);
-  const roster = c.artists.flatMap((a) => rosterCard(a, c) ?? []).slice(0, 16);
+  // Every artist with a photo (not the house collections), in a new order each day.
+  const roster = seededShuffle(c.voices.filter((a) => a.portrait), `roster:${dayKey()}`).flatMap((a) => rosterCard(a, c) ?? []);
   const ticker = [
     `Musicsquare Radio · ${c.channels.length} live channels`,
     `${(Math.floor(c.songs.length / 100) * 100).toLocaleString("en-US")}+ songs`,
@@ -81,7 +82,7 @@ export default async function Home() {
             }
           >
             <Link className="btn btn-ghost-light" href="/artists">
-              All {c.artists.length} artists →
+              All {c.voices.length} artists →
             </Link>
           </SectionHead>
         </div>

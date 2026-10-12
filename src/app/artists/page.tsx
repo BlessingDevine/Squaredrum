@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArtistCard } from "@/components/roster-row";
-import { PageHead, rosterCard } from "@/components/sections";
+import { PageHead, SectionHead, rosterCard } from "@/components/sections";
 import { getCatalog } from "@/lib/catalog";
 
 export const revalidate = 300;
@@ -8,7 +8,9 @@ export const metadata: Metadata = { title: "Artists", description: "The voices o
 
 export default async function Artists() {
   const c = await getCatalog();
-  const cards = c.artists.flatMap((a) => rosterCard(a, c) ?? []);
+  // Real artists first; the house collections (Country Square, Lofi Square…) get their own section.
+  const cards = c.voices.flatMap((a) => rosterCard(a, c) ?? []);
+  const collections = c.collections.flatMap((a) => rosterCard(a, c) ?? []);
   return (
     <main>
       <PageHead
@@ -21,7 +23,7 @@ export default async function Artists() {
           </>
         }
         collage={cards.filter((a) => a.isPortrait).slice(0, 3).map((a) => a.image)}
-        lede={`${c.artists.length} artists across ${c.imprints.length} imprints — from R&B and Afrobeats to rock, country and healing music.`}
+        lede={`${c.voices.length} artists across ${c.imprints.length} imprints — from R&B and Afrobeats to rock, country and healing music.`}
       />
       <section className="sec wrap light-artists">
         <div className="grid-artists">
@@ -30,6 +32,18 @@ export default async function Artists() {
           ))}
         </div>
       </section>
+      {collections.length > 0 && (
+        <section className="sec wrap light-artists" id="collections">
+          <SectionHead eyebrow="House collections" title="The collections.">
+            <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
+          </SectionHead>
+          <div className="grid-artists">
+            {collections.map((a) => (
+              <ArtistCard key={a.slug} a={a} />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

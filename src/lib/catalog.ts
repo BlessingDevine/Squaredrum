@@ -41,6 +41,8 @@ export type Artist = {
   portrait: string | null;
   songCount: number;
   albumSlugs: string[];
+  /** A house collection (filed under a label's Compilations/), not an artist: Country Square, Easy Sunday I… */
+  collection: boolean;
 };
 
 export type Album = {
@@ -79,6 +81,10 @@ export type Channel = {
 export type Catalog = {
   songs: Song[];
   artists: Artist[];
+  /** Real artists (filed under Artists/), the roster's "voices of the house". */
+  voices: Artist[];
+  /** House collections (filed under Compilations/): Country Square, Lofi Square… */
+  collections: Artist[];
   albums: Album[];
   imprints: Imprint[];
   channels: Channel[];
@@ -104,6 +110,7 @@ type SongRow = {
   primary_artist_id: string | null;
   primary_imprint_id: string | null;
   clean_explicit: string;
+  source_path: string | null;
   song_files: { storage_key: string; file_type: string }[];
 };
 type StationRow = { slug: string; station_name: string; epoch: string; imprints: { slug: string } | null };
@@ -141,7 +148,7 @@ async function fetchAll() {
     paged<SongRow>((a, b) =>
       db
         .from("songs")
-        .select("song_id, song_code, title, album_title, track_number, duration_ms, primary_artist_id, primary_imprint_id, clean_explicit, song_files(storage_key, file_type)")
+        .select("song_id, song_code, title, album_title, track_number, duration_ms, primary_artist_id, primary_imprint_id, clean_explicit, source_path, song_files(storage_key, file_type)")
         .eq("song_files.file_type", "mp3")
         .order("song_code")
         .range(a, b),
@@ -231,6 +238,13 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   }
   const albums = [...albumBySlug.values()].sort((a, b) => Number(!!b.cover) - Number(!!a.cover) || a.title.localeCompare(b.title));
 
+  // Who is filed under Compilations/ (a collection) rather than Artists/ (a voice).
+  const compiled = new Map<string, boolean>();
+  for (const r of songRows) {
+    if (!r.primary_artist_id) continue;
+    const inCompilations = !!r.source_path?.includes("/Compilations/");
+    compiled.set(r.primary_artist_id, (compiled.get(r.primary_artist_id) ?? true) && inCompilations);
+  }
   const artists: Artist[] = artistRows
     .map((a) => {
       const imprint = a.primary_imprint_id ? imprintById.get(a.primary_imprint_id) : undefined;
@@ -244,6 +258,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
         portrait: portraitFor(a.slug),
         songCount: mine.reduce((n, al) => n + al.songIds.length, 0),
         albumSlugs: mine.map((al) => al.slug),
+        collection: compiled.get(a.artist_id) ?? false,
       };
     })
     .filter((a) => a.songCount > 0)
@@ -292,6 +307,8 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   return {
     songs,
     artists,
+    voices: artists.filter((a) => !a.collection),
+    collections: artists.filter((a) => a.collection),
     albums,
     imprints,
     channels,

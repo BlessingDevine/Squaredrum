@@ -2,6 +2,7 @@ import Link from "next/link";
 import { type Album, type Artist, type Catalog, type Imprint, sized } from "@/lib/catalog";
 import { RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
+import { ChannelChips } from "./channel-chips";
 import type { RosterCard } from "./roster-row";
 
 /** The diagonal gold line — the logo's drumstick — used across the site. */
@@ -95,14 +96,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
             One channel per imprint, crossfaded and never-ending. Everyone hears the same song at the same moment — tune in from anywhere.
           </p>
         </div>
-        <div className="chan">
-          {channelNames.map((n, i) => (
-            <span key={n} className={i === 0 ? "live" : undefined}>
-              {i === 0 ? "● " : ""}
-              {n}
-            </span>
-          ))}
-        </div>
+        <ChannelChips names={channelNames} />
         <div>
           <a className="btn btn-gold" href={RADIO_URL} target="_blank" rel="noopener">
             Tune in → musicsquareradio.com

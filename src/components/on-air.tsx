@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { OnAirNow } from "@/lib/catalog";
+import { seededShuffle } from "@/lib/seeded";
+import { useVisitSeed } from "@/lib/visit";
 import { RADIO_URL } from "@/lib/config";
 import { liveItem, usePlayer } from "./player";
 
@@ -21,7 +23,16 @@ const BARS = Array.from({ length: 90 }, (_, i) => Math.round(18 + Math.abs(Math.
 export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; at: number; imprintNames: Record<string, string> }) {
   const p = usePlayer();
   const [channels, setChannels] = useState(initial);
-  const [slug, setSlug] = useState(initial[0]?.slug ?? null);
+  // null = no channel picked yet: the first one in this visit's order is shown.
+  const [slug, setSlug] = useState<string | null>(null);
+  // A new channel order on every visit (Robert, 2026-10-12), so every channel gets
+  // its turn at the top. The server paints the fixed order; the browser reshuffles.
+  const visit = useVisitSeed();
+  const shown = useMemo(() => {
+    if (!visit) return channels;
+    const order = seededShuffle(channels.map((c) => c.slug), `onair:${visit}`);
+    return [...channels].sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
+  }, [channels, visit]);
   // Phones and tablets stack the list above the song; once a channel is picked
   // the list folds down to that channel until "All channels" opens it again.
   const [folded, setFolded] = useState(false);
@@ -46,7 +57,7 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
     };
   }, [now, nextChange]);
 
-  const sel = channels.find((c) => c.slug === slug) ?? channels[0];
+  const sel = shown.find((c) => c.slug === slug) ?? shown[0];
   if (!sel) return <p className="empty mono">The channels are being tuned — check back in a minute.</p>;
 
   const liveSlug = p.current?.live?.slug;
@@ -73,7 +84,7 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
           {channels.length} channels · on air now
         </div>
         <ol className="tracks">
-          {channels.map((c, i) => (
+          {shown.map((c, i) => (
             <li key={c.slug} className={c.slug === sel.slug ? "on" : undefined} onClick={() => tune(c)}>
               <span className="n">{String(i + 1).padStart(2, "0")}</span>
               {c.cover ? <img src={c.cover.replace("-600.jpg", "-300.jpg")} alt="" /> : <span className="ph-ch" />}

@@ -33,9 +33,10 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
     const order = seededShuffle(channels.map((c) => c.slug), `onair:${visit}`);
     return [...channels].sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
   }, [channels, visit]);
-  // Phones and tablets stack the list above the song; once a channel is picked
-  // the list folds down to that channel until "All channels" opens it again.
-  const [folded, setFolded] = useState(false);
+  // Phones and tablets stack the list above the song, folded to the channel in
+  // front until "All channels" opens it (Robert, 2026-10-12); picking a channel
+  // folds it again. Desktops always show the whole list.
+  const [folded, setFolded] = useState(true);
   // Starts at the server's clock so the first paint matches, then ticks.
   const [now, setNow] = useState(at);
 

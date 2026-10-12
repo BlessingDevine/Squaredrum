@@ -39,6 +39,9 @@ What has to change on the way, roughly in order of when it starts to hurt:
    persona/story, socials, their own colours. Pilot with one artist.
    *Waiting on Robert:* organise each artist folder — pick the photos, add the
    persona brief (see ARTISTS PERSONAS.docx), videos.
+   **When the artist pages are ready:** on musicsquareradio.com, clicking an
+   artist in **"Who you're hearing"** (radio repo `src/components/roster.tsx`)
+   opens their page on squaredrum.com (`/artists/<slug>`). (Robert, 2026-10-11)
 2. **One account for every platform** — the same sign-in on squaredrum.com,
    GoSquare and Musicsquare Radio (the shared Supabase project already has
    GoSquare's 6-digit email code sign-in).

@@ -63,7 +63,7 @@ export const FEATURED_RELEASES = [
 const PORTRAITS = new Set([
   "ash-revenant", "bantan", "danni-blaze", "echo-rae", "fizz", "iron-mirage", "j-cruz", "lea-babi", "litha-flow",
   "lucas-meno", "lumi-astra", "lunah", "luv-tonez", "neilly-storm", "neka", "noah-rust", "nova-liyah",
-  "pala", "riven-cole", "sadie-colton", "saka", "sanza-benito", "vegah-riot", "virgo-dunst",
+  "pala", "riven-cole", "sadie-colton", "cedar-line", "deejay-zethu", "saka", "sanza-benito", "vegah-riot", "virgo-dunst",
 ]);
 
 export const portraitFor = (slug: string) => (PORTRAITS.has(slug) ? `/roster/${slug}.jpg` : null);

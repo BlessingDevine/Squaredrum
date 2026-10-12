@@ -68,6 +68,7 @@ const PORTRAITS = new Set([
   "lucas-meno", "lumi-astra", "lunah", "luv-tonez", "neilly-storm", "neka", "noah-rust", "nova-liyah",
   "pala", "riven-cole", "sadie-colton", "cedar-line", "deejay-zethu", "saka", "sanza-benito", "vegah-riot", "virgo-dunst",
   "crimson-union", "dusk-cannon", "hollow-district", "knox-havoc", "lucid-arrows", "steel-vandal", "throne-static",
+  "elkana", "lune-skylar",
 ]);
 
 export const portraitFor = (slug: string) => (PORTRAITS.has(slug) ? `/roster/${slug}.jpg` : null);

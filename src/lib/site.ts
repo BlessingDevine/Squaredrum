@@ -44,8 +44,9 @@ export const HERO_ALBUMS: Record<string, string> = {
 /** Today's date in Los Angeles, e.g. "2026-10-08" — the hero's order changes at midnight PT. */
 export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
 
-/** Albums shown first under "New releases", by album title + artist slug. */
+/** Albums shown first under "New releases", by album title + artist slug ("" for a label compilation). */
 export const FEATURED_RELEASES = [
+  ["Latin Square Vol II", ""],
   ["Ndim Lo!", "deejay-zethu"],
   ["Good At This", "cedar-line"],
   ["Already Winning", "sadie-colton"],

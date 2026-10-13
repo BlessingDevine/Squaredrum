@@ -478,3 +478,72 @@ export const TERMS: Block[] = [
   "Website: https://www.squaredrum.com"
  ]
 ];
+
+// GoSquare, the music app (App Store "GoSquare Music"). Written to match what the
+// app actually does (Oct 2026): email sign-in by one-time code, likes and
+// playlists on the account, recently played on the phone only, no ads or tracking.
+export const GOSQUARE_PRIVACY: Block[] = [
+  ["p", "Effective Date: October 13, 2026"],
+  [
+    "p",
+    "This Privacy Policy covers GoSquare (listed on the App Store as \"GoSquare Music\"), the music app operated by SQUAREDRUM LLC (\"we,\" \"us,\" or \"our\"). It explains what the app collects, why, and how to have it deleted. Our website has its own policy at squaredrum.com/privacy.",
+  ],
+  ["h2", "1. What we collect"],
+  ["p", "You can listen to music and radio in GoSquare without an account. If you create one, we collect only what the account needs:"],
+  [
+    "ul",
+    [
+      "Your email address, to sign you in. GoSquare has no passwords: each time you sign in we email you a one-time code.",
+      "The songs you like and the playlists you make (their names and the songs in them), so your library follows you to any phone you sign in on.",
+    ],
+  ],
+  ["p", "Your recently played list is kept on your phone only and is never sent to us."],
+  [
+    "p",
+    "Like any internet service, the servers that deliver music, images and video to the app see your device's IP address when it asks for them. We do not use it to identify you or build a profile.",
+  ],
+  ["h2", "2. What we don't do"],
+  [
+    "ul",
+    [
+      "No advertising and no ad tracking.",
+      "No analytics or tracking tools that follow you across other apps or websites.",
+      "No selling or renting of your personal information.",
+      "No access to your contacts, location, photos or microphone.",
+    ],
+  ],
+  ["h2", "3. How we use it"],
+  ["p", "Your email is used to sign you in and, rarely, to tell you about something important to your account. We never send marketing email from the app without asking first. Your likes and playlists are used only to show you your own library."],
+  ["h2", "4. Who we share it with"],
+  ["p", "Only the service providers that run GoSquare for us, under contracts that require them to protect it:"],
+  [
+    "ul",
+    [
+      "Supabase, which stores accounts, likes and playlists.",
+      "Resend, which delivers the sign-in code emails.",
+      "Amazon Web Services, which stores and delivers the music, images and video.",
+      "Expo, which delivers app updates.",
+    ],
+  ],
+  ["p", "We share information with authorities only when the law requires it."],
+  ["h2", "5. Deleting your account"],
+  [
+    "p",
+    "You can delete your account at any time in the app: Library → Delete account. This permanently removes your email address, likes and playlists from our systems. You can also email privacy@squaredrum.com and we will delete it for you within 30 days. Deleting the app removes your recently played list from the phone.",
+  ],
+  ["h2", "6. How long we keep it"],
+  ["p", "We keep your account information until you delete your account. We do not keep copies of deleted accounts, apart from routine backups that are overwritten within 30 days."],
+  ["h2", "7. Your rights"],
+  [
+    "p",
+    "Wherever you live, you can ask to see, correct, export or delete the information we hold about you. Residents of the EU/EEA, the UK and California have these rights by law (GDPR, UK GDPR, CCPA/CPRA). Email privacy@squaredrum.com and we will reply within 30 days.",
+  ],
+  ["h2", "8. Children"],
+  ["p", "GoSquare is not directed to children under 13, and we do not knowingly collect personal information from them. If you believe a child has created an account, email us and we will delete it."],
+  ["h2", "9. Security"],
+  ["p", "Accounts are protected by one-time codes, all traffic is encrypted (HTTPS), and each account's library can be read only by that account."],
+  ["h2", "10. Changes"],
+  ["p", "If we change this policy we will update the date above, and for significant changes we will tell you in the app."],
+  ["h2", "11. Contact"],
+  ["p", "SQUAREDRUM LLC · privacy@squaredrum.com"],
+];

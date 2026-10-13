@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BackLink } from "@/components/back-link";
 import { notFound } from "next/navigation";
 import { ExplicitBadge, PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard } from "@/components/sections";
@@ -40,10 +41,10 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
       <section
         className="sec wrap dark album-hero"
         // On phones a blurred copy of the cover fills the dark space around it.
-        style={{ paddingTop: "clamp(48px,6vw,90px)", ...(al.cover ? { ["--amb" as string]: `url(${sized(al.cover, 300)})` } : {}) }}
+        style={{ paddingTop: "clamp(84px,7vw,110px)", ...(al.cover ? { ["--amb" as string]: `url(${sized(al.cover, 300)})` } : {}) }}
       >
         <nav className="crumbs mono" aria-label="Breadcrumb">
-          <Link href="/releases">Releases</Link> /{imp && <Link href={`/releases?imprint=${imp.slug}`}>{imp.name}</Link>}
+          <BackLink fallback="/#releases" /> · <Link href="/releases">Releases</Link> /{imp && <Link href={`/releases?imprint=${imp.slug}`}>{imp.name}</Link>}
         </nav>
         <div className={`album-top${al.canvas ? " has-canvas" : ""}`}>
           {al.canvas ? (

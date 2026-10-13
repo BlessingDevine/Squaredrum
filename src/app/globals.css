@@ -392,6 +392,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .dark .chip:hover{border-color:var(--gold);color:var(--gold)}
 .crumbs{display:flex;gap:8px;color:var(--mute);margin-bottom:22px}
 .crumbs a:hover{color:var(--gold-deep)}
+.crumbs .back-link{color:var(--gold);font-weight:700;padding:8px 10px 8px 0;margin:-8px 0}
 @media (max-width:760px){
   .phead{min-height:0}
   .phead-dark{clip-path:polygon(0 72%,100% 58%,100% 100%,0 100%)}

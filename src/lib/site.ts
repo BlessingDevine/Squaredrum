@@ -46,6 +46,8 @@ export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "
 
 /** Albums shown first under "New releases", by album title + artist slug ("" for a label compilation). */
 export const FEATURED_RELEASES = [
+  ["Let's Talk About It", "j-cruz"],
+  ["The Holy Moly", "neka"],
   ["Latin Square Vol II", ""],
   ["Ndim Lo!", "deejay-zethu"],
   ["Good At This", "cedar-line"],

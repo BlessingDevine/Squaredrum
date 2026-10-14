@@ -6,6 +6,7 @@ import { PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard } from "@/components/sections";
 import { type ArtistMedia, getArtistMedia } from "@/lib/artist-media";
 import { type Album, type Artist, type Catalog, getCatalog, sized } from "@/lib/catalog";
+import { SITE_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { toRow } from "@/lib/rows";
 
@@ -118,8 +119,22 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
     ["releases", "Releases"],
   ];
 
+  // What search engines read: this is a music artist, with these releases.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: a.name,
+    url: `${SITE_URL}/artists/${a.slug}`,
+    ...(a.genre ? { genre: a.genre } : {}),
+    ...(a.portrait ? { image: new URL(img(a.portrait, 1080), SITE_URL).href } : {}),
+    ...(about[0] ? { description: about[0] } : {}),
+    ...(imp ? { recordLabel: { "@type": "Organization", name: imp.name, url: `${SITE_URL}/imprints/${imp.slug}` } } : {}),
+    album: albums.map((al) => ({ "@type": "MusicAlbum", name: al.title, url: `${SITE_URL}/releases/${al.slug}` })),
+  };
+
   return (
     <main className="mini">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <header className="mini-hero">
         <picture>
           <source media="(min-width:761px)" srcSet={wide.srcSet} sizes="100vw" />

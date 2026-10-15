@@ -28,10 +28,14 @@ export default async function ImprintPage({ params }: PageProps<"/imprints/[slug
   const imp = c.imprintBySlug.get(slug);
   if (!imp) notFound();
 
-  const artists = imp.artistSlugs.flatMap((s) => {
-    const a = c.artistBySlug.get(s);
-    return a ? (rosterCard(a, c) ?? []) : [];
-  });
+  // Artists first, then the label's collections (Lofi Square…) in their own row of square covers.
+  const cardsFor = (collection: boolean) =>
+    imp.artistSlugs.flatMap((s) => {
+      const a = c.artistBySlug.get(s);
+      return a && !!a.collection === collection ? (rosterCard(a, c) ?? []) : [];
+    });
+  const artists = cardsFor(false);
+  const collections = cardsFor(true);
   const albums = imp.albumSlugs.map((s) => c.albumBySlug.get(s)!).filter(Boolean);
   const songs = c.songs.filter((s) => s.imprintSlug === imp.slug);
   const rows = songs.slice(0, 12).map((s) => toRow(s, c));
@@ -64,6 +68,20 @@ export default async function ImprintPage({ params }: PageProps<"/imprints/[slug
           </div>
           <div className="grid-artists">
             {artists.map((a) => (
+              <ArtistCard key={a.slug} a={a} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {collections.length > 0 && (
+        <section className="sec wrap light-artists">
+          <div className="group-title" style={{ marginTop: 0 }}>
+            <h2 className="display">Collections</h2>
+            <span className="mono">{collections.length}</span>
+          </div>
+          <div className="grid-artists grid-collections">
+            {collections.map((a) => (
               <ArtistCard key={a.slug} a={a} />
             ))}
           </div>

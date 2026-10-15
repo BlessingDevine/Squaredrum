@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Gallery } from "@/components/gallery";
 import { PlayButton, TrackList } from "@/components/play";
-import { ReleaseCard } from "@/components/sections";
+import { ReleaseCard, leadCover } from "@/components/sections";
 import { type ArtistMedia, getArtistMedia } from "@/lib/artist-media";
 import { type Album, type Artist, type Catalog, getCatalog, sized } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
@@ -33,7 +33,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
   const albums = a.albumSlugs.map((s) => c.albumBySlug.get(s)!).filter(Boolean);
   const all = albums.flatMap((al) => al.songIds.map((id) => toRow(c.songById.get(id)!, c)));
   if (!all.length) notFound();
-  const firstCover = albums.find((al) => al.cover)?.cover ?? null;
+  const firstCover = leadCover(a, c);
   const photo = a.portrait ? img(a.portrait, 828) : sized(firstCover, 600);
   const imp = a.imprintSlug ? c.imprintBySlug.get(a.imprintSlug) : undefined;
   const media = await getArtistMedia(slug, all);

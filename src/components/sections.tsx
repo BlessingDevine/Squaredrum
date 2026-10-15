@@ -71,8 +71,19 @@ export function ReleaseCard({ album, c }: { album: Album; c: Catalog }) {
 }
 
 /** Portrait if we have one, else the artist's first album cover. */
+/**
+ * The cover that stands for an artist without a portrait. For a series (R&B Square) that's its
+ * own first volume ("R&B Square I"), not a spin-off like "Love in Paris" that happens to sort first.
+ */
+export function leadCover(a: Artist, c: Catalog): string | null {
+  const albums = a.albumSlugs.map((s) => c.albumBySlug.get(s)).filter((al) => al?.cover);
+  const own = albums.filter((al) => al!.title.toLowerCase().startsWith(a.name.toLowerCase()));
+  const pick = own.sort((x, y) => x!.title.localeCompare(y!.title, undefined, { numeric: true }))[0] ?? albums[0];
+  return pick?.cover ?? null;
+}
+
 export function rosterCard(a: Artist, c: Catalog): RosterCard | null {
-  const cover = a.albumSlugs.map((s) => c.albumBySlug.get(s)?.cover).find(Boolean);
+  const cover = leadCover(a, c);
   const image = a.portrait ? img(a.portrait, 640) : sized(cover ?? null, 600);
   if (!image) return null;
   return { slug: a.slug, name: a.name, line: a.genre ?? a.imprintName ?? "", image, isPortrait: !!a.portrait };

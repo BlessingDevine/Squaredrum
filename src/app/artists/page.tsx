@@ -37,7 +37,7 @@ export default async function Artists() {
           <SectionHead eyebrow="House collections" title="The collections.">
             <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
           </SectionHead>
-          <div className="grid-artists">
+          <div className="grid-artists grid-collections">
             {collections.map((a) => (
               <ArtistCard key={a.slug} a={a} />
             ))}

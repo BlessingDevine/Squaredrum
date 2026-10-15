@@ -62,12 +62,18 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
               )}
             </div>
           </div>
-          {photo && (
-            <div className="split-photo">
-              <img src={photo} alt={a.name} />
-              <img src={photo} alt="" />
-            </div>
-          )}
+          {photo &&
+            (a.portrait ? (
+              <div className="split-photo">
+                <img src={photo} alt={a.name} />
+                <img src={photo} alt="" />
+              </div>
+            ) : (
+              // No portrait (compilations): the album cover, square and whole, so its title isn't cropped.
+              <div className="split-photo is-cover">
+                <img src={photo} alt={a.name} />
+              </div>
+            ))}
         </div>
       </header>
 

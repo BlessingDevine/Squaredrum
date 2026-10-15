@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHead, ReleaseCard } from "@/components/sections";
 import { getCatalog, sized } from "@/lib/catalog";
+import { seededShuffle } from "@/lib/seeded";
 
 export const metadata: Metadata = { title: "Releases", description: "Every Squaredrum album and collection, across eighteen imprints." };
 
@@ -10,7 +11,8 @@ export default async function Releases({ searchParams }: PageProps<"/releases">)
   const c = await getCatalog();
   const withCovers = c.albums.filter((a) => a.cover);
   const active = typeof imprint === "string" ? c.imprintBySlug.get(imprint) : undefined;
-  const shown = active ? withCovers.filter((a) => a.imprintSlug === active.slug) : withCovers;
+  // A new order on every visit (this page renders per request), not alphabetical.
+  const shown = seededShuffle(active ? withCovers.filter((a) => a.imprintSlug === active.slug) : withCovers, String(Math.random()));
   const imprints = c.imprints.filter((i) => withCovers.some((a) => a.imprintSlug === i.slug));
 
   return (

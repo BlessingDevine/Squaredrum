@@ -390,6 +390,8 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .chip.on{background:var(--ink);color:var(--white);border-color:var(--ink)}
 .dark .chip{border-color:var(--line-dark)}
 .dark .chip:hover{border-color:var(--gold);color:var(--gold)}
+.chip-ig{gap:6px;text-transform:none;letter-spacing:.02em}
+.chip-ig svg{width:14px;height:14px;flex:none}
 .crumbs{display:flex;gap:8px;color:var(--mute);margin-bottom:22px}
 .crumbs a:hover{color:var(--gold-deep)}
 .crumbs .back-link{color:var(--gold);font-weight:700;padding:8px 10px 8px 0;margin:-8px 0}

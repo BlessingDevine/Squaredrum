@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Gallery } from "@/components/gallery";
+import { InstagramChip, instagramUrl } from "@/components/instagram";
 import { PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard, leadCover } from "@/components/sections";
 import { type ArtistMedia, getArtistMedia } from "@/lib/artist-media";
@@ -60,6 +61,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
                   {imp.name} →
                 </Link>
               )}
+              <InstagramChip handle={a.instagram} name={a.name} />
             </div>
           </div>
           {photo &&
@@ -134,6 +136,7 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
     ...(a.genre ? { genre: a.genre } : {}),
     ...(a.portrait ? { image: new URL(img(a.portrait, 1080), SITE_URL).href } : {}),
     ...(about[0] ? { description: about[0] } : {}),
+    ...(a.instagram ? { sameAs: [instagramUrl(a.instagram)] } : {}),
     ...(imp ? { recordLabel: { "@type": "Organization", name: imp.name, url: `${SITE_URL}/imprints/${imp.slug}` } } : {}),
     album: albums.map((al) => ({ "@type": "MusicAlbum", name: al.title, url: `${SITE_URL}/releases/${al.slug}` })),
   };
@@ -160,6 +163,7 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
             <span className="chip">
               {a.songCount} songs · {albums.length} {albums.length === 1 ? "release" : "releases"}
             </span>
+            <InstagramChip handle={a.instagram} name={a.name} />
           </div>
         </div>
       </header>

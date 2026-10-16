@@ -43,6 +43,8 @@ export type Artist = {
   albumSlugs: string[];
   /** A house collection (filed under a label's Compilations/), not an artist: Country Square, Easy Sunday I… */
   collection: boolean;
+  /** Instagram handle without the @ (artists.instagram), or null. */
+  instagram: string | null;
 };
 
 export type Album = {
@@ -99,7 +101,7 @@ const PAGE = 1000; // PostgREST's default row cap per request
 const TTL_MS = 5 * 60_000;
 
 type ImprintRow = { imprint_id: string; imprint_name: string; slug: string; primary_genre: string };
-type ArtistRow = { artist_id: string; artist_name: string; slug: string; genre: string | null; primary_imprint_id: string | null };
+type ArtistRow = { artist_id: string; artist_name: string; slug: string; genre: string | null; primary_imprint_id: string | null; instagram?: string | null };
 type SongRow = {
   song_id: string;
   song_code: string;
@@ -144,7 +146,7 @@ async function paged<T>(page: (from: number, to: number) => PromiseLike<{ data: 
 async function fetchAll() {
   return Promise.all([
     paged<ImprintRow>((a, b) => db.from("imprints").select("imprint_id, imprint_name, slug, primary_genre").order("imprint_name").range(a, b)),
-    paged<ArtistRow>((a, b) => db.from("artists").select("artist_id, artist_name, slug, genre, primary_imprint_id").order("artist_name").range(a, b)),
+    paged<ArtistRow>((a, b) => db.from("artists").select("*").order("artist_name").range(a, b)),
     paged<SongRow>((a, b) =>
       db
         .from("songs")
@@ -259,6 +261,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
         songCount: mine.reduce((n, al) => n + al.songIds.length, 0),
         albumSlugs: mine.map((al) => al.slug),
         collection: compiled.get(a.artist_id) ?? false,
+        instagram: a.instagram ?? null,
       };
     })
     .filter((a) => a.songCount > 0)

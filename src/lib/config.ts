@@ -18,7 +18,7 @@ export const RADIO_URL = "https://musicsquareradio.com";
 export const CONTACT_EMAIL = "info@squaredrum.com";
 export const CONTACT_PHONE = "+1 (424) 500-0396";
 export const SOCIAL = {
-  instagram: "https://instagram.com/squaredrumrecords",
+  instagram: "https://www.instagram.com/squaredrumla/",
   youtube: "https://youtube.com/@squaredrumrecords",
   x: "https://twitter.com/squaredrumrec",
 };

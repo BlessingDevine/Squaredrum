@@ -35,7 +35,7 @@ const fmt = (ms: number) => {
 export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: Row[]; showCover?: boolean; showAlbum?: boolean }) {
   const p = usePlayer();
   return (
-    <ol className="tracklist">
+    <ol className={showCover ? "tracklist" : "tracklist no-cover"}>
       {rows.map((r, i) => (
         <li
           key={r.id}
@@ -49,7 +49,7 @@ export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: 
           <span className="n">
             <span>{p.current?.id === r.id && p.playing ? "♪" : i + 1}</span>
           </span>
-          {showCover ? r.cover ? <img src={r.cover} alt="" loading="lazy" /> : <span className="pbar-blank" /> : <span />}
+          {showCover ? r.cover ? <img src={r.cover} alt="" loading="lazy" /> : <span className="pbar-blank" /> : <span className="cv" />}
           <span className="t">
             <b>
               {r.title}
@@ -57,7 +57,7 @@ export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: 
             </b>
             <span>{r.artistHref ? <Link href={r.artistHref}>{r.artist}</Link> : r.artist}</span>
           </span>
-          {showAlbum ? <span className="al">{r.albumHref ? <Link href={r.albumHref}>{r.album}</Link> : r.album}</span> : <span />}
+          {showAlbum ? <span className="al">{r.albumHref ? <Link href={r.albumHref}>{r.album}</Link> : r.album}</span> : <span className="al" />}
           <SongActions song={{ id: r.id, title: r.title, artist: r.artist, src: r.src }} />
           <span className="d">{fmt(r.durationMs)}</span>
         </li>

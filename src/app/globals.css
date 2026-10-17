@@ -441,8 +441,8 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .tracklist li:hover{background:rgba(212,162,76,.08)}
 .tracklist li.on{background:rgba(212,162,76,.14)}
 .tracklist .n{font-family:var(--mono);font-size:11px;color:var(--mute);text-align:center}
-.tracklist li:hover .n::before{content:"▶";color:var(--gold-deep)}
-.tracklist li:hover .n span{display:none}
+/* Hover play mark only where there is a real hover (on phones a tap left it stuck). */
+@media (hover:hover){.tracklist li:hover .n::before{content:"▶";color:var(--gold-deep)}.tracklist li:hover .n span{display:none}}
 .tracklist li.on .n{color:var(--gold-deep)}
 .tracklist img{width:44px;height:44px;object-fit:cover;border-radius:2px}
 .tracklist .t{min-width:0}
@@ -453,14 +453,16 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .tracklist .d{font-family:var(--mono);font-size:11px;color:var(--mute)}
 @media (max-width:760px){.tracklist li{grid-template-columns:28px 44px 1fr auto}.tracklist .al{display:none}.tracklist .d{display:none}}
 .tracklist li{grid-template-columns:36px 44px 1fr auto auto auto}
-@media (max-width:760px){.tracklist li{grid-template-columns:28px 44px 1fr auto}}
+/* Phones: tapping a row plays it, so the number/play column goes (album pages, which have no covers, keep the
+   track number); the room goes to like, add and download. */
+@media (max-width:760px){.tracklist li{grid-template-columns:44px 1fr auto;gap:12px}.tracklist .n{display:none}
+.tracklist.no-cover li{grid-template-columns:24px 1fr auto}.tracklist.no-cover .n{display:block}.tracklist.no-cover .cv{display:none}}
 .acts{display:flex;align-items:center;gap:2px}
 .acts button{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:var(--mute);transition:color .15s,background .15s}
 .acts button:hover{color:var(--gold-deep);background:rgba(212,162,76,.12)}
 .acts button.on{color:var(--gold-deep)}
 .acts button:disabled{opacity:.4}
 .acts svg{width:18px;height:18px}
-@media (max-width:760px){.acts .hide-m{display:none}}
 .acct-nav{display:inline-flex;align-items:center;gap:6px;height:42px;padding:0 4px;color:inherit}
 .acct-nav:hover{color:var(--gold-deep)}
 .acct-dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:13px;font-weight:700}

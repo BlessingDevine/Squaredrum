@@ -432,7 +432,6 @@ export function SongActions({ song }: { song: DownloadSong }) {
         </svg>
       </button>
       <button
-        className="hide-m"
         disabled={saving}
         onClick={async () => {
           setSaving(true);

@@ -2,6 +2,7 @@ import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import { AUDIO_BASE, SUPABASE_KEY, SUPABASE_URL } from "./config";
 import { type ChannelTrack, type Rotation, onAirAt } from "./live-channel";
+import { releasedOn } from "./release-dates";
 import { hashString } from "./seeded";
 import { IMPRINTS, portraitFor, slugify } from "./site";
 
@@ -60,6 +61,10 @@ export type Album = {
   cover: string | null;
   /** Canvas loop for the cover (scripts/catalog/canvas.mjs in the radio repo); poster = same path, .jpg. */
   canvas: string | null;
+  /** Filed under a label's Compilations/ (Afro Square Vol 1…), not an artist's own album. */
+  compilation: boolean;
+  /** Sortable release date, newest last: "2024-12", "2025" or "2026-10-08" (see release-dates.ts). */
+  released: string;
 };
 
 export type Imprint = {
@@ -115,6 +120,7 @@ type SongRow = {
   primary_imprint_id: string | null;
   clean_explicit: string;
   source_path: string | null;
+  created_at: string;
   song_files: { storage_key: string; file_type: string }[];
 };
 type StationRow = { slug: string; station_name: string; epoch: string; imprints: { slug: string } | null };
@@ -152,7 +158,7 @@ async function fetchAll() {
     paged<SongRow>((a, b) =>
       db
         .from("songs")
-        .select("song_id, song_code, title, album_title, track_number, duration_ms, primary_artist_id, primary_imprint_id, clean_explicit, source_path, song_files(storage_key, file_type)")
+        .select("song_id, song_code, title, album_title, track_number, duration_ms, primary_artist_id, primary_imprint_id, clean_explicit, source_path, created_at, song_files(storage_key, file_type)")
         .eq("song_files.file_type", "mp3")
         .order("song_code")
         .range(a, b),
@@ -188,6 +194,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   const artBySlug = new Map(art.map((a) => [a.slug, a]));
 
   const songs: Song[] = [];
+  const albumInfo = new Map<string, { added: string; compilation: boolean }>(); // albumSlug → first added, filed under Compilations/
   const usedAlbumSlugs = new Map<string, string>(); // slug → owner::album
   for (const r of songRows) {
     const file = r.song_files?.[0];
@@ -202,6 +209,13 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
     let albumSlug = slugify(album === artistName ? album : `${album} ${artistName}`);
     if (usedAlbumSlugs.has(albumSlug) && usedAlbumSlugs.get(albumSlug) !== key) albumSlug = `${albumSlug}-${hashString(key).toString(36).slice(0, 4)}`;
     usedAlbumSlugs.set(albumSlug, key);
+    const info = albumInfo.get(albumSlug);
+    const inCompilations = !!r.source_path?.includes("/Compilations/");
+    if (!info) albumInfo.set(albumSlug, { added: r.created_at, compilation: inCompilations });
+    else {
+      if (r.created_at < info.added) info.added = r.created_at;
+      info.compilation &&= inCompilations;
+    }
     songs.push({
       id: r.song_id,
       code: r.song_code,
@@ -228,7 +242,20 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   for (const s of songs) {
     let album = albumBySlug.get(s.albumSlug);
     if (!album) {
-      album = { slug: s.albumSlug, title: s.album, artist: s.artist, artistSlug: s.artistSlug, imprintSlug: s.imprintSlug, songIds: [], durationMs: 0, cover: null, canvas: null };
+      const info = albumInfo.get(s.albumSlug)!;
+      album = {
+        slug: s.albumSlug,
+        title: s.album,
+        artist: s.artist,
+        artistSlug: s.artistSlug,
+        imprintSlug: s.imprintSlug,
+        songIds: [],
+        durationMs: 0,
+        cover: null,
+        canvas: null,
+        compilation: info.compilation,
+        released: releasedOn(s.album, info.added),
+      };
       albumBySlug.set(s.albumSlug, album);
     }
     album.songIds.push(s.id);

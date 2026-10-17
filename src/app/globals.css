@@ -537,6 +537,31 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 }
 
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+/* /releases: search + filters on top, then sideways shelves (or the full grid when filtered or searching) */
+.rel-top{padding-bottom:0}
+.rel-top .filters{margin-bottom:0}
+.rel-results{padding-top:clamp(28px,3vw,44px)}
+.shelves[hidden],.rel-results[hidden],.grid-albums .rel[hidden]{display:none}
+.shelves{padding:clamp(28px,3vw,44px) 0 clamp(56px,7vw,100px)}
+.shelf+.shelf{margin-top:clamp(40px,5vw,64px)}
+.shelf-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px}
+.shelf-head h2{font-size:clamp(30px,3.6vw,52px);line-height:.95}
+.shelf-ctrl{display:flex;align-items:center;gap:8px;flex:none}
+.shelf-all{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);margin-right:6px;white-space:nowrap}
+.shelf-all:hover{color:var(--ink)}
+.shelf-arrow{width:36px;height:36px;border:1px solid var(--line-light);border-radius:50%;background:none;color:var(--ink);font-size:15px;cursor:pointer;display:grid;place-items:center}
+.shelf-arrow:hover:not(:disabled){border-color:var(--gold-deep);color:var(--gold-deep)}
+.shelf-arrow:disabled{opacity:.3;cursor:default}
+.shelf-row{display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);padding:0 var(--gutter) 10px;scrollbar-width:none}
+.shelf-row::-webkit-scrollbar{display:none}
+.shelf-row .rel{flex:0 0 clamp(150px,15vw,210px);scroll-snap-align:start}
+.shelf-label .imp-name{display:none}
+@media (max-width:760px){
+  .shelf-arrow{display:none}
+  .rel-top .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter)}
+  .rel-top .filters::-webkit-scrollbar{display:none}
+  .rel-top .filters .chip{flex:none;white-space:nowrap}
+}
 .group-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-top:1px solid var(--line-light);padding-top:22px;margin:56px 0 24px}
 .group-title h2{font-size:clamp(34px,4vw,56px)}
 .group-title a:hover{color:var(--gold-deep)}

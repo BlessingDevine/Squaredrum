@@ -294,6 +294,7 @@ export function PageHead({
       <div className="phead-dark" />
       <Stick from={[64, 0]} to={[54, 100]} />
       <Stick className="stick stick-m" from={[0, 72]} to={[100, 58]} />
+      <Stick className="stick stick-flat" from={[0, 40]} to={[100, 10]} />
       <div className="phead-in wrap">
         <div>
           {crumbs && (

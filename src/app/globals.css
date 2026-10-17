@@ -50,6 +50,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .stick{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .stick line{stroke:var(--gold);stroke-width:2;vector-effect:non-scaling-stroke}
 .stick-m{display:none}
+.stick-flat{display:none}
 
 .nav{position:absolute;z-index:10;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:22px var(--gutter)}
 .nav-left{display:flex;flex-direction:column;gap:18px}
@@ -403,6 +404,11 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
   .phead-dark{clip-path:polygon(0 72%,100% 58%,100% 100%,0 100%)}
   .phead-in{grid-template-columns:1fr;gap:28px}
   .phead-art{justify-self:start;width:min(300px,80vw)}
+  /* heads without a picture: the band is a fixed strip under the words, so it can't cut through a title or lede */
+  .phead:not(:has(.phead-art,.phead-collage)) .phead-dark{top:auto;height:150px;clip-path:polygon(0 40%,100% 10%,100% 100%,0 100%)}
+  .phead:not(:has(.phead-art,.phead-collage)) .stick-m{display:none}
+  .phead:not(:has(.phead-art,.phead-collage)) .stick-flat{display:block;top:auto;height:150px}
+  .phead:not(:has(.phead-art,.phead-collage)) .phead-in{padding-bottom:170px}
 }
 
 /* artist hero: the home hero's colour | mono split, on one portrait */

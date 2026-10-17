@@ -654,11 +654,10 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .acct-page{min-height:60vh}
 .acct-signin{max-width:440px;margin:40px auto}
 .acct-title{font-size:clamp(44px,7vw,84px);line-height:.95;margin:8px 0 10px}
-.acct-who{font-size:12px;color:var(--mute)}
-.acct-note{margin-top:6px;color:#4a463e}
+.acct-who{font-size:12px;color:var(--mute);margin-top:6px}
 .acct-sec{margin-top:48px}
 .acct-sec .btn{margin-bottom:16px}
-.acct-empty{color:var(--mute);padding:14px 0}
+.acct-empty{color:var(--mute);padding:14px 0;font-size:12px}
 .acct-plist{list-style:none;border-top:1px solid var(--line-light)}
 .acct-plist>li{border-bottom:1px solid var(--line-light)}
 .acct-prow{display:flex;justify-content:space-between;align-items:center;gap:12px}

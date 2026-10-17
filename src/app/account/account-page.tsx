@@ -55,7 +55,7 @@ export function AccountPage() {
           Sign out
         </button>
       </p>
-      <p className="acct-note">Same account, likes and playlists as the GoSquare app.</p>
+      <p className="acct-who mono">Same account, likes and playlists as the GoSquare app</p>
       {a.downloadsUsed !== null && (
         <p className="acct-who mono">
           Downloads this week: {a.downloadsUsed} of {DOWNLOADS_PER_WEEK}
@@ -73,7 +73,7 @@ export function AccountPage() {
             <TrackList rows={liked} />
           </>
         ) : (
-          <p className="acct-empty">Tap the heart on any song to keep it here.</p>
+          <p className="acct-empty mono">Tap the heart on any song to keep it here.</p>
         )}
       </section>
 
@@ -120,14 +120,14 @@ export function AccountPage() {
                         </ul>
                       </div>
                     ) : (
-                      <p className="acct-empty">Empty. Use the + on any song to add it.</p>
+                      <p className="acct-empty mono">Empty. Use the + on any song to add it.</p>
                     ))}
                 </li>
               );
             })}
           </ul>
         ) : (
-          <p className="acct-empty">Use the + on any song to start a playlist.</p>
+          <p className="acct-empty mono">Use the + on any song to start a playlist.</p>
         )}
       </section>
 
@@ -150,7 +150,7 @@ export function AccountPage() {
               ))}
             </ul>
           ) : (
-            <p className="acct-empty">Follow artists from their pages.</p>
+            <p className="acct-empty mono">Follow artists from their pages.</p>
           )}
         </section>
       )}

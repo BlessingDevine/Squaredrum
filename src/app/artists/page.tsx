@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArtistTools } from "@/components/artist-tools";
 import { ArtistCard } from "@/components/roster-row";
 import { PageHead, SectionHead, rosterCard } from "@/components/sections";
 import { getCatalog } from "@/lib/catalog";
@@ -25,15 +26,19 @@ export default async function Artists() {
         collage={cards.filter((a) => a.isPortrait).slice(0, 3).map((a) => a.image)}
         lede={`${c.voices.length} artists across ${c.imprints.length} imprints — from R&B and Afrobeats to rock, country and healing music.`}
       />
-      <section className="sec wrap light-artists">
+      <section className="sec wrap light-artists artist-results">
+        <ArtistTools hasCollections={collections.length > 0} />
         <div className="grid-artists">
           {cards.map((a) => (
             <ArtistCard key={a.slug} a={a} />
           ))}
         </div>
+        <p className="artist-none mono" hidden>
+          No artists match that search.
+        </p>
       </section>
       {collections.length > 0 && (
-        <section className="sec wrap light-artists" id="collections">
+        <section className="sec wrap light-artists artist-results" id="collections">
           <SectionHead eyebrow="House collections" title="The collections.">
             <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
           </SectionHead>

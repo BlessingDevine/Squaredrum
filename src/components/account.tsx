@@ -15,7 +15,10 @@ import { supabase } from "@/lib/supabase-browser";
 export type UserPlaylist = { id: string; name: string; songIds: string[] };
 export type DownloadSong = { id: string; title: string; artist: string; src: string };
 
-type Dialog = { kind: "sign-in"; reason?: string } | { kind: "playlist"; songId: string } | null;
+type Dialog = { kind: "sign-in"; reason?: string } | { kind: "playlist"; songId: string } | { kind: "notice"; title: string; text: string } | null;
+
+/** Free downloads per listener in any 7 days (enforced by claim_download() in the database). */
+export const DOWNLOADS_PER_WEEK = 20;
 
 type AccountState = {
   ready: boolean;
@@ -26,6 +29,8 @@ type AccountState = {
   follows: Set<string>;
   /** False until follows load, and stays false if the follows table isn't there yet. */
   followsOn: boolean;
+  /** Songs downloaded in the last 7 days (null until known). */
+  downloadsUsed: number | null;
   askSignIn: (reason?: string) => void;
   toggleLike: (songId: string) => Promise<void>;
   pickPlaylist: (songId: string) => void;
@@ -49,8 +54,8 @@ export function useAccount() {
 
 const NONE = new Set<string>();
 
-type Library = { userId: string | null; liked: string[]; playlists: UserPlaylist[]; follows: string[]; followsOn: boolean };
-const EMPTY: Library = { userId: null, liked: [], playlists: [], follows: [], followsOn: false };
+type Library = { userId: string | null; liked: string[]; playlists: UserPlaylist[]; follows: string[]; followsOn: boolean; downloadsUsed: number | null };
+const EMPTY: Library = { userId: null, liked: [], playlists: [], follows: [], followsOn: false, downloadsUsed: null };
 
 export function AccountProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
@@ -64,6 +69,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   const playlists = mine ? lib.playlists : EMPTY.playlists;
   const follows = mine ? lib.follows : EMPTY.follows;
   const followsOn = mine && lib.followsOn;
+  const downloadsUsed = mine ? lib.downloadsUsed : null;
   const setLiked = useCallback((f: (l: string[]) => string[]) => setLib((x) => ({ ...x, liked: f(x.liked) })), []);
   const setPlaylists = useCallback((f: (p: UserPlaylist[]) => UserPlaylist[]) => setLib((x) => ({ ...x, playlists: f(x.playlists) })), []);
   const setFollows = useCallback((f: (l: string[]) => string[]) => setLib((x) => ({ ...x, follows: f(x.follows) })), []);
@@ -82,13 +88,15 @@ export function AccountProvider({ children }: { children: ReactNode }) {
     if (!userId) return;
     let live = true;
     (async () => {
-      const [likes, lists, fol] = await Promise.all([
+      const weekAgo = new Date(Date.now() - 7 * 864e5).toISOString();
+      const [likes, lists, fol, dls] = await Promise.all([
         supabase.from("liked_songs").select("song_id").order("liked_at", { ascending: false }),
         supabase
           .from("user_playlists")
           .select("user_playlist_id, playlist_name, user_playlist_songs(song_id, position)")
           .order("updated_at", { ascending: false }),
         supabase.from("followed_artists").select("artist_id").order("followed_at", { ascending: false }),
+        supabase.from("song_downloads").select("song_id").gt("downloaded_at", weekAgo),
       ]);
       if (!live) return;
       setLib({
@@ -101,6 +109,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
         })),
         follows: (fol.data ?? []).map((r) => r.artist_id),
         followsOn: !fol.error,
+        downloadsUsed: dls.error ? null : new Set((dls.data ?? []).map((r) => r.song_id)).size,
       });
     })();
     return () => {
@@ -196,7 +205,25 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   // browser fetches the MP3 and saves it under a readable name.
   const download = useCallback(
     async (song: DownloadSong) => {
-      if (!userId) return askSignIn("Sign in to download songs. It's free.");
+      if (!userId) return askSignIn(`Sign in to download songs. It's free: up to ${DOWNLOADS_PER_WEEK} a week.`);
+      // The weekly limit is checked (and the download logged) in the database. Until its SQL
+      // is run the call fails, and downloads stay open.
+      const { data: claim, error: claimError } = await supabase.rpc("claim_download", { p_song_id: song.id });
+      if (!claimError && claim) {
+        const c = claim as { allowed: boolean; used: number; limit: number; next_at: string | null };
+        if (!c.allowed) {
+          const when = c.next_at
+            ? new Date(c.next_at).toLocaleDateString(undefined, { weekday: "short", day: "numeric", month: "short" })
+            : "in a few days";
+          setDialog({
+            kind: "notice",
+            title: "Weekly limit reached",
+            text: `You've used your ${c.limit} free downloads this week. You can download again on ${when}.`,
+          });
+          return;
+        }
+        setLib((x) => (x.userId === userId ? { ...x, downloadsUsed: c.used } : x));
+      }
       const res = await fetch(song.src);
       if (!res.ok) return;
       const url = URL.createObjectURL(await res.blob());
@@ -224,6 +251,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       playlists,
       follows: userId ? new Set(follows) : NONE,
       followsOn,
+      downloadsUsed,
       askSignIn,
       toggleLike,
       pickPlaylist,
@@ -236,7 +264,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       download,
       signOut,
     }),
-    [ready, session, userId, liked, playlists, follows, followsOn, askSignIn, toggleLike, pickPlaylist, createPlaylist, addToPlaylist, removeFromPlaylist, renamePlaylist, deletePlaylist, toggleFollow, download, signOut],
+    [ready, session, userId, liked, playlists, follows, followsOn, downloadsUsed, askSignIn, toggleLike, pickPlaylist, createPlaylist, addToPlaylist, removeFromPlaylist, renamePlaylist, deletePlaylist, toggleFollow, download, signOut],
   );
 
   return (
@@ -244,6 +272,18 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       {children}
       {dialog?.kind === "sign-in" && <SignInDialog reason={dialog.reason} onClose={() => setDialog(null)} />}
       {dialog?.kind === "playlist" && <PlaylistDialog songId={dialog.songId} onClose={() => setDialog(null)} />}
+      {dialog?.kind === "notice" && (
+        <Modal title={dialog.title} onClose={() => setDialog(null)}>
+          <div className="acct-form">
+            <div className="eyebrow mono">Free downloads</div>
+            <h2 className="display">{dialog.title}</h2>
+            <p>{dialog.text}</p>
+            <button className="btn btn-gold acct-ok" onClick={() => setDialog(null)}>
+              OK
+            </button>
+          </div>
+        </Modal>
+      )}
     </AccountContext>
   );
 }

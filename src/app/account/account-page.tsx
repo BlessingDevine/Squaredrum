@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SignInForm, useAccount } from "@/components/account";
+import { DOWNLOADS_PER_WEEK, SignInForm, useAccount } from "@/components/account";
 import { PlayButton, type Row, TrackList } from "@/components/play";
 
 type ArtistCard = { id: string; slug: string; name: string; genre: string | null; portrait: string | null };
@@ -56,6 +56,11 @@ export function AccountPage() {
         </button>
       </p>
       <p className="acct-note">Same account, likes and playlists as the GoSquare app.</p>
+      {a.downloadsUsed !== null && (
+        <p className="acct-who mono">
+          Downloads this week: {a.downloadsUsed} of {DOWNLOADS_PER_WEEK}
+        </p>
+      )}
 
       <section className="acct-sec">
         <div className="group-title">

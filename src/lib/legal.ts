@@ -482,11 +482,12 @@ export const TERMS: Block[] = [
 // GoSquare, the music app (App Store "GoSquare Music"). Written to match what the
 // app actually does (Oct 2026): email sign-in by one-time code, likes and
 // playlists on the account, recently played on the phone only, no ads or tracking.
+// The same account signs in on squaredrum.com, which adds follows and free downloads.
 export const GOSQUARE_PRIVACY: Block[] = [
-  ["p", "Effective Date: October 13, 2026"],
+  ["p", "Effective Date: October 17, 2026"],
   [
     "p",
-    "This Privacy Policy covers GoSquare (listed on the App Store as \"GoSquare Music\"), the music app operated by SQUAREDRUM LLC (\"we,\" \"us,\" or \"our\"). It explains what the app collects, why, and how to have it deleted. Our website has its own policy at squaredrum.com/privacy.",
+    "This Privacy Policy covers GoSquare (listed on the App Store as \"GoSquare Music\"), the music app operated by SQUAREDRUM LLC (\"we,\" \"us,\" or \"our\"). It explains what the app collects, why, and how to have it deleted. The same GoSquare account also signs you in on squaredrum.com, and this policy covers the account there too. The rest of our website has its own policy at squaredrum.com/privacy.",
   ],
   ["h2", "1. What we collect"],
   ["p", "You can listen to music and radio in GoSquare without an account. If you create one, we collect only what the account needs:"],
@@ -494,7 +495,9 @@ export const GOSQUARE_PRIVACY: Block[] = [
     "ul",
     [
       "Your email address, to sign you in. GoSquare has no passwords: each time you sign in we email you a one-time code.",
-      "The songs you like and the playlists you make (their names and the songs in them), so your library follows you to any phone you sign in on.",
+      "The songs you like and the playlists you make (their names and the songs in them), so your library follows you to any phone or computer you sign in on.",
+      "The artists you follow.",
+      "The songs you download from squaredrum.com and when, so we can keep free downloads to 20 a week per listener.",
     ],
   ],
   ["p", "Your recently played list is kept on your phone only and is never sent to us."],
@@ -513,13 +516,13 @@ export const GOSQUARE_PRIVACY: Block[] = [
     ],
   ],
   ["h2", "3. How we use it"],
-  ["p", "Your email is used to sign you in and, rarely, to tell you about something important to your account. We never send marketing email from the app without asking first. Your likes and playlists are used only to show you your own library."],
+  ["p", "Your email is used to sign you in and, rarely, to tell you about something important to your account. We never send marketing email from the app without asking first. Your likes, playlists and follows are used only to show you your own library, and your download record only to apply the weekly download limit."],
   ["h2", "4. Who we share it with"],
   ["p", "Only the service providers that run GoSquare for us, under contracts that require them to protect it:"],
   [
     "ul",
     [
-      "Supabase, which stores accounts, likes and playlists.",
+      "Supabase, which stores accounts, likes, playlists, follows and the download record.",
       "Resend, which delivers the sign-in code emails.",
       "Amazon Web Services, which stores and delivers the music, images and video.",
       "Expo, which delivers app updates.",
@@ -529,7 +532,7 @@ export const GOSQUARE_PRIVACY: Block[] = [
   ["h2", "5. Deleting your account"],
   [
     "p",
-    "You can delete your account at any time in the app: Library → Delete account. This permanently removes your email address, likes and playlists from our systems. You can also email privacy@squaredrum.com and we will delete it for you within 30 days. Deleting the app removes your recently played list from the phone.",
+    "You can delete your account at any time in the app: Library → Delete account. This permanently removes your email address, likes, playlists, follows and download record from our systems. You can also email privacy@squaredrum.com and we will delete it for you within 30 days. Deleting the app removes your recently played list from the phone.",
   ],
   ["h2", "6. How long we keep it"],
   ["p", "We keep your account information until you delete your account. We do not keep copies of deleted accounts, apart from routine backups that are overwritten within 30 days."],

@@ -674,3 +674,5 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .acct-artists b{font-size:15px}
 .acct-artists span{font-size:11px;color:var(--mute)}
 .acct-ok{margin-top:18px;width:100%;justify-content:center}
+.acct-signout{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:inherit;letter-spacing:inherit}
+.acct-signout:hover{color:var(--gold-deep)}

@@ -51,7 +51,7 @@ export function AccountPage() {
       <h1 className="display acct-title">Your library</h1>
       <p className="acct-who mono">
         {a.email} ·{" "}
-        <button className="acct-link" onClick={() => a.signOut()}>
+        <button className="acct-link acct-signout" onClick={() => a.signOut()}>
           Sign out
         </button>
       </p>

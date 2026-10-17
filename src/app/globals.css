@@ -351,7 +351,7 @@ body{position:relative}
 .menu-foot a:hover{color:var(--gold)}
 .menu-close{width:42px;height:42px;border:1px solid var(--line-dark);border-radius:50%;font-size:18px}
 @media (max-width:900px){.topbar-links .hide-t{display:none}}
-@media (max-width:760px){.topbar-in{height:60px}.topbar img{height:24px}.topbar-links>a{display:none}}
+@media (max-width:760px){.topbar-in{height:60px}.topbar img{height:24px}.topbar-links>a:not(.acct-nav){display:none}}
 
 /* ================= PLAYER BAR ================= */
 .pbar{position:fixed;left:0;right:0;bottom:0;z-index:120;background:rgba(17,17,18,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--white);border-top:1px solid var(--gold-deep)}

@@ -21,4 +21,5 @@ export const SOCIAL = {
   instagram: "https://www.instagram.com/squaredrumla/",
   youtube: "https://youtube.com/@squaredrumrecords",
   x: "https://twitter.com/squaredrumrec",
+  tiktok: "https://www.tiktok.com/@squaredrumla",
 };

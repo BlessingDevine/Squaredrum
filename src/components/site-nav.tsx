@@ -62,6 +62,7 @@ export function SiteNav() {
         </a>
         <a href={SOCIAL.instagram}>Instagram</a>
         <a href={SOCIAL.youtube}>YouTube</a>
+        <a href={SOCIAL.tiktok}>TikTok</a>
       </div>
     </div>
   );

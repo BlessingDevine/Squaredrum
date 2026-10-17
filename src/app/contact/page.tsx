@@ -39,6 +39,7 @@ export default async function Contact({ searchParams }: PageProps<"/contact">) {
                 <a href={SOCIAL.instagram}>Instagram</a>
                 <a href={SOCIAL.youtube}>YouTube</a>
                 <a href={SOCIAL.x}>X</a>
+                <a href={SOCIAL.tiktok}>TikTok</a>
               </b>
             </div>
           </div>

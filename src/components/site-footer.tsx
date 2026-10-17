@@ -27,6 +27,7 @@ export function SiteFooter() {
             <li><Link href="/#gosquare">GoSquare app</Link></li>
             <li><a href={SOCIAL.youtube}>YouTube</a></li>
             <li><a href={SOCIAL.instagram}>Instagram</a></li>
+            <li><a href={SOCIAL.tiktok}>TikTok</a></li>
           </ul>
         </div>
         <div>

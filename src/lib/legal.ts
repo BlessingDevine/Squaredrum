@@ -1,5 +1,6 @@
 // Legal text carried over word for word from the previous squaredrum.com
-// (July 2025), with the company name's typo "SQUAREDUM" corrected.
+// (July 2025), with the company name's typo "SQUAREDUM" corrected. The Privacy
+// Policy adds the GoSquare account sign-in (October 2026).
 export type Block = ["h2" | "h3" | "p", string] | ["ul", string[]];
 export const PRIVACY: Block[] = [
  [
@@ -8,7 +9,7 @@ export const PRIVACY: Block[] = [
  ],
  [
   "p",
-  "Last Updated: July 5, 2025"
+  "Last Updated: October 16, 2026"
  ],
  [
   "p",
@@ -51,7 +52,28 @@ export const PRIVACY: Block[] = [
  ],
  [
   "h3",
-  "b) Automatically Collected Data"
+  "b) Your GoSquare Account"
+ ],
+ [
+  "p",
+  "You can sign in on the Site with your GoSquare account (the same account as our GoSquare app) using a one-time code sent to your email. When you are signed in, we store:"
+ ],
+ [
+  "ul",
+  [
+   "Your email address",
+   "The songs you like and the playlists you make",
+   "The artists you follow",
+   "The songs you download and when, so we can keep free downloads to 20 a week per listener"
+  ]
+ ],
+ [
+  "p",
+  "This is used only to show you your own library and to apply the weekly download limit. It is stored with Supabase, our account provider, and your sign-in is kept in your browser's storage until you sign out. The GoSquare Privacy Policy at squaredrum.com/gosquare/privacy covers the account in full, including how to delete it. You can also email privacy@squaredrum.com and we will delete your account and everything linked to it within 30 days."
+ ],
+ [
+  "h3",
+  "c) Automatically Collected Data"
  ],
  [
   "p",

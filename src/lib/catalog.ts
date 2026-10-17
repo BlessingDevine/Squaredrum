@@ -33,6 +33,8 @@ export type Song = {
 };
 
 export type Artist = {
+  /** artists.artist_id, for follows. */
+  id: string;
   slug: string;
   name: string;
   genre: string | null;
@@ -252,6 +254,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
       const imprint = a.primary_imprint_id ? imprintById.get(a.primary_imprint_id) : undefined;
       const mine = albums.filter((al) => al.artistSlug === a.slug);
       return {
+        id: a.artist_id,
         slug: a.slug,
         name: a.artist_name,
         genre: a.genre,

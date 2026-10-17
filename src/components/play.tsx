@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SongActions } from "./account";
 import { type PlayItem, usePlayer } from "./player";
 
 /** A button that plays a list of songs (an album, an artist), optionally from a given one. */
@@ -40,7 +41,7 @@ export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: 
           key={r.id}
           className={p.current?.id === r.id ? "on" : undefined}
           onClick={(e) => {
-            if ((e.target as HTMLElement).closest("a")) return;
+            if ((e.target as HTMLElement).closest("a, button")) return;
             if (p.current?.id === r.id) p.toggle();
             else p.playList(rows, i);
           }}
@@ -57,6 +58,7 @@ export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: 
             <span>{r.artistHref ? <Link href={r.artistHref}>{r.artist}</Link> : r.artist}</span>
           </span>
           {showAlbum ? <span className="al">{r.albumHref ? <Link href={r.albumHref}>{r.album}</Link> : r.album}</span> : <span />}
+          <SongActions song={{ id: r.id, title: r.title, artist: r.artist, src: r.src }} />
           <span className="d">{fmt(r.durationMs)}</span>
         </li>
       ))}

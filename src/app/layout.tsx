@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, Instrument_Sans, Michroma, Space_Mono } from "next/font/google";
+import { AccountProvider } from "@/components/account";
 import { PlayerProvider } from "@/components/player";
 import { MixerDebug } from "@/components/mixer-debug";
 import { NavTracker } from "@/components/back-link";
@@ -36,12 +37,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <PlayerProvider>
+          <AccountProvider>
           <SiteNav />
           <div id="main">{children}</div>
           <SiteFooter />
           <PlayerBar />
           <MixerDebug />
           <NavTracker />
+          </AccountProvider>
         </PlayerProvider>
       </body>
     </html>

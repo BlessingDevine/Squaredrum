@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RADIO_URL, SOCIAL } from "@/lib/config";
+import { AccountLink } from "./account";
 
 const LINKS = [
   { href: "/imprints", label: "Imprints" },
@@ -50,6 +51,9 @@ export function SiteNav() {
             {l.label}
           </Link>
         ))}
+        <Link href="/account" aria-current={here("/account")}>
+          Your account
+        </Link>
       </nav>
       <div className="menu-foot mono">
         <a href={RADIO_URL}>
@@ -90,6 +94,7 @@ export function SiteNav() {
             <Link href="/work-with-us" className="hide-m">
               Work with us
             </Link>
+            <AccountLink className="acct-nav mono" />
             <button className="menu-btn" onClick={() => setOpen(true)} aria-label="Open menu">
               <span />
             </button>
@@ -116,6 +121,7 @@ export function SiteNav() {
             <Link href="/work-with-us" className="hide-t" aria-current={here("/work-with-us")}>
               Work with us
             </Link>
+            <AccountLink className="acct-nav mono" />
             <button className="menu-btn" onClick={() => setOpen(true)} aria-label="Open menu">
               <span />
             </button>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * Phone toolbar on /artists: a search box that narrows the cards on the page
+ * Toolbar on /artists: a search box that narrows the cards on the page
  * (artists and collections) as you type, and a jump to the collections. The
  * cards are server-rendered, so this only shows and hides them.
  */

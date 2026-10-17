@@ -441,18 +441,19 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .rel .ph-empty{width:100%;aspect-ratio:1;display:grid;place-items:center;background:var(--ink);color:var(--gold);font-family:var(--display);font-size:42px}
 .light-artists .artist span{color:#6e6a60}
 .light-artists .artist .ph{background:#e7e3da}
-/* /artists phone toolbar: search + jump to the collections */
-.artist-tools{display:none}
+/* /artists toolbar: search + jump to the collections */
 .grid-artists .artist[hidden],.artist-results[hidden],.artist-none[hidden]{display:none}
 .artist-none{color:#6e6a60;font-size:12px;padding:8px 0}
+.artist-tools{display:flex;gap:10px;align-items:center;margin-bottom:28px}
+.artist-search{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--line-light);border-radius:4px;background:#fff}
+.artist-search:focus-within{border-color:var(--gold-deep)}
+.artist-search svg{width:16px;height:16px;flex:none;fill:none;stroke:#6e6a60;stroke-width:2;stroke-linecap:round}
+.artist-search input{flex:1;min-width:0;border:0;outline:none;background:none;font:inherit;font-size:16px;color:var(--ink)}
+.artist-tools .chip{height:44px;flex:none;white-space:nowrap}
+#collections{scroll-margin-top:72px}
 @media (max-width:760px){
-  .artist-tools{display:flex;gap:10px;align-items:center;margin-bottom:22px}
-  .artist-search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--line-light);border-radius:4px;background:#fff}
-  .artist-search:focus-within{border-color:var(--gold-deep)}
-  .artist-search svg{width:16px;height:16px;flex:none;fill:none;stroke:#6e6a60;stroke-width:2;stroke-linecap:round}
-  .artist-search input{flex:1;min-width:0;border:0;outline:none;background:none;font:inherit;font-size:16px;color:var(--ink)}
-  .artist-tools .chip{height:44px;flex:none;white-space:nowrap}
-  #collections{scroll-margin-top:72px}
+  .artist-tools{margin-bottom:22px}
+  .artist-search{flex:1}
 }
 
 .tracklist{list-style:none;border-top:1px solid var(--line-light)}

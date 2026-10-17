@@ -31,7 +31,7 @@ const seriesSlug = (al: Album) => `${al.imprintSlug}-${seriesName(al.title)}`.to
  * artist (R&B Square, which includes Love in Paris) folds by that artist; the
  * rest fold by title (Dance Square Vol 1 & 2, Easy Sunday I & II).
  */
-function bySeries(albums: Album[]): { albums: Album[]; name?: string; href?: string }[] {
+function bySeries(albums: Album[]): { albums: Album[]; name?: string }[] {
   const perArtist = new Map<string, number>();
   for (const al of albums) if (al.artistSlug) perArtist.set(al.artistSlug, (perArtist.get(al.artistSlug) ?? 0) + 1);
   const groups = new Map<string, Album[]>();
@@ -41,7 +41,7 @@ function bySeries(albums: Album[]): { albums: Album[]; name?: string; href?: str
   }
   return [...groups.entries()].map(([key, g]) => {
     const oneArtist = key.startsWith("artist:") || (g[0].artistSlug && g.every((al) => al.artistSlug === g[0].artistSlug));
-    return oneArtist ? { albums: g } : { albums: g, name: seriesName(g[0].title), href: `/releases?kind=compilations&series=${seriesSlug(g[0])}` };
+    return oneArtist ? { albums: g } : { albums: g, name: seriesName(g[0].title) };
   });
 }
 
@@ -53,21 +53,14 @@ function headerCovers(albums: Album[]) {
 }
 
 export default async function Releases({ searchParams }: PageProps<"/releases">) {
-  const { imprint, kind, view, series } = await searchParams;
+  const { imprint, kind, view } = await searchParams;
   const c = await getCatalog();
   const all = c.albums.filter((a) => a.cover).sort(newestFirst);
   const active = typeof imprint === "string" ? c.imprintBySlug.get(imprint) : undefined;
   const compilations = kind === "compilations";
   const everything = view === "all";
   const filtered = !!active || compilations || everything;
-  const inSeries = compilations && typeof series === "string" ? all.filter((a) => a.compilation && seriesSlug(a) === series) : [];
-  const shown = active
-    ? all.filter((a) => a.imprintSlug === active.slug)
-    : inSeries.length
-      ? inSeries
-      : compilations
-        ? all.filter((a) => a.compilation)
-        : all;
+  const shown = active ? all.filter((a) => a.imprintSlug === active.slug) : compilations ? all.filter((a) => a.compilation) : all;
   const imprints = c.imprints.filter((i) => all.some((a) => a.imprintSlug === i.slug));
 
   // Shelves: what's new (album by album), then each label's own artist albums folded by artist (labels with the
@@ -80,13 +73,11 @@ export default async function Releases({ searchParams }: PageProps<"/releases">)
   const comps = all.filter((a) => a.compilation);
 
   const collage = headerCovers(shown);
-  const title = active ? active.name : inSeries.length ? seriesName(inSeries[0].title) : compilations ? "Compilations." : "Releases.";
+  const title = active ? active.name : compilations ? "Compilations." : "Releases.";
   const lede = active
     ? `${shown.length} albums and collections from ${active.name}, newest first.`
-    : inSeries.length
-      ? `${shown.length} volumes, newest first.`
-      : compilations
-        ? `${shown.length} compilations from across our labels, newest first.`
+    : compilations
+      ? `${shown.length} compilations from across our labels, newest first.`
       : `${all.length} albums and collections across ${imprints.length} imprints. Tap any cover to listen.`;
 
   return (
@@ -137,7 +128,7 @@ export default async function Releases({ searchParams }: PageProps<"/releases">)
             <Shelf title="Compilations" href="/releases?kind=compilations" count={comps.length}>
               {bySeries(comps).map((g) =>
                 g.albums.length > 1 ? (
-                  <ArtistStackCard key={g.albums[0].slug} albums={g.albums} c={c} name={g.name} href={g.href} />
+                  <ArtistStackCard key={g.albums[0].slug} albums={g.albums} c={c} name={g.name} />
                 ) : (
                   <ReleaseCard key={g.albums[0].slug} album={g.albums[0]} c={c} />
                 ),

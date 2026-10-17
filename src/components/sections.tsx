@@ -72,27 +72,26 @@ export function ReleaseCard({ album, c }: { album: Album; c: Catalog }) {
 
 /**
  * Several albums by one artist (or one compilation series) folded into a single
- * card: the newest cover on top, the next two stacked behind, linking to the
- * artist's page where they're all listed (or `href`). `albums` are newest first.
+ * card: the newest cover on top, the next two stacked behind. It opens the
+ * newest album, whose page lists the rest and links to the artist. `albums` are
+ * newest first.
  */
 export function ArtistStackCard({
   albums,
   c,
   showLabel = true,
   name,
-  href,
 }: {
   albums: Album[];
   c: Catalog;
   showLabel?: boolean;
-  /** For a series with no single artist page (Dance Square Vol 1 & 2): its name and where it opens. */
+  /** For a series with no single artist (Dance Square Vol 1 & 2): its name. */
   name?: string;
-  href?: string;
 }) {
   const [top, ...rest] = albums;
   const imp = top.imprintSlug ? c.imprintBySlug.get(top.imprintSlug) : undefined;
   return (
-    <Link className="rel rel-stack" href={href ?? `/artists/${top.artistSlug}`}>
+    <Link className="rel rel-stack" href={`/releases/${top.slug}`}>
       <span className="stack">
         {rest
           .slice(0, 2)

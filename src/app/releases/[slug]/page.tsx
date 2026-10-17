@@ -30,11 +30,16 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
   const rows = al.songIds.map((id) => toRow(c.songById.get(id)!, c));
   const artist = al.artistSlug ? c.artistBySlug.get(al.artistSlug) : undefined;
   const imp = al.imprintSlug ? c.imprintBySlug.get(al.imprintSlug) : undefined;
-  const more = (artist ? artist.albumSlugs : (imp?.albumSlugs ?? []))
-    .filter((s) => s !== al.slug)
-    .map((s) => c.albumBySlug.get(s)!)
-    .filter((x) => x?.cover)
-    .slice(0, 5);
+  // The artist's other albums, newest first; an artist with just this one (Easy Sunday II) falls back to the label's.
+  const others = (slugs: string[]) =>
+    slugs
+      .filter((s) => s !== al.slug)
+      .map((s) => c.albumBySlug.get(s)!)
+      .filter((x) => x?.cover)
+      .sort((x, y) => y.released.localeCompare(x.released) || x.title.localeCompare(y.title, undefined, { numeric: true }))
+      .slice(0, 5);
+  const fromArtist = artist ? others(artist.albumSlugs) : [];
+  const more = fromArtist.length ? fromArtist : others(imp?.albumSlugs ?? []);
 
   return (
     <main>
@@ -92,7 +97,7 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
       {more.length > 0 && (
         <section className="sec wrap" style={{ paddingTop: 0 }}>
           <div className="group-title" style={{ marginTop: 0 }}>
-            <h2 className="display">More from {artist ? artist.name : imp?.name}</h2>
+            <h2 className="display">More from {fromArtist.length ? artist!.name : imp?.name}</h2>
             {artist && (
               <Link className="mono" href={`/artists/${artist.slug}`}>
                 Artist page →

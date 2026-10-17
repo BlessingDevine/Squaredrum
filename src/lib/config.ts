@@ -19,7 +19,7 @@ export const CONTACT_EMAIL = "info@squaredrum.com";
 export const CONTACT_PHONE = "+1 (424) 500-0396";
 export const SOCIAL = {
   instagram: "https://www.instagram.com/squaredrumla/",
-  youtube: "https://youtube.com/@squaredrumrecords",
+  youtube: "https://www.youtube.com/@squaredrum",
   x: "https://twitter.com/squaredrumrec",
   tiktok: "https://www.tiktok.com/@squaredrumla",
 };

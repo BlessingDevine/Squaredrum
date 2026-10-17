@@ -266,7 +266,7 @@ function Modal({ title, onClose, children }: { title: string; onClose: () => voi
   );
 }
 
-/** Email, then the 6-digit code the app's sign-in also sends. */
+/** Email, then the code the app's sign-in also sends (6–10 digits, per the Supabase setting). */
 export function SignInForm({ reason, onDone }: { reason?: string; onDone?: () => void }) {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -299,7 +299,7 @@ export function SignInForm({ reason, onDone }: { reason?: string; onDone?: () =>
       <h2 className="display">{sent ? "Check your email" : "Sign in"}</h2>
       <p>
         {sent
-          ? `We sent a 6-digit code to ${email.trim()}.`
+          ? `We sent a sign-in code to ${email.trim()}. Enter it here.`
           : (reason ?? "One account for squaredrum.com and the GoSquare app: your likes, playlists and artists, everywhere.")}
       </p>
       {sent ? (
@@ -308,15 +308,15 @@ export function SignInForm({ reason, onDone }: { reason?: string; onDone?: () =>
             className="acct-input mono"
             inputMode="numeric"
             autoComplete="one-time-code"
-            pattern="[0-9]{6}"
-            maxLength={6}
-            placeholder="123456"
+            pattern="[0-9]{6,10}"
+            maxLength={10}
+            placeholder="Code from the email"
             value={code}
             onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
             autoFocus
             aria-label="Sign-in code"
           />
-          <button className="btn btn-gold" disabled={busy || code.length !== 6}>
+          <button className="btn btn-gold" disabled={busy || code.length < 6}>
             {busy ? "Checking…" : "Sign in"}
           </button>
           <button type="button" className="acct-link mono" onClick={() => (setSent(false), setCode(""))}>

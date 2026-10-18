@@ -43,7 +43,7 @@ export default function Page() {
           <ul>
             <li>Liked songs: tap the heart again to remove a like.</li>
             <li>Playlists: open the playlist and choose Delete playlist, or remove single songs from it.</li>
-            <li>Followed artists: tap Following on the artist&apos;s page to unfollow.</li>
+            <li>Followed artists: on squaredrum.com, tap Following on the artist&apos;s page to unfollow.</li>
           </ul>
           <p>
             Each is removed from our systems straight away. To have anything else removed, such as your download record, email

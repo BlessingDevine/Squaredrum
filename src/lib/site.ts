@@ -46,6 +46,7 @@ export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "
 
 /** Albums shown first under "New releases", by album title + artist slug ("" for a label compilation). */
 export const FEATURED_RELEASES = [
+  ["Ngibheke Kahle", "yano-sky"],
   ["Every Part of Me", "bantan"],
   ["Pressure Feat. Lea Babi", "bantan"],
   ["Let's Talk About It", "j-cruz"],
@@ -71,7 +72,7 @@ export const FEATURED_RELEASES = [
 const PORTRAITS = new Set([
   "ash-revenant", "bantan", "danni-blaze", "echo-rae", "fizz", "iron-mirage", "j-cruz", "lea-babi", "litha-flow",
   "lucas-meno", "lumi-astra", "lunah", "luv-tonez", "neilly-storm", "neka", "noah-rust", "nova-liyah",
-  "pala", "riven-cole", "sadie-colton", "cedar-line", "deejay-zethu", "saka", "sanza-benito", "vegah-riot", "virgo-dunstan",
+  "pala", "riven-cole", "sadie-colton", "cedar-line", "deejay-zethu", "yano-sky", "saka", "sanza-benito", "vegah-riot", "virgo-dunstan",
   "crimson-union", "dusk-cannon", "hollow-district", "knox-havoc", "lucid-arrows", "steel-vandal", "throne-static",
   "elkana", "lune-skylar",
 ]);

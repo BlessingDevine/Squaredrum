@@ -38,6 +38,17 @@ export default function Page() {
             Email privacy@squaredrum.com from the address you sign in with, asking us to delete your GoSquare account. We delete it within 30
             days and confirm by email.
           </p>
+          <h2 id="some-data">Delete some of your data and keep your account</h2>
+          <p>You can remove parts of your data yourself at any time, in the app or on squaredrum.com (Your account):</p>
+          <ul>
+            <li>Liked songs: tap the heart again to remove a like.</li>
+            <li>Playlists: open the playlist and choose Delete playlist, or remove single songs from it.</li>
+            <li>Followed artists: tap Following on the artist&apos;s page to unfollow.</li>
+          </ul>
+          <p>
+            Each is removed from our systems straight away. To have anything else removed, such as your download record, email
+            privacy@squaredrum.com and we will do it within 30 days.
+          </p>
           <p>SQUAREDRUM LLC · privacy@squaredrum.com</p>
         </div>
       </section>

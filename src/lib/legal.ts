@@ -554,7 +554,7 @@ export const GOSQUARE_PRIVACY: Block[] = [
   ["h2", "5. Deleting your account"],
   [
     "p",
-    "You can delete your account at any time in the app: Library → Delete account. This permanently removes your email address, likes, playlists, follows and download record from our systems. You can also email privacy@squaredrum.com and we will delete it for you within 30 days. Deleting the app removes your recently played list from the phone.",
+    "You can delete your account at any time in the app: Library → Delete account. This permanently removes your email address, likes, playlists, follows and download record from our systems. You can also delete it at squaredrum.com/gosquare/delete-account, or email privacy@squaredrum.com and we will delete it for you within 30 days. Deleting the app removes your recently played list from the phone.",
   ],
   ["h2", "6. How long we keep it"],
   ["p", "We keep your account information until you delete your account. We do not keep copies of deleted accounts, apart from routine backups that are overwritten within 30 days."],

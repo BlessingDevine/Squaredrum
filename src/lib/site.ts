@@ -46,6 +46,7 @@ export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "
 
 /** Albums shown first under "New releases", by album title + artist slug ("" for a label compilation). */
 export const FEATURED_RELEASES = [
+  ["Who Came Through", "vxnti"],
   ["Ngibheke Kahle", "yano-sky"],
   ["Every Part of Me", "bantan"],
   ["Pressure Feat. Lea Babi", "bantan"],
@@ -74,7 +75,7 @@ const PORTRAITS = new Set([
   "lucas-meno", "lumi-astra", "lunah", "luv-tonez", "neilly-storm", "neka", "noah-rust", "nova-liyah",
   "pala", "riven-cole", "sadie-colton", "cedar-line", "deejay-zethu", "yano-sky", "saka", "sanza-benito", "vegah-riot", "virgo-dunstan",
   "crimson-union", "dusk-cannon", "hollow-district", "knox-havoc", "lucid-arrows", "steel-vandal", "throne-static",
-  "elkana", "lune-skylar",
+  "elkana", "lune-skylar", "vxnti",
 ]);
 
 export const portraitFor = (slug: string) => (PORTRAITS.has(slug) ? `/roster/${slug}.jpg` : null);

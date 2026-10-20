@@ -26,7 +26,7 @@ export default async function Artists() {
         collage={cards.filter((a) => a.isPortrait).slice(0, 3).map((a) => a.image)}
         lede={`${c.voices.length} artists across ${c.imprints.length} imprints — from R&B and Afrobeats to rock, country and healing music.`}
       />
-      <section className="sec wrap light-artists artist-results">
+      <section className="sec wrap light-artists artist-results cards-overlay">
         <ArtistTools hasCollections={collections.length > 0} />
         <div className="grid-artists">
           {cards.map((a) => (
@@ -38,7 +38,7 @@ export default async function Artists() {
         </p>
       </section>
       {collections.length > 0 && (
-        <section className="sec wrap light-artists artist-results" id="collections">
+        <section className="sec wrap light-artists artist-results cards-overlay" id="collections">
           <SectionHead eyebrow="House collections" title="The collections.">
             <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
           </SectionHead>

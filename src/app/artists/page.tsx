@@ -38,7 +38,7 @@ export default async function Artists() {
         </p>
       </section>
       {collections.length > 0 && (
-        <section className="sec wrap light-artists artist-results cards-overlay" id="collections">
+        <section className="sec wrap light-artists artist-results" id="collections">
           <SectionHead eyebrow="House collections" title="The collections.">
             <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
           </SectionHead>

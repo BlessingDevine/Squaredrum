@@ -84,9 +84,23 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
           <span className="live-dot" />
           {channels.length} channels · on air now
         </div>
-        <ol className="tracks">
+        <ol className="tracks" role="listbox" aria-label="Radio channels">
           {shown.map((c, i) => (
-            <li key={c.slug} className={c.slug === sel.slug ? "on" : undefined} onClick={() => tune(c)}>
+            <li
+              key={c.slug}
+              className={c.slug === sel.slug ? "on" : undefined}
+              onClick={() => tune(c)}
+              // Keyboard users pick a channel with Tab, then Enter or Space.
+              tabIndex={0}
+              role="option"
+              aria-selected={c.slug === sel.slug}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  tune(c);
+                }
+              }}
+            >
               <span className="n">{String(i + 1).padStart(2, "0")}</span>
               {c.cover ? <img src={c.cover.replace("-600.jpg", "-300.jpg")} alt="" /> : <span className="ph-ch" />}
               <span className="t">

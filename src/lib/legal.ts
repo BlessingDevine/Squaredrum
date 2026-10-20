@@ -9,7 +9,7 @@ export const PRIVACY: Block[] = [
  ],
  [
   "p",
-  "Last Updated: October 16, 2026"
+  "Last Updated: October 20, 2026"
  ],
  [
   "p",
@@ -77,17 +77,7 @@ export const PRIVACY: Block[] = [
  ],
  [
   "p",
-  "We collect data automatically through cookies and similar technologies:"
- ],
- [
-  "ul",
-  [
-   "Browser/device type",
-   "Geographic location (approximate)",
-   "Pages visited, time on site",
-   "Referring website",
-   "Clickstream data"
-  ]
+  "When you visit the Site, our hosting provider (Vercel) records basic technical information in its server logs, such as your IP address, browser and device type, the page requested and the referring website, so it can deliver the Site and protect it against abuse. We do not use analytics or advertising trackers."
  ],
  [
   "h2",
@@ -103,7 +93,7 @@ export const PRIVACY: Block[] = [
    "Consent (e.g., for marketing emails)",
    "Contractual necessity (e.g., fulfilling downloads or purchases)",
    "Legal obligations",
-   "Legitimate interest (e.g., site analytics, fraud prevention)"
+   "Legitimate interest (e.g., keeping the Site secure and preventing fraud)"
   ]
  ],
  [
@@ -135,8 +125,7 @@ export const PRIVACY: Block[] = [
  [
   "ul",
   [
-   "Service providers (e.g., payment processors, email platforms, cloud hosting)",
-   "Analytics providers (e.g., Google Analytics)",
+   "Service providers (e.g., cloud hosting and database providers, email platforms, payment processors where applicable)",
    "Legal authorities (only when required by law)",
    "Business successors in case of a merger, acquisition, or sale"
   ]
@@ -196,32 +185,27 @@ export const PRIVACY: Block[] = [
  ],
  [
   "h2",
-  "6. Cookies and Tracking Technologies"
+  "6. Cookies and Similar Technologies"
  ],
  [
   "p",
-  "We use cookies and similar tools to:"
- ],
- [
-  "ul",
-  [
-   "Enable site functionality",
-   "Analyze traffic",
-   "Remember preferences",
-   "Deliver relevant content and marketing"
-  ]
+  "We do not use advertising, analytics or tracking cookies, and we do not share your browsing with advertisers."
  ],
  [
   "p",
-  "By using our Site, you consent to the use of cookies. You can manage cookie preferences using your browser settings or by using our cookie banner."
+  "If you sign in to your GoSquare account on the Site, your browser keeps your sign-in session in its local storage so you stay signed in. This is strictly necessary for your account to work, and it is removed when you sign out or clear your browser data. Because we use no optional cookies, the Site does not show a cookie banner."
  ],
  [
   "p",
-  "Cookie Consent Tool:"
+  "If we ever add optional cookies (for example, for analytics), we will update this policy and ask for your consent first where the law requires it."
+ ],
+ [
+  "h3",
+  "Newsletter"
  ],
  [
   "p",
-  "A cookie banner will appear on your first visit, allowing you to accept or reject specific categories of cookies (e.g., functional, performance, marketing)."
+  "If you join our mailing list, we use your email address only to send you Squaredrum news and releases. Every email includes an unsubscribe link, and you can also ask to be removed at any time by emailing privacy@squaredrum.com."
  ],
  [
   "h2",

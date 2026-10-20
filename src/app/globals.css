@@ -7,6 +7,8 @@
   --gold-deep:#886221;
   --gold-hi:#EAD4AE;
   --mute:#8A877F;
+  /* --mute on the light pages' small print (track lengths, account panel): #8A877F is only 3.2:1 on paper, this is 4.7:1. */
+  --mute-ink:#6F6C64;
   --line-dark:rgba(255,255,255,.14);
   --line-light:rgba(11,11,12,.12);
   --display:var(--font-anton),Impact,sans-serif;
@@ -108,7 +110,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
 .dark{background:var(--ink);color:var(--white)}
 .dark .sec-head p{color:#a6a39b}
-.dark .eyebrow{color:var(--gold)}
+.dark .eyebrow,.eco-a .eyebrow{color:var(--gold)}
 
 /* ---------------- ON AIR (vinyl) ---------------- */
 .deck{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:560px;border-radius:6px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.45)}
@@ -460,7 +462,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .tracklist li{display:grid;grid-template-columns:36px 44px 1fr auto auto;gap:14px;align-items:center;padding:10px 8px;border-bottom:1px solid var(--line-light);cursor:pointer;transition:background .15s}
 .tracklist li:hover{background:rgba(212,162,76,.08)}
 .tracklist li.on{background:rgba(212,162,76,.14)}
-.tracklist .n{font-family:var(--mono);font-size:11px;color:var(--mute);text-align:center}
+.tracklist .n{font-family:var(--mono);font-size:11px;color:var(--mute-ink);text-align:center}
 /* Hover play mark only where there is a real hover (on phones a tap left it stuck). */
 @media (hover:hover){.tracklist li:hover .n::before{content:"▶";color:var(--gold-deep)}.tracklist li:hover .n span{display:none}}
 .tracklist li.on .n{color:var(--gold-deep)}
@@ -470,7 +472,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .tracklist .t span{font-size:12px;color:#6e6a60}
 .tracklist .t a:hover{color:var(--gold-deep)}
 .tracklist .al{font-size:13px;color:#6e6a60;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tracklist .d{font-family:var(--mono);font-size:11px;color:var(--mute)}
+.tracklist .d{font-family:var(--mono);font-size:11px;color:var(--mute-ink)}
 @media (max-width:760px){.tracklist li{grid-template-columns:28px 44px 1fr auto}.tracklist .al{display:none}.tracklist .d{display:none}}
 .tracklist li{grid-template-columns:36px 44px 1fr auto auto auto}
 /* Phones: tapping a row plays it, so the number/play column goes (album pages, which have no covers, keep the
@@ -478,7 +480,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 @media (max-width:760px){.tracklist li{grid-template-columns:44px 1fr auto;gap:12px}.tracklist .n{display:none}
 .tracklist.no-cover li{grid-template-columns:24px 1fr auto}.tracklist.no-cover .n{display:block}.tracklist.no-cover .cv{display:none}}
 .acts{display:flex;align-items:center;gap:2px}
-.acts button{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:var(--mute);transition:color .15s,background .15s}
+.acts button{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:var(--mute-ink);transition:color .15s,background .15s}
 .acts button:hover{color:var(--gold-deep);background:rgba(212,162,76,.12)}
 .acts button.on{color:var(--gold-deep)}
 .acts button:disabled{opacity:.4}
@@ -490,7 +492,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .chip-follow.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .acct-scrim{position:fixed;inset:0;z-index:60;background:rgba(11,11,12,.6);display:grid;place-items:center;padding:16px}
 .acct-dialog{position:relative;width:min(440px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--white);color:var(--ink);border-radius:6px;padding:32px 28px}
-.acct-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;color:var(--mute)}
+.acct-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;color:var(--mute-ink)}
 .acct-x:hover{color:var(--ink)}
 .acct-form h2{font-size:40px;line-height:1;margin:8px 0 12px}
 .acct-form p{color:#4a463e;line-height:1.5}
@@ -499,15 +501,15 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .acct-input{height:48px;border:1px solid var(--line-light);border-radius:4px;padding:0 14px;font-size:16px;background:#fff;color:var(--ink)}
 .acct-input:focus{outline:2px solid var(--gold);outline-offset:1px}
 .acct-error{color:#a3341f!important;margin-top:10px}
-.acct-link{background:none;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);align-self:center}
+.acct-link{background:none;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute-ink);align-self:center}
 .acct-link:hover{color:var(--gold-deep)}
-.acct-small{font-size:11px;margin-top:18px;color:var(--mute)!important}
+.acct-small{font-size:11px;margin-top:18px;color:var(--mute-ink)!important}
 .acct-small a{text-decoration:underline}
 .acct-lists{list-style:none;margin-top:14px;border-top:1px solid var(--line-light)}
 .acct-lists button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--line-light);text-align:left}
 .acct-lists button:hover:not(:disabled){color:var(--gold-deep)}
 .acct-lists button:disabled{opacity:.5}
-.acct-lists span{font-size:11px;color:var(--mute)}
+.acct-lists span{font-size:11px;color:var(--mute-ink)}
 
 .album-top{display:grid;grid-template-columns:minmax(260px,460px) 1fr;gap:clamp(28px,5vw,72px);align-items:end}
 .album-top img.cv{width:100%;aspect-ratio:1;object-fit:cover;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
@@ -612,7 +614,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .tracks li .a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tracks li img.ph-ch,.tracks li .ph-ch{width:44px;height:44px;border-radius:2px;background:#2a2a2c}
 .info a.artist-link{border-bottom:1px solid var(--gold-deep)}
-.empty{padding:60px 0;color:var(--mute)}
+.empty{padding:60px 0;color:var(--mute-ink)}
 .roster-head{position:relative}
 .roster-ctrl-float{position:absolute;right:var(--gutter);margin-top:-96px}
 @media (max-width:760px){.roster-ctrl-float{display:none}}
@@ -706,25 +708,25 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .acct-page{min-height:60vh}
 .acct-signin{max-width:440px;margin:40px auto}
 .acct-title{font-size:clamp(44px,7vw,84px);line-height:.95;margin:8px 0 10px}
-.acct-who{font-size:12px;color:var(--mute);margin-top:6px}
+.acct-who{font-size:12px;color:var(--mute-ink);margin-top:6px}
 .acct-sec{margin-top:48px}
 .acct-sec .btn{margin-bottom:16px}
-.acct-empty{color:var(--mute);padding:14px 0;font-size:12px}
+.acct-empty{color:var(--mute-ink);padding:14px 0;font-size:12px}
 .acct-plist{list-style:none;border-top:1px solid var(--line-light)}
 .acct-plist>li{border-bottom:1px solid var(--line-light)}
 .acct-prow{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .acct-pname{flex:1;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 4px;text-align:left}
 .acct-pname b{font-size:17px}
-.acct-pname span,.acct-pbtns{font-size:11px;color:var(--mute)}
+.acct-pname span,.acct-pbtns{font-size:11px;color:var(--mute-ink)}
 .acct-pbtns{display:flex;gap:14px;text-transform:uppercase;letter-spacing:.06em}
 .acct-pbtns button:hover,.acct-remove button:hover{color:var(--gold-deep)}
 .acct-pbody{padding:6px 0 22px}
-.acct-remove{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:11px;color:var(--mute)}
+.acct-remove{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:11px;color:var(--mute-ink)}
 .acct-artists{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px}
 .acct-artists a{display:flex;flex-direction:column;gap:6px}
 .acct-artists img,.acct-noimg{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;background:#e8e2d4}
 .acct-artists b{font-size:15px}
-.acct-artists span{font-size:11px;color:var(--mute)}
+.acct-artists span{font-size:11px;color:var(--mute-ink)}
 .acct-ok{margin-top:18px;width:100%;justify-content:center}
 .acct-signout{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:inherit;letter-spacing:inherit}
 .acct-signout:hover{color:var(--gold-deep)}

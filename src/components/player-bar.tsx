@@ -20,7 +20,27 @@ export function PlayerBar() {
   };
   return (
     <div className="pbar" role="region" aria-label="Player">
-      <div className={`pbar-track${cur.live ? " is-live" : ""}`} onClick={seek}>
+      <div
+        className={`pbar-track${cur.live ? " is-live" : ""}`}
+        onClick={seek}
+        // A slider for keyboards and screen readers: arrow keys skip 5 seconds. Live radio can't be seeked.
+        role="slider"
+        aria-label="Seek"
+        aria-valuemin={0}
+        aria-valuemax={Math.round(duration || 0)}
+        aria-valuenow={Math.round(time)}
+        aria-valuetext={`${fmt(time)} of ${fmt(duration || 0)}`}
+        aria-disabled={!!cur.live}
+        tabIndex={cur.live ? -1 : 0}
+        onKeyDown={(e) => {
+          const el = p.audio();
+          if (!el || !duration || cur.live) return;
+          const step = e.key === "ArrowRight" || e.key === "ArrowUp" ? 5 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -5 : 0;
+          if (!step) return;
+          e.preventDefault();
+          el.currentTime = Math.min(duration, Math.max(0, el.currentTime + step));
+        }}
+      >
         <i style={{ width: `${pct}%` }} />
       </div>
       <div className="pbar-in wrap">

@@ -434,7 +434,6 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .grid-albums{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:clamp(14px,2vw,28px)}
 .grid-artists{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
 .grid-artists .artist{flex:none}
-.artist .ph.cover img{filter:none}
 .grid-collections .artist .ph{aspect-ratio:1}
 .dark .rel span{color:#9c998f}
 .dark .rel .imp-name{color:var(--gold)}

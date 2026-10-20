@@ -9,21 +9,26 @@ export default async function News() {
   const news = await getNews();
   return (
     <main>
-      <PageHead eyebrow="News · The wire" title="Off the Square." lede="What's happening beyond the Square, where AI meets music. The latest headlines from around the industry, refreshed through the day." />
+      <PageHead eyebrow="News · The wire" title="Off the Square." lede="What's happening beyond the Square, where AI meets music. The latest stories from the music press, refreshed through the day." />
       <section className="sec wrap">
         {news.length ? (
           <div className="news-grid">
             {news.map((a) => (
-              <a key={a.link} className="news-card" href={a.link} target="_blank" rel="noopener noreferrer">
-                <span className="mono">
-                  {a.category} · {a.source}
+              <article key={a.link} className="news-card">
+                <span className="mono news-meta">
+                  {a.source}
+                  {a.date && ` · ${new Date(a.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}
                 </span>
-                <b>{a.title}</b>
+                <h3>
+                  <a href={a.link} target="_blank" rel="noopener noreferrer">
+                    {a.title}
+                  </a>
+                </h3>
                 {a.summary && <p>{a.summary}</p>}
-                <span className="mono" style={{ color: "var(--mute)", marginTop: "auto" }}>
-                  {a.date ? new Date(a.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""} ↗
-                </span>
-              </a>
+                <a className="mono news-read" href={a.link} target="_blank" rel="noopener noreferrer" aria-label={`Read “${a.title}” on ${a.source}`}>
+                  Read on {a.source} ↗
+                </a>
+              </article>
             ))}
           </div>
         ) : (

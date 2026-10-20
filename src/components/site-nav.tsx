@@ -89,9 +89,13 @@ export function SiteNav() {
               <span className="live-dot" />
               Radio · Live
             </a>
-            <a href="#gosquare" className="hide-m">
+            {/* Hidden on mid-size screens, where it would push Radio · Live onto the white half of the hero. */}
+            <a href="#gosquare" className="hide-m hide-l">
               GoSquare App
             </a>
+            <Link href="/news" className="hide-m">
+              Off the Square
+            </Link>
             <Link href="/work-with-us" className="hide-m">
               Work with us
             </Link>
@@ -119,6 +123,9 @@ export function SiteNav() {
                 {l.label}
               </Link>
             ))}
+            <Link href="/news" className="hide-t" aria-current={here("/news")}>
+              Off the Square
+            </Link>
             <Link href="/work-with-us" className="hide-t" aria-current={here("/work-with-us")}>
               Work with us
             </Link>

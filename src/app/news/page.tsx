@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHead } from "@/components/sections";
+import { NewsImage } from "@/components/news-image";
 import { getNews } from "@/lib/news";
 
 export const revalidate = 21600;
@@ -15,6 +16,7 @@ export default async function News() {
           <div className="news-grid">
             {news.map((a) => (
               <article key={a.link} className="news-card">
+                {a.image && <NewsImage src={a.image} href={a.link} />}
                 <span className="mono news-meta">
                   {a.source}
                   {a.date && ` · ${new Date(a.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}

@@ -7,7 +7,8 @@ import "server-only";
  * Fetched at most every six hours; a feed that fails is simply skipped.
  */
 
-export type Article = { title: string; link: string; source: string; category: string; date: string; summary: string };
+/** `image` is the article's own picture (its share image), loaded straight from the publication; "" when there is none. */
+export type Article = { title: string; link: string; source: string; category: string; date: string; summary: string; image: string };
 
 // `ai: true` feeds are already AI-only sections; the others are whole-site feeds, filtered for AI stories
 // (and Rolling Stone's AI section also for music). WordPress feeds serve older items as ?paged=2, 3.
@@ -62,9 +63,37 @@ function categorize(text: string) {
   return "Industry";
 }
 
-async function get(url: string) {
-  const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (compatible; SquaredrumBot/1.0)" }, next: { revalidate: 21600 } });
+async function get(url: string, timeout = 15000) {
+  const res = await fetch(url, {
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; SquaredrumBot/1.0)" },
+    next: { revalidate: 21600 },
+    signal: AbortSignal.timeout(timeout),
+  });
   return res.ok ? res.text() : "";
+}
+
+const httpsOnly = (u: string | undefined) => {
+  const url = (u ?? "").replace(/&amp;|&#0*38;/g, "&").trim();
+  return /^https:\/\/[^\s"'<>]+$/.test(url) ? url : "";
+};
+
+/** The picture a feed item carries: media:content / media:thumbnail, an image enclosure, or the first <img> in its HTML. */
+function feedImage(item: string) {
+  const html = item.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+  return httpsOnly(
+    /<media:(?:content|thumbnail)[^>]*url="([^"]+)"/i.exec(item)?.[1] ??
+      /<enclosure[^>]*url="([^"]+)"[^>]*type="image/i.exec(item)?.[1] ??
+      /<img[^>]+src=["']([^"']+)["']/i.exec(html)?.[1],
+  );
+}
+
+/** Feeds without pictures (MBW, Rolling Stone): the article page's share image (og:image). */
+async function pageImage(link: string) {
+  const html = await get(link, 8000).catch(() => "");
+  return httpsOnly(
+    /<meta[^>]+property=["']og:image["'][^>]*content=["']([^"']+)["']/i.exec(html)?.[1] ??
+      /<meta[^>]+content=["']([^"']+)["'][^>]*property=["']og:image["']/i.exec(html)?.[1],
+  );
 }
 
 async function publisher(p: (typeof PUBLISHERS)[number]): Promise<Article[]> {
@@ -80,7 +109,7 @@ async function publisher(p: (typeof PUBLISHERS)[number]): Promise<Article[]> {
       if (!title || !link || !summary) return [];
       if (!p.ai && !AI.test(text)) return [];
       if ((p.music || !p.ai) && !MUSIC.test(text)) return [];
-      return [{ title, link, source: p.source, category: categorize(text), date: tag(item, "pubDate"), summary }];
+      return [{ title, link, source: p.source, category: categorize(text), date: tag(item, "pubDate"), summary, image: feedImage(item) }];
     }),
   );
 }
@@ -94,7 +123,7 @@ async function google(q: string): Promise<Article[]> {
     // Google News titles end in " - Source"; their descriptions only repeat the headline, so no summary.
     const m = raw.match(/^(.*) - ([^-]+)$/);
     const title = m?.[1] ?? raw;
-    return [{ title, link, source: m?.[2]?.trim() ?? "Google News", category: categorize(title), date: tag(item, "pubDate"), summary: "" }];
+    return [{ title, link, source: m?.[2]?.trim() ?? "Google News", category: categorize(title), date: tag(item, "pubDate"), summary: "", image: "" }];
   });
 }
 
@@ -102,7 +131,7 @@ export async function getNews(limit = 30): Promise<Article[]> {
   let all = (await Promise.all(PUBLISHERS.map(publisher))).flat();
   if (all.length < 12) all = all.concat((await Promise.all(GOOGLE.map(google))).flat());
   const seen = new Set<string>();
-  return all
+  const news = all
     .filter((a) => {
       const k = a.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
       if (seen.has(k)) return false;
@@ -111,4 +140,7 @@ export async function getNews(limit = 30): Promise<Article[]> {
     })
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
     .slice(0, limit);
+  // Only the articles shown get their page read, and those pages are cached like the feeds.
+  await Promise.all(news.map(async (a) => (a.image ||= a.summary ? await pageImage(a.link) : "")));
+  return news;
 }

@@ -76,7 +76,7 @@ export const PRIVACY: Block[] = [
  ],
  [
   "p",
-  "When you visit the Site, our hosting provider (Vercel) records basic technical information in its server logs, such as your IP address, browser and device type, the page requested and the referring website, so it can deliver the Site and protect it against abuse. We do not use analytics or advertising trackers."
+  "When you visit the Site, our hosting provider (Vercel) records basic technical information in its server logs, such as your IP address, browser and device type, the page requested and the referring website, so it can deliver the Site and protect it against abuse. We do not use analytics or advertising trackers. The Off the Square page shows pictures loaded directly from the publications it links to; like any website serving an image, they can see your IP address, but we send them no information about you."
  ],
  [
   "h2",

@@ -3,13 +3,13 @@ import { PageHead } from "@/components/sections";
 import { getNews } from "@/lib/news";
 
 export const revalidate = 21600;
-export const metadata: Metadata = { title: "News", description: "What's happening where AI meets music — headlines collected by Squaredrum." };
+export const metadata: Metadata = { title: "Off the Square", description: "Off the Square: what's happening where AI meets music, headlines collected by Squaredrum." };
 
 export default async function News() {
   const news = await getNews();
   return (
     <main>
-      <PageHead eyebrow="The wire" title="News." lede="What's happening where AI meets music — the latest headlines from around the industry, refreshed through the day." />
+      <PageHead eyebrow="News · The wire" title="Off the Square." lede="What's happening beyond the Square, where AI meets music. The latest headlines from around the industry, refreshed through the day." />
       <section className="sec wrap">
         {news.length ? (
           <div className="news-grid">

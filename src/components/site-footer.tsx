@@ -15,7 +15,7 @@ export function SiteFooter() {
             <li><Link href="/artists">Artists</Link></li>
             <li><Link href="/releases">Releases</Link></li>
             <li><Link href="/about">About</Link></li>
-            <li><Link href="/news">News</Link></li>
+            <li><Link href="/news">Off the Square</Link></li>
           </ul>
         </div>
         <div>

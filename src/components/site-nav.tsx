@@ -16,7 +16,7 @@ const LINKS = [
 const MENU = [
   ...LINKS,
   { href: "/work-with-us", label: "Work with us" },
-  { href: "/news", label: "News" },
+  { href: "/news", label: "Off the Square" },
   { href: "/contact", label: "Contact" },
 ];
 

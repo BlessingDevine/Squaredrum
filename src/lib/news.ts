@@ -16,16 +16,19 @@ const FEEDS = [
   { q: "AI music streaming", category: "Business" },
 ];
 
+// Feeds often send their HTML entity-encoded (&lt;a href=…&gt;), so tags are stripped both before and after
+// the entities are decoded; &amp; goes last so "&amp;lt;" stays a literal "&lt;".
 const decode = (s: string) =>
   s
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
     .replace(/<[^>]*>/g, "")
     .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+    .replace(/&#0?39;/g, "'")
+    .replace(/<[^>]*>/g, "")
+    .replace(/&amp;/g, "&")
     .replace(/\s+/g, " ")
     .trim();
 
@@ -45,8 +48,11 @@ async function feed(q: string, category: string): Promise<Article[]> {
       if (!raw || !link) return [];
       // Google News titles end in " - Source".
       const m = raw.match(/^(.*) - ([^-]+)$/);
-      const summary = tag(item, "description").replace(raw, "").slice(0, 240);
-      return [{ title: m?.[1] ?? raw, source: m?.[2]?.trim() ?? "Google News", link, category, date: tag(item, "pubDate"), summary }];
+      const title = m?.[1] ?? raw;
+      // Google News descriptions are just the headline and source again: no summary then.
+      const desc = tag(item, "description").replace(raw, "").trim();
+      const summary = desc.startsWith(title.slice(0, 40)) ? "" : desc.slice(0, 240);
+      return [{ title, source: m?.[2]?.trim() ?? "Google News", link, category, date: tag(item, "pubDate"), summary }];
     });
   } catch {
     return [];

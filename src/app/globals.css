@@ -644,7 +644,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .news-brief h3{font-size:16px;line-height:1.35;font-weight:600;margin:6px 0 0}
 .news-brief h3 a{color:inherit;text-decoration:none}
 .news-brief h3 a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
-.news-thumb{flex:0 0 88px;width:88px;height:88px;overflow:hidden;border-radius:12px;background:#e9e6de}
+.news-thumb{flex:0 0 88px;width:88px;height:88px;overflow:hidden;background:#e9e6de}
 .news-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05);transition:filter .5s}
 .news-brief:hover .news-thumb img,.news-brief:focus-within .news-thumb img,.news-brief:active .news-thumb img{filter:none}
 @media (max-width:860px){

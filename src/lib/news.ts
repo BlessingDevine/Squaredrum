@@ -139,6 +139,8 @@ export async function getNews(limit = 30): Promise<Article[]> {
       return true;
     })
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+    // Latest news only: the last 30 days, but never fewer than 12 stories.
+    .filter((a, i) => i < 12 || Date.now() - Date.parse(a.date) < 30 * 86400000)
     .slice(0, limit);
   // Only the articles shown get their page read, and those pages are cached like the feeds.
   await Promise.all(news.map(async (a) => (a.image ||= a.summary ? await pageImage(a.link) : "")));

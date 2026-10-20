@@ -269,9 +269,6 @@ footer{background:var(--ink);color:var(--white);border-top:1px solid var(--line-
 .foot h4{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .foot ul{list-style:none;display:grid;gap:10px;font-size:14px;color:#cfccc4}
 .foot a:hover{color:var(--gold)}
-.news{display:flex;margin-top:22px;max-width:360px;border-bottom:1px solid var(--line-dark)}
-.news input{flex:1;background:none;border:0;color:var(--white);font:inherit;font-size:14px;padding:12px 0;outline:none}
-.news button{color:var(--gold)}
 .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;padding-bottom:70px;border-top:1px solid var(--line-dark);color:#7c7a73}
 
 /* ---------------- MOBILE ---------------- */

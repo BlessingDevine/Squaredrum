@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CONTACT_EMAIL, RADIO_URL, SOCIAL } from "@/lib/config";
-import { NewsletterForm } from "./forms";
 
 export function SiteFooter() {
   return (
@@ -8,7 +7,6 @@ export function SiteFooter() {
       <div className="wrap foot">
         <div>
           <img src="/brand/squaredrum-stacked-tagline-metallic.svg" alt="SQUAREDRUM — Music Without Borders" />
-          <NewsletterForm />
         </div>
         <div>
           <h4>Label</h4>

@@ -17,40 +17,6 @@ async function post(url: string, body: unknown): Promise<Status> {
   }
 }
 
-export function NewsletterForm() {
-  const [status, setStatus] = useState<Status>({ kind: "idle" });
-  return (
-    <>
-      <form
-        className="news"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const form = e.currentTarget;
-          setStatus({ kind: "sending" });
-          const data = new FormData(form);
-          const s = await post("/api/newsletter", { email: data.get("email"), website: data.get("website") });
-          setStatus(s);
-          if (s.kind === "ok") form.reset();
-        }}
-      >
-        <input type="email" name="email" required placeholder="Get new drops in your inbox" aria-label="Email" />
-        <button className="mono" type="submit" disabled={status.kind === "sending"}>
-          {status.kind === "sending" ? "…" : "Join →"}
-        </button>
-        {/* Bots fill every field; people never see this one. */}
-        <input name="website" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: -9999 }} aria-hidden="true" />
-      </form>
-      <p style={{ marginTop: 8, fontSize: 12, lineHeight: 1.5, opacity: 0.55 }}>
-        News and new releases only. Unsubscribe any time.{" "}
-        <Link href="/privacy" style={{ textDecoration: "underline" }}>Privacy</Link>
-      </p>
-      {status.kind === "ok" && <p className="form-note mono" style={{ color: "var(--gold)", marginTop: 10 }}>You&apos;re on the list.</p>}
-      {status.kind === "err" && <p className="form-note mono" style={{ color: "#e5847f", marginTop: 10 }}>{status.text ?? "Something went wrong — try again."}</p>}
-    </>
-  );
-}
-
-
 export function ContactForm({ topic }: { topic?: string }) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   if (status.kind === "ok") {

@@ -32,7 +32,6 @@ export const PRIVACY: Block[] = [
   [
    "Download free music or digital content",
    "Purchase music, merchandise, or services",
-   "Subscribe to newsletters or promotional communications",
    "Submit forms or contact us directly"
   ]
  ],
@@ -90,7 +89,7 @@ export const PRIVACY: Block[] = [
  [
   "ul",
   [
-   "Consent (e.g., for marketing emails)",
+   "Consent (e.g., when you contact us or create an account)",
    "Contractual necessity (e.g., fulfilling downloads or purchases)",
    "Legal obligations",
    "Legitimate interest (e.g., keeping the Site secure and preventing fraud)"
@@ -108,7 +107,7 @@ export const PRIVACY: Block[] = [
   "ul",
   [
    "Deliver and improve our music, content, and services",
-   "Communicate with you about releases, promotions, or updates",
+   "Reply to your messages and tell you about important changes to our services",
    "Fulfill purchases and free downloads, and process payments",
    "Protect against fraud and maintain security",
    "Comply with legal obligations"
@@ -198,14 +197,6 @@ export const PRIVACY: Block[] = [
  [
   "p",
   "If we ever add optional cookies (for example, for analytics), we will update this policy and ask for your consent first where the law requires it."
- ],
- [
-  "h3",
-  "Newsletter"
- ],
- [
-  "p",
-  "If you join our mailing list, we use your email address only to send you Squaredrum news and releases. Every email includes an unsubscribe link, and you can also ask to be removed at any time by emailing privacy@squaredrum.com."
  ],
  [
   "h2",

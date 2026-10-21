@@ -14,6 +14,9 @@ const CRAFT = [
   ["Quality supervision", "Experienced producers oversee every release with discerning ears and refined musical taste."],
 ];
 
+// A spread of the roster across labels and genres; the last one sits in front.
+const COLLAGE = ["knox-havoc", "litha-flow", "sadie-colton", "deejay-zethu", "lea-babi"];
+
 export default async function About() {
   const c = await getCatalog();
   return (
@@ -28,8 +31,7 @@ export default async function About() {
           </>
         }
         lede="SQUAREDRUM pioneers the future of music through the collaboration between AI creativity and human expertise."
-        art="/roster/riven-cole.jpg"
-        portrait
+        collage={COLLAGE.map((slug) => `/roster/${slug}-square.jpg`)}
       />
 
       <section className="sec wrap">

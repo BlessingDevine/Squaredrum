@@ -322,7 +322,7 @@ export function PageHead({
   art?: string | null;
   portrait?: boolean;
   crumbs?: { href: string; label: string }[];
-  /** Three or more pictures fanned out on the dark side when there's no single `art`. */
+  /** Three (or five) pictures fanned out on the dark side when there's no single `art`; the last is in front. */
   collage?: string[];
   children?: React.ReactNode;
 }) {
@@ -351,8 +351,8 @@ export function PageHead({
         {art ? (
           <img className={`phead-art${portrait ? " portrait" : ""}`} src={img(art, 828)} alt="" />
         ) : collage && collage.length >= 3 ? (
-          <div className="phead-collage" aria-hidden="true">
-            {collage.slice(0, 3).map((src) => (
+          <div className={`phead-collage${collage.length >= 5 ? " five" : ""}`} aria-hidden="true">
+            {collage.slice(0, collage.length >= 5 ? 5 : 3).map((src) => (
               <img key={src} src={src} alt="" />
             ))}
           </div>

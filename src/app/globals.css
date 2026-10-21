@@ -710,6 +710,14 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .phead-collage img:nth-child(2){right:0;top:4%;transform:rotate(7deg)}
 .phead-collage img:nth-child(3){left:19%;top:22%;z-index:2;outline:2px solid var(--gold);outline-offset:-2px}
 .phead-icon{justify-self:end;width:min(260px,60%);opacity:.9;margin-right:4%}
+/* Five: four corners fanned behind, the fifth in front with the gold edge. */
+.phead-collage.five{aspect-ratio:1.05}
+.phead-collage.five img{width:46%}
+.phead-collage.five img:nth-child(1){left:0;top:4%;transform:rotate(-9deg)}
+.phead-collage.five img:nth-child(2){right:0;top:0;transform:rotate(6deg)}
+.phead-collage.five img:nth-child(3){left:3%;top:auto;bottom:2%;transform:rotate(5deg)}
+.phead-collage.five img:nth-child(4){right:2%;bottom:4%;transform:rotate(-6deg)}
+.phead-collage.five img:nth-child(5){left:27%;top:25%;width:48%;z-index:2;outline:2px solid var(--gold);outline-offset:-2px;transform:none}
 @media (max-width:760px){.phead-collage{justify-self:start;width:min(320px,86vw)}.phead-icon{display:none}}
 .ahead .chip{border-color:var(--line-dark);color:#cfccc4}
 @media (max-width:760px){.ahead .chip{border-color:var(--line-light);color:var(--ink)}}

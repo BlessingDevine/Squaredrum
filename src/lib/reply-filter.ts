@@ -65,5 +65,6 @@ export function classify(m: Inbound): Verdict {
   // message that mentions "unsubscribe" goes to a person instead.
   if (words.split(/\s+/).filter(Boolean).length <= 12 && UNSUBSCRIBE.test(words)) return "unsubscribe";
 
-  return m.to.some((t) => address(t).startsWith("fans@")) ? "fans" : "support";
+  // fans@ is Drumroll's reply-to; issues sent before it was set reply to drumroll@ itself.
+  return m.to.some((t) => /^(fans|drumroll)@/.test(address(t))) ? "fans" : "support";
 }

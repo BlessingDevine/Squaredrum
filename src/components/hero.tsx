@@ -64,7 +64,10 @@ export function Hero({ slides }: { slides: Slide[] }) {
           <line x1="0" y1="60" x2="100" y2="46" />
         </svg>
 
-        <h1 className="display h-left">Music</h1>
+        {/* The heading reads "Music Without Borders"; the second half is drawn by .h-right. */}
+        <h1 className="display h-left">
+          Music<span className="sr-only"> Without Borders</span>
+        </h1>
         <p className="h-sub">
           AI-composed. <b>Human-crafted.</b> Eighteen imprints, one house — from Afrobeats to Rock, live around the clock.
         </p>

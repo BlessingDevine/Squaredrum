@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Album, type Artist, type Catalog, type Imprint, sized } from "@/lib/catalog";
+import { type Album, type Artist, type Catalog, type Imprint, sized, songsLabel } from "@/lib/catalog";
 import { RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { ChannelChips } from "./channel-chips";
@@ -231,11 +231,10 @@ export function Story({ id = "story" }: { id?: string }) {
 }
 
 export function Stats({ c }: { c: Catalog }) {
-  const songs = Math.floor(c.songs.length / 100) * 100;
   return (
     <div className="stats">
       <div className="stat">
-        <b>{songs.toLocaleString("en-US")}+</b>
+        <b>{songsLabel(c)}</b>
         <span className="mono">Songs in the catalogue</span>
       </div>
       <div className="stat">

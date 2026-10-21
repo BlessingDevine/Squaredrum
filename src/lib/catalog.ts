@@ -10,7 +10,7 @@ import { IMPRINTS, portraitFor, slugify } from "./site";
  * The whole released catalogue, read from the Supabase project Musicsquare
  * Radio and GoSquare share, so anything added there shows up here too.
  *
- * ~2,600 songs is small enough to hold in memory. It is refetched at most
+ * ~3,200 songs is small enough to hold in memory. It is refetched at most
  * every five minutes; the last good copy is served if Supabase blips.
  * (Adapted from GoSquare's src/lib/catalog.ts — albums are derived from songs
  * because there is no albums table.)
@@ -183,6 +183,11 @@ async function fetchAll() {
 export function sized(url: string | null, px: 300 | 600 | "full"): string | null {
   if (!url || px === "full") return url;
   return /\/audio\/(covers|imprints)\/[0-9a-f]+\.jpg$/.test(url) ? url.replace(/\.jpg$/, `-${px}.jpg`) : url;
+}
+
+/** The song count rounded down to the hundred, e.g. "3,200+", as the site quotes it. */
+export function songsLabel(c: Catalog): string {
+  return `${(Math.floor(c.songs.length / 100) * 100).toLocaleString("en-US")}+`;
 }
 
 function build([imprintRows, artistRows, songRows, stations, tracks, covers, art]: Awaited<ReturnType<typeof fetchAll>>): Catalog {

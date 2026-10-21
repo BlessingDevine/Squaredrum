@@ -7,6 +7,7 @@ import { NavTracker } from "@/components/back-link";
 import { PlayerBar } from "@/components/player-bar";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { getCatalog, songsLabel } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import "./globals.css";
 
@@ -15,17 +16,18 @@ const michroma = Michroma({ weight: "400", subsets: ["latin"], variable: "--font
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument" });
 
-const description =
-  "SQUAREDRUM Records — AI creativity, human craft. Eighteen imprints, 2,600+ songs, live around the clock on Musicsquare Radio and in the GoSquare app.";
-
-export const metadata: Metadata = {
-  // Fixed rather than derived from Vercel's URL, which broke previews on the radio site.
-  metadataBase: new URL(SITE_URL),
-  title: { default: "SQUAREDRUM — Music Without Borders", template: "%s · SQUAREDRUM" },
-  description,
-  openGraph: { title: "SQUAREDRUM — Music Without Borders", description, siteName: "SQUAREDRUM", type: "website" },
-  twitter: { card: "summary_large_image" },
-};
+// The song count comes from the catalogue, so the description keeps up with the stats on the page.
+export async function generateMetadata(): Promise<Metadata> {
+  const description = `SQUAREDRUM Records — AI creativity, human craft. Eighteen imprints, ${songsLabel(await getCatalog())} songs, live around the clock on Musicsquare Radio and in the GoSquare app.`;
+  return {
+    // Fixed rather than derived from Vercel's URL, which broke previews on the radio site.
+    metadataBase: new URL(SITE_URL),
+    title: { default: "SQUAREDRUM — Music Without Borders", template: "%s · SQUAREDRUM" },
+    description,
+    openGraph: { title: "SQUAREDRUM — Music Without Borders", description, siteName: "SQUAREDRUM", type: "website" },
+    twitter: { card: "summary_large_image" },
+  };
+}
 
 export const viewport: Viewport = { themeColor: "#0B0B0C" };
 

@@ -334,6 +334,7 @@ body{position:relative}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .skip{position:absolute;left:-999px;top:8px;z-index:300;background:var(--gold);color:var(--ink);padding:8px 14px}
 .skip:focus{left:8px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .nav-home{position:absolute}
 .topbar{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--white);border-bottom:1px solid var(--line-dark)}
 .topbar-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}

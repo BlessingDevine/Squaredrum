@@ -51,20 +51,23 @@ export default async function About() {
             <p>This is the SQUAREDRUM difference — where technology and tradition unite to make music that moves, inspires and connects.</p>
           </div>
         </div>
-        <div className="steps">
-          {CRAFT.slice(0, 3).map(([t, d], i) => (
-            <div className="step" key={t}>
-              <span className="mono">0{i + 1}</span>
-              <b>{t}</b>
-              <p>{d}</p>
-            </div>
-          ))}
-        </div>
-        <div className="steps" style={{ marginTop: 0, gridTemplateColumns: "1fr" }}>
-          <div className="step">
-            <span className="mono">04</span>
-            <b>{CRAFT[3][0]}</b>
-            <p>{CRAFT[3][1]}</p>
+        <div className="craft">
+          <img
+            className="craft-photo"
+            src="/about/studio-960.jpg"
+            srcSet="/about/studio-600.jpg 600w, /about/studio-960.jpg 960w, /about/studio-1440.jpg 1440w"
+            sizes="(max-width:760px) 100vw, 42vw"
+            alt="A mix engineer at the console, with Lea Babi on the studio screen"
+            loading="lazy"
+          />
+          <div className="craft-steps">
+            {CRAFT.map(([t, d], i) => (
+              <div className="step" key={t}>
+                <span className="mono">0{i + 1}</span>
+                <b>{t}</b>
+                <p>{d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

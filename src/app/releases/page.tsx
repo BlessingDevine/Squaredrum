@@ -4,6 +4,7 @@ import { ReleaseSearch, Shelf } from "@/components/release-browser";
 import { ArtistStackCard, PageHead, ReleaseCard } from "@/components/sections";
 import { type Album, getCatalog, sized } from "@/lib/catalog";
 import { seededShuffle } from "@/lib/seeded";
+import { DrumrollForm } from "@/components/forms";
 
 export const metadata: Metadata = { title: "Releases", description: "Every Squaredrum album and collection, across eighteen imprints." };
 
@@ -147,6 +148,19 @@ export default async function Releases({ searchParams }: PageProps<"/releases">)
         <p className="artist-none mono" hidden>
           No releases match that search.
         </p>
+      </section>
+
+      <section className="sec wrap" style={{ paddingTop: 0 }}>
+        <div className="drumroll-band">
+          <div>
+            <div className="eyebrow mono">Drumroll</div>
+            <h2 className="display">New Music Friday, in your inbox.</h2>
+            <p className="lede">New albums go live every Friday at 9 AM Pacific. Drumroll lands at the same moment, with what&rsquo;s out today and what&rsquo;s happening across Squaredrum.</p>
+          </div>
+          <div>
+            <DrumrollForm source="releases" tone="light" />
+          </div>
+        </div>
       </section>
     </main>
   );

@@ -32,6 +32,7 @@ export const PRIVACY: Block[] = [
   [
    "Download free music or digital content",
    "Purchase music, merchandise, or services",
+   "Sign up for Drumroll, our Friday email",
    "Submit forms or contact us directly"
   ]
  ],
@@ -197,6 +198,14 @@ export const PRIVACY: Block[] = [
  [
   "p",
   "If we ever add optional cookies (for example, for analytics), we will update this policy and ask for your consent first where the law requires it."
+ ],
+ [
+  "h3",
+  "Drumroll (our Friday email)"
+ ],
+ [
+  "p",
+  "If you sign up for Drumroll, we keep your email address and use it only to send Drumroll: new releases every Friday and news from Squaredrum. It is stored with Supabase and sent through Resend, our email provider, and never sold or shared for anyone else's marketing. Every email has an unsubscribe link, and you can also ask to be removed at any time by emailing privacy@squaredrum.com."
  ],
  [
   "h2",

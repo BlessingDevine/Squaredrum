@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CONTACT_EMAIL, RADIO_URL, SOCIAL } from "@/lib/config";
+import { DrumrollForm } from "./forms";
 
 export function SiteFooter() {
   return (
@@ -7,6 +8,10 @@ export function SiteFooter() {
       <div className="wrap foot">
         <div>
           <img src="/brand/squaredrum-stacked-tagline-metallic.svg" alt="SQUAREDRUM — Music Without Borders" />
+          <div className="foot-drumroll">
+            <h4>Drumroll · New Music Friday</h4>
+            <DrumrollForm source="footer" />
+          </div>
         </div>
         <div>
           <h4>Label</h4>

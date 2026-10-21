@@ -17,6 +17,40 @@ async function post(url: string, body: unknown): Promise<Status> {
   }
 }
 
+/** Drumroll, the Friday email: new music every Friday plus Squaredrum news. */
+export function DrumrollForm({ source = "squaredrum.com", tone = "dark" }: { source?: string; tone?: "dark" | "light" }) {
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
+  if (status.kind === "ok") {
+    return <p className={`drumroll-done mono ${tone}`}>{status.text ?? "You're in — see you Friday."}</p>;
+  }
+  return (
+    <>
+      <form
+        className={`news ${tone}`}
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const form = e.currentTarget;
+          setStatus({ kind: "sending" });
+          const data = new FormData(form);
+          setStatus(await post("/api/newsletter", { email: data.get("email"), website: data.get("website"), source }));
+        }}
+      >
+        <input type="email" name="email" required placeholder="Your email" aria-label="Email for Drumroll" autoComplete="email" />
+        <button className="mono" type="submit" disabled={status.kind === "sending"}>
+          {status.kind === "sending" ? "…" : "Join →"}
+        </button>
+        {/* Bots fill every field; people never see this one. */}
+        <input name="website" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: -9999 }} aria-hidden="true" />
+      </form>
+      <p className={`news-note ${tone}`}>
+        Every Friday: new releases and Squaredrum news. Unsubscribe any time.{" "}
+        <Link href="/privacy">Privacy</Link>
+      </p>
+      {status.kind === "err" && <p className="form-note mono" style={{ color: "#e5847f", marginTop: 10 }}>{status.text ?? "Something went wrong — try again."}</p>}
+    </>
+  );
+}
+
 export function ContactForm({ topic }: { topic?: string }) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   if (status.kind === "ok") {

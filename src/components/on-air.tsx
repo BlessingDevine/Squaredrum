@@ -28,11 +28,24 @@ export function OnAirDeck({ initial, at, imprintNames }: { initial: OnAirNow[]; 
   // A new channel order on every visit (Robert, 2026-10-12), so every channel gets
   // its turn at the top. The server paints the fixed order; the browser reshuffles.
   const visit = useVisitSeed();
+  // A link straight to one channel (Drumroll's "Tune in", ?channel=amapiano-afro-house#onair) picks it and
+  // puts it first. Sound still needs one tap: browsers don't let a page start playing by itself.
+  const [linked, setLinked] = useState<string | null>(null);
+  useEffect(() => {
+    const want = new URLSearchParams(location.search).get("channel");
+    if (!want || !initial.some((c) => c.slug === want)) return;
+    const id = requestAnimationFrame(() => {
+      setLinked(want);
+      setSlug(want);
+      document.getElementById("onair")?.scrollIntoView({ block: "start" });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [initial]);
   const shown = useMemo(() => {
-    if (!visit) return channels;
-    const order = seededShuffle(channels.map((c) => c.slug), `onair:${visit}`);
-    return [...channels].sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
-  }, [channels, visit]);
+    const order = visit ? seededShuffle(channels.map((c) => c.slug), `onair:${visit}`) : channels.map((c) => c.slug);
+    const rank = (x: string) => (x === linked ? -1 : order.indexOf(x));
+    return [...channels].sort((a, b) => rank(a.slug) - rank(b.slug));
+  }, [channels, visit, linked]);
   // Phones and tablets stack the list above the song, folded to the channel in
   // front until "All channels" opens it (Robert, 2026-10-12); picking a channel
   // folds it again. Desktops always show the whole list.

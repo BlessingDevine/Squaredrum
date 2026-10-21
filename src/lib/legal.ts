@@ -205,7 +205,7 @@ export const PRIVACY: Block[] = [
  ],
  [
   "p",
-  "If you sign up for Drumroll, we keep your email address and use it only to send Drumroll: new releases every Friday and news from Squaredrum. It is stored with Supabase and sent through Resend, our email provider, and never sold or shared for anyone else's marketing. Every email has an unsubscribe link, and you can also ask to be removed at any time by emailing privacy@squaredrum.com."
+  "If you sign up for Drumroll, we keep your email address and use it only to send Drumroll: new releases every Friday and news from Squaredrum. It is stored with Supabase and sent through Resend, our email provider, and never sold or shared for anyone else's marketing. Every email has an unsubscribe link, and you can also ask to be removed at any time by emailing privacy@squaredrum.com or replying \"unsubscribe\". If you reply to Drumroll or to a GoSquare sign-in email, your message passes through Resend and is forwarded to our team so we can answer; automatic replies such as out-of-office messages are discarded."
  ],
  [
   "h2",

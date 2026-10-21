@@ -36,7 +36,7 @@ export default async function About() {
 
       <section className="sec wrap">
         <div className="story-top">
-          <div className="prose">
+          <div className="prose justify">
             <p>
               Our journey began when our founder recognised the potential that emerges when cutting-edge AI is combined with human expertise in
               music production. AI generates compositions, melodies and vocal performances; our mix engineers, mastering specialists and sound

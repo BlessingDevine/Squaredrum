@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DownloadsChip } from "@/components/account";
 import { BackLink } from "@/components/back-link";
 import { notFound } from "next/navigation";
 import { ExplicitBadge, PlayButton, TrackList } from "@/components/play";
@@ -85,6 +86,7 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
                   {imp.name}
                 </Link>
               )}
+              <DownloadsChip className="btn btn-ghost-light" />
             </div>
           </div>
         </div>

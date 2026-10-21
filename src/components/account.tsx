@@ -500,6 +500,29 @@ export function FollowButton({ artistId, name }: { artistId: string; name: strin
   );
 }
 
+/**
+ * Free downloads, on release and artist pages: an invitation to sign in for
+ * listeners who aren't, and how many are left this week for those who are.
+ * Shows nothing until sign-in is known, so it never flashes the wrong one.
+ */
+export function DownloadsChip({ className = "chip chip-dl" }: { className?: string }) {
+  const a = useAccount();
+  if (!a.ready) return null;
+  if (!a.signedIn)
+    return (
+      <button className={className} onClick={() => a.askSignIn(`Sign in to download songs. It's free: up to ${DOWNLOADS_PER_WEEK} a week.`)}>
+        ↓ Free downloads · Sign in
+      </button>
+    );
+  if (a.downloadsUsed === null) return null;
+  const left = Math.max(0, DOWNLOADS_PER_WEEK - a.downloadsUsed);
+  return (
+    <Link className={className} href="/account" title="Tap ↓ next to any song to download it">
+      ↓ {left} of {DOWNLOADS_PER_WEEK} left this week
+    </Link>
+  );
+}
+
 /** The nav's account link: "Sign in", or the listener's initial once signed in. */
 export function AccountLink({ className }: { className?: string }) {
   const a = useAccount();

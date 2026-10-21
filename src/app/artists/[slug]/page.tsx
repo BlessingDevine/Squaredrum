@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Gallery } from "@/components/gallery";
-import { FollowButton } from "@/components/account";
+import { DownloadsChip, FollowButton } from "@/components/account";
 import { InstagramChip, instagramUrl } from "@/components/instagram";
 import { PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard, leadCover } from "@/components/sections";
@@ -64,6 +64,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
               )}
               <FollowButton artistId={a.id} name={a.name} />
               <InstagramChip handle={a.instagram} name={a.name} />
+              <DownloadsChip />
             </div>
           </div>
           {photo &&
@@ -167,6 +168,7 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
             </span>
             <FollowButton artistId={a.id} name={a.name} />
             <InstagramChip handle={a.instagram} name={a.name} />
+            <DownloadsChip />
           </div>
         </div>
       </header>

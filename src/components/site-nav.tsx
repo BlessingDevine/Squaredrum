@@ -90,9 +90,9 @@ export function SiteNav() {
               Radio · Live
             </a>
             {/* Hidden on mid-size screens, where it would push Radio · Live onto the white half of the hero. */}
-            <a href="#gosquare" className="hide-m hide-l">
+            <Link href="/app" className="hide-m hide-l">
               GoSquare App
-            </a>
+            </Link>
             <Link href="/news" className="hide-m">
               Off the Square
             </Link>

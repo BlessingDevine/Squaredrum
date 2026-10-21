@@ -27,7 +27,7 @@ export function SiteFooter() {
           <h4>Listen</h4>
           <ul>
             <li><a href={RADIO_URL}>Musicsquare Radio</a></li>
-            <li><Link href="/#gosquare">GoSquare app</Link></li>
+            <li><Link href="/app">GoSquare app</Link></li>
             <li><a href={SOCIAL.youtube}>YouTube</a></li>
             <li><a href={SOCIAL.instagram}>Instagram</a></li>
             <li><a href={SOCIAL.tiktok}>TikTok</a></li>

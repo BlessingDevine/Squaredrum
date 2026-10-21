@@ -168,8 +168,8 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
           <p style={{ marginTop: 18 }}>Every album, every artist, every live channel — plus lyrics, clips and your own playlists. iOS &amp; Android.</p>
         </div>
         <div>
-          <Link className="btn btn-ink" href="/contact?topic=GoSquare%20waitlist">
-            Join the waitlist
+          <Link className="btn btn-ink" href="/app">
+            See what&rsquo;s coming →
           </Link>
         </div>
         <div className="phone" aria-hidden="true">

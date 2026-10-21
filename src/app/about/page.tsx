@@ -111,7 +111,7 @@ export default async function About() {
               Tune in <i>↗</i>
             </div>
           </a>
-          <Link className="card" href="/contact?topic=GoSquare%20waitlist">
+          <Link className="card" href="/app">
             <div>
               <span className="mono gold">GoSquare · Free · Coming soon</span>
               <br />
@@ -123,13 +123,13 @@ export default async function About() {
               </p>
             </div>
             <div className="go mono">
-              Join the waitlist <i>→</i>
+              See what&rsquo;s coming <i>→</i>
             </div>
           </Link>
         </div>
         <p className="three-line">
           Squaredrum makes the music. Musicsquare Radio plays it live. GoSquare lets you play it your way. <span className="gold">All of it is free.</span>{" "}
-          Accounts are coming: one account across all three, and signing up unlocks free downloads.
+          One free account works across all three, and it unlocks up to 20 free downloads a week.
         </p>
       </section>
 

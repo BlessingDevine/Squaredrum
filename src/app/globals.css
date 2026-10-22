@@ -214,7 +214,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .eco p{font-size:15px;line-height:1.6;max-width:400px}
 .eco-a p{color:#a6a39b}
 .eco-b p{color:#4a4842}
-.eco .brand-logo{height:30px;width:auto}
+.eco .brand-logo{height:44px;width:auto} /* RADIO is a sixth of the logo height: smaller and it drops under 7px */
 .chan{display:flex;flex-wrap:wrap;gap:8px}
 .chan span{border:1px solid var(--line-dark);border-radius:999px;padding:7px 12px;font-family:var(--mono);font-size:11px;text-transform:uppercase;color:#cfccc4}
 .chan span.live{border-color:var(--gold);color:var(--gold)}

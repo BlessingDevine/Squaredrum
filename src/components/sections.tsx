@@ -132,7 +132,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
     <section className="eco" id="gosquare">
       <div className="eco-a">
         <div>
-          <img className="brand-logo" src="/brand/musicsquare-radio-horizontal-dark.svg" alt="Musicsquare Radio" />
+          <img className="brand-logo" src="/brand/musicsquare-radio-logo.svg" alt="Musicsquare Radio" />
         </div>
         <div>
           <div className="eyebrow mono">24/7 · Live</div>

@@ -87,7 +87,7 @@ export default function AppPage() {
       </section>
 
       <section className="sec wrap">
-        <div className="drumroll-band">
+        <div className="drumroll-band radio-after">
           <div>
             <div className="eyebrow mono">iPhone next</div>
             <h2 className="display">Hear the day it reaches iPhone.</h2>
@@ -108,7 +108,7 @@ export default function AppPage() {
               </span>
             </a>
           </div>
-          <div>
+          <div className="db-form">
             <DrumrollForm source="app" tone="light" />
           </div>
         </div>

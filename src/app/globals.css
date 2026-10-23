@@ -290,8 +290,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .get-qr{display:flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;background:var(--white);border:1px solid var(--line-light);border-radius:12px;color:#4a4842;font-size:11px;line-height:1.5}
 .get-qr img{display:block;width:84px;height:84px;padding:6px;background:var(--white)}
 .get-qr:hover{border-color:var(--gold-deep)}
-/* A phone can't scan its own screen: phones keep just the button. */
-@media (hover:none),(max-width:760px){.get-qr{display:none}}
+/* On phones the card is still a tap-through link to Google Play (and can be shown to a friend to scan). */
+@media (max-width:760px){.eco-get{max-width:none}}
 .eco-copy{max-width:52%}
 .eco-split{position:absolute;inset:0;pointer-events:none}
 .eco-split line{stroke:var(--gold);stroke-width:2;vector-effect:non-scaling-stroke}

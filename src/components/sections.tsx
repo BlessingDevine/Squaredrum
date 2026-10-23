@@ -198,7 +198,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
   );
 }
 
-/** Desktop only (see .get-qr): scan with an Android phone to open GoSquare Music on Google Play. */
+/** Scan with an Android phone, or tap, to open GoSquare Music on Google Play. */
 export function GooglePlayQR() {
   return (
     <a className="get-qr" href={GOOGLE_PLAY_URL} target="_blank" rel="noopener" aria-label="GoSquare Music on Google Play (QR code)">

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { DrumrollForm } from "@/components/forms";
 import { GooglePlayQR, PageHead } from "@/components/sections";
-import { GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
+import { RADIO_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "GoSquare — the free music app",
@@ -43,13 +42,21 @@ export default function AppPage() {
         lede="GoSquare is the free music app from SQUAREDRUM, out now on Google Play for Android. iPhone is coming soon; until then, everything is playing here on squaredrum.com."
         collage={SHOTS.map(([n]) => `/gosquare/${n}-800.jpg`)}
       >
+        {/* The QR card is the Google Play link (tap or scan); the radio pill is the "listen now". */}
         <div className="phead-meta">
-          <a className="btn btn-gold" href={GOOGLE_PLAY_URL} target="_blank" rel="noopener">
-            ↓ Get it on Google Play
+          <a className="radio-live" href={RADIO_URL} target="_blank" rel="noopener">
+            <span className="rl-badge mono">
+              <span className="live-dot" />
+              Live
+            </span>
+            <span className="rl-text">
+              <b>Musicsquare Radio</b>
+              <span className="mono">On air now · tune in</span>
+            </span>
+            <span className="rl-go" aria-hidden="true">
+              ▶
+            </span>
           </a>
-          <Link className="btn btn-ink" href="/releases">
-            ▶ Listen now on squaredrum.com
-          </Link>
         </div>
         <div className="phead-meta">
           <GooglePlayQR />
@@ -87,28 +94,15 @@ export default function AppPage() {
       </section>
 
       <section className="sec wrap">
-        <div className="drumroll-band radio-after">
+        <div className="drumroll-band">
           <div>
             <div className="eyebrow mono">iPhone next</div>
             <h2 className="display">Hear the day it reaches iPhone.</h2>
             <p className="lede">
               Join Drumroll, our Friday email. We&rsquo;ll tell you the moment GoSquare is in the App Store, along with every Friday&rsquo;s new music.
             </p>
-            <a className="radio-live" href={RADIO_URL} target="_blank" rel="noopener">
-              <span className="rl-badge mono">
-                <span className="live-dot" />
-                Live
-              </span>
-              <span className="rl-text">
-                <b>Musicsquare Radio</b>
-                <span className="mono">On air now · tune in</span>
-              </span>
-              <span className="rl-go" aria-hidden="true">
-                ▶
-              </span>
-            </a>
           </div>
-          <div className="db-form">
+          <div>
             <DrumrollForm source="app" tone="light" />
           </div>
         </div>

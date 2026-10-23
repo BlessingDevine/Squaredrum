@@ -376,13 +376,7 @@ footer{background:var(--ink);color:var(--white);border-top:1px solid var(--line-
 .rl-text span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#a6a39b}
 .rl-go{width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:12px;margin-left:6px;transition:transform .25s}
 .radio-live:hover .rl-go{transform:scale(1.08)}
-/* /app on phones: the radio pill drops below the Drumroll email field. */
-@media (max-width:760px){
-  .drumroll-band.radio-after{display:flex;flex-direction:column;align-items:stretch;gap:0}
-  .drumroll-band.radio-after>div:first-child{display:contents}
-  .drumroll-band.radio-after .db-form{order:1;margin-top:24px}
-  .drumroll-band.radio-after .radio-live{order:2;align-self:flex-start;margin-top:30px}
-}
+.phead-meta .radio-live{margin-top:0}
 .app-shots{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,28px)}
 .app-shots figure{margin:0}
 .app-shots img{width:100%;height:auto;border-radius:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55);background:#000}

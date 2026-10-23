@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DrumrollForm } from "@/components/forms";
-import { PageHead } from "@/components/sections";
+import { GooglePlayQR, PageHead } from "@/components/sections";
 import { GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -50,6 +50,9 @@ export default function AppPage() {
           <Link className="btn btn-ink" href="/releases">
             ▶ Listen now on squaredrum.com
           </Link>
+        </div>
+        <div className="phead-meta">
+          <GooglePlayQR />
         </div>
       </PageHead>
 

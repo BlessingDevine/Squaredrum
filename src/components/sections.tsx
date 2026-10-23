@@ -179,15 +179,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
           <Link className="btn btn-ink" href="/app">
             Get the app →
           </Link>
-          {/* Desktop only: scan with an Android phone to open GoSquare Music on Google Play. */}
-          <a className="get-qr" href={GOOGLE_PLAY_URL} target="_blank" rel="noopener" aria-label="GoSquare Music on Google Play (QR code)">
-            <img src="/gosquare/google-play-qr.svg" alt="" width={84} height={84} />
-            <span className="mono">
-              Scan for
-              <br />
-              Google Play
-            </span>
-          </a>
+          <GooglePlayQR />
         </div>
         {/* The real app's screens, crossfading; the phone turns to face you as it scrolls into view. */}
         <div className="phone-3d" aria-hidden="true">
@@ -201,6 +193,20 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
         </div>
       </div>
     </section>
+  );
+}
+
+/** Desktop only (see .get-qr): scan with an Android phone to open GoSquare Music on Google Play. */
+export function GooglePlayQR() {
+  return (
+    <a className="get-qr" href={GOOGLE_PLAY_URL} target="_blank" rel="noopener" aria-label="GoSquare Music on Google Play (QR code)">
+      <img src="/gosquare/google-play-qr.svg" alt="" width={84} height={84} />
+      <span className="mono">
+        Scan for
+        <br />
+        Google Play
+      </span>
+    </a>
   );
 }
 

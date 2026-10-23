@@ -157,7 +157,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
           <img className="gs-word" src="/brand/gosquare-wordmark.png" alt="GoSquare" style={{ filter: "invert(1) hue-rotate(180deg)" }} />
         </div>
         <div className="eco-copy">
-          <div className="eyebrow mono">The app · Coming soon</div>
+          <div className="eyebrow mono">The app · Out now on Android</div>
           <h3 className="display">
             Take the
             <br />
@@ -165,11 +165,11 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
             <br />
             with you.
           </h3>
-          <p style={{ marginTop: 18 }}>Every album, every artist, every live channel — plus lyrics, clips and your own playlists. iOS &amp; Android.</p>
+          <p style={{ marginTop: 18 }}>Every album, every artist, every live channel — plus lyrics, clips and your own playlists. On Google Play now, iPhone coming soon.</p>
         </div>
         <div>
           <Link className="btn btn-ink" href="/app">
-            See what&rsquo;s coming →
+            Get the app →
           </Link>
         </div>
         <div className="phone" aria-hidden="true">

@@ -45,7 +45,7 @@ export default async function Home() {
     `Musicsquare Radio · ${c.channels.length} live channels`,
     `${(Math.floor(c.songs.length / 100) * 100).toLocaleString("en-US")}+ songs`,
     `${c.imprints.length} imprints`,
-    "GoSquare app · coming soon",
+    "GoSquare app · out now on Google Play",
     slides[0] ? `New drop: ${slides[0].drop}` : "New music every week",
     "Music without borders",
   ];

@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DrumrollForm } from "@/components/forms";
 import { PageHead } from "@/components/sections";
-import { RADIO_URL } from "@/lib/config";
+import { GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "GoSquare — coming soon",
-  description: "GoSquare, the free music app from SQUAREDRUM, is coming to iPhone and Android: every album, live radio channels, Canvas and lyrics. No ads, no subscription.",
+  title: "GoSquare — the free music app",
+  description: "GoSquare, the free music app from SQUAREDRUM, is out now on Android, with iPhone coming soon: every album, live radio channels, Canvas and lyrics. No ads, no subscription.",
   openGraph: { images: ["/gosquare/player-800.jpg"] },
 };
 
-// gosquare.app forwards here until the app is in the stores. The App Store's
+// gosquare.app forwards here. Android is live on Google Play; iPhone is still to come. The App Store's
 // Support URL is /gosquare (a different page); leave that one where it is.
 const SHOTS = [
   ["player", "Now playing, with the song's Canvas moving behind it"],
@@ -32,7 +32,7 @@ export default function AppPage() {
   return (
     <main>
       <PageHead
-        eyebrow="GoSquare · Coming soon"
+        eyebrow="GoSquare · Out now on Android"
         title={
           <>
             Take the house
@@ -40,11 +40,14 @@ export default function AppPage() {
             with you.
           </>
         }
-        lede="GoSquare is the free music app from SQUAREDRUM, coming soon to iPhone and Android. Until then, everything is already playing here on squaredrum.com."
+        lede="GoSquare is the free music app from SQUAREDRUM, out now on Google Play for Android. iPhone is coming soon; until then, everything is playing here on squaredrum.com."
         collage={SHOTS.map(([n]) => `/gosquare/${n}-800.jpg`)}
       >
         <div className="phead-meta">
-          <Link className="btn btn-gold" href="/releases">
+          <a className="btn btn-gold" href={GOOGLE_PLAY_URL} target="_blank" rel="noopener">
+            ↓ Get it on Google Play
+          </a>
+          <Link className="btn btn-ink" href="/releases">
             ▶ Listen now on squaredrum.com
           </Link>
         </div>
@@ -56,7 +59,7 @@ export default function AppPage() {
             <div className="eyebrow mono">Inside the app</div>
             <h2 className="display">Built for listening.</h2>
           </div>
-          <p>Screens from GoSquare as it stands today, on a phone near you soon.</p>
+          <p>Screens from GoSquare on Android. The iPhone version looks the same.</p>
         </div>
         <div className="app-shots">
           {SHOTS.map(([n, alt]) => (
@@ -83,10 +86,10 @@ export default function AppPage() {
       <section className="sec wrap">
         <div className="drumroll-band">
           <div>
-            <div className="eyebrow mono">Be first</div>
-            <h2 className="display">Hear the day it lands.</h2>
+            <div className="eyebrow mono">iPhone next</div>
+            <h2 className="display">Hear the day it reaches iPhone.</h2>
             <p className="lede">
-              Join Drumroll, our Friday email. We&rsquo;ll tell you the moment GoSquare is in the App Store and Google Play, along with every Friday&rsquo;s new music.
+              Join Drumroll, our Friday email. We&rsquo;ll tell you the moment GoSquare is in the App Store, along with every Friday&rsquo;s new music.
               Meanwhile, tune in to <a href={RADIO_URL} target="_blank" rel="noopener" style={{ textDecoration: "underline" }}>Musicsquare Radio</a>.
             </p>
           </div>

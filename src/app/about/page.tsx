@@ -118,12 +118,12 @@ export default async function About() {
           </a>
           <Link className="card" href="/app">
             <div>
-              <span className="mono gold">GoSquare · Free · Coming soon</span>
+              <span className="mono gold">GoSquare · Free · Out now on Android</span>
               <br />
               <br />
               <b>Lets you play it your way</b>
               <p>
-                The whole catalogue in your pocket, for iPhone and Android. Play any album or song when you want it, search everything, tune in to
+                The whole catalogue in your pocket, on Android now and iPhone soon. Play any album or song when you want it, search everything, tune in to
                 the live channels, and watch Canvases, clips and lyrics as the music plays.
               </p>
             </div>

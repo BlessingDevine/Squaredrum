@@ -15,6 +15,7 @@ export const AUDIO_BASE = (process.env.CATALOG_AUDIO_BASE_URL ?? "https://d1j1hq
 
 export const SITE_URL = "https://www.squaredrum.com";
 export const RADIO_URL = "https://musicsquareradio.com";
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=app.gosquare";
 export const CONTACT_EMAIL = "info@squaredrum.com";
 export const CONTACT_PHONE = "+1 (424) 500-0396";
 export const SOCIAL = {

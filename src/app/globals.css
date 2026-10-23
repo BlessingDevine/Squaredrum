@@ -189,6 +189,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .artist{flex:0 0 clamp(200px,20vw,280px);scroll-snap-align:start}
 .artist .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:#1a1a1c}
 .artist img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .5s,transform .6s}
+/* Home roster row: each photo drifts inside its frame as the row scrolls past, at slightly
+   different speeds, so the row feels layered. Uses `translate`, so the hover zoom still works. */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    /* The row scrolls sideways, so the photos follow the row's place in the page, not their own. */
+    .roster-row{view-timeline:--roster block}
+    .roster-row .artist img{scale:1.16;animation:roster-depth linear both;animation-timeline:--roster;animation-range:cover}
+    .roster-row .artist:nth-child(3n+2) img{--depth:9%}
+    .roster-row .artist:nth-child(3n) img{--depth:4%}
+  }
+}
+@keyframes roster-depth{from{translate:0 calc(-1 * var(--depth,6.5%))}to{translate:0 var(--depth,6.5%)}}
 .artist:hover img{filter:none;transform:scale(1.03)}
 .artist .ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s}
 .artist:hover .ph::after{transform:scaleX(1)}
@@ -234,15 +246,30 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chan{display:flex;flex-wrap:wrap;gap:8px}
 .chan span{border:1px solid var(--line-dark);border-radius:999px;padding:7px 12px;font-family:var(--mono);font-size:11px;text-transform:uppercase;color:#cfccc4}
 .chan span.live{border-color:var(--gold);color:var(--gold)}
-.phone{position:absolute;right:clamp(16px,5vw,80px);bottom:-60px;width:min(240px,34%);aspect-ratio:9/19;background:var(--ink);border-radius:36px;padding:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.55);transform:rotate(-8deg)}
-.phone .scr{width:100%;height:100%;border-radius:28px;overflow:hidden;background:#0f0f10;color:var(--white);padding:34px 14px 14px;display:flex;flex-direction:column;gap:12px}
-.phone .scr img.cv{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
-.phone .scr .pt{font-weight:600;font-size:13px}
-.phone .scr .pa{font-size:11px;color:#9c998f;margin-top:-8px}
-.phone .prog{height:3px;background:#2a2a2c;border-radius:2px}
-.phone .prog i{display:block;width:38%;height:100%;background:var(--gold);border-radius:2px}
-.phone .ctl{display:flex;justify-content:space-around;align-items:center;font-size:14px}
-.phone .ctl b{width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center}
+/* GoSquare phone: the real app's screens crossfade inside it, and it turns from side-on to its
+   resting tilt as the section scrolls into view (--rest is that tilt). */
+.phone-3d{position:absolute;right:clamp(16px,5vw,80px);bottom:-60px;width:min(240px,34%);perspective:1200px;--rest:-8deg}
+.phone{aspect-ratio:9/19;background:var(--ink);border-radius:36px;padding:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.55);transform:rotate(var(--rest))}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;background:#0f0f10}
+.phone .shots img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;animation:shot-cycle 16s infinite}
+.phone .shots img:nth-child(1){animation-delay:0s}
+.phone .shots img:nth-child(2){animation-delay:4s}
+.phone .shots img:nth-child(3){animation-delay:8s}
+.phone .shots img:nth-child(4){animation-delay:12s}
+@keyframes shot-cycle{0%{opacity:0}4%,25%{opacity:1}29%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.phone .shots img:first-child{opacity:1}}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    /* .eco-b clips (overflow:hidden), which makes it the phone's own scroller, so time the turn
+       by the whole section's place in the page instead. */
+    .eco{view-timeline:--eco block}
+    .phone{animation:phone-turn linear both;animation-timeline:--eco;animation-range:entry 15% cover 50%}
+  }
+}
+@keyframes phone-turn{
+  from{transform:translateY(60px) rotateY(48deg) rotateX(10deg) rotate(2deg);box-shadow:0 20px 40px -30px rgba(0,0,0,.3)}
+  to{transform:rotate(var(--rest))}
+}
 .eco-b .gs-word{height:34px;width:auto}
 .eco-copy{max-width:52%}
 .eco-split{position:absolute;inset:0;pointer-events:none}
@@ -373,7 +400,7 @@ footer{background:var(--ink);color:var(--white);border-top:1px solid var(--line-
   .eco-split{display:none}
   .eco-b{min-height:560px}
   .eco-copy{max-width:none}
-  .phone{position:relative;right:auto;bottom:auto;width:200px;margin:10px auto -90px;transform:rotate(-5deg)}
+  .phone-3d{position:relative;right:auto;bottom:auto;width:200px;margin:10px auto -90px;--rest:-5deg}
   .story-top{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .step+.step{padding-left:0;border-left:0;border-top:1px solid var(--line-light)}

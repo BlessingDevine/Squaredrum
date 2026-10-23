@@ -3,6 +3,7 @@ import { type Album, type Artist, type Catalog, type Imprint, sized, songsLabel 
 import { RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { ChannelChips } from "./channel-chips";
+import { CountUp } from "./count-up";
 import type { RosterCard } from "./roster-row";
 import { TiltCover } from "./tilt";
 
@@ -179,18 +180,13 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
             Get the app →
           </Link>
         </div>
-        <div className="phone" aria-hidden="true">
-          <div className="scr">
-            <img className="cv" src="https://d1j1hqrpj9spbo.cloudfront.net/audio/covers/9a923bac422399bc933f-600.jpg" alt="" />
-            <div className="pt">Afterheat</div>
-            <div className="pa">Ash Revenant</div>
-            <div className="prog">
-              <i />
-            </div>
-            <div className="ctl">
-              <span>⏮</span>
-              <b>❚❚</b>
-              <span>⏭</span>
+        {/* The real app's screens, crossfading; the phone turns to face you as it scrolls into view. */}
+        <div className="phone-3d" aria-hidden="true">
+          <div className="phone">
+            <div className="scr shots">
+              {["player", "home", "album", "radio"].map((n) => (
+                <img key={n} src={`/gosquare/${n}-400.jpg`} alt="" loading="lazy" />
+              ))}
             </div>
           </div>
         </div>
@@ -241,19 +237,19 @@ export function Stats({ c }: { c: Catalog }) {
   return (
     <div className="stats">
       <div className="stat">
-        <b>{songsLabel(c)}</b>
+        <CountUp value={songsLabel(c)} />
         <span className="mono">Songs in the catalogue</span>
       </div>
       <div className="stat">
-        <b>{c.imprints.length}</b>
+        <CountUp value={String(c.imprints.length)} />
         <span className="mono">Imprints</span>
       </div>
       <div className="stat">
-        <b>{c.voices.length}</b>
+        <CountUp value={String(c.voices.length)} />
         <span className="mono">Artists</span>
       </div>
       <div className="stat">
-        <b>{c.channels.length}</b>
+        <CountUp value={String(c.channels.length)} />
         <span className="mono">Live channels, 24/7</span>
       </div>
     </div>

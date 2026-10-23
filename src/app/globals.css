@@ -238,10 +238,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .eco{display:grid;grid-template-columns:1fr 1fr;min-height:620px;position:relative}
 .eco-a{background:var(--ink);color:var(--white);padding:clamp(40px,6vw,90px) var(--gutter);display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;overflow:hidden}
 .eco-a>*:not(.level-meter){position:relative;z-index:1}
-/* Faint gold level meter behind the radio panel (level-meter.tsx): the logo's rounded bars rising
-   and falling from the bottom right. Paused until on screen (.on); still for reduce motion. */
-.level-meter{position:absolute;right:clamp(16px,4vw,64px);bottom:0;height:min(62%,420px);display:flex;align-items:flex-end;gap:clamp(8px,1.1vw,16px);opacity:.13;pointer-events:none}
-.level-meter i{display:block;width:clamp(18px,2.4vw,34px);height:100%;border-radius:999px 999px 0 0;background:var(--gold);transform-origin:bottom;transform:scaleY(var(--h));
+/* Gold level meter across the bottom of the radio panel (level-meter.tsx): the logo's rounded bars
+   rising and falling, up to just below the channel chips (height set by the component). Paused until
+   on screen (.on); still for reduce motion. */
+.level-meter{position:absolute;left:var(--gutter);right:var(--gutter);bottom:0;height:200px;display:flex;align-items:flex-end;gap:clamp(4px,.45vw,7px);overflow:hidden;opacity:.16;pointer-events:none}
+.level-meter i{display:block;flex:none;width:clamp(7px,.96vw,14px);height:100%;border-radius:999px 999px 0 0;background:var(--gold);transform-origin:bottom;transform:scaleY(var(--h));
   animation:level var(--s) ease-in-out var(--d) infinite alternate;animation-play-state:paused}
 .level-meter.on i{animation-play-state:running}
 @keyframes level{from{transform:scaleY(calc(var(--h) * .35))}to{transform:scaleY(var(--h))}}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DrumrollForm } from "@/components/forms";
 import { GooglePlayQR, PageHead } from "@/components/sections";
-import { RADIO_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "GoSquare — the free music app",
@@ -42,22 +41,7 @@ export default function AppPage() {
         lede="GoSquare is the free music app from SQUAREDRUM, out now on Google Play for Android. iPhone is coming soon; until then, everything is playing here on squaredrum.com."
         collage={SHOTS.map(([n]) => `/gosquare/${n}-800.jpg`)}
       >
-        {/* The QR card is the Google Play link (tap or scan); the radio pill is the "listen now". */}
-        <div className="phead-meta">
-          <a className="radio-live" href={RADIO_URL} target="_blank" rel="noopener">
-            <span className="rl-badge mono">
-              <span className="live-dot" />
-              Live
-            </span>
-            <span className="rl-text">
-              <b>Musicsquare Radio</b>
-              <span className="mono">On air now · tune in</span>
-            </span>
-            <span className="rl-go" aria-hidden="true">
-              ▶
-            </span>
-          </a>
-        </div>
+        {/* The QR card is the Google Play link: tap it on a phone, scan it from a computer. */}
         <div className="phead-meta">
           <GooglePlayQR />
         </div>

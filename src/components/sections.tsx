@@ -157,9 +157,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
         </div>
         <ChannelChips names={channelNames} />
         <div>
-          <a className="btn btn-gold" href={RADIO_URL} target="_blank" rel="noopener">
-            Tune in → musicsquareradio.com
-          </a>
+          <RadioLivePill />
         </div>
       </div>
       <div className="eco-b">
@@ -195,6 +193,25 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
         </div>
       </div>
     </section>
+  );
+}
+
+/** The red LIVE button to Musicsquare Radio (pulsing dot, gold play disc). */
+export function RadioLivePill() {
+  return (
+    <a className="radio-live" href={RADIO_URL} target="_blank" rel="noopener">
+      <span className="rl-badge mono">
+        <span className="live-dot" />
+        Live
+      </span>
+      <span className="rl-text">
+        <b>Musicsquare Radio</b>
+        <span className="mono">On air now · tune in</span>
+      </span>
+      <span className="rl-go" aria-hidden="true">
+        ▶
+      </span>
+    </a>
   );
 }
 

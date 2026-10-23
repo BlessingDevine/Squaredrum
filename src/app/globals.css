@@ -352,6 +352,15 @@ footer{background:var(--ink);color:var(--white);border-top:1px solid var(--line-
 .drumroll-band h2{font-size:clamp(34px,4vw,56px)}
 .drumroll-band p.lede{margin-top:10px;max-width:520px;color:#4a4842;line-height:1.55}
 @media (max-width:760px){.drumroll-band{grid-template-columns:1fr}}
+/* "Live" radio button under the Drumroll band (/app): red pulsing LIVE badge, gold play disc. */
+.radio-live{display:inline-flex;align-items:center;gap:14px;margin-top:22px;padding:10px 12px 10px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);border-radius:999px;transition:border-color .25s,transform .25s}
+.radio-live:hover{border-color:var(--gold);transform:translateY(-2px)}
+.rl-badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(229,72,77,.14);color:#ff6b6f;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.rl-text{display:flex;flex-direction:column;gap:2px;line-height:1.15}
+.rl-text b{font-size:15px;font-weight:600}
+.rl-text span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#a6a39b}
+.rl-go{width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:12px;margin-left:6px;transition:transform .25s}
+.radio-live:hover .rl-go{transform:scale(1.08)}
 .app-shots{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,28px)}
 .app-shots figure{margin:0}
 .app-shots img{width:100%;height:auto;border-radius:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55);background:#000}

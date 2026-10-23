@@ -93,8 +93,20 @@ export default function AppPage() {
             <h2 className="display">Hear the day it reaches iPhone.</h2>
             <p className="lede">
               Join Drumroll, our Friday email. We&rsquo;ll tell you the moment GoSquare is in the App Store, along with every Friday&rsquo;s new music.
-              Meanwhile, tune in to <a href={RADIO_URL} target="_blank" rel="noopener" style={{ textDecoration: "underline" }}>Musicsquare Radio</a>.
             </p>
+            <a className="radio-live" href={RADIO_URL} target="_blank" rel="noopener">
+              <span className="rl-badge mono">
+                <span className="live-dot" />
+                Live
+              </span>
+              <span className="rl-text">
+                <b>Musicsquare Radio</b>
+                <span className="mono">On air now · tune in</span>
+              </span>
+              <span className="rl-go" aria-hidden="true">
+                ▶
+              </span>
+            </a>
           </div>
           <div>
             <DrumrollForm source="app" tone="light" />

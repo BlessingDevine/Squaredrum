@@ -236,7 +236,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------------- ECOSYSTEM ---------------- */
 .eco{display:grid;grid-template-columns:1fr 1fr;min-height:620px;position:relative}
-.eco-a{background:var(--ink);color:var(--white);padding:clamp(40px,6vw,90px) var(--gutter);display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.eco-a{background:var(--ink);color:var(--white);padding:clamp(40px,6vw,90px) var(--gutter);display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;overflow:hidden}
+.eco-a>*:not(.level-meter){position:relative;z-index:1}
+/* Faint gold level meter behind the radio panel (level-meter.tsx): the logo's rounded bars rising
+   and falling from the bottom right. Paused until on screen (.on); still for reduce motion. */
+.level-meter{position:absolute;right:clamp(16px,4vw,64px);bottom:0;height:min(62%,420px);display:flex;align-items:flex-end;gap:clamp(8px,1.1vw,16px);opacity:.13;pointer-events:none}
+.level-meter i{display:block;width:clamp(18px,2.4vw,34px);height:100%;border-radius:999px 999px 0 0;background:var(--gold);transform-origin:bottom;transform:scaleY(var(--h));
+  animation:level var(--s) ease-in-out var(--d) infinite alternate;animation-play-state:paused}
+.level-meter.on i{animation-play-state:running}
+@keyframes level{from{transform:scaleY(calc(var(--h) * .35))}to{transform:scaleY(var(--h))}}
 .eco-b{background:var(--paper);padding:clamp(40px,6vw,90px) var(--gutter);display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;overflow:hidden}
 .eco h3{font-size:clamp(46px,6vw,96px)}
 .eco p{font-size:15px;line-height:1.6;max-width:400px}
@@ -246,6 +254,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chan{display:flex;flex-wrap:wrap;gap:8px}
 .chan span{border:1px solid var(--line-dark);border-radius:999px;padding:7px 12px;font-family:var(--mono);font-size:11px;text-transform:uppercase;color:#cfccc4}
 .chan span.live{border-color:var(--gold);color:var(--gold)}
+/* The live mark scans across the chips (channel-chips.tsx); the dot space is kept on every chip so
+   nothing shifts when it moves. */
+.chan span{position:relative;padding-left:19px;padding-right:19px;transition:border-color .45s,color .45s,background-color .45s}
+.chan span::before{content:"";position:absolute;left:8px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--gold);opacity:0;transform:scale(.4);transition:opacity .45s,transform .45s}
+.chan span.live{background:rgba(212,162,76,.08)}
+.chan span.live::before{opacity:1;transform:none}
 /* GoSquare phone: the real app's screens crossfade inside it, and it turns from side-on to its
    resting tilt as the section scrolls into view (--rest is that tilt). */
 .phone-3d{position:absolute;right:clamp(16px,5vw,80px);bottom:-60px;width:min(240px,34%);perspective:1200px;--rest:-8deg}

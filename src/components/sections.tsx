@@ -4,6 +4,7 @@ import { GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { ChannelChips } from "./channel-chips";
 import { CountUp } from "./count-up";
+import { LevelMeter } from "./level-meter";
 import type { RosterCard } from "./roster-row";
 import { TiltCover } from "./tilt";
 
@@ -139,6 +140,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
   return (
     <section className="eco" id="gosquare">
       <div className="eco-a">
+        <LevelMeter />
         <div>
           <img className="brand-logo" src="/brand/musicsquare-radio-logo.svg" alt="Musicsquare Radio" />
         </div>

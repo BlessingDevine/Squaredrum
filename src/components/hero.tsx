@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { type PlayItem, usePlayer } from "./player";
 
 export type Slide = {
@@ -8,8 +8,68 @@ export type Slide = {
   line: string;
   portrait: string;
   drop: string;
+  /** The drop's album cover (600px), shown front of the 3D cover stack. */
+  cover: string | null;
   items: PlayItem[];
 };
+
+/**
+ * The drop's cover with the next artists' covers stacked behind it, tilted in
+ * 3D like the stacked cards of the GoSquare logo. When the slide changes the
+ * front cover lifts away and the stack moves up one; the whole stack leans
+ * towards the mouse. CSS 3D only (no WebGL), so it costs the live player
+ * nothing. Decorative: the "New Drop" pill is the control.
+ */
+function CoverStack({ slides, i }: { slides: Slide[]; i: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    const hero = el?.closest(".hero");
+    if (!el || !hero) return;
+    if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const move = (e: Event) => {
+      const { clientX, clientY } = e as PointerEvent;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const r = hero.getBoundingClientRect();
+        el.style.setProperty("--lean-y", `${((clientX - r.left) / r.width - 0.5) * 16}deg`);
+        el.style.setProperty("--lean-x", `${((clientY - r.top) / r.height - 0.5) * -10}deg`);
+      });
+    };
+    const leave = () => {
+      el.style.setProperty("--lean-y", "0deg");
+      el.style.setProperty("--lean-x", "0deg");
+    };
+    hero.addEventListener("pointermove", move);
+    hero.addEventListener("pointerleave", leave);
+    return () => {
+      cancelAnimationFrame(frame);
+      hero.removeEventListener("pointermove", move);
+      hero.removeEventListener("pointerleave", leave);
+    };
+  }, []);
+
+  // Positions -1 (just left, lifting away) to 3 (hidden at the back, ready to
+  // slide in). Keyed by slide so each cover keeps its element and glides.
+  const n = slides.length;
+  const offsets = n >= 5 ? [-1, 0, 1, 2, 3] : [...Array(n).keys()];
+  return (
+    <div className="cover-stack" ref={ref} aria-hidden="true">
+      {offsets.map((k) => {
+        const idx = (((i + k) % n) + n) % n;
+        const cover = slides[idx].cover;
+        return (
+          <div key={idx} className="cs-card" data-pos={k}>
+            {cover ? <img src={cover} alt="" loading={k <= 1 ? "eager" : "lazy"} /> : <span>{slides[idx].name.slice(0, 1)}</span>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 /**
  * The split hero: the page is cut on the diagonal of the logo's drumstick,
@@ -76,6 +136,8 @@ export function Hero({ slides }: { slides: Slide[] }) {
           <br />
           Borders
         </div>
+
+        <CoverStack slides={slides} i={i} />
 
         <div className="drop" aria-hidden="true">
           <span className="display new">New</span>

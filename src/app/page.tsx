@@ -3,7 +3,7 @@ import { Hero, type Slide } from "@/components/hero";
 import { OnAirDeck } from "@/components/on-air";
 import { RosterRow } from "@/components/roster-row";
 import { Ecosystem, ImprintGrid, ReleaseCard, SectionHead, ServiceCards, Stats, Story, rosterCard } from "@/components/sections";
-import { getCatalog, getOnAirSnapshot } from "@/lib/catalog";
+import { getCatalog, getOnAirSnapshot, sized } from "@/lib/catalog";
 import { img } from "@/lib/img";
 import { toRow } from "@/lib/rows";
 import { seededShuffle } from "@/lib/seeded";
@@ -32,6 +32,7 @@ export default async function Home() {
         line: [a.imprintName, a.genre].filter(Boolean).join(" · "),
         portrait: img(a.portrait!, 1080),
         drop: `${al.title} — ${a.name}`,
+        cover: sized(al.cover, 600),
         items: al.songIds.map((id) => toRow(c.songById.get(id)!, c)),
       },
     ];

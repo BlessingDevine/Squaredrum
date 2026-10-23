@@ -4,6 +4,7 @@ import { RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { ChannelChips } from "./channel-chips";
 import type { RosterCard } from "./roster-row";
+import { TiltCover } from "./tilt";
 
 /** The diagonal gold line — the logo's drumstick — used across the site. */
 export function Stick({ from = [58, 0], to = [46, 100], className = "stick stick-d" }: { from?: [number, number]; to?: [number, number]; className?: string }) {
@@ -62,7 +63,13 @@ export function ReleaseCard({ album, c }: { album: Album; c: Catalog }) {
   const imp = album.imprintSlug ? c.imprintBySlug.get(album.imprintSlug) : undefined;
   return (
     <Link className="rel" href={`/releases/${album.slug}`}>
-      {album.cover ? <img src={sized(album.cover, 600)!} alt={album.title} loading="lazy" /> : <span className="ph-empty">{album.title.slice(0, 1)}</span>}
+      {album.cover ? (
+        <TiltCover>
+          <img src={sized(album.cover, 600)!} alt={album.title} loading="lazy" />
+        </TiltCover>
+      ) : (
+        <span className="ph-empty">{album.title.slice(0, 1)}</span>
+      )}
       <b>{album.title}</b>
       <span>{album.artist}</span>
       {imp && <span className="mono imp-name">{imp.name}</span>}

@@ -177,7 +177,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
         </div>
         <div className="eco-get">
           <Link className="btn btn-ink" href="/app">
-            Get the app →
+            See what&rsquo;s inside →
           </Link>
           <GooglePlayQR />
         </div>

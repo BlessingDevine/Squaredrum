@@ -94,22 +94,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .arrows button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-light);display:grid;place-items:center;font-size:14px}
 .arrows button:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
 .side-note{position:absolute;z-index:5;right:var(--gutter);bottom:38px;color:var(--mute);text-align:right}
-/* 3D cover stack on the dark side of the hero (hero.tsx CoverStack). Cards sit behind and to the
-   left of the front cover, like the stacked cards of the GoSquare logo; --lean-* follow the mouse. */
-.cover-stack{position:absolute;z-index:4;right:calc(var(--gutter) + 2vw);top:clamp(96px,13%,150px);width:clamp(150px,15vw,250px);aspect-ratio:1;perspective:1000px;pointer-events:none}
-.cs-card{position:absolute;inset:0;border-radius:6px;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 60px -20px rgba(0,0,0,.75);
-  --x:0%;--y:0%;--z:0px;
-  transform:translate3d(var(--x),var(--y),var(--z)) rotateX(calc(5deg + var(--lean-x,0deg))) rotateY(calc(-18deg + var(--lean-y,0deg)));
-  transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .7s,filter .9s}
-.cs-card img{width:100%;height:100%;object-fit:cover;display:block}
-.cs-card span{display:grid;place-items:center;height:100%;font-family:var(--display);font-size:64px;color:var(--gold)}
-.cs-card[data-pos="-1"]{--x:34%;--y:-4%;--z:160px;opacity:0;z-index:6}
-.cs-card[data-pos="0"]{z-index:5}
-.cs-card[data-pos="1"]{--x:-26%;--y:-7%;--z:-90px;z-index:4;filter:brightness(.6);outline:1px solid rgba(212,162,76,.45)}
-.cs-card[data-pos="2"]{--x:-48%;--y:-14%;--z:-180px;z-index:3;filter:brightness(.4);outline:1px solid rgba(212,162,76,.3)}
-.cs-card[data-pos="3"]{--x:-62%;--y:-19%;--z:-260px;z-index:2;opacity:0}
-/* Phones: the portrait and headline fill the hero, so the stack stays off. */
-@media (max-width:760px){.cover-stack{display:none}}
 
 /* ---------------- TICKER ---------------- */
 .ticker{background:var(--gold);color:var(--ink);overflow:hidden;white-space:nowrap;border-top:1px solid var(--gold-deep);border-bottom:1px solid var(--gold-deep)}

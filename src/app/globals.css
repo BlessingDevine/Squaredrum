@@ -271,6 +271,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   to{transform:rotate(var(--rest))}
 }
 .eco-b .gs-word{height:34px;width:auto}
+.eco-get{display:flex;align-items:center;gap:16px 22px;flex-wrap:wrap;position:relative;z-index:1;max-width:52%}
+.get-qr{display:flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;background:var(--white);border:1px solid var(--line-light);border-radius:12px;color:#4a4842;font-size:11px;line-height:1.5}
+.get-qr img{display:block;width:84px;height:84px;padding:6px;background:var(--white)}
+.get-qr:hover{border-color:var(--gold-deep)}
+/* A phone can't scan its own screen: phones keep just the button. */
+@media (hover:none),(max-width:760px){.get-qr{display:none}}
 .eco-copy{max-width:52%}
 .eco-split{position:absolute;inset:0;pointer-events:none}
 .eco-split line{stroke:var(--gold);stroke-width:2;vector-effect:non-scaling-stroke}

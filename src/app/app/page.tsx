@@ -18,7 +18,7 @@ const SHOTS = [
 ] as const;
 
 const FEATURES = [
-  ["Every album, free", "Over 3,000 songs from our independent labels. Play anything, any time. No ads, no subscription."],
+  ["Every album, free", "Over 3,200 songs from our independent labels. Play anything, any time. No ads, no subscription."],
   ["Live radio, all day", "Every Musicsquare Radio channel, from Amapiano to Country. Everyone hears the same song at the same moment."],
   ["Canvas and lyrics", "Songs play with a moving Canvas made for the music, and lyrics that scroll in time. Tap a line to jump to it."],
   ["Your library", "Like songs, follow artists, build playlists. Sign in with just your email, and your library follows you to squaredrum.com."],

@@ -20,7 +20,16 @@ export function StartHere({ picks }: { picks: (Row & { why: string })[] }) {
               aria-label={`${on && p.playing ? "Pause" : "Play"} ${s.title}`}
             >
               <span className="start-cover">
-                {s.cover && <img src={s.cover.replace(/-300\.jpg$/, "-600.jpg")} alt="" loading="lazy" />}
+                {/* The cards run ~400px wide on computers, so sharp screens need the full 1000px cover. */}
+                {s.cover && (
+                  <img
+                    src={s.cover.replace(/-300\.jpg$/, "-600.jpg")}
+                    srcSet={`${s.cover.replace(/-300\.jpg$/, "-600.jpg")} 600w, ${s.cover.replace(/-300\.jpg$/, ".jpg")} 1000w`}
+                    sizes="(max-width: 700px) 96px, 33vw"
+                    alt=""
+                    loading="lazy"
+                  />
+                )}
                 <span className="start-play" aria-hidden="true">
                   {on && p.playing ? "❚❚" : "▶"}
                 </span>

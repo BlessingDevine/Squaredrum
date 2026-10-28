@@ -144,4 +144,18 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "You don’t open anything at all.", title: "The Spare Key" },
     { line: "Why does hope resemble waste?", title: "Dust Receipt" },
   ],
+  "ash-revenant": [
+    { line: "You don’t live here. I finally do.", title: "Phantom Habit" },
+    { line: "You remember how I take my tea.", title: "Kindness hurts" },
+    { line: "I am here, and that is plenty.", title: "Still operational" },
+    { line: "Love does not require a cabinet.", title: "The Good Towel" },
+    { line: "Recovery is not replacement.", title: "What grows back" },
+  ],
+  "throne-static": [
+    { line: "We can fool an entire table", title: "Good in Public" },
+    { line: "We were miserable in order", title: "House Rules" },
+    { line: "Once the paper outranks people", title: "Per the Memo" },
+    { line: "She selected “Career Growth”", title: "Exit Interview" },
+    { line: "They have birthdays coming soon", title: "Mutual Friends" },
+  ],
 };

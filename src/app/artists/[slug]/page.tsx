@@ -21,9 +21,9 @@ const fold = (t: string) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").t
 
 /** The artist's "Start here" picks (src/lib/start-here.ts) found among their songs. */
 function startHere(slug: string, all: Rows) {
-  return (START_HERE[slug] ?? []).flatMap(({ title, why }) => {
-    const row = all.find((r) => fold(r.title) === fold(title));
-    return row ? [{ ...row, why }] : [];
+  return (START_HERE[slug] ?? []).flatMap(({ title, why, album, show }) => {
+    const row = all.find((r) => fold(r.title) === fold(title) && (!album || r.album === album));
+    return row ? [{ ...row, title: show ?? row.title, why }] : [];
   });
 }
 

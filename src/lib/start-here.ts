@@ -2,9 +2,10 @@
  * "Start here" on an artist's page: three songs Robert picks for someone new
  * to the artist, each with one line on why. Titles are matched to the
  * artist's songs (case and accents ignored); an artist without picks shows no
- * section. Not popularity: these are choices.
+ * section. Not popularity: these are choices. `album` picks between two
+ * songs with the same title (an ALT take, say); `show` is the title shown on the card.
  */
-export const START_HERE: Record<string, { title: string; why: string }[]> = {
+export const START_HERE: Record<string, { title: string; why: string; album?: string; show?: string }[]> = {
   "thando-keys": [
     { title: "Jacaranda", why: "For the story: Pretoria in October, the streets gone purple." },
     { title: "One More Piano Solo", why: "For the dance floor: when the floor won't let the keys stop." },
@@ -122,8 +123,8 @@ export const START_HERE: Record<string, { title: string; why: string }[]> = {
   ],
   "luv-tonez": [
     { title: "Golden Hour Confessions", why: "Where it started: warm and simple, all summer heat and late-night afterglow." },
-    { title: "Frequency Match", why: "Where it got clever: three voices tuning in to love on the same frequency." },
-    { title: "Parallel Stillness", why: "Where it goes quiet: close harmonies, no hurry, and nothing that needs saying." },
+    { title: "Stardust Serenade", why: "Where it gets dreamy: a slow serenade with its head in the stars." },
+    { title: "Frequency Match", album: "Luv Tonez III", show: "Frequency Match (ALT)", why: "Where it tries another way: the alternate take, three voices finding the same frequency." },
   ],
   "neilly-storm": [
     { title: "Champagne Problems", why: "At last call: champagne on the carpet and one more confession at 2 a.m." },

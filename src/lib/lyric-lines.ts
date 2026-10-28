@@ -137,4 +137,11 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "Love is cheaper than my nerve.", title: "Bus Fare" },
     { line: "I thought love should look expensive", title: "Bent Bouquet" },
   ],
+  "iron-mirage": [
+    { line: "Crooked doesn’t mean discarded.", title: "Bent Nail" },
+    { line: "Nobody needs to own the hill.", title: "Old Mule" },
+    { line: "I have swallowed harder words.", title: "Cold Coffee" },
+    { line: "You don’t open anything at all.", title: "The Spare Key" },
+    { line: "Why does hope resemble waste?", title: "Dust Receipt" },
+  ],
 };

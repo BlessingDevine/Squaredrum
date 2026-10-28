@@ -993,3 +993,12 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .lyric-band figcaption{margin-top:18px;color:var(--mute-ink);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 .lyric-band .is-in{animation:spotlight-in .8s ease-out both}
 @media (prefers-reduced-motion:reduce){.lyric-band .is-in{animation:none}}
+
+/* Artist page: "In their own words" Q&As (src/lib/own-words.ts). */
+.own-words dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,48px) clamp(28px,4vw,64px);margin:0}
+.own-words dt{color:var(--gold-deep);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.own-words dd{margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5}
+@media (max-width:700px){.own-words dl{grid-template-columns:1fr}}
+
+/* Release page: the album's story above the track list (src/lib/album-stories.ts). */
+.album-story{max-width:62ch;margin:0 0 36px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:var(--ink)}

@@ -18,6 +18,7 @@ import { img } from "@/lib/img";
 import { toRow } from "@/lib/rows";
 import { seededShuffle } from "@/lib/seeded";
 import { LYRIC_LINES, type LyricLine as Line } from "@/lib/lyric-lines";
+import { OWN_WORDS } from "@/lib/own-words";
 import { START_HERE } from "@/lib/start-here";
 
 type Rows = ReturnType<typeof toRow>[];
@@ -302,6 +303,23 @@ function MiniSite({ a, c, media, albums, all, lyrics }: MiniProps) {
             <span className="mono">{gallery.length} photos</span>
           </div>
           <Gallery photos={gallery} name={a.name} />
+        </section>
+      )}
+
+      {(OWN_WORDS[a.slug]?.length ?? 0) > 0 && (
+        <section className="sec wrap own-words">
+          <div className="group-title" style={{ marginTop: 0 }}>
+            <h2 className="display">In their own words</h2>
+            <span className="mono">{a.name}</span>
+          </div>
+          <dl>
+            {OWN_WORDS[a.slug].map(({ q, a: answer }) => (
+              <div key={q}>
+                <dt className="mono">{q}</dt>
+                <dd>{answer}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
       )}
 

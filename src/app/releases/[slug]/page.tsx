@@ -5,6 +5,7 @@ import { BackLink } from "@/components/back-link";
 import { notFound } from "next/navigation";
 import { ExplicitBadge, PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard } from "@/components/sections";
+import { ALBUM_STORIES } from "@/lib/album-stories";
 import { getCatalog, sized } from "@/lib/catalog";
 import { toRow } from "@/lib/rows";
 import { formatLength } from "@/lib/site";
@@ -41,6 +42,12 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
       .slice(0, 5);
   const fromArtist = artist ? others(artist.albumSlugs) : [];
   const more = fromArtist.length ? fromArtist : others(imp?.albumSlugs ?? []);
+
+  // The album's story (src/lib/album-stories.ts), keyed by its folder name.
+  const fold = (t: string) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const story = artist
+    ? Object.entries(ALBUM_STORIES[artist.slug] ?? {}).find(([name]) => fold(name) === fold(al.title))?.[1]
+    : undefined;
 
   return (
     <main>
@@ -93,6 +100,7 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
       </section>
 
       <section className="sec wrap" style={{ paddingTop: 48 }}>
+        {story && <p className="album-story">{story}</p>}
         <TrackList rows={rows} showCover={false} showAlbum={false} />
       </section>
 

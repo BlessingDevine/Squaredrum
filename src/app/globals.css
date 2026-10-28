@@ -555,6 +555,8 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .grid-artists .artist .ph{aspect-ratio:1}
 /* The square crop trims only the bottom of the 4:5 photos: several are framed tight at the top. */
 .grid-artists .artist img{object-position:50% 0}
+/* These two sit better centred (Robert, 2026-10-28). */
+.grid-artists .artist:is([href$="/iron-mirage"],[href$="/yano-sky"]) img{object-position:50% 50%}
 .dark .rel span{color:#9c998f}
 .dark .rel .imp-name{color:var(--gold)}
 .rel .ph-empty{width:100%;aspect-ratio:1;display:grid;place-items:center;background:var(--ink);color:var(--gold);font-family:var(--display);font-size:42px}

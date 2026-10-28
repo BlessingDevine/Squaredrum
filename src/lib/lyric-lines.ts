@@ -112,4 +112,18 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "Sahleka kwaphuma izinyembezi", title: "Akusiyo Inhlanhla Yodwa" },
     { line: "Ngathi amanzi, wahleka", title: "Yimina Lo" },
   ],
+  "cedar-line": [
+    { line: "I said, “How crispy are we talking?”", title: "Kiss the Cook" },
+    { line: "I baked a cake on purpose", title: "Over the Fence" },
+    { line: "We split a plate of leftovers", title: "Still Got a Date" },
+    { line: "I'll keep coupons in my wallet", title: "When We're Eighty" },
+    { line: "But I might hope it starts raining", title: "Rain Check" },
+  ],
+  "vegah-riot": [
+    { line: "It was fear with better taste", title: "Still here" },
+    { line: "Furniture remembers nothing", title: "Same chair" },
+    { line: "The reception was your fault", title: "Wrong in person" },
+    { line: "You had potential by the acre", title: "Before We met" },
+    { line: "Every morning felt expensive", title: "Borrowed June" },
+  ],
 };

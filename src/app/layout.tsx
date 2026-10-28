@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Instrument_Sans, Michroma, Space_Mono } from "next/font/google";
+import { Anton, Instrument_Sans, Michroma, Oswald, Space_Mono } from "next/font/google";
 import { AccountProvider } from "@/components/account";
 import { PlayerProvider } from "@/components/player";
 import { MixerDebug } from "@/components/mixer-debug";
@@ -15,6 +15,8 @@ const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton
 const michroma = Michroma({ weight: "400", subsets: ["latin"], variable: "--font-michroma" });
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" });
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument" });
+// A lighter condensed face for the artists page card names; Anton only comes in one weight.
+const oswald = Oswald({ weight: "500", subsets: ["latin"], variable: "--font-oswald" });
 
 // The song count comes from the catalogue, so the description keeps up with the stats on the page.
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,7 +35,7 @@ export const viewport: Viewport = { themeColor: "#0B0B0C" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anton.variable} ${michroma.variable} ${spaceMono.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${anton.variable} ${michroma.variable} ${spaceMono.variable} ${instrument.variable} ${oswald.variable}`}>
       <body>
         <a className="skip mono" href="#main">
           Skip to content

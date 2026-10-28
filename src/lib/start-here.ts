@@ -6,8 +6,8 @@
  */
 export const START_HERE: Record<string, { title: string; why: string }[]> = {
   "thando-keys": [
-    { title: "Same Hands", why: "For the story: the church keyboard that ended up on club speakers." },
-    { title: "Jacaranda", why: "For the dance floor: Pretoria in October, the streets gone purple." },
+    { title: "Jacaranda", why: "For the story: Pretoria in October, the streets gone purple." },
+    { title: "One More Piano Solo", why: "For the dance floor: when the floor won't let the keys stop." },
     { title: "Umama", why: "For the quiet: a thank-you to the woman who raised him." },
   ],
   "apex": [

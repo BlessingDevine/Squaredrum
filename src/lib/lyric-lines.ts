@@ -136,6 +136,5 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "Every barrier eventually lifts.", title: "Concrete Hours" },
     { line: "Love is cheaper than my nerve.", title: "Bus Fare" },
     { line: "I thought love should look expensive", title: "Bent Bouquet" },
-    { line: "Don't confuse constant motion with a road that leads somewhere.", title: "No Traction" },
   ],
 };

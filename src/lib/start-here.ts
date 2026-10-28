@@ -122,7 +122,7 @@ export const START_HERE: Record<string, { title: string; why: string; album?: st
     { title: "The Day I Met the Moon", why: "The strange side: tuning in to the odd signals of falling for someone." },
   ],
   "luv-tonez": [
-    { title: "Golden Hour Confessions", why: "Where it started: warm and simple, all summer heat and late-night afterglow." },
+    { title: "The Gravity of Silence", why: "Where it pulls you in: the weight of everything left unsaid between two people." },
     { title: "Stardust Serenade", why: "Where it gets dreamy: a slow serenade with its head in the stars." },
     { title: "Frequency Match", album: "Luv Tonez III", show: "Frequency Match (ALT)", why: "Where it tries another way: the alternate take, three voices finding the same frequency." },
   ],

@@ -968,3 +968,12 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
   .start-n{margin-top:0}
   .start-album{margin-left:110px}
 }
+
+/* Artist page opener: the latest album's Canvas while their music plays (artist-canvas.tsx).
+   Computers: a tall panel top right, kept above the name. Phones: over the photo, under the fade. */
+.artist-canvas{position:absolute;z-index:1;top:clamp(84px,9vh,120px);right:var(--gutter);height:min(38%,400px);aspect-ratio:9/16;object-fit:cover;background:#000;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);opacity:0;transition:opacity .9s ease;pointer-events:none}
+.artist-canvas.is-on{opacity:1}
+@media (max-width:760px){
+  .artist-canvas{z-index:auto;inset:0;top:0;right:0;width:100%;height:100%;aspect-ratio:auto;box-shadow:none}
+}
+@media (prefers-reduced-motion:reduce){.artist-canvas{display:none}}

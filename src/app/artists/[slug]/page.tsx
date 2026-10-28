@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Gallery } from "@/components/gallery";
 import { DownloadsChip, FollowButton } from "@/components/account";
+import { ArtistCanvas } from "@/components/artist-canvas";
 import { ArtistOnAir } from "@/components/artist-on-air";
 import { InstagramChip, instagramUrl } from "@/components/instagram";
 import { PlayButton, TrackList } from "@/components/play";
@@ -151,6 +152,8 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
   const wide = heroes.find((p) => p.shape === "wide") ?? tall;
   const gallery = media.photos.filter((p) => p.role === "gallery");
   const latest = albums[0];
+  // The newest album with a Canvas loop, shown in the opener while their music plays.
+  const canvas = albums.find((al) => al.canvas)?.canvas ?? null;
   const about = media.bio?.split(/\n\s*\n/).filter(Boolean) ?? [];
   const sections: [string, string][] = [
     ["music", "Music"],
@@ -182,6 +185,7 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
           <source media="(min-width:761px)" srcSet={wide.srcSet} sizes="100vw" />
           <img src={tall.src} srcSet={tall.srcSet} sizes="100vw" alt={a.name} fetchPriority="high" />
         </picture>
+        {canvas && <ArtistCanvas slug={a.slug} src={canvas} />}
         <div className="mini-hero-copy wrap">
           <nav className="crumbs mono" aria-label="Breadcrumb">
             <Link href="/artists">Artists</Link> /

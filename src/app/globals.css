@@ -580,6 +580,31 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 }
 /* /artists toolbar: search + jump to the collections */
 .grid-artists .artist[hidden],.artist-results[hidden],.artist-none[hidden]{display:none}
+/* Artists page spotlight: a 2x2 square in the middle of the grid, a different artist on each visit
+   (artist-spotlight.tsx). Fixed column counts keep it centred; the other cards flow around it. */
+.grid-artists.grid-spotlight{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:row dense}
+.artist-feature{grid-area:2/2/span 2/span 2;position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;overflow:hidden;background:#1a1a1c;color:#fff;isolation:isolate}
+.artist-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;z-index:-2;transition:transform .8s}
+.artist-feature::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,11,12,.88) 0%,rgba(11,11,12,.4) 28%,rgba(11,11,12,0) 50%)}
+.artist-feature:hover img{transform:scale(1.03)}
+.artist-feature .eyebrow{margin:0 28px 10px;color:var(--gold)}
+.artist-feature b{margin:0 28px;font-family:var(--font-oswald),var(--display);font-weight:500;font-size:clamp(30px,3vw,44px);line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+.artist-feature span.mono:not(.eyebrow){margin:8px 28px 26px;color:#d8d4ca;font-size:12px;text-transform:uppercase}
+.artist-feature.is-in{animation:spotlight-in .6s ease-out both}
+@keyframes spotlight-in{from{opacity:0}}
+/* While searching, the spotlight steps aside so the results read as a plain list. */
+.grid-spotlight:has(.artist[hidden]) .artist-feature{display:none}
+@media (min-width:1400px){
+  .grid-artists.grid-spotlight{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .artist-feature{grid-area:2/3/span 2/span 2}
+}
+@media (max-width:699px){
+  .grid-artists.grid-spotlight{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .artist-feature{grid-area:2/1/span 2/span 2}
+  .artist-feature .eyebrow,.artist-feature b,.artist-feature span.mono:not(.eyebrow){margin-left:16px;margin-right:16px}
+  .artist-feature b{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){.artist-feature.is-in{animation:none}.artist-feature img{transition:none}}
 .artist-none{color:#6e6a60;font-size:12px;padding:8px 0}
 .artist-tools{display:flex;gap:10px;align-items:center;margin-bottom:28px}
 .artist-search{flex:0 1 420px;min-width:0;display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--line-light);border-radius:4px;background:#fff}

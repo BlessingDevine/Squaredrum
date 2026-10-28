@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { ArtistSpotlight } from "@/components/artist-spotlight";
 import { ArtistTools } from "@/components/artist-tools";
 import { ArtistCard } from "@/components/roster-row";
 import { PageHead, SectionHead, rosterCard } from "@/components/sections";
 import { getCatalog } from "@/lib/catalog";
+import { img } from "@/lib/img";
 
 export const revalidate = 300;
 export const metadata: Metadata = { title: "Artists", description: "The voices of the house — every Squaredrum artist across eighteen imprints." };
@@ -12,6 +14,10 @@ export default async function Artists() {
   // Real artists first; the house collections (Country Square, Lofi Square…) get their own section.
   const cards = c.voices.flatMap((a) => rosterCard(a, c) ?? []);
   const collections = c.collections.flatMap((a) => rosterCard(a, c) ?? []);
+  // The big square takes artists with a portrait, at a size that stays sharp at double width.
+  const spotlight = c.voices.flatMap((a) =>
+    a.portrait ? [{ slug: a.slug, name: a.name, line: a.genre ?? a.imprintName ?? "", image: img(a.portrait, 1080) }] : [],
+  );
   return (
     <main>
       <PageHead
@@ -28,7 +34,8 @@ export default async function Artists() {
       />
       <section className="sec wrap light-artists artist-results cards-overlay">
         <ArtistTools hasCollections={collections.length > 0} />
-        <div className="grid-artists">
+        <div className="grid-artists grid-spotlight">
+          <ArtistSpotlight artists={spotlight} />
           {cards.map((a) => (
             <ArtistCard key={a.slug} a={a} />
           ))}

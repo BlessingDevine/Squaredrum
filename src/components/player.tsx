@@ -41,6 +41,8 @@ type Player = {
   toggle: () => void;
   next: () => void;
   prev: () => void;
+  /** Jump `seconds` back (negative) or forward in an album song; live channels can't be skipped. */
+  skip: (seconds: number) => void;
   audio: () => HTMLAudioElement | null;
 };
 
@@ -300,9 +302,18 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
 
   const audio = useCallback(() => ref.current, []);
 
+  const skip = useCallback(
+    (seconds: number) => {
+      const el = ref.current;
+      if (!el || current?.live || !Number.isFinite(el.duration)) return;
+      el.currentTime = Math.min(Math.max(0, el.currentTime + seconds), Math.max(0, el.duration - 0.25));
+    },
+    [current],
+  );
+
   const value = useMemo<Player>(
-    () => ({ current, playing, queue, index, playList, playLive, toggle, next: () => step(1), prev: () => step(-1), audio }),
-    [current, playing, queue, index, playList, playLive, toggle, step, audio],
+    () => ({ current, playing, queue, index, playList, playLive, toggle, next: () => step(1), prev: () => step(-1), skip, audio }),
+    [current, playing, queue, index, playList, playLive, toggle, step, skip, audio],
   );
 
   return (

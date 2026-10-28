@@ -60,9 +60,19 @@ export function PlayerBar() {
               ⏮
             </button>
           )}
+          {!cur.live && (
+            <button className="pbar-skip" onClick={() => p.skip(-10)} aria-label="Back 10 seconds" title="Back 10 seconds">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z" /><text x="12" y="16.2" textAnchor="middle">10</text></svg>
+            </button>
+          )}
           <button className="pbar-play" onClick={p.toggle} aria-label={p.playing ? "Pause" : "Play"}>
             {p.playing ? "❚❚" : "▶"}
           </button>
+          {!cur.live && (
+            <button className="pbar-skip" onClick={() => p.skip(10)} aria-label="Forward 10 seconds" title="Forward 10 seconds">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2l5 4-5 4V7a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8z" /><text x="12" y="16.2" textAnchor="middle">10</text></svg>
+            </button>
+          )}
           {!cur.live && (
             <button onClick={p.next} aria-label="Next">
               ⏭

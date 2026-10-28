@@ -553,15 +553,17 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .grid-artists{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
 .grid-artists .artist{flex:none}
 .grid-artists .artist .ph{aspect-ratio:1}
+/* The square crop trims only the bottom of the 4:5 photos: several are framed tight at the top. */
+.grid-artists .artist img{object-position:50% 0}
 .dark .rel span{color:#9c998f}
 .dark .rel .imp-name{color:var(--gold)}
 .rel .ph-empty{width:100%;aspect-ratio:1;display:grid;place-items:center;background:var(--ink);color:var(--gold);font-family:var(--display);font-size:42px}
 .light-artists .artist span{color:#6e6a60}
 .light-artists .artist .ph{background:#e7e3da}
-/* Artists page: rounded cards with the name and genre set on the photo. The photo spans all three grid rows
+/* Artists page: square-cornered cards with the name and genre set on the photo. The photo spans all three grid rows
    (its aspect ratio sets the height); the name and genre sit in the bottom two rows, over a dark fade. */
-.cards-overlay .artist{position:relative;display:grid;grid-template:1fr auto auto/minmax(0,1fr);border-radius:16px;overflow:hidden;background:#1a1a1c;isolation:isolate}
-.cards-overlay .artist .ph{grid-area:1/1/4/2;border-radius:16px}
+.cards-overlay .artist{position:relative;display:grid;grid-template:1fr auto auto/minmax(0,1fr);overflow:hidden;background:#1a1a1c;isolation:isolate}
+.cards-overlay .artist .ph{grid-area:1/1/4/2}
 .cards-overlay .artist::before{content:"";grid-area:1/1/4/2;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(11,11,12,.86) 0%,rgba(11,11,12,.45) 30%,rgba(11,11,12,0) 55%)}
 .cards-overlay .artist b,.cards-overlay .artist span{grid-column:1;z-index:2;padding:0 18px;color:#fff}
 .cards-overlay .artist b{grid-row:2;margin:0;font-size:clamp(24px,2.2vw,30px)}
@@ -570,8 +572,6 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .cards-overlay .artist[hidden]{display:none}
 @media (max-width:560px){
   .cards-overlay .grid-artists{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .cards-overlay .artist{border-radius:14px}
-  .cards-overlay .artist .ph{border-radius:14px}
   .cards-overlay .artist b,.cards-overlay .artist span{padding:0 12px}
   .cards-overlay .artist b{font-size:20px}
   .cards-overlay .artist span{padding-top:4px;padding-bottom:12px;font-size:10px}

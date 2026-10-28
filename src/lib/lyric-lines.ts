@@ -117,7 +117,6 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "I baked a cake on purpose", title: "Over the Fence" },
     { line: "We split a plate of leftovers", title: "Still Got a Date" },
     { line: "I'll keep coupons in my wallet", title: "When We're Eighty" },
-    { line: "But I might hope it starts raining", title: "Rain Check" },
   ],
   "vegah-riot": [
     { line: "It was fear with better taste", title: "Still here" },

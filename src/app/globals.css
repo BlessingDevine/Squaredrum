@@ -931,3 +931,36 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .acct-ok{margin-top:18px;width:100%;justify-content:center}
 .acct-signout{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:inherit;letter-spacing:inherit}
 .acct-signout:hover{color:var(--gold-deep)}
+
+/* Artist page: the live radio line under the hero buttons (artist-on-air.tsx). */
+.artist-air{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:18px 0 0;padding:8px 10px 8px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(11,11,12,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.artist-air b{color:var(--gold);font-weight:700}
+.artist-air-next{padding-right:14px;color:#d8d4ca;border-color:rgba(255,255,255,.12)}
+.artist-air-dot{width:8px;height:8px;border-radius:50%;background:#e5484d;flex:none;animation:air-pulse 1.6s ease-in-out infinite}
+@keyframes air-pulse{50%{opacity:.35}}
+.artist-air-btn{border:0;border-radius:999px;padding:6px 12px;background:var(--gold);color:var(--ink);font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.artist-air-btn:hover{background:var(--gold-hi)}
+@media (prefers-reduced-motion:reduce){.artist-air-dot{animation:none}}
+
+/* Artist page: "Start here", three hand-picked songs (start-here.tsx, src/lib/start-here.ts). */
+.start-here-wrap{grid-column:1/-1;margin-bottom:clamp(28px,4vw,56px)}
+.start-here{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
+.start-card{display:grid;gap:6px;width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.start-cover{position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1c}
+.start-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.start-card:hover .start-cover img{transform:scale(1.03)}
+.start-play{position:absolute;left:12px;bottom:12px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--ink);font-size:13px}
+.start-n{margin-top:8px;color:var(--gold-deep);font-size:11px}
+.start-title{font-family:var(--font-oswald),var(--display);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1.05;text-transform:uppercase}
+.start-card.is-on .start-title{color:var(--gold-deep)}
+.start-why{color:var(--mute-ink);font-size:15px;line-height:1.45}
+.start-album{display:inline-block;margin-top:8px;color:var(--mute-ink);font-size:11px;text-decoration:none}
+.start-album:hover{color:var(--gold-deep)}
+@media (max-width:700px){
+  .start-here{grid-template-columns:1fr;gap:18px}
+  .start-card{grid-template-columns:96px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
+  .start-cover{grid-row:1/4}
+  .start-play{left:auto;right:6px;bottom:6px;width:30px;height:30px;font-size:10px}
+  .start-n{margin-top:0}
+  .start-album{margin-left:110px}
+}

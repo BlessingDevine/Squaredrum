@@ -3,14 +3,42 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Gallery } from "@/components/gallery";
 import { DownloadsChip, FollowButton } from "@/components/account";
+import { ArtistOnAir } from "@/components/artist-on-air";
 import { InstagramChip, instagramUrl } from "@/components/instagram";
 import { PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard, leadCover } from "@/components/sections";
+import { StartHere } from "@/components/start-here";
 import { type ArtistMedia, getArtistMedia } from "@/lib/artist-media";
 import { type Album, type Artist, type Catalog, getCatalog, sized } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { toRow } from "@/lib/rows";
+import { START_HERE } from "@/lib/start-here";
+
+type Rows = ReturnType<typeof toRow>[];
+const fold = (t: string) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+
+/** The artist's "Start here" picks (src/lib/start-here.ts) found among their songs. */
+function startHere(slug: string, all: Rows) {
+  return (START_HERE[slug] ?? []).flatMap(({ title, why }) => {
+    const row = all.find((r) => fold(r.title) === fold(title));
+    return row ? [{ ...row, why }] : [];
+  });
+}
+
+function StartHereSection({ slug, all }: { slug: string; all: Rows }) {
+  const picks = startHere(slug, all);
+  if (!picks.length) return null;
+  return (
+    <div className="start-here-wrap">
+      <div className="group-title" style={{ marginTop: 0 }}>
+        <h2 className="display">Start here</h2>
+        <span className="mono">Three to begin with</span>
+      </div>
+      <StartHere picks={picks} />
+    </div>
+  );
+}
 
 export const revalidate = 300;
 
@@ -66,6 +94,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
               <InstagramChip handle={a.instagram} name={a.name} />
               <DownloadsChip />
             </div>
+            <ArtistOnAir slug={a.slug} />
           </div>
           {photo &&
             (a.portrait ? (
@@ -83,6 +112,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
       </header>
 
       <section className="sec wrap">
+        <StartHereSection slug={a.slug} all={all} />
         <div className="group-title" style={{ marginTop: 0 }}>
           <h2 className="display">Popular</h2>
           <span className="mono">Tap a song to play</span>
@@ -105,7 +135,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
   );
 }
 
-type MiniProps = { a: Artist; c: Catalog; media: ArtistMedia; albums: Album[]; all: ReturnType<typeof toRow>[] };
+type MiniProps = { a: Artist; c: Catalog; media: ArtistMedia; albums: Album[]; all: Rows };
 
 const VIDEO_KIND: Record<string, string> = { music_video: "Music video", lyric_video: "Lyric video", clip: "Clip" };
 
@@ -170,6 +200,7 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
             <InstagramChip handle={a.instagram} name={a.name} />
             <DownloadsChip />
           </div>
+          <ArtistOnAir slug={a.slug} />
         </div>
       </header>
 
@@ -184,6 +215,7 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
       </nav>
 
       <section id="music" className="sec wrap mini-music">
+        <StartHereSection slug={a.slug} all={all} />
         {latest && (
           <Link href={`/releases/${latest.slug}`} className="mini-latest">
             {latest.cover && <img src={sized(latest.cover, 600)!} alt="" />}

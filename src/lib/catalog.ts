@@ -438,6 +438,35 @@ export async function getOnAir(at = Date.now()): Promise<OnAirNow[]> {
   });
 }
 
+/** When one of an artist's songs is next on a channel (its start time, ms). */
+export type NextOnAir = { slug: string; name: string; title: string; startsAt: number };
+
+/**
+ * An artist's songs on Musicsquare Radio: what's playing on any channel right
+ * now, and otherwise the first one coming up within `horizonMs`. Rotations are
+ * fixed ahead of time, so this is worked out from the clock like the channels.
+ */
+export async function getArtistAir(slug: string, at = Date.now(), horizonMs = 3 * 3_600_000) {
+  const c = await getCatalog();
+  const theirs = (code: string) => c.songByCode.get(code)?.artistSlug === slug;
+  const now = (await getOnAir(at)).filter((x) => x.artistSlug === slug);
+  let next: NextOnAir | null = null;
+  if (!now.length) {
+    for (const ch of c.channels) {
+      if (!ch.rotation.tracks.some((t) => theirs(t.code))) continue;
+      let air = onAirAt(ch.rotation, at);
+      while (air && air.endsAt < at + horizonMs && (!next || air.endsAt < next.startsAt)) {
+        if (theirs(air.next.code)) {
+          next = { slug: ch.slug, name: ch.name, title: air.next.title, startsAt: air.endsAt };
+          break;
+        }
+        air = onAirAt(ch.rotation, air.endsAt + 1);
+      }
+    }
+  }
+  return { now, next };
+}
+
 /** Cover and artist page per song code, for showing what a channel plays. */
 export type TrackMeta = Record<string, { cover: string | null; artistSlug: string | null }>;
 

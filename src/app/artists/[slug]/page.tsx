@@ -7,13 +7,17 @@ import { ArtistCanvas } from "@/components/artist-canvas";
 import { ArtistOnAir } from "@/components/artist-on-air";
 import { InstagramChip, instagramUrl } from "@/components/instagram";
 import { PlayButton, TrackList } from "@/components/play";
-import { ReleaseCard, leadCover } from "@/components/sections";
+import { ArtistCard } from "@/components/roster-row";
+import { ReleaseCard, leadCover, rosterCard } from "@/components/sections";
+import { LyricLine } from "@/components/lyric-line";
 import { StartHere } from "@/components/start-here";
 import { type ArtistMedia, getArtistMedia } from "@/lib/artist-media";
 import { type Album, type Artist, type Catalog, getCatalog, sized } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { toRow } from "@/lib/rows";
+import { seededShuffle } from "@/lib/seeded";
+import { LYRIC_LINES, type LyricLine as Line } from "@/lib/lyric-lines";
 import { START_HERE } from "@/lib/start-here";
 
 type Rows = ReturnType<typeof toRow>[];
@@ -25,6 +29,38 @@ function startHere(slug: string, all: Rows) {
     const row = all.find((r) => fold(r.title) === fold(title) && (!album || r.album === album));
     return row ? [{ ...row, title: show ?? row.title, why }] : [];
   });
+}
+
+/**
+ * "If you like X": three other artists, from the same label first, then any
+ * sharing a word of the genre (R&B, Pop…), then anyone. A different three each
+ * day (the page is rebuilt every few minutes), so the same names don't always show.
+ */
+function YouMightLike({ a, c }: { a: Artist; c: Catalog }) {
+  const day = new Date().toISOString().slice(0, 10);
+  const words = new Set((a.genre ?? "").toLowerCase().split(/[^a-z&]+/).filter((w) => w.length > 2));
+  const others = c.voices.filter((x) => x.slug !== a.slug && x.portrait);
+  const label = others.filter((x) => x.imprintSlug && x.imprintSlug === a.imprintSlug);
+  const genre = others.filter((x) => !label.includes(x) && (x.genre ?? "").toLowerCase().split(/[^a-z&]+/).some((w) => words.has(w)));
+  const rest = others.filter((x) => !label.includes(x) && !genre.includes(x));
+  const picks = [label, genre, rest].flatMap((g) => seededShuffle(g, `like:${a.slug}:${day}`)).slice(0, 3);
+  const cards = picks.flatMap((x) => rosterCard(x, c) ?? []);
+  if (!cards.length) return null;
+  return (
+    <section className="sec wrap light-artists cards-overlay you-might-like">
+      <div className="group-title" style={{ marginTop: 0 }}>
+        <h2 className="display">If you like {a.name}</h2>
+        <Link className="mono" href="/artists">
+          All artists →
+        </Link>
+      </div>
+      <div className="grid-artists grid-like">
+        {cards.map((x) => (
+          <ArtistCard key={x.slug} a={x} />
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function StartHereSection({ slug, all }: { slug: string; all: Rows }) {
@@ -68,7 +104,7 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
   const photo = a.portrait ? img(a.portrait, 828) : sized(firstCover, 600);
   const imp = a.imprintSlug ? c.imprintBySlug.get(a.imprintSlug) : undefined;
   const media = await getArtistMedia(slug, all);
-  if (media) return <MiniSite a={a} c={c} media={media} albums={albums} all={all} />;
+  if (media) return <MiniSite a={a} c={c} media={media} albums={albums} all={all} lyrics={LYRIC_LINES[slug] ?? []} />;
 
   return (
     <main>
@@ -132,11 +168,12 @@ export default async function ArtistPage({ params }: PageProps<"/artists/[slug]"
           ))}
         </div>
       </section>
+      <YouMightLike a={a} c={c} />
     </main>
   );
 }
 
-type MiniProps = { a: Artist; c: Catalog; media: ArtistMedia; albums: Album[]; all: Rows };
+type MiniProps = { a: Artist; c: Catalog; media: ArtistMedia; albums: Album[]; all: Rows; lyrics: Line[] };
 
 const VIDEO_KIND: Record<string, string> = { music_video: "Music video", lyric_video: "Lyric video", clip: "Clip" };
 
@@ -145,7 +182,7 @@ const VIDEO_KIND: Record<string, string> = { music_video: "Music video", lyric_v
  * music, videos, the photo wall and their story. Used once an artist has a
  * photo set on the CDN (scripts/catalog/photos.mjs in the radio repo).
  */
-function MiniSite({ a, c, media, albums, all }: MiniProps) {
+function MiniSite({ a, c, media, albums, all, lyrics }: MiniProps) {
   const imp = a.imprintSlug ? c.imprintBySlug.get(a.imprintSlug) : undefined;
   const heroes = media.photos.filter((p) => p.role === "hero");
   const tall = heroes.find((p) => p.shape === "tall") ?? heroes[0] ?? media.photos[0];
@@ -237,6 +274,8 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
         </div>
       </section>
 
+      {lyrics.length > 0 && <LyricLine lines={lyrics} />}
+
       {media.videos.length > 0 && (
         <section id="videos" className="sec wrap dark">
           <div className="group-title" style={{ marginTop: 0 }}>
@@ -318,6 +357,8 @@ function MiniSite({ a, c, media, albums, all }: MiniProps) {
           ))}
         </div>
       </section>
+
+      <YouMightLike a={a} c={c} />
     </main>
   );
 }

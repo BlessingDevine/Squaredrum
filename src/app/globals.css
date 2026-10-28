@@ -979,3 +979,17 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
   .artist-canvas{z-index:auto;inset:0;top:0;right:0;width:100%;height:100%;aspect-ratio:auto;box-shadow:none}
 }
 @media (prefers-reduced-motion:reduce){.artist-canvas{display:none}}
+
+/* Artist page: "If you like X", three artist cards (page.tsx YouMightLike). */
+.grid-artists.grid-like{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){.grid-artists.grid-like{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-like .artist:nth-child(3){display:none}}
+
+/* Artist page: one sung line between sections (lyric-line.tsx). */
+.lyric-band{padding-block:clamp(56px,8vw,120px);text-align:center;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light)}
+.lyric-band figure{margin:0 auto;max-width:22ch;min-height:1em}
+.lyric-band blockquote{margin:0;font-family:var(--font-oswald),var(--display);font-weight:500;font-size:clamp(32px,4.6vw,64px);line-height:1.08;text-transform:uppercase;letter-spacing:.005em}
+.lyric-band blockquote::before{content:"“";color:var(--gold-deep)}
+.lyric-band blockquote::after{content:"”";color:var(--gold-deep)}
+.lyric-band figcaption{margin-top:18px;color:var(--mute-ink);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.lyric-band .is-in{animation:spotlight-in .8s ease-out both}
+@media (prefers-reduced-motion:reduce){.lyric-band .is-in{animation:none}}

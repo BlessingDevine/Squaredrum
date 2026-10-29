@@ -1,9 +1,13 @@
+import type { CSSProperties } from "react";
+
 /**
  * Where the face is in each Canvas loop, so a square crop of the 9:16 video (a
  * card preview or the spotlight on /artists) keeps it in frame. Worked out with
  * macOS Vision face detection on every half second of each loop, with room above
  * the head for hair and hats, then checked by eye (Oct 2026); the number is the CSS
- * object-position y, in %. Keyed by the Canvas file's hash.
+ * object-position y, in %. Keyed by the Canvas file's hash. A loop filmed wider
+ * than the rest (head and torso small in the square) is also zoomed in around
+ * the face: ZOOM gives the scale and the face's spot in the square (x %, y %).
  */
 const FOCUS: Record<string, number> = {
   "8474def429fe45499126": 14, // ash-revenant
@@ -45,8 +49,16 @@ const FOCUS: Record<string, number> = {
   "fd59159ba661c28461a6": 52, // yano-sky
 };
 
-/** object-position for a Canvas shown square; an unknown loop sits near the top, where faces usually are. */
-export function canvasFocus(src: string | null) {
+const ZOOM: Record<string, { scale: number; x: number; y: number }> = {
+  "142c8a1e73b16ea3ee07": { scale: 1.5, x: 52, y: 18 }, // sanza-benito: waist-up balcony shot
+};
+
+/** Style for a Canvas shown square; an unknown loop sits near the top, where faces usually are. */
+export function canvasFocus(src: string | null): CSSProperties {
   const key = src?.match(/([0-9a-f]{20})\.mp4$/)?.[1];
-  return `50% ${key && key in FOCUS ? FOCUS[key] : 20}%`;
+  const z = key ? ZOOM[key] : undefined;
+  return {
+    objectPosition: `50% ${key && key in FOCUS ? FOCUS[key] : 20}%`,
+    ...(z && { transform: `scale(${z.scale})`, transformOrigin: `${z.x}% ${z.y}%` }),
+  };
 }

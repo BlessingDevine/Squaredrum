@@ -74,7 +74,7 @@ export function ArtistSpotlight({ artists }: { artists: Spotlight[] }) {
         {a.canvas && (
           <video
             className="feature-canvas"
-            style={{ objectPosition: canvasFocus(a.canvas) }}
+            style={canvasFocus(a.canvas)}
             src={a.canvas}
             poster={a.image}
             autoPlay

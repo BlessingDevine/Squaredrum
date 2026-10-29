@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
+import { canvasFocus } from "@/lib/canvas-focus";
 import type { Row } from "./play";
 import { usePlayer } from "./player";
 
@@ -70,7 +71,19 @@ export function ArtistSpotlight({ artists }: { artists: Spotlight[] }) {
     <div className="artist-feature is-in" data-slug={a.slug}>
       <Link className="feature-link" href={`/artists/${a.slug}`}>
         <img src={a.image} alt={a.name} />
-        {a.canvas && <video className="feature-canvas" src={a.canvas} poster={a.image} autoPlay muted loop playsInline aria-hidden="true" />}
+        {a.canvas && (
+          <video
+            className="feature-canvas"
+            style={{ objectPosition: canvasFocus(a.canvas) }}
+            src={a.canvas}
+            poster={a.image}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
+        )}
         <span className="eyebrow mono">
           Spotlight <span className="card-badge is-air">On air</span>
         </span>

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { canvasFocus } from "@/lib/canvas-focus";
 import type { RosterCard as Card } from "./roster-row";
 
 type Extras = { canvas: string | null; words: { q: string; a: string } | null; isNew: boolean; moods: string[] };
@@ -61,7 +60,7 @@ export function RosterCard({ a, x }: { a: Card; x: Extras }) {
         <div className={`ph${a.isPortrait ? "" : " cover"}`}>
           <img src={a.image} alt={a.name} loading="lazy" />
           {x.canvas && (
-            <video ref={video} className="card-canvas" style={{ objectPosition: canvasFocus(x.canvas) }} muted loop playsInline preload="none" aria-hidden="true" />
+            <video ref={video} className="card-canvas" muted loop playsInline preload="none" aria-hidden="true" />
           )}
         </div>
         <b>{a.name}</b>

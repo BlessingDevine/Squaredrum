@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
-import { canvasFocus } from "@/lib/canvas-focus";
 import type { Row } from "./play";
 import { usePlayer } from "./player";
 
@@ -74,7 +73,6 @@ export function ArtistSpotlight({ artists }: { artists: Spotlight[] }) {
         {a.canvas && (
           <video
             className="feature-canvas"
-            style={{ objectPosition: canvasFocus(a.canvas) }}
             src={a.canvas}
             poster={a.image}
             autoPlay

@@ -1009,7 +1009,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .grid-spotlight:has(.artist-cell[hidden]) .artist-feature{display:none}
 :is(.grid-artists .artist,.artist-feature):is([data-slug="iron-mirage"],[data-slug="yano-sky"]) img{object-position:50% 50%}
 :is(.grid-artists .artist,.artist-feature)[data-slug="luv-tonez"] img{object-position:50% 70%}
-.card-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;opacity:0;transition:opacity .45s;pointer-events:none}
+.card-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s;pointer-events:none}
 .artist.is-live .card-canvas{opacity:1}
 .card-badges{position:absolute;top:10px;left:10px;z-index:4;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}
 .card-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:2px;background:rgba(11,11,12,.78);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;line-height:1}
@@ -1030,7 +1030,7 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 
 /* The spotlight square: Canvas loop, a lyric line and a play button (artist-spotlight.tsx). */
 .feature-link{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;color:inherit}
-.feature-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;z-index:-2}
+.feature-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .artist-feature::after{content:"";position:absolute;inset:0 0 auto;height:45%;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(11,11,12,.7),rgba(11,11,12,0))}
 .artist-feature .eyebrow .card-badge{margin-left:8px;vertical-align:1px}
 .feature-lyric{position:absolute;top:84px;left:28px;right:28px;margin:0;pointer-events:none;color:#fff;font-family:var(--display);font-size:clamp(20px,2vw,30px);line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.45)}

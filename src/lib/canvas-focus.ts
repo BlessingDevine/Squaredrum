@@ -37,6 +37,7 @@ const FOCUS: Record<string, number> = {
   "f2984ee12a2134aae303": 0, // saka
   "e42fe01dc329436a2270": 24, // steel-vandal
   "e88d45c7a42454b31a85": 19, // thando-keys
+  "142c8a1e73b16ea3ee07": 0, // sanza-benito
   "c2397774ca6163687bd5": 30, // throne-static
   "142f8c9bfeef89d7ec28": 16, // vegah-riot
   "9700f16405aaa77a16c0": 0, // virgo-dunstan

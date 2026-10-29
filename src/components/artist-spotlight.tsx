@@ -1,9 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
+import type { Row } from "./play";
+import { usePlayer } from "./player";
 
-export type Spotlight = { slug: string; name: string; line: string; image: string };
+export type Spotlight = {
+  slug: string;
+  name: string;
+  line: string;
+  image: string;
+  /** Newest album's Canvas loop: plays in the square instead of the still photo. */
+  canvas: string | null;
+  /** Approved lyric lines (lyric-lines.ts); one shows over the loop. */
+  lines: { line: string; title: string }[];
+  /** First Start here song, for the play button. */
+  start: Row | null;
+};
 
 // Each opening of /artists shows the next artist in the roster. The place is kept in the
 // browser, so a visitor walks through everyone; a first visit starts somewhere random.
@@ -46,14 +59,41 @@ export function ArtistSpotlight({ artists }: { artists: Spotlight[] }) {
     () => pick(artists.length),
     () => -1,
   );
+  const p = usePlayer();
+  // Which lyric line shows; only read once the square is filled in (client side).
+  const [seed] = useState(() => Math.random());
   const a = artists[i];
   if (!a) return <div className="artist-feature" aria-hidden="true" />;
+  const lyric = a.lines.length ? a.lines[Math.floor(seed * a.lines.length)] : null;
+  const on = !!a.start && p.current?.id === a.start.id;
   return (
-    <Link className="artist-feature is-in" href={`/artists/${a.slug}`}>
-      <img src={a.image} alt={a.name} />
-      <span className="eyebrow mono">Spotlight</span>
-      <b>{a.name}</b>
-      <span className="mono">{a.line}</span>
-    </Link>
+    <div className="artist-feature is-in" data-slug={a.slug}>
+      <Link className="feature-link" href={`/artists/${a.slug}`}>
+        <img src={a.image} alt={a.name} />
+        {a.canvas && <video className="feature-canvas" src={a.canvas} poster={a.image} autoPlay muted loop playsInline aria-hidden="true" />}
+        <span className="eyebrow mono">
+          Spotlight <span className="card-badge is-air">On air</span>
+        </span>
+        <b>{a.name}</b>
+        <span className="mono">{a.line}</span>
+      </Link>
+      {lyric && (
+        <p className="feature-lyric">
+          <span>“{lyric.line}”</span>
+          <cite className="mono">{lyric.title}</cite>
+        </p>
+      )}
+      {a.start && (
+        <button
+          type="button"
+          className={`feature-play${on && p.playing ? " is-on" : ""}`}
+          onClick={() => (on ? p.toggle() : p.playList([a.start!], 0))}
+          aria-label={`${on && p.playing ? "Pause" : "Play"} ${a.start.title} by ${a.name}`}
+        >
+          <span aria-hidden="true">{on && p.playing ? "❚❚" : "▶"}</span>
+          <span className="mono">{a.start.title}</span>
+        </button>
+      )}
+    </div>
   );
 }

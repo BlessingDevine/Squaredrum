@@ -1002,3 +1002,54 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 
 /* Release page: the album's story above the track list (src/lib/album-stories.ts). */
 .album-story{max-width:62ch;margin:0 0 36px;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:var(--ink)}
+
+/* /artists: roster cards with Canvas preview, badges and a Q&A back (roster-card.tsx). */
+.artist-cell{position:relative;min-width:0}
+.grid-artists .artist-cell[hidden]{display:none}
+.grid-spotlight:has(.artist-cell[hidden]) .artist-feature{display:none}
+:is(.grid-artists .artist,.artist-feature):is([data-slug="iron-mirage"],[data-slug="yano-sky"]) img{object-position:50% 50%}
+:is(.grid-artists .artist,.artist-feature)[data-slug="luv-tonez"] img{object-position:50% 70%}
+.card-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s;pointer-events:none}
+.artist.is-live .card-canvas{opacity:1}
+.card-badges{position:absolute;top:10px;left:10px;z-index:4;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}
+.card-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:2px;background:rgba(11,11,12,.78);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.card-badge.is-new{background:var(--gold);color:var(--ink)}
+.card-badge.is-air{display:none}
+[data-onair] .card-badge.is-air{display:inline-flex}
+.card-badge.is-air::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);animation:air-dot 1.6s ease-in-out infinite}
+@keyframes air-dot{50%{opacity:.25;transform:scale(.7)}}
+.card-flip{position:absolute;top:8px;right:8px;z-index:6;width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(11,11,12,.62);color:#fff;font-family:var(--display);font-size:22px;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+.card-flip:hover,.card-flip[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+.card-back{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;gap:10px;padding:18px 18px 16px;background:var(--ink);color:#fff;overflow:auto}
+.card-back[hidden]{display:none}
+.card-back>span{color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding-right:34px}
+.card-back p{margin:0;font-size:14px;line-height:1.45;flex:1}
+.card-back a{color:var(--gold);font-size:11px;text-transform:uppercase}
+.is-flipped .card-badges{display:none}
+@media (max-width:700px){.card-back{padding:12px}.card-back p{font-size:12.5px}.card-flip{width:28px;height:28px;font-size:18px}}
+
+/* The spotlight square: Canvas loop, a lyric line and a play button (artist-spotlight.tsx). */
+.feature-link{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;color:inherit}
+.feature-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.artist-feature::after{content:"";position:absolute;inset:0 0 auto;height:45%;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(11,11,12,.7),rgba(11,11,12,0))}
+.artist-feature .eyebrow .card-badge{margin-left:8px;vertical-align:1px}
+.feature-lyric{position:absolute;top:84px;left:28px;right:28px;margin:0;pointer-events:none;color:#fff;font-family:var(--display);font-size:clamp(20px,2vw,30px);line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.feature-lyric cite{display:block;margin-top:10px;font-style:normal;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.06em}
+.feature-play{position:absolute;top:24px;left:22px;display:flex;align-items:center;gap:10px;max-width:46%;height:44px;padding:0 16px 0 6px;border:0;border-radius:999px;background:var(--gold);color:var(--ink);cursor:pointer;transition:transform .2s}
+.feature-play:hover{transform:scale(1.04)}
+.feature-play>span:first-child{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:var(--gold);font-size:12px;flex:none}
+.feature-play .mono{font-size:11px;line-height:1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:700px){
+  .feature-lyric{top:66px;left:16px;right:16px;font-size:19px}
+  .feature-play{top:14px;left:14px;height:40px;max-width:80%}
+}
+@media (prefers-reduced-motion:reduce){.card-canvas,.feature-canvas{display:none}.card-badge.is-air::before{animation:none}}
+
+/* Toolbar: Surprise me and the mood chips (artist-tools.tsx). */
+.artist-tools{flex-wrap:wrap}
+button.chip{background:none;color:inherit;cursor:pointer;font-family:var(--mono)}
+button.chip.chip-surprise{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+button.chip.chip-surprise:hover{background:var(--gold-hi)}
+.mood-chips{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:700px){.artist-search{flex:1 1 100%}.mood-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}.mood-chips .chip{flex:none}}
+.artist-feature .feature-play span.mono:not(.eyebrow){margin:0;color:var(--ink)}

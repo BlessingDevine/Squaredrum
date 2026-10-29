@@ -50,7 +50,7 @@ const FOCUS: Record<string, number> = {
 };
 
 const ZOOM: Record<string, { scale: number; x: number; y: number }> = {
-  "142c8a1e73b16ea3ee07": { scale: 1.5, x: 52, y: 18 }, // sanza-benito: waist-up balcony shot
+  "142c8a1e73b16ea3ee07": { scale: 1.5, x: 52, y: 28 }, // sanza-benito: waist-up balcony shot
 };
 
 /** Style for a Canvas shown square; an unknown loop sits near the top, where faces usually are. */

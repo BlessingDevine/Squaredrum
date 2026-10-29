@@ -12,7 +12,7 @@ import type { CSSProperties } from "react";
 const FOCUS: Record<string, number> = {
   "8474def429fe45499126": 14, // ash-revenant
   "3c824f14516e3de423b3": 3, // bantan
-  "2a1ab73d0c45cea3e2ca": 16, // cedar-line
+  "2a1ab73d0c45cea3e2ca": 40, // cedar-line
   "297c04658047d50b5fb4": 16, // crimson-union
   "b57264413093e38d908b": 0, // danni-blaze
   "e4195b79c2f0655d046c": 0, // deejay-zethu

@@ -193,4 +193,11 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "Maybe prayer ain’t manners", title: "Dashboard prayer" },
     { line: "I wanted thunder from Heaven", title: "Empty chapel" },
   ],
+  elkana: [
+    { line: "Trading real love for a glowing phone", title: "Digital Hearts" },
+    { line: "Read receipts, blue ticks mock me", title: "Read Receipts" },
+    { line: "But you can’t unfollow my heart", title: "Unfollow My Heart" },
+    { line: "Fighting wars nobody sees", title: "Inner Demons" },
+    { line: "Learning to love the parts I didn’t know", title: "Healing Season" },
+  ],
 };

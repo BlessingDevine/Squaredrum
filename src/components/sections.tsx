@@ -4,6 +4,7 @@ import { GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { ChannelChips } from "./channel-chips";
 import { CountUp } from "./count-up";
+import { CoverCanvas } from "./cover-canvas";
 import { LevelMeter } from "./level-meter";
 import type { RosterCard } from "./roster-row";
 import { TiltCover } from "./tilt";
@@ -68,6 +69,7 @@ export function ReleaseCard({ album, c }: { album: Album; c: Catalog }) {
       {album.cover ? (
         <TiltCover>
           <img src={sized(album.cover, 600)!} alt={album.title} loading="lazy" />
+          {album.canvas && <CoverCanvas src={album.canvas} albumHref={`/releases/${album.slug}`} />}
         </TiltCover>
       ) : (
         <span className="ph-empty">{album.title.slice(0, 1)}</span>
@@ -109,6 +111,7 @@ export function ArtistStackCard({
             <img key={al.slug} className="behind" src={sized(al.cover, 300)!} alt="" loading="lazy" />
           ))}
         <img src={sized(top.cover, 600)!} alt={name ?? top.artist} loading="lazy" />
+        {top.canvas && <CoverCanvas src={top.canvas} albumHref={`/releases/${top.slug}`} />}
       </span>
       <b>{name ?? top.artist}</b>
       <span>{albums.length} albums</span>

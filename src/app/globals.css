@@ -214,11 +214,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .rel-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,2vw,28px)}
 .rel img{width:100%;aspect-ratio:1;object-fit:cover;box-shadow:0 20px 40px -24px rgba(0,0,0,.5);transition:transform .4s}
 .rel:hover img{transform:translateY(-4px)}
+/* The album's Canvas over its cover (cover-canvas.tsx), moving with the cover it sits on. */
+.rel-canvas{position:absolute;inset:0;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .45s,transform .4s}
+.rel-canvas.is-live{opacity:1}
+.rel-canvas .card-canvas{opacity:1}
+.rel:hover .rel-canvas{transform:translateY(-4px)}
 /* Release covers tilt towards the mouse with a light sheen (tilt.tsx). Mouse only. */
 .rel .tilt{display:block;position:relative;perspective:800px}
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
-  .rel .tilt img{transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
-  .rel:hover .tilt img{transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateZ(14px);box-shadow:0 34px 50px -26px rgba(0,0,0,.6)}
+  .rel .tilt img,.rel .tilt .rel-canvas{transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,opacity .45s}
+  .rel:hover .tilt img,.rel:hover .tilt .rel-canvas{transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateZ(14px)}
+  .rel:hover .tilt img{box-shadow:0 34px 50px -26px rgba(0,0,0,.6)}
   .rel .tilt::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
     background:radial-gradient(circle at var(--glare-x,50%) var(--glare-y,30%),rgba(255,255,255,.28),rgba(255,255,255,0) 55%)}
   .rel:hover .tilt::after{opacity:1}
@@ -730,7 +736,8 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .rel-stack .stack .behind{position:absolute;z-index:1;top:-12px;right:-12px;box-shadow:0 10px 24px -14px rgba(0,0,0,.5)}
 .rel-stack .stack .behind:nth-last-child(2){top:-6px;right:-6px}
 .rel-stack:hover .stack img{transform:none}
-.rel-stack:hover .stack img:last-child{transform:translateY(-4px)}
+.rel-stack:hover .stack img:not(.behind){transform:translateY(-4px)}
+.rel-stack .rel-canvas{z-index:3}
 @media (max-width:760px){
   .shelf-arrow{display:none}
   .rel-top .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter)}

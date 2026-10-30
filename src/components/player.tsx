@@ -27,6 +27,8 @@ export type PlayItem = {
   artistHref?: string | null;
   cover: string | null;
   src: string;
+  /** The song's album page; lets a release card know its album is the one playing. */
+  albumHref?: string;
   /** A live channel: `air` is the song on now, so the mixer can start from it inside the tap. */
   live?: { slug: string; name: string; air?: Playing };
 };

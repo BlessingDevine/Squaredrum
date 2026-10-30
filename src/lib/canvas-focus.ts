@@ -2,9 +2,9 @@ import type { CSSProperties } from "react";
 
 /**
  * Where the face is in each Canvas loop, so a square crop of the 9:16 video (a
- * card preview or the spotlight on /artists) keeps it in frame. Worked out with
- * macOS Vision face detection on every half second of each loop, with room above
- * the head for hair and hats, then checked by eye (Oct 2026); the number is the CSS
+ * card on /artists or /releases, or the spotlight on /artists) keeps it in
+ * frame. Worked out with macOS Vision face detection on every half second of
+ * each loop, with room above the head for hair and hats, then checked by eye (Oct 2026); the number is the CSS
  * object-position y, in %. Keyed by the Canvas file's hash. A loop filmed wider
  * than the rest (head and torso small in the square) is also zoomed in around
  * the face: ZOOM gives the scale and the face's spot in the square (x %, y %).
@@ -47,6 +47,46 @@ const FOCUS: Record<string, number> = {
   "9700f16405aaa77a16c0": 0, // virgo-dunstan
   "64316c28149fb047e0d0": 52, // vxnti
   "fd59159ba661c28461a6": 52, // yano-sky
+  // Other albums' loops, for release cards (Oct 2026).
+  "c6f2dfff1644254c1840": 62, // City Limits
+  "a3409191532f41db1b7a": 4, // Echo Rae II
+  "ff2f63790e604ef01a26": 16, // Echo Rae III
+  "4f89537ea5d727d4d2d6": 41, // Every Part of Me
+  "87bf7992e88176d0c693": 59, // Excellent Timing
+  "bd0bcb1cf4cfefe5b092": 100, // It Runs Without Me
+  "ba70445707193e8817c5": 31, // Legend By Morning
+  "a41461cbdc1dc729fa1c": 24, // Lumi Astra II
+  "17198db6aee5a24c3fbe": 0, // Lumi Astra III
+  "f9f9dd069650d0c65d0c": 29, // Luv Tonez II
+  "a147de50a5f3f2d50c56": 29, // Luv Tonez III
+  "f69d0e3a8ffa97a92a1b": 69, // Luv Tonez IV
+  "0bd3c9b74ec87ea6381c": 75, // Minor Details
+  "87104a2d26813349148b": 22, // New Reflex
+  "3d8d6f5958f3719f3a8f": 38, // No Excuse
+  "6d72cc5db9286d83df6a": 90, // No Witness
+  "3778a7d2c65128e98fa2": 100, // Nobody Else Thinks So
+  "73c63ebeb775097f3bfe": 54, // Nobody's Boyfriend
+  "6dd8607c1bafa2ac0edb": 55, // Not Trying Hard Enough
+  "f497153ebd992cbd481a": 84, // Nothing Left to Say It With
+  "18a042aabbf822e095a8": 28, // Nova Liyah II
+  "ce26a8956f6d0a9ca0e3": 30, // Nova Liyah III
+  "af7be9417a1a1bd60998": 62, // Old Mule
+  "e9a36b6b8635d65307ce": 93, // On A Loop
+  "7c5584c6f1c61a6b60ee": 64, // Our Own Religion
+  "ba88a197b50b6264c283": 60, // Out of Order
+  "b2a70689400bd4f89a8f": 5, // Paper Plates
+  "bfb0e383de392f5b6bc6": 18, // Pressure Feat. Lea Babi
+  "3913de39b36513270096": 70, // Rot in the Walls
+  "4de3ec35582d6e2a4764": 84, // Same Bar, Ten Years
+  "05078927dff16d552eb3": 13, // Same Hands
+  "5b2780f01075bdc79fd7": 33, // SOS
+  "c48a7fbe47ca9fab85f9": 37, // Still Here
+  "4c2ea80858df7bc7ee06": 72, // The Villain in Your Version
+  "7b993d0bb055760d5441": 6, // Too Fine
+  "a9a64c28e240439703e6": 69, // Voice Memos
+  "b07ade857c3971653b03": 8, // Wandering
+  "5fdd2813c2d9cce31a95": 84, // What You Actually Meant
+  "ae7a4d9c98ecd3a622d7": 0, // Wine & Smile
 };
 
 const ZOOM: Record<string, { scale: number; x: number; y: number }> = {

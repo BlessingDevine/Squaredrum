@@ -25,7 +25,10 @@ const MENU = [
  * side, white links on the black side). Everywhere else it is a black bar.
  */
 export function SiteNav() {
-  const path = usePathname();
+  // When the server rebuilds the home page in the background (revalidate), Next.js
+  // reports its path as "/index"; read it as "/" so that copy matches the browser.
+  const raw = usePathname();
+  const path = raw === "/index" ? "/" : raw;
   // The menu remembers the page it was opened on, so navigating closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === path;

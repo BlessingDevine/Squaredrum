@@ -21,6 +21,6 @@ export const CONTACT_PHONE = "+1 (424) 500-0396";
 export const SOCIAL = {
   instagram: "https://www.instagram.com/squaredrumla/",
   youtube: "https://www.youtube.com/@squaredrum",
-  x: "https://twitter.com/squaredrumrec",
+  x: "https://x.com/Squaredrumla",
   tiktok: "https://www.tiktok.com/@squaredrumla",
 };

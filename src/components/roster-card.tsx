@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { canvasFocus } from "@/lib/canvas-focus";
+import { ownWordsPronoun } from "@/lib/own-words-heading";
 import type { RosterCard as Card } from "./roster-row";
 
 type Extras = { canvas: string | null; words: { q: string; a: string } | null; isNew: boolean; moods: string[] };
@@ -77,7 +78,7 @@ export function RosterCard({ a, x }: { a: Card; x: Extras }) {
             type="button"
             className="card-flip"
             aria-pressed={flipped}
-            aria-label={flipped ? `Back to ${a.name}'s photo` : `${a.name} in their own words`}
+            aria-label={flipped ? `Back to ${a.name}'s photo` : `${a.name} in ${ownWordsPronoun(a.slug)} own words`}
             onClick={() => setFlipped((f) => !f)}
           >
             {flipped ? "×" : "“"}

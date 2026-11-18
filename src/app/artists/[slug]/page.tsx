@@ -19,6 +19,7 @@ import { toRow } from "@/lib/rows";
 import { seededShuffle } from "@/lib/seeded";
 import { LYRIC_LINES, type LyricLine as Line } from "@/lib/lyric-lines";
 import { OWN_WORDS } from "@/lib/own-words";
+import { ownWordsPronoun } from "@/lib/own-words-heading";
 import { START_HERE } from "@/lib/start-here";
 
 type Rows = ReturnType<typeof toRow>[];
@@ -309,7 +310,7 @@ function MiniSite({ a, c, media, albums, all, lyrics }: MiniProps) {
       {(OWN_WORDS[a.slug]?.length ?? 0) > 0 && (
         <section className="sec wrap own-words">
           <div className="group-title" style={{ marginTop: 0 }}>
-            <h2 className="display">In their own words</h2>
+            <h2 className="display">{`In ${ownWordsPronoun(a.slug)} own words`}</h2>
             <span className="mono">{a.name}</span>
           </div>
           <dl>

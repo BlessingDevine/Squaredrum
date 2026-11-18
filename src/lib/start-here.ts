@@ -62,7 +62,7 @@ export const START_HERE: Record<string, { title: string; why: string; album?: st
     { title: "Healing Season", why: "One for the comeback: working on himself once the grind and heartbreak settle." },
   ],
   "fizz": [
-    { title: "Main Character", why: "Press play for the lead role: in Fizz's story, she isn't a side character, she's the star." },
+    { title: "Main Character", why: "Press play for the lead role: Fizz sings it so you're the star of the story." },
     { title: "Cheza Nami", why: "Press play for the dance: one sweet, simple invitation, baby, let's have this dance." },
     { title: "Penzi Halina Formula", why: "Press play for the honesty: the big, unguarded admission that love was never maths." },
   ],

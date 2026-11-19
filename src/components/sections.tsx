@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { type Album, type Artist, type Catalog, type Imprint, sized, songsLabel } from "@/lib/catalog";
-import { GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
+import { APP_STORE_URL, GOOGLE_PLAY_URL, RADIO_URL } from "@/lib/config";
 import { img } from "@/lib/img";
 import { ChannelChips } from "./channel-chips";
 import { CountUp } from "./count-up";
@@ -168,7 +168,7 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
           <img className="gs-word" src="/brand/gosquare-wordmark.png" alt="GoSquare" style={{ filter: "invert(1) hue-rotate(180deg)" }} />
         </div>
         <div className="eco-copy">
-          <div className="eyebrow mono">The app · Out now on Android</div>
+          <div className="eyebrow mono">The app · Out now on iPhone and Android</div>
           <h3 className="display">
             Take the
             <br />
@@ -176,12 +176,13 @@ export function Ecosystem({ channelNames }: { channelNames: string[] }) {
             <br />
             with you.
           </h3>
-          <p style={{ marginTop: 18 }}>Every album, every artist, every live channel — plus lyrics, clips and your own playlists. On Google Play now, iPhone coming soon.</p>
+          <p style={{ marginTop: 18 }}>Every album, every artist, every live channel — plus lyrics, clips and your own playlists. Free on the App Store and Google Play.</p>
         </div>
         <div className="eco-get">
           <Link className="btn btn-ink" href="/app">
             See what&rsquo;s inside →
           </Link>
+          <AppStoreQR />
           <GooglePlayQR />
         </div>
         {/* The real app's screens, crossfading; the phone turns to face you as it scrolls into view. */}
@@ -213,6 +214,20 @@ export function RadioLivePill() {
       </span>
       <span className="rl-go" aria-hidden="true">
         ▶
+      </span>
+    </a>
+  );
+}
+
+/** Scan with an iPhone, or tap, to open GoSquare Music on the App Store. */
+export function AppStoreQR() {
+  return (
+    <a className="get-qr" href={APP_STORE_URL} target="_blank" rel="noopener" aria-label="GoSquare Music on the App Store (QR code)">
+      <img src="/gosquare/app-store-qr.svg" alt="" width={84} height={84} />
+      <span className="mono">
+        Scan for the
+        <br />
+        App Store
       </span>
     </a>
   );

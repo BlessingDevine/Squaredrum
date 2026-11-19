@@ -28,6 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     openGraph: { title: "SQUAREDRUM — Music Without Borders", description, siteName: "SQUAREDRUM", type: "website" },
     twitter: { card: "summary_large_image" },
+    // iPhone Safari shows its "GoSquare Music · Get" bar (Smart App Banner) at the top of every page.
+    itunes: { appId: "6822128252" },
   };
 }
 

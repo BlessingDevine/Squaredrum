@@ -17,7 +17,7 @@ export default async function Home() {
   const [c, { at, channels: onAir }] = await Promise.all([getCatalog(), getOnAirSnapshot()]);
 
   const slides: Slide[] = seededShuffle(
-    c.artists.filter((a) => a.portrait),
+    c.voices.filter((a) => a.portrait), // artists only: collections have profile pictures too
     `hero:${dayKey()}`,
   ).flatMap((a) => {
     const albums = a.albumSlugs.map((s) => c.albumBySlug.get(s)!).filter(Boolean);

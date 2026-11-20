@@ -22,9 +22,14 @@ export default async function Artists() {
   const collections = c.collections.flatMap((a) => {
     const card = rosterCard(a, c);
     if (!card) return [];
-    const covers = [...new Set(a.albumSlugs.flatMap((s) => c.albumBySlug.get(s)?.cover ?? []))];
-    const behind = covers.filter((cv) => sized(cv, 600) !== card.image).slice(0, 2).map((cv) => sized(cv, 300)!);
-    return [{ card, behind, count: covers.length }];
+    const albums = a.albumSlugs.flatMap((s) => {
+      const al = c.albumBySlug.get(s);
+      return al?.cover ? [al] : [];
+    });
+    // Lead cover first (Lounge West for Lounge Square), then newest first.
+    albums.sort((x, y) => Number(sized(y.cover, 600) === card.image) - Number(sized(x.cover, 600) === card.image) || y.released.localeCompare(x.released));
+    const behind = [...new Set(albums.map((al) => al.cover!))].filter((cv) => sized(cv, 600) !== card.image).slice(0, 2).map((cv) => sized(cv, 300)!);
+    return [{ card, behind, albums: albums.map((al) => ({ slug: al.slug, title: al.title, cover: sized(al.cover, 300)!, songs: al.songIds.length })) }];
   });
   // The big square takes artists with a portrait, at a size that stays sharp at double width.
   const spotlight = c.voices.flatMap((a) => {
@@ -71,8 +76,8 @@ export default async function Artists() {
             <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
           </SectionHead>
           <div className="grid-artists grid-collections">
-            {collections.map(({ card, behind, count }) => (
-              <CollectionCard key={card.slug} a={card} behind={behind} count={count} />
+            {collections.map(({ card, behind, albums }) => (
+              <CollectionCard key={card.slug} a={card} behind={behind} albums={albums} />
             ))}
           </div>
         </section>

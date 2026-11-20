@@ -6,6 +6,7 @@ import { ChannelChips } from "./channel-chips";
 import { CountUp } from "./count-up";
 import { CoverCanvas } from "./cover-canvas";
 import { LevelMeter } from "./level-meter";
+import { StackPicker } from "./stack-picker";
 import type { RosterCard } from "./roster-row";
 import { TiltCover } from "./tilt";
 
@@ -103,8 +104,15 @@ export function ArtistStackCard({
   const lead = albums.findIndex((al) => al.artistSlug && al.title === LEAD_ALBUM[al.artistSlug]);
   const [top, ...rest] = lead > 0 ? [albums[lead], ...albums.filter((_, i) => i !== lead)] : albums;
   const imp = top.imprintSlug ? c.imprintBySlug.get(top.imprintSlug) : undefined;
+  const ordered = [top, ...rest];
+  const owner = top.artistSlug && c.artistBySlug.get(top.artistSlug);
   return (
-    <Link className="rel rel-stack" href={`/releases/${top.slug}`}>
+    <StackPicker
+      className="rel rel-stack"
+      href={`/releases/${top.slug}`}
+      title={name ?? top.artist}
+      albums={ordered.map((al) => ({ slug: al.slug, title: al.title, cover: sized(al.cover, 300)!, songs: al.songIds.length }))}
+      more={owner && ordered.every((al) => al.artistSlug === owner.slug) ? { href: `/artists/${owner.slug}`, label: `${owner.collection ? "Collection" : "Artist"} page` } : undefined}>
       <span className="stack">
         {rest
           .slice(0, 2)
@@ -118,7 +126,7 @@ export function ArtistStackCard({
       <b>{name ?? top.artist}</b>
       <span>{albums.length} albums</span>
       {showLabel && imp && <span className="mono imp-name">{imp.name}</span>}
-    </Link>
+    </StackPicker>
   );
 }
 

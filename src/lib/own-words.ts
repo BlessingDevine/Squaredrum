@@ -94,6 +94,12 @@ export const OWN_WORDS: Record<string, { q: string; a: string }[]> = {
     { q: "Have you ever learned a lesson?", a: "Nah. Everybody told me. I turned the radio up. That's a whole album right there, Blame Me Later. I don't learn lessons, I write songs about not learning them. Saves time. Great." },
     { q: "Who is Disregard My Last Text for?", a: "Anyone who sent the 4 a.m. message and then the retraction at 4.07. I'm fine. This is great. Totally fine. Ignore that. Blame Colin." },
   ],
+  "alina-carisma": [
+    { q: "How did a dancer end up singing?", a: "Sound check. The singer was late, the band was bored, and I grabbed the mic to count them in. 5, 6, 7, 8. Nobody asked for it back. I still teach salsa in the morning. Now I just sing over it." },
+    { q: "Which song would you play a stranger first?", a: "El Precio de Tu Risa. Laugh with me and you're invited. Try to buy it and I pay for my own taxi and keep dancing. Three minutes and you know exactly who I am." },
+    { q: "What does your abuela think?", a: "She times me. Cronómetro is real, mi amor. She watches my footwork with a judge's face and asks why that boy has been texting since Tuesday. I tell her I dance first and decide later. She says I get that from her." },
+    { q: "Why does every song change halfway?", a: "Because I get bored fast. Projects, crushes, outfits. So every song gets a twist: a dance break, a switch, a count-in. If you're still standing at the wall by the breakdown, that's on you." },
+  ],
   "lea-babi": [
     { q: "Where do your songs come from?", a: "The small stuff. Aisle four. Your side of the sink. A charger left behind, which is never an accident. I write like I'm sending a voice note to one person, and I'm always the one holding the phone." },
     { q: "Which song would you play a stranger first?", a: "Parking Lot Confessions. Some conversations only happen in parking lots, engine idling, nobody getting out yet. If they like that one, mm, then we can talk about SOS." },

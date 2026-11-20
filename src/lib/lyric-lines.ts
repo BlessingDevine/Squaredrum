@@ -42,6 +42,13 @@ export const LYRIC_LINES: Record<string, LyricLine[]> = {
     { line: "We stop for coffee neither of us needs", title: "Keep Looking Back" },
     { line: "That little sentence beats the whole speech", title: "You Talk Too Much" },
   ],
+  "alina-carisma": [
+    { line: "La risa no se compra, se invita, se comparte", title: "El Precio de Tu Risa" },
+    { line: "Me gustas más cuando me dejas bailar", title: "Sin Letra Pequeña" },
+    { line: "Tu signo no manda, mi cuerpo decide", title: "Tu Signo No Manda" },
+    { line: "No soy tu proyecto, soy la coreógrafa", title: "La Coreógrafa" },
+    { line: "I'm not your sequel, I'm my own premiere", title: "No Soy Tu Secuela" },
+  ],
   "lea-babi": [
     { line: "Calculating what time it is for you", title: "Time Zone Mathematics" },
     { line: "Funny how memories hide inside routines", title: "Do You Still Drive By Here" },

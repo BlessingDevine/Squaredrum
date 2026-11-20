@@ -10,7 +10,7 @@ import type { CSSProperties } from "react";
  * the face: ZOOM gives the scale and the face's spot in the square (x %, y %).
  */
 const FOCUS: Record<string, number> = {
-  "c9121dcd4741464f15ea": 0, // alina-carisma
+  "34cd52d1e0bcfdd18c7b": 0, // alina-carisma
   "8474def429fe45499126": 14, // ash-revenant
   "3c824f14516e3de423b3": 3, // bantan
   "2a1ab73d0c45cea3e2ca": 40, // cedar-line
@@ -92,7 +92,7 @@ const FOCUS: Record<string, number> = {
 
 const ZOOM: Record<string, { scale: number; x: number; y: number }> = {
   "142c8a1e73b16ea3ee07": { scale: 1.5, x: 52, y: 28 }, // sanza-benito: waist-up balcony shot
-  "c9121dcd4741464f15ea": { scale: 1.5, x: 50, y: 12 }, // alina-carisma: full-length, face at the top
+  "34cd52d1e0bcfdd18c7b": { scale: 1.5, x: 55, y: 10 }, // alina-carisma: full-length sway, face at the top
 };
 
 /** Style for a Canvas shown square; an unknown loop sits near the top, where faces usually are. */

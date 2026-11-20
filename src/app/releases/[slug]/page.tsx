@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DownloadsChip } from "@/components/account";
 import { BackLink } from "@/components/back-link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ExplicitBadge, PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard } from "@/components/sections";
 import { ALBUM_STORIES } from "@/lib/album-stories";
@@ -27,7 +27,11 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
   const { slug } = await params;
   const c = await getCatalog();
   const al = c.albumBySlug.get(slug);
-  if (!al) notFound();
+  if (!al) {
+    const moved = c.albumRedirects.get(slug);
+    if (moved) permanentRedirect(`/releases/${moved}`);
+    notFound();
+  }
 
   const rows = al.songIds.map((id) => toRow(c.songById.get(id)!, c));
   const artist = al.artistSlug ? c.artistBySlug.get(al.artistSlug) : undefined;

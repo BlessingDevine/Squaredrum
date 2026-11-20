@@ -54,7 +54,7 @@ export const FEATURED_RELEASES = [
   ["Pressure Feat. Lea Babi", "bantan"],
   ["Let's Talk About It", "j-cruz"],
   ["The Holy Moly", "neka"],
-  ["Latin Square Vol II", ""],
+  ["Latin Square Vol II", "latin-square"],
   ["Ndim Lo!", "deejay-zethu"],
   ["Good At This", "cedar-line"],
   ["Already Winning", "sadie-colton"],

@@ -101,6 +101,8 @@ export type Catalog = {
   songByCode: Map<string, Song>;
   artistBySlug: Map<string, Artist>;
   albumBySlug: Map<string, Album>;
+  /** Old album addresses → current ones (a label compilation later given a collection name keeps its old link). */
+  albumRedirects: Map<string, string>;
   imprintBySlug: Map<string, Imprint>;
 };
 
@@ -201,6 +203,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
   const songs: Song[] = [];
   const albumInfo = new Map<string, { added: string; compilation: boolean }>(); // albumSlug → first added, filed under Compilations/
   const usedAlbumSlugs = new Map<string, string>(); // slug → owner::album
+  const albumRedirects = new Map<string, string>();
   for (const r of songRows) {
     const file = r.song_files?.[0];
     if (!file || !r.duration_ms) continue; // nothing playable
@@ -214,6 +217,12 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
     let albumSlug = slugify(album === artistName ? album : `${album} ${artistName}`);
     if (usedAlbumSlugs.has(albumSlug) && usedAlbumSlugs.get(albumSlug) !== key) albumSlug = `${albumSlug}-${hashString(key).toString(36).slice(0, 4)}`;
     usedAlbumSlugs.set(albumSlug, key);
+    // A compilation that was first credited to its label (album + label name) and later moved under a
+    // collection (Lounge Square, Nov 2026): its old address, e.g. from a past Drumroll, still works.
+    if (artist && imprint && r.source_path?.includes("/Compilations/")) {
+      const was = slugify(`${album} ${imprint.imprint_name}`);
+      if (was !== albumSlug) albumRedirects.set(was, albumSlug);
+    }
     const info = albumInfo.get(albumSlug);
     const inCompilations = !!r.source_path?.includes("/Compilations/");
     if (!info) albumInfo.set(albumSlug, { added: r.created_at, compilation: inCompilations });
@@ -354,6 +363,7 @@ function build([imprintRows, artistRows, songRows, stations, tracks, covers, art
     songByCode: new Map(songs.map((s) => [s.code, s])),
     artistBySlug: new Map(artists.map((a) => [a.slug, a])),
     albumBySlug,
+    albumRedirects: new Map([...albumRedirects].filter(([was]) => !albumBySlug.has(was))),
     imprintBySlug: new Map(imprints.map((i) => [i.slug, i])),
   };
 }

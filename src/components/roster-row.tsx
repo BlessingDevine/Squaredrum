@@ -38,3 +38,24 @@ export function ArtistCard({ a }: { a: RosterCard }) {
     </Link>
   );
 }
+
+/**
+ * A house collection on /artists. One with several albums shows its other covers stacked behind
+ * the first (up to two), like the series stacks on /releases.
+ */
+export function CollectionCard({ a, behind, count }: { a: RosterCard; behind: string[]; count: number }) {
+  return (
+    <Link className={`artist${behind.length ? " stacked" : ""}`} href={`/artists/${a.slug}`}>
+      <div className="stack-wrap">
+        {[...behind].reverse().map((src) => (
+          <img key={src} className="behind" src={src} alt="" loading="lazy" />
+        ))}
+        <div className={`ph${a.isPortrait ? "" : " cover"}`}>
+          <img src={a.image} alt={a.name} loading="lazy" />
+        </div>
+      </div>
+      <b>{a.name}</b>
+      <span className="mono">{count > 1 ? `${count} albums · ${a.line}` : a.line}</span>
+    </Link>
+  );
+}

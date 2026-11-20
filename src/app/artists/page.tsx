@@ -3,9 +3,9 @@ import { ArtistSpotlight } from "@/components/artist-spotlight";
 import { ArtistTools } from "@/components/artist-tools";
 import { RosterCard } from "@/components/roster-card";
 import { RosterOnAir } from "@/components/roster-on-air";
-import { ArtistCard } from "@/components/roster-row";
+import { CollectionCard } from "@/components/roster-row";
 import { PageHead, SectionHead, rosterCard } from "@/components/sections";
-import { getCatalog } from "@/lib/catalog";
+import { getCatalog, sized } from "@/lib/catalog";
 import { img } from "@/lib/img";
 import { MOODS } from "@/lib/moods";
 import { rosterExtras } from "@/lib/roster-extras";
@@ -18,7 +18,14 @@ export default async function Artists() {
   // Real artists first; the house collections (Country Square, Lofi Square…) get their own section.
   const extras = new Map(c.voices.map((a) => [a.slug, rosterExtras(a, c)]));
   const cards = c.voices.flatMap((a) => rosterCard(a, c) ?? []);
-  const collections = c.collections.flatMap((a) => rosterCard(a, c) ?? []);
+  // A collection with several albums stacks its other covers behind the lead one.
+  const collections = c.collections.flatMap((a) => {
+    const card = rosterCard(a, c);
+    if (!card) return [];
+    const covers = [...new Set(a.albumSlugs.flatMap((s) => c.albumBySlug.get(s)?.cover ?? []))];
+    const behind = covers.filter((cv) => sized(cv, 600) !== card.image).slice(0, 2).map((cv) => sized(cv, 300)!);
+    return [{ card, behind, count: covers.length }];
+  });
   // The big square takes artists with a portrait, at a size that stays sharp at double width.
   const spotlight = c.voices.flatMap((a) => {
     const x = extras.get(a.slug)!;
@@ -64,8 +71,8 @@ export default async function Artists() {
             <p>Themed series from our labels — Country Square, Lofi Square, Easy Sunday and more.</p>
           </SectionHead>
           <div className="grid-artists grid-collections">
-            {collections.map((a) => (
-              <ArtistCard key={a.slug} a={a} />
+            {collections.map(({ card, behind, count }) => (
+              <CollectionCard key={card.slug} a={card} behind={behind} count={count} />
             ))}
           </div>
         </section>

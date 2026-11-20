@@ -10,7 +10,7 @@ const HIS = [
   "virgo-dunstan", "vxnti",
 ];
 const HER = [
-  "ash-revenant", "crimson-union", "deejay-zethu", "echo-rae", "lea-babi", "lucid-arrows", "lumi-astra",
+  "alina-carisma", "ash-revenant", "crimson-union", "deejay-zethu", "echo-rae", "lea-babi", "lucid-arrows", "lumi-astra",
   "lune-skylar", "neilly-storm", "neka", "nova-liyah", "pala", "sadie-colton", "saka", "yano-sky",
 ];
 

@@ -748,6 +748,8 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .rel-stack:hover .stack img{transform:none}
 .rel-stack:hover .stack img:not(.behind){transform:translateY(-4px)}
 .rel-stack .rel-canvas{z-index:3}
+/* Stacks in a grid (a label's page, Compilations) need room above for the covers behind. */
+.grid-stacks{padding-top:12px;row-gap:clamp(26px,3vw,40px)}
 @media (max-width:760px){
   .shelf-arrow{display:none}
   .rel-top .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter)}

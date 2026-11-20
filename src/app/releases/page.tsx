@@ -72,6 +72,14 @@ export default async function Releases({ searchParams }: PageProps<"/releases">)
     .filter((s) => s.albums.length > 0)
     .sort((x, y) => newestFirst(x.albums[0], y.albums[0]));
   const comps = all.filter((a) => a.compilation);
+  // A label's page or Compilations folds series and artists into stacks too (newest group first);
+  // "See all" and search still list every album on its own.
+  const stackedGroups =
+    active || compilations
+      ? [...byArtist(shown.filter((a) => !a.compilation)).map((g) => ({ albums: g, name: undefined as string | undefined })), ...bySeries(shown.filter((a) => a.compilation))].sort((x, y) =>
+          newestFirst(x.albums[0], y.albums[0]),
+        )
+      : [];
 
   const collage = headerCovers(shown);
   const title = active ? active.name : compilations ? "Compilations." : "Releases.";
@@ -139,7 +147,23 @@ export default async function Releases({ searchParams }: PageProps<"/releases">)
         </div>
       )}
 
-      <section className="sec wrap rel-results" hidden={!filtered}>
+      {stackedGroups.length > 0 && (
+        <div className="shelves">
+          <section className="sec wrap">
+            <div className="grid-albums grid-stacks">
+              {stackedGroups.map((g) =>
+                g.albums.length > 1 ? (
+                  <ArtistStackCard key={g.albums[0].slug} albums={g.albums} c={c} name={g.name} showLabel={!active} />
+                ) : (
+                  <ReleaseCard key={g.albums[0].slug} album={g.albums[0]} c={c} />
+                ),
+              )}
+            </div>
+          </section>
+        </div>
+      )}
+
+      <section className="sec wrap rel-results" hidden={!filtered || stackedGroups.length > 0}>
         <div className="grid-albums">
           {shown.map((al) => (
             <ReleaseCard key={al.slug} album={al} c={c} />

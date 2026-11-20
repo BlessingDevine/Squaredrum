@@ -99,7 +99,9 @@ export function ArtistStackCard({
   /** For a series with no single artist (Dance Square Vol 1 & 2): its name. */
   name?: string;
 }) {
-  const [top, ...rest] = albums;
+  // A collection with a chosen lead (Lounge West for Lounge Square) puts it on top; otherwise the newest.
+  const lead = albums.findIndex((al) => al.artistSlug && al.title === LEAD_ALBUM[al.artistSlug]);
+  const [top, ...rest] = lead > 0 ? [albums[lead], ...albums.filter((_, i) => i !== lead)] : albums;
   const imp = top.imprintSlug ? c.imprintBySlug.get(top.imprintSlug) : undefined;
   return (
     <Link className="rel rel-stack" href={`/releases/${top.slug}`}>

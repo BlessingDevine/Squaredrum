@@ -125,8 +125,13 @@ export function ArtistStackCard({
  * The cover that stands for an artist without a portrait. For a series (R&B Square) that's its
  * own first volume ("R&B Square I"), not a spin-off like "Love in Paris" that happens to sort first.
  */
+/** A collection whose front cover is a chosen album rather than its first volume (Robert, Nov 2026). */
+const LEAD_ALBUM: Record<string, string> = { "lounge-square": "Lounge West" };
+
 export function leadCover(a: Artist, c: Catalog): string | null {
   const albums = a.albumSlugs.map((s) => c.albumBySlug.get(s)).filter((al) => al?.cover);
+  const chosen = albums.find((al) => al!.title === LEAD_ALBUM[a.slug]);
+  if (chosen) return chosen.cover;
   const own = albums.filter((al) => al!.title.toLowerCase().startsWith(a.name.toLowerCase()));
   const pick = own.sort((x, y) => x!.title.localeCompare(y!.title, undefined, { numeric: true }))[0] ?? albums[0];
   return pick?.cover ?? null;

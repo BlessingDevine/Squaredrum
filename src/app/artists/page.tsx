@@ -4,7 +4,7 @@ import { ArtistTools } from "@/components/artist-tools";
 import { RosterCard } from "@/components/roster-card";
 import { RosterOnAir } from "@/components/roster-on-air";
 import { CollectionCard } from "@/components/roster-row";
-import { PageHead, SectionHead, leadCover, rosterCard } from "@/components/sections";
+import { PageHead, SectionHead, rosterCard } from "@/components/sections";
 import { getCatalog, sized } from "@/lib/catalog";
 import { img } from "@/lib/img";
 import { MOODS } from "@/lib/moods";
@@ -27,10 +27,8 @@ export default async function Artists() {
       return al?.cover ? [al] : [];
     });
     // Lead cover first (Lounge West for Lounge Square), then newest first.
-    const lead = leadCover(a, c);
-    albums.sort((x, y) => Number(y.cover === lead) - Number(x.cover === lead) || y.released.localeCompare(x.released));
-    // Behind the profile picture: the first albums' covers (lead first).
-    const behind = [...new Set(albums.map((al) => al.cover!))].slice(0, 2).map((cv) => sized(cv, 300)!);
+    albums.sort((x, y) => Number(sized(y.cover, 600) === card.image) - Number(sized(x.cover, 600) === card.image) || y.released.localeCompare(x.released));
+    const behind = [...new Set(albums.map((al) => al.cover!))].filter((cv) => sized(cv, 600) !== card.image).slice(0, 2).map((cv) => sized(cv, 300)!);
     return [{ card, behind, albums: albums.map((al) => ({ slug: al.slug, title: al.title, cover: sized(al.cover, 300)!, songs: al.songIds.length })) }];
   });
   // The big square takes artists with a portrait, at a size that stays sharp at double width.

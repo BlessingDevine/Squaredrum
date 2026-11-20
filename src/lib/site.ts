@@ -78,10 +78,6 @@ const PORTRAITS = new Set([
   "pala", "riven-cole", "sadie-colton", "cedar-line", "deejay-zethu", "yano-sky", "saka", "sanza-benito", "vegah-riot", "virgo-dunstan",
   "crimson-union", "dusk-cannon", "hollow-district", "knox-havoc", "lucid-arrows", "steel-vandal", "throne-static",
   "elkana", "lune-skylar", "vxnti", "thando-keys", "alina-carisma",
-  // House collections' profile pictures (Nov 2026): the series' artwork without lettering, in the same 4:5 slot.
-  "afro-house-square", "afro-square", "bamboo-junction", "country-square", "dance-square", "dreamy-pop", "easy-sunday-i", "easy-sunday-ii",
-  "house-square", "kingston-square", "kizomba-square", "latin-square", "latin-vibes", "lofi-square", "lounge-square", "pop-square",
-  "r-and-b-square", "relaxing-piano", "soothing-piano", "sunset-over-yaba", "trapsoul-square", "zouk-love",
 ]);
 
 export const portraitFor = (slug: string) => (PORTRAITS.has(slug) ? `/roster/${slug}.jpg` : null);

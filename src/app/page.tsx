@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Hero, type Slide } from "@/components/hero";
 import { OnAirDeck } from "@/components/on-air";
-import { RosterRow } from "@/components/roster-row";
+import { RosterArrows, RosterRow } from "@/components/roster-row";
 import { Ecosystem, ImprintGrid, ReleaseCard, SectionHead, ServiceCards, Stats, Story, rosterCard } from "@/components/sections";
 import { getCatalog, getOnAirSnapshot } from "@/lib/catalog";
 import { img } from "@/lib/img";
@@ -85,9 +85,12 @@ export default async function Home() {
               </>
             }
           >
-            <Link className="btn btn-ghost-light" href="/artists">
-              All {c.voices.length} artists →
-            </Link>
+            <div className="roster-actions">
+              <Link className="btn btn-ghost-light" href="/artists">
+                All {c.voices.length} artists →
+              </Link>
+              <RosterArrows />
+            </div>
           </SectionHead>
         </div>
         <RosterRow artists={roster} />

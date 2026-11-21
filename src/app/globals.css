@@ -852,8 +852,8 @@ body:has(.pbar) footer .legal{padding-bottom:110px}
 .info a.artist-link{border-bottom:1px solid var(--gold-deep)}
 .empty{padding:60px 0;color:var(--mute-ink)}
 .roster-head{position:relative}
-.roster-ctrl-float{position:absolute;right:var(--gutter);margin-top:-96px}
-@media (max-width:760px){.roster-ctrl-float{display:none}}
+.roster-actions{display:flex;align-items:center;gap:12px}
+@media (max-width:760px){.roster-ctrl-head{display:none}}
 @media (min-width:761px) and (max-width:1100px){.h-sub{display:none}}
 /* the turntable stacks below laptop width: record on top, then channels, then the song */
 @media (max-width:1100px){

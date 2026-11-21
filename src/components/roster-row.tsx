@@ -1,31 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
 
 import { type StackAlbum, StackPicker } from "./stack-picker";
 
 export type RosterCard = { slug: string; name: string; line: string; image: string; isPortrait: boolean };
 
 export function RosterRow({ artists }: { artists: RosterCard[] }) {
-  const row = useRef<HTMLDivElement>(null);
-  const by = (px: number) => row.current?.scrollBy({ left: px, behavior: "smooth" });
   return (
-    <>
-      <div className="roster-ctrl roster-ctrl-float">
-        <button onClick={() => by(-600)} aria-label="Scroll left">
-          ←
-        </button>
-        <button onClick={() => by(600)} aria-label="Scroll right">
-          →
-        </button>
-      </div>
-      <div className="roster-row" ref={row}>
-        {artists.map((a) => (
-          <ArtistCard key={a.slug} a={a} />
-        ))}
-      </div>
-    </>
+    <div className="roster-row" id="roster-row">
+      {artists.map((a) => (
+        <ArtistCard key={a.slug} a={a} />
+      ))}
+    </div>
+  );
+}
+
+/** The roster's ← → buttons; they sit in the section header beside "All artists" (desktop only). */
+export function RosterArrows() {
+  const by = (px: number) => document.getElementById("roster-row")?.scrollBy({ left: px, behavior: "smooth" });
+  return (
+    <div className="roster-ctrl roster-ctrl-head">
+      <button onClick={() => by(-600)} aria-label="Scroll left">
+        ←
+      </button>
+      <button onClick={() => by(600)} aria-label="Scroll right">
+        →
+      </button>
+    </div>
   );
 }
 

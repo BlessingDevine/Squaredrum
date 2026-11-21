@@ -47,6 +47,8 @@ export const dayKey = () => new Date().toLocaleDateString("en-CA", { timeZone: "
 
 /** Albums shown first under "New releases", by album title + artist slug ("" for a label compilation). */
 export const FEATURED_RELEASES = [
+  ["Meditation East", "meditation"],
+  ["Meditation Still", "meditation"],
   ["Coqueteo", "alina-carisma"],
   ["Who Came Through", "vxnti"],
   ["Ngibheke Kahle", "yano-sky"],

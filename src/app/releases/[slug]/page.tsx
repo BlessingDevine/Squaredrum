@@ -3,7 +3,7 @@ import Link from "next/link";
 import { DownloadsChip } from "@/components/account";
 import { BackLink } from "@/components/back-link";
 import { notFound, permanentRedirect } from "next/navigation";
-import { ExplicitBadge, PlayButton, TrackList } from "@/components/play";
+import { AmbientVideo, ExplicitBadge, HeroTracks, PlayButton, TrackList } from "@/components/play";
 import { ReleaseCard } from "@/components/sections";
 import { ALBUM_STORIES } from "@/lib/album-stories";
 import { getCatalog, sized } from "@/lib/catalog";
@@ -57,9 +57,12 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
     <main>
       <section
         className="sec wrap dark album-hero"
-        // On phones a blurred copy of the cover fills the dark space around it.
+        // A blurred copy of the cover fills the dark space around it (on desktop the Canvas itself, when there is one).
         style={{ paddingTop: "clamp(84px,7vw,110px)", ...(al.cover ? { ["--amb" as string]: `url(${sized(al.cover, 300)})` } : {}) }}
       >
+        {al.canvas && (
+          <AmbientVideo src={al.canvas} />
+        )}
         <nav className="crumbs mono" aria-label="Breadcrumb">
           <BackLink fallback="/#releases" /> · <Link href="/releases">Releases</Link> /{imp && <Link href={`/releases?imprint=${imp.slug}`}>{imp.name}</Link>}
         </nav>
@@ -100,10 +103,11 @@ export default async function ReleasePage({ params }: PageProps<"/releases/[slug
               <DownloadsChip className="btn btn-ghost-light" />
             </div>
           </div>
+          {rows.length > 1 && <HeroTracks rows={rows} />}
         </div>
       </section>
 
-      <section className="sec wrap" style={{ paddingTop: 48 }}>
+      <section id="tracks" className="sec wrap" style={{ paddingTop: 48, scrollMarginTop: 80 }}>
         {story && <p className="album-story">{story}</p>}
         <TrackList rows={rows} showCover={false} showAlbum={false} />
       </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { SongActions } from "./account";
 import { type PlayItem, usePlayer } from "./player";
 
@@ -64,4 +65,52 @@ export function TrackList({ rows, showCover = true, showAlbum = true }: { rows: 
       ))}
     </ol>
   );
+}
+
+/**
+ * The album hero's song list (desktop only): the first `max` songs, each one playing the whole album from there,
+ * and a link down to the full list when there are more (Robert, Nov 2026: fill the empty side of the hero).
+ */
+export function HeroTracks({ rows, max = 8, allHref = "#tracks" }: { rows: Row[]; max?: number; allHref?: string }) {
+  const p = usePlayer();
+  return (
+    <div className="hero-tracks">
+      <ol>
+        {rows.slice(0, max).map((r, i) => {
+          const on = p.current?.id === r.id;
+          return (
+            <li key={r.id} className={on ? "on" : undefined}>
+              <button type="button" onClick={() => (on ? p.toggle() : p.playList(rows, i))} aria-label={`Play ${r.title}`}>
+                <span className="n mono">{on && p.playing ? "♪" : i + 1}</span>
+                <span className="t">
+                  {r.title}
+                  {r.explicit && <ExplicitBadge />}
+                </span>
+                <span className="d mono">{fmt(r.durationMs)}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+      {rows.length > max && (
+        <a className="all mono" href={allHref}>
+          All {rows.length} songs ↓
+        </a>
+      )}
+    </div>
+  );
+}
+
+/** The album hero's blurred background Canvas: mounted on desktop only, so phones never download a second video. */
+export function AmbientVideo({ src }: { src: string }) {
+  const [wide, setWide] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 761px) and (prefers-reduced-motion: no-preference)");
+    const on = () => setWide(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  if (!wide) return null;
+  return <video className="amb-video" src={src} autoPlay muted loop playsInline aria-hidden="true" tabIndex={-1} />;
 }

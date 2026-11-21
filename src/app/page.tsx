@@ -37,8 +37,12 @@ export default async function Home() {
     ];
   });
 
-  const featured = FEATURED_RELEASES.flatMap(([title, artist]) => [...c.albumBySlug.values()].filter((x) => x.title === title && x.artistSlug === (artist || null)));
-  const releases = [...featured, ...c.albums.filter((a) => a.cover && !featured.includes(a))].slice(0, 10);
+  // New releases: every album with a cover, newest first, by the day it reached the catalogue (or its set
+  // release date). Automatic, so each new release shows up on its own (Robert, Nov 2026: no hand-picked list).
+  const releases = c.albums
+    .filter((a) => a.cover)
+    .sort((x, y) => y.released.localeCompare(x.released) || x.title.localeCompare(y.title, undefined, { numeric: true }))
+    .slice(0, 10);
   // Every artist with a photo (not the house collections), in a new order each day.
   const roster = seededShuffle(c.voices.filter((a) => a.portrait), `roster:${dayKey()}`).flatMap((a) => rosterCard(a, c) ?? []);
   const ticker = [
